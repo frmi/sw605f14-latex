@@ -1,0 +1,34 @@
+% Include commands
+\newcommand{\DOCPATH}[1]{\input{documents/#1}} 			% Include a file in documents
+\newcommand{\PATH}[1]{\input{documents/#1/index}}		% Include a folder in documents
+
+% Insert figure
+\newcommand{\insertfigure}[4]{%
+    \begin{figure}[H] %
+        \center %
+        \includegraphics[#1]{figures/#2} %
+        \caption{#3} %
+        \label{#4} %
+        \vspace{-5pt}
+    \end{figure} %
+}
+
+% Allow line break in texttt
+\newcommand*\justify{%
+  \fontdimen2\font=0.4em% interword space
+  \fontdimen3\font=0.2em% interword stretch
+  \fontdimen4\font=0.1em% interword shrink
+  \fontdimen7\font=0.1em% extra space
+  \hyphenchar\font=`\-% allowing hyphenation
+}
+
+\let\oldtexttt\texttt
+\renewcommand*{\texttt}[1]{\oldtexttt{\justify #1}}
+
+% Add Blankpage command
+\newcommand{\Blankpage}{ %
+    \newpage               %
+    \thispagestyle{empty}  %
+    \mbox{}                %
+    \newpage               %
+}

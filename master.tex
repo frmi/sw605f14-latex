@@ -1,0 +1,25 @@
+% Master file
+% Compile this file
+
+%Include preample
+\input{preamble/preamble}
+
+% Load package bundles
+%\LoadBundle{Common}
+% Plugin bundle loader / Load plugins
+%\PluginBundleLoader{plugins}
+
+\begin{document}
+%%% Report starts here %%%
+%\mainmatter
+\input{documents/index}
+\label{totalpage}
+%% For bibliography %%
+\label{biblo}
+%\bibliographystyle{alpha} % - DETTE VAR DEN ORIGINALE BIBSTYLE
+\bibliographystyle{plain} %Sørger for at kilder bliver angivet med nummer og ikke navn
+\bibliography{sources} %Kildefil: sources.bib
+
+%Count the last page	
+\label{lastpage}
+\end{document}

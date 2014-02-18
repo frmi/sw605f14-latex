@@ -1,0 +1,67 @@
+%[LABEL] pagelayout
+%[DESCRIPTION] Defines the page headers and whitespace placement.
+
+%[BEGIN] Define page headers and footers
+  %[BEGIN] Load fancy headers package
+    \usepackage{fancyhdr}
+  %[END]
+  
+  % Document visual header definition
+	\setlength{\headheight}{15pt}
+ 	
+ 	\pagestyle{fancy}
+	\renewcommand{\chaptermark}[1]{\markboth{\small{\scshape{#1}}\ \scshape{\small{\thechapter}}}{}}
+	\renewcommand{\sectionmark}[1]{\markright{\scshape{\small{\thesection}}\ \small{\scshape{#1}}}}
+
+	\fancyhf{}
+	\fancyhead[LE,RO]{\thepage}
+	\fancyhead[LO]{\rightmark}
+	\fancyhead[RE]{\leftmark}
+	
+	\renewcommand{\headrule}{{\color{black}%
+  \hrule width\headwidth height\headrulewidth \vskip-\headrulewidth}}
+	\renewcommand{\headrulewidth}{0.3pt}
+	\renewcommand{\footrulewidth}{0pt}
+
+	\addtolength{\headheight}{0.5pt}
+	\setlength{\footskip}{0in}
+	\renewcommand{\footruleskip}{0pt}
+	\fancypagestyle{plain}{%
+		\fancyhead{}
+		\renewcommand{\headrulewidth}{0pt}
+	}
+%[END]
+
+%[BEGIN] Chapter customisation
+  \usepackage{graphics}
+  \usepackage{titlesec}
+  \titleformat{\chapter}[display]
+    {\normalfont\Large\raggedleft}
+    {\MakeUppercase{\chaptertitlename}%
+      \rlap{\resizebox{!}{1.5cm}{~\thechapter~} \rule{5cm}{1.5cm}}}
+    {10pt}{\Huge\bf}
+  \titlespacing*{\chapter}{0pt}{30pt}{20pt}
+%[END]
+
+%[BEGIN] Bibliography in TOC
+  \usepackage[nottoc]{tocbibind} % Works only with standard classes
+%[END]
+
+%[BEGIN] Margin adjustment
+  \usepackage[total={5in,8.75in},top=1in,left=1.5in,bottom=1.0in]{geometry}
+%[END]
+
+%[BEGIN] define whitespace placement
+  \raggedbottom
+%[END]
+
+% Numbering
+\renewcommand{\thesection}{\arabic{chapter}.\arabic{section}}
+\renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
+\renewcommand{\thesubsubsection}{\thesubsection.\arabic{subsubsection}}
+\renewcommand{\thefigure}{F\arabic{chapter}-\arabic{figure}}
+\renewcommand{\thetable}{T\arabic{chapter}-\arabic{table}}
+
+% Counters
+\setcounter{tocdepth}{1}
+\setcounter{secnumdepth}{3}
