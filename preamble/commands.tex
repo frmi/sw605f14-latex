@@ -32,3 +32,25 @@
     \mbox{}                %
     \newpage               %
 }
+
+% TODO NOTES COMMANDS
+\newcommand{\namedtodo}[5]
+{
+  \ifthenelse{\equal{#1}{inline}}
+  % INLINE TODO
+  {
+    \todo[color=#4,caption={\textbf{#3: } #2},inline]
+    {\textbf{#3: }\color{#5}#2}
+  }
+  % NORMAL TODO
+  {
+    \todo[color=#4,caption={\textbf{#3: } #2}]
+    {\textbf{#3: }\color{#5}#2}
+  }
+}
+% FORMAT FOR TODO:
+% [inline] (optional) besked navn bg-farve font-farve
+\newcommand{\vagner}[2][]{\namedtodo{#1}{#2}{Vagner}{orange}{black}}
+\newcommand{\thilemann}[2][]{\namedtodo{#1}{#2}{Stefan T}{NavyBlue!35}{black}}
+\newcommand{\jesper}[2][]{\namedtodo{#1}{#2}{Jesper}{green}{black}}
+\newcommand{\frederik}[2][]{\namedtodo{#1}{#2}{Frederik}{red!90}{black}}

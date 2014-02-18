@@ -1,32 +1,22 @@
 % Document setup
 \documentclass[a4paper,twoside,openright,11pt]{report}
 
-% Addtional preamble definitions
-\input{preamble/pagelayout}		% Layout definitions
-\input{preamble/commands}		% Custom commands and environments
-
-% Define figure folder
-\graphicspath{{figures/}{../figures/}}
-
 % % Include packages % %
+
 % Basic
 \usepackage[english]{babel}		% Document language
 \usepackage[utf8x]{inputenc}	% Character encoding
 \usepackage{appendix}			% Increases control of appendices
 
-% Hyperlinks
-\usepackage[hyphens]{url}		% Create URL's with line breaks
-\usepackage{hyperref}			% Allows hyperlinks
+% Standard colors
+\PassOptionsToPackage{dvipsnames}{xcolor}
+	\RequirePackage{xcolor} % [dvipsnames]
 
 % Figures
 \usepackage{float}				% Improves handling of floating objects
 \usepackage[pdftex]{graphicx}	% Improves handling of graphics
 \usepackage{pdfpages}			% Allows inclusion of entire PDF
 \usepackage{tikz}				% Allows construction of diagrams
-\usetikzlibrary{shapes,%		% The diagrams available in TikZ
-				arrows,%
-				external,%
-				petri}		
 
 % Tables
 \usepackage{multicol}			% Allows multi-columns in tables
@@ -38,14 +28,20 @@
 
 % Listings
 \usepackage{listings}			% Allows the use of listings
-\lstset{language=Java}			% Sets listing language
 
 % Misc
+\usepackage{todonotes}			% Enable todo notes
 \usepackage{booktabs}			% Various optimizations to LaTeX
 \usepackage{lastpage}			% Allows reference to LastPage (for getting page count)
 \usepackage{type1cm}			% Increase flexibility of font sizes
 \usepackage{cleveref}			% Adds intelligent references ("Figure F1-2", instead of "F1-2")
 \usepackage{enumerate}			% Allows one to choose the style of an enumeration
 
+% Hyperlinks
+\usepackage[hyphens]{url}		% Create URL's with line breaks
+\usepackage{hyperref}			% Allows hyperlinks
 
-
+% ADD THESE LAST BECAUSE OF PACKAGE DEPENDENCIES!
+\input{preamble/pagelayout}		% Layout definitions
+\input{preamble/commands}		% Custom commands and environments
+\input{preamble/setup}			% Package setup
