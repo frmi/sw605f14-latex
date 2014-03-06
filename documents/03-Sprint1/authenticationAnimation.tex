@@ -1,0 +1,42 @@
+\section{Out of memory error}
+\frederik{dno what this title should be}
+First time we started the Launcher application we found that the application was unable to start.
+It turned out that the problem was caused by an instance of the Android class \lstinline{AnimationDrawable} which is designed to create animations from a sequence of images.
+According to the documentation for Android the implementation used to create the animation was correct the out of memory error still occurred.
+
+After some investigation we found that when the \lstinline{AnimationDrawable} is created it loads the whole sequence of images into memory all at once.
+As they are loaded Android converts each image to a 32-bit bitmap, which is 4 bytes per pixel.
+The images are added to the project as compressed image files, in form of Portable Network Graphics (png) images, they take up a more memory than Android allocates to the application.
+
+Our solution to this problem was to create a class which simulates the behaviour of \lstinline{AnimationDrawable}.
+
+The \lstinline{AnimationDrawable} which was causing the bug, was set up as in \Cref{LISTING}.\frederik{indsæt ref} Where \lstinline{R.animator.instruct_ani} is a list of images combined with a constant for each image, which determines the duration each image should be shown.
+\begin{lstlisting}
+final ImageView instructImageView = (ImageView) findViewById(R.id.animation);
+instructImageView.setBackgroundResource(R.animator.instruct_ani);
+
+instructImageView.post(new Runnable(){
+    @Override
+    public void run(){
+        AnimationDrawable anim = (AnimationDrawable) instructImageView.getBackground();
+        anim.start();
+    }
+});
+\end{lstlisting}
+
+The behaviour is simulated by the following function, where the input parameter \lstinline{pFrameNo} is the inital image in a static array which contains all the images used in the animation. With this method we only keep one image in memory at all times, since we are changing the image for each run of the \lstinline{play} method and there by avoid an out of memory error.
+\begin{lstlisting}
+private void play(final int pFrameNo){
+    mImageView.postDelayed(new Runnable(){
+        @Override
+        public void run() {                    
+            mImageView.setImageResource(mFrames[pFrameNo]);
+
+            if(pFrameNo == mLastFrameNo)
+                play(0);
+            else
+                play(pFrameNo + 1);
+        }
+    }, mDuration);
+}        
+\end{lstlisting}
