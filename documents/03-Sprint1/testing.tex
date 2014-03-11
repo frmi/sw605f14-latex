@@ -13,4 +13,47 @@ We only describe the results we found most interesting in this section, mainly t
 
 \subsection{Specifications}
 In the 2011 report by Andersen et al. \cite{launcher2011} the following specification for Launcher is presented:
+\begin{quote}
+\begin{itemize}
+	\item \textit{List only applications that is part of the GIRAF system.}
+	\item \textit{List on applications that the user is able to use, according to the user's capabilities.}
+	\item \textit{List only applications if their usage is not limited by the current location or time.}
+	\item \textit{Only display application names if the user is able to read.}
+\end{itemize}
+\end{quote}
+
+Common to all these, is that they were either difficult to test, or simply not implemented (some may have been implemented to some degree in 2011, but then removed by the 2012 team). The difficulty stems from the necessity of manipulating test data, that is hard coded into the local database of each device. We decided it would be more reasonable to revisit these test cases when GIRAF's database system became ready for use.
+
+The 2012 report by Andersen et al. \cite{launcher2012} contains no explicit specifications, but does contain a list of use cases. We used these as the basis of our tests:
+\begin{quote}
+\begin{itemize}
+	\item \textit{New guardian log in.}
+	\item \textit{Configuring an app for a child.}
+	\item \textit{Launching an app for a child in guardian mode.}
+	\item \textit{Letting a child use an app for a limited time.}
+\end{itemize}
+\end{quote}
+Note that their report also contains an explanation of each use case. We leave these out for brevity.
+
+\subsection{Test Results}
+Below is shown a selection of our test cases and their results.
+As mentioned in the introduction of this section, we will only discuss the most interesting results, i.e. tests that led to discovery of significant issues.
+
+\subsubsection*{Changing the Colour of an Application Icon}
+\paragraph{Specification:} Configuring an app for a child.
+\paragraph{Test case:} Use the colour drawer to change the colour of an application, and check if the change is applied to both the application's icon, and its own user interface (some applications do not support changing the colour of their user interface\jesper{Det her skal vi lige være sikre på.}).
+\paragraph{Result:} The colour of the icon changed immediately, but when starting the application, it still used the pre-change colour. A little experimenting showed that the change is not applied to the application until the user logs in to Launcher again.
+\paragraph{Resolution:} The issue was resolved, and the change in colour is now reflected in the application immediately.
+
+\subsubsection*{Applications Crash Launcher}
+\paragraph{Specification:} Launching an app for a child in guardian mode.
+
+\subsubsection*{Use of Device Buttons}
+
+
+
+
+
+
+
 
