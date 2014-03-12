@@ -3,13 +3,13 @@
 As one of our goals was to increase the reliability of Launcher, we decided to conduct some functional testing on the application.
 We studied the specifications formulated by the earlier development teams in their 2011 \cite{launcher2011} and 2012 \cite{launcher2012} reports, and then studied how well Launcher corresponded to these specifications, by using the program in a number of different ways. 
 
-A number of test cases were not based directly on the old specifications, but on what we found reasonable to expect of the application, based on our own knowledge of system.
+Furthermore, a number of test cases were not based directly on the old specifications, but on what we found reasonable to expect of the application, based on our own knowledge of system.
 
 The tests described here were all performed by operating the running application, and were explicitly not based on our knowledge of the source code. This characterises our tests as dynamic black box testing. 
 
-A number of test cases that would have been relevant, were not performed in this sprint, as they would have been to time consuming. These tests required significant changes to the test data built into the GIRAF system, or repeatedly installing and uninstalling applications from the device. As there, at the time, was no central repository of stable application builds, most of the time would be spent building, installing and resetting different applications.
+A number of test cases that would have been relevant, were not performed in this sprint, as they would have been too time consuming. These tests required significant changes to the test data built into the GIRAF system, or repeatedly installing and uninstalling applications from the device. As there, at the time, was no central repository of stable application builds, most of the time would be spent building, installing and resetting different applications.
 
-We only describe the results we found most interesting in this section, mainly tests that failed in a significant way. \jesper{Should we have a test appendix with the full results.}
+We only describe the results we found most interesting in this section, mainly tests that failed in a significant way. \jesper{Should we have a test appendix with the full results?}
 
 \subsection{Specifications}
 In the 2011 report by Andersen et al. \cite{launcher2011} the following specification for Launcher is presented:
@@ -41,8 +41,8 @@ As mentioned in the introduction of this section, we will only discuss the most 
 
 \subsubsection*{Changing the Colour of an Application Icon}
 \paragraph{Specification:} Configuring an app for a child.
-\paragraph{Test case:} Use the colour drawer to change the colour of an application, and check if the change is applied to both the application's icon, and its own user interface (some applications do not support changing the colour of their user interface\jesper{Det her skal vi lige være sikre på.}).
-\paragraph{Result:} The colour of the icon changed immediately, but when starting the application, it still used the pre-change colour. A little experimenting showed that the change is not applied to the application until the user logs in to Launcher again.
+\paragraph{Test case:} Use the colour drawer to change the colour of an application, and check if the change is applied to both the application's icon, and its own user interface. (Some applications do not support changing the colour of their user interface.\jesper{Det her skal vi lige være sikre på.})
+\paragraph{Result:} The colour of the icon changed immediately, but when starting the application, it still used the pre-change colour. A little experimenting showed that the change is not applied to the application until the user logs into Launcher again.
 \paragraph{Resolution:} The issue was resolved, and the change in colour is now reflected in the application immediately.
 
 \subsubsection*{Applications that Crash Launcher}
