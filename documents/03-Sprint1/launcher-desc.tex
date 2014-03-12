@@ -4,19 +4,32 @@ The main purpose of Launcher is to provide a user-friendly means of accessing ot
 
 \subsection{Motivation for Working with Launcher}
 Launcher was originally developed by Andersen et al. in 2011 \cite{launcher2011}, and refined further by Andersen et al. in 2012 \cite{launcher2012}.
-On an opening meeting however, the costumer contact persons made us aware that they rarely used Launcher, as it had proved rather unreliable. 
-They preferred to access the GIRAF applications through the Androids own interface.
-The control committee\jesper{Hvad kalder vi status gruppen?} of the multi-project decided that the focus of the first sprint should be on debugging, and as Launcher was a relatively complete, but was reported as unreliable, we decided was an obvious focus for debugging sprint. 
+On an opening meeting however, the costumer contact persons made us aware that they rarely used Launcher, as it had proven to be unreliable and often would crash. 
+They preferred to access the GIRAF applications through the Android tablets own interface.
+The control committee of the multi-project decided that the focus of the first sprint should be on debugging, and as Launcher was a relatively complete, but was reported as unreliable, an obvious focus for the sprint was debugging. 
 A separate project group was tasked with handling all negotiations with the customers during this first sprint, in order to compile a backlog for the second sprint.
-Therefore we were to attempt to fix all issues, that we could clearly identify as issues, without having to discuss them with the costumer.
+Therefore, we were to attempt to resolve all issues, that we could clearly identify as issues, without having to discuss them with the costumer.\vagner{We kinda did slightly more than this, ye?}
 
 \subsection{Launcher Functionality}
 The functionality of Launcher can be summed up through a description of its four activities:
 \begin{itemize}
 	\item The \textit{Logo activity} shows the GIRAF logo, while loading the subsequent activities.
-	\item The \textit{Authentication activity} requires the user to authenticate him- or herself before proceeding. Andersen et al. (2012) describes how user identification is necessary, as the GIRAF settings must be able to vary from user to user. The report furthermore describes how autistic children might have problems with a traditional username-password system. Therefore the authentication activity is based on a QR-scanner, where each child and guardian has a small brick with a QR-code they scan to identify themselves. The activity loads the user information from the database, and proceeds to the \textit{Home activity}.
-	\item The \textit{Home activity} allows the user to launch the available GIRAF applications. Whether in applications is available depends on whether the application exists locally on that device, and on whether the user is marked in the database as having rights to that application. Furthermore, a number of widgets allows the user to see the synchronization status of the local database in relation to the remote database, and the date. There is also a button that allows to user to log out, and return the Authentication activity. Finally, there is a colour palette hidden in a drawer component, where the user can change the base colour of the application icons. The idea is make it easier for the children to differentiate different applications. Ideally the choice of colour should also reflect in the application launched from the icon, giving the child consistent visual associations throughout GIRAF.
-	\item The \textit{Profile Select activity} is started when a guardian launches in application. It displays a list of all children associated with this guardian, allowing him or her to choose which child's settings to use in the selected application. When a child is selected, the application launches.
-\end{itemize}
+	\item The \textit{Authentication activity} requires the user to authenticate him- or herself before proceeding. 
+	Andersen et al. (2012) describes how user identification is necessary, as the GIRAF settings must be able to vary from user to user. 
+	The report furthermore describes how autistic children might have problems with a traditional username-password system. 
+	Therefore, the authentication activity is based on a QR-scanner, where each child and guardian has a small brick with a QR-code they scan to identify 		  	themselves. 
+	The activity loads the user information from the database, and proceeds to the \textit{Home activity}.
+	\item The \textit{Home activity} allows the user to launch the available GIRAF applications. 
+	The availability of an applications depends on whether the application exists locally on that device, and on whether the user is marked in the database as 	having rights to that application. 
+	Furthermore, a number of widgets allows the user to see the synchronization status of the local database in relation to the remote database, and the 	 	date. 
+	There is also a button that allows to user to log out, and return the \textit{Authentication activity}. 
+	Finally, there is a colour palette hidden in a drawer component, where the user can change the base colour of applications. 
+	The idea is make it easier for the children to differentiate different applications. 
+	Ideally the choice of colour should also reflect in the application launched from the icon, giving the child consistent visual associations throughout GIRAF.
+	The latter is implemented in the \textit{Timer} application.\vagner{Add a source to this}
+	\item The \textit{Profile Select activity} is started when a guardian launches an application from Launcher. 
+	It displays a list of all children associated with this guardian, allowing him or her to choose which child's profile to use when launchiung the selected 	 		 	application. 
+	When a child is selected, the application launches, omitting the \textit{Profile Select activity}.
+\end{itemize}\vagner{When referring to the different activities in subsequent sections, we should refer to this section imo}
 
 
