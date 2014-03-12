@@ -1,12 +1,12 @@
-\section{Out of memory error}
+\section{The Authentication Animation}
 \frederik{dno what this title should be}
-First time we started the Launcher application we found that the application was unable to start.
-It turned out that the problem was caused by an instance of the Android class \lstinline{AnimationDrawable} which is designed to create animations from a sequence of images.
-According to the documentation for Android the implementation used to create the animation was correct the out of memory error still occurred.
+The first time we attempted to start Launcher, we found that it was unable to do so, as the application crashed, and logged an \lstinline{OutOfMemoryError}.
+It turned out that the problem was caused by an animation in the \textit{Authentication} activity, implemented as an instance of the Android class \lstinline{AnimationDrawable}, a class designed to create animations from a sequence of images.
+According to the documentation for Android \cite{androidreference}, the existing implementation was technically correct, but the error persisted.
 
-After some investigation we found that when the \lstinline{AnimationDrawable} is created it loads the whole sequence of images into memory all at once.
-As they are loaded Android converts each image to a 32-bit bitmap, which is 4 bytes per pixel.
-The images are added to the project as compressed image files, in form of Portable Network Graphics (png) images, they take up a more memory than Android allocates to the application.
+After some investigation we found that when the instance of \lstinline{AnimationDrawable} is created, it loads the entire sequence of images into memory at once.
+As they are loaded, Android converts each image to a 32-bit bitmap, which is 4 bytes per pixel.
+The images are added to the project as compressed image files, in the form of Portable Network Graphics (PNG) images, they take up a more memory than Android allocates to the application.
 
 Our solution to this problem was to create a class which simulates the behaviour of \lstinline{AnimationDrawable}.
 
@@ -24,7 +24,8 @@ instructImageView.post(new Runnable(){
 });
 \end{lstlisting}
 
-The behaviour is simulated by the following function, where the input parameter \lstinline{pFrameNo} is the inital image in a static array which contains all the images used in the animation. With this method we only keep one image in memory at all times, since we are changing the image for each run of the \lstinline{play} method and there by avoid an out of memory error.
+The behaviour is simulated by the following function, where the input parameter \lstinline{pFrameNo} is the inital image in a static array which contains all the images used in the animation. 
+With this method we only keep one image in memory at all times, since we are changing the image for each run of the \lstinline{play} method and there by avoid an out of memory error.
 \begin{lstlisting}
 private void play(final int pFrameNo){
     mImageView.postDelayed(new Runnable(){
