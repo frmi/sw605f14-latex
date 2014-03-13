@@ -9,7 +9,7 @@ However, as they are loaded, Android converts each image to a 32-bit bitmap, whi
 
 Our solution to this problem was to create a new class which simulates the behaviour of \lstinline{AnimationDrawable}, but uses the original PNG images.
 
-The original \lstinline{AnimationDrawable} was set up as shown in \Cref{lst:animationDrawable}\jesper{Fix this ref problem.}. \lstinline{R.animator.instruct_ani} is a list of images combined with a constant for each image, which determines the duration each image should be shown.
+The original \lstinline{AnimationDrawable} was set up as shown in \Cref{lst:animationDrawable}. \lstinline{R.animator.instruct_ani} is a list of images combined with a constant for each image, which determines the duration each image should be shown.
 
 \begin{lstlisting}[caption={The original animation implementation, using \lstinline{AnimationDrawable}.},label={lst:animationDrawable}]
 final ImageView instructImageView = (ImageView) findViewById(R.id.animation);
