@@ -1,16 +1,21 @@
 \section{Google Analytics}
 
-Google Analytics is a tool for measuring applications, both Android and iOS, and is developed to help marketers reach their target groups, by analyzing the users use of the application.
+Google Analytics is a tool for measuring statistics of applications, both Android and iOS, and is developed to help marketers reach their target groups, by analyzing the users use of the application.
 
-For the Giraf project the most of the Google Analytics analysis' are not that important.
-Although Google Analytics has a feature which could be of good use for this project.
-Google Analytics can automatically record uncaught exceptions which are thrown at runtime.
-This is a useful feature, since this project is developed upon for four months each year and the target for this year is a working product and this way all uncaught exceptions will be known by the current working set of students or ready for the next years students.
+Most of the Google Analytics analysis' are not relevant for the \giraf project, however it has a feature which could be of great use for this project.
+Google Analytics can automatically record uncaught exceptions, which are thrown at runtime.
+This is a useful feature, since this project is developed upon for four months each year and this way all uncaught exceptions will be known by the current working set of students or ready for the next years students.
 
-Google Analytics is easy to implement it requires that the device is connected to the Internet now and then to be able t send the data, Google Analytics SDK is included in the project, creation of an XML file which contains the settings for the analytics such as the \textit{tracking id}, which is identifying the data send towards the Google servers.
-Lastly it requires writing a method to start the analysis recording and then a method to end the recording in each activity. These two methods are implemented in the \texttt{onCreate} and \texttt{onStop} method for each activity, \Cref{ref til listing}.
+Google Analytics is relatively easy to set up, requiring the following for implementation:
+\begin{itemize}
+\item that the device is connected to the Internet now and then to be able to send the data,
+\item Google Analytics SDK is included in the project,
+\item an XML file which contains the settings for the analytics is created and lastly
+\item it requires writing a method to start the analysis recording and then a method to end the recording in each activity. These two methods are implemented in the \texttt{onCreate} and \texttt{onStop} method for each activity, \Cref{list:googleanalystics}.
+\end{itemize}
+The XML file should include things such as the \textit{tracking id}, which is identifying the data send towards the Google servers.
 
-\begin{lstlisting}
+\begin{lstlisting}[caption=Illustration of the code that needs to be added to \lstinline{OnCreate} and \lstinline{OnStop} methods, label=list:googleanalystics]
   @Override
   public void onStart() {
     super.onStart();
