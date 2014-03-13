@@ -24,7 +24,7 @@ instructImageView.post(new Runnable(){
 });
 \end{lstlisting}
 
-Our class, simulating \lstinline{AnimationDrawable}, has the method \lstinline{play()}, shown in \Cref{lst:methodPlay} where the input parameter \lstinline{pFrameNo} is the initial image in a static array which contains all the images used in the animation. 
+Our class, simulating \lstinline{AnimationDrawable}, has the method \lstinline{play()}, shown in \Cref{lst:methodPlay}, where the input parameter \lstinline{pFrameNo} is the initial image in a static array which contains all the images used in the animation. 
 With this method we only keep one image in memory at all times, since we are changing the image for each run of the \lstinline{play} method and there by avoid an out of memory error.
 \begin{lstlisting}[caption={Our method for playing an animation based on a set of images.},label={lst:methodPlay}]
 private void play(final int pFrameNo){
