@@ -4,16 +4,20 @@ ___
 
 latex repository for study project
 
-####**Report Rules:** 
-* "Status gruppen" should be referred to as the "Control comitee".
-* The use of "We" (referring to the status group) is endorsed.
-* Use \cref{} instead of \ref, to make use of the CleverRef package.
-* Labels
-** __Figures__ are prefixed with label=fig:name
-** __Sections__ are prefixed with label=sec:name
-..* __Listings__ are prefixed with label=list:name
-..* __Chapters__ are prefixed with label=chap:name
-..* __Tabels__ are prefixed with label=tab:name
+####**Report Rules:**
+<ul>
+	<li>"Status gruppen" should be referred to as the "Control comitee".</li>
+	<li>The use of "We" (referring to the status group) is endorsed.</li>
+	<li>Use \cref{} instead of \ref, to make use of the CleverRef package.</li>
+	<li>Labels</li>
+	<ul>
+		<li>Figures are prefixed with label=fig:name</li>
+		<li>Sections are prefixed with label=sec:name</li>
+		<li>Listings are prefixed with label=list:name</li>
+		<li>Chapters are prefixed with label=chap:name</li>
+		<li>Tabels are prefixed with label=tab:name</li>
+	</ul>
+</ul>
 
 Furthermore, the following commands are used:
 
