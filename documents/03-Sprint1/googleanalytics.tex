@@ -20,14 +20,14 @@ The XML file should include information such as the \textit{tracking ID}, which 
   @Override
   public void onStart() {
     super.onStart();
-    ... // The rest of your onStart() code.
+    ... // The rest of the onStart() code.
     EasyTracker.getInstance(this).activityStart(this);  // Add this method.
   }
 
   @Override
   public void onStop() {
     super.onStop();
-    ... // The rest of your onStop() code.
+    ... // The rest of the onStop() code.
     EasyTracker.getInstance(this).activityStop(this);  // Add this method.
   }
 \end{lstlisting}
