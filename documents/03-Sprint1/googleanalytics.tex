@@ -1,21 +1,22 @@
 \section{Google Analytics}
 
-Google Analytics is a tool for measuring statistics of applications, both Android and iOS, and is developed to help marketers reach their target groups, by analyzing the users use of the application.
+Google Analytics is a tool for gathering statistics on the use of mobile applications and websites. 
+It is developed to help marketers reach their target groups, by analysing how their applications are used.
 
-Most of the Google Analytics analysis' are not relevant for the \giraf project, however it has a feature which could be of great use for this project.
-Google Analytics can automatically record uncaught exceptions, which are thrown at runtime.
-This is a useful feature, since this project is developed upon for four months each year and this way all uncaught exceptions will be known by the current working set of students or ready for the next years students.
+Most of the possibilites of Google Analytics are not directly relevant for the \giraf project, however it has a feature which could be of great use.
+Google Analytics can automatically record uncaught exceptions that occur on the users' devices.
+This is a useful feature for multiple reasons. The users may not report an application crash to the developers, which prevents the developers from addressing the underlying issue. Furthermore, Google Analytics continuously monitors problems with the applications, even during the eight months each year where no students are assigned to the project. When a new team a students resume the work, they immediately start addressing issues that may have shown up during this period.
 
-Google Analytics is relatively easy to set up, requiring the following for implementation:
+Google Analytics is relatively easy to set up, having the following requirements:
 \begin{itemize}
-\item that the device is connected to the Internet now and then to be able to send the data,
-\item Google Analytics SDK is included in the project,
-\item an XML file which contains the settings for the analytics is created and lastly
-\item it requires writing a method to start the analysis recording and then a method to end the recording in each activity. These two methods are implemented in the \texttt{onCreate} and \texttt{onStop} method for each activity, \Cref{list:googleanalystics}.
+\item The device must be connected to the Internet.
+\item The Google Analytics SDK must be included in compilation of the application.
+\item An XML file with Google Analytics settings for the specific application must be created and included with the application.
+\item Each activity must have methods for starting and stopping recording of usage statistics. These two methods are implemented in the \lstinline{onCreate()} and \lstinline{onStop()} methods of each activity. An example is shown in \Cref{lst:googleanalystics}.
 \end{itemize}
-The XML file should include things such as the \textit{tracking id}, which is identifying the data send towards the Google servers.
+The XML file should include information such as the \textit{tracking ID}, which allows Google's servers to identify which project the information is related to.
 
-\begin{lstlisting}[caption=Illustration of the code that needs to be added to \lstinline{OnCreate} and \lstinline{OnStop} methods, label=list:googleanalystics]
+\begin{lstlisting}[caption={The code that needs to be added to \lstinline{OnCreate()} and \lstinline{OnStop()} methods.}, label={lst:googleanalystics}]
   @Override
   public void onStart() {
     super.onStart();
@@ -31,8 +32,8 @@ The XML file should include things such as the \textit{tracking id}, which is id
   }
 \end{lstlisting}
 
-\subsection{Settings for data sharing}
-When setting up the account at Google Analytics you are asked to decide whether or not to share the collected analysis data from your applications with other applications.
+\subsection{Settings for Data Sharing}
+When setting up the account at Google Analytics, one is asked to decide whether or not to share the collected analysis data from your applications with other applications.
 For this project we have decided to deactivate all data sharing with external applications, since the applications in this project may contain person sensitive information which we do not by any means want to share with anyone.
 
 % https://developers.google.com/analytics/devguides/collection/android/v3/
