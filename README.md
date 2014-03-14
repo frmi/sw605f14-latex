@@ -24,7 +24,4 @@ Furthermore, the following commands are used:
 | Command| Use |
 | ------------- | ----------- |
 | \giraf      | Refers to the the Giraf project. |
-| \Giraf      | Refers to the the Giraf project. |
-| \GIRAF      | Refers to the the Giraf project. |
 | \launcher     |  Refers to the Launcher project.  |
-| \Launcher     |  Refers to the Launcher project.  |
