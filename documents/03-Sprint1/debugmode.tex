@@ -1,0 +1,59 @@
+\section{Launcher Debug Mode}
+When opening Launcher you are immediately presented to the \lstinline|LogoActivity| activity, which shows a loading animation for a specified amount of time, based on \lstinline|public static final int LOGO_ANIMATION_DURATION = 2000;| from the \lstinline|Constants| class.
+The nature of Launcher also requires the user to authenticate himself when starting the application to gain access to the suite of installed \giraf applications on the device.
+These design decisions imposes us as developers to significant wait times; recompiling and thus restarting Launcher time and again, emphasizes on this fact.
+
+\thilemann{We should add a sequence diagram - but maybe not here...}
+\thilemann{Maybe also a class diagram to give an overview?}
+
+To overcome the examples just described, it is decided to implement a debug mode to simplify and quicken the process of working with Launcher.
+Debug mode is controlled from the \lstinline|LogoActivity| class by setting the local fields below:
+
+\begin{itemize}
+\item Enable or disable debug mode entirely, overriding other settings:\\
+\lstinline|private final boolean DEBUG_MODE = true;|
+\item Skip \lstinline|AuthenticationActivity| activity:\\
+\lstinline|private final boolean showAuthentication = false;|
+\item Skip the animation on \lstinline|LogoActivity| activity:\\
+\lstinline|private final boolean showLogoAnimation = false;|
+\item Login either as a guardian or child when skipping authentication:\\
+\lstinline|private final boolean loginAsChild = false;|
+\end{itemize}
+
+When the above fields are set, debug mode is enabled globally in Launcher from the \lstinline|onCreate| method in \lstinline|LogoActivity| through the call showed in \cref{lst:debugmode:enable}.
+
+\begin{lstlisting}[caption={Enable debug mode from \lstinline|LogoActivity|.},label={lst:debugmode:enable}]  
+if(DEBUG_MODE)
+  LauncherUtility.enableDebugging(DEBUG_MODE, loginAsChild, this);
+\end{lstlisting}
+
+The \lstinline|enableDebugging| method is seen in \cref{lst:debugmode:enablemethod}.
+It needs a reference of the calling activity to show debug information on the active activity.
+
+\begin{lstlisting}[caption={Enable debug mode by calling \lstinline|enableDebugging|.},label={lst:debugmode:enablemethod}]  
+public static void enableDebugging(boolean debugging, boolean loginAsChild, Activity activity) {
+  DEBUG_MODE = debugging;
+  DEBUG_MODE_AS_CHILD = loginAsChild;
+
+  ShowDebugInformation(activity);
+}
+\end{lstlisting}
+
+The code in \cref{lst:debugmode:show}............
+
+
+\begin{lstlisting}[caption={Show a debug information on activity if debug is enabled.},label={lst:debugmode:show}]  
+public static void ShowDebugInformation(Activity a) {
+  if (DEBUG_MODE) {
+    LinearLayout debug = (LinearLayout) a.findViewById(R.id.debug_mode);
+    TextView textView = (TextView) a.findViewById(R.id.debug_mode_text);
+    textView.setText(a.getText(R.string.giraf_debug_mode) + " " + (DEBUG_MODE_AS_CHILD ? a.getText(R.string.giraf_debug_as_child) : a.getText(R.string.giraf_debug_as_guardian)));
+    debug.setVisibility(View.VISIBLE);
+    try {
+      Thread.sleep(200);
+    } catch (InterruptedException e) {
+      e.printStackTrace();
+    }
+  }
+}
+\end{lstlisting}
