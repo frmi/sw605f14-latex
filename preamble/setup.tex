@@ -1,6 +1,29 @@
 % FIGURES
 \graphicspath{{figures/}{../figures/}}
 
+% Define hyperef style
+\hypersetup %
+{
+	colorlinks=true,
+	linktocpage=true, 
+	pdfstartpage=3,
+	pdfstartview=FitV,
+	hypertexnames=true,
+	pdfhighlight=/O,
+	breaklinks=true,
+	pdfpagemode=UseNone,
+	pageanchor=true,
+	pdfpagemode=UseOutlines,
+	plainpages=false,
+	bookmarksnumbered,
+	bookmarksopen=true,
+	bookmarksopenlevel=1,
+	urlcolor=NavyBlue,
+	linkcolor=Red,
+	citecolor=Red,
+	pdfborder={0 0 0},
+}
+
 % Define the Listing Style
 \usepackage{color}
 
@@ -10,8 +33,14 @@
 
 \lstset %
 {
+	language=Java,
+	keywordstyle=\color{RoyalBlue},
+    commentstyle=\color{Green}\ttfamily,
+    stringstyle=\color{Red}\ttfamily,
 	frame=shadowbox,
 	framesep=5pt,
+	aboveskip=1.5em,
+	belowskip=1em,
 	rulecolor=\color{blue!40!black},
 	rulesepcolor=\color{white!93!black},
 	basicstyle=\ttfamily\normalsize,
@@ -19,17 +48,12 @@
 	numberstyle=\tiny,
 	numberfirstline=true,
 	numberblanklines=false,
+%	showstringspaces=false,
 	stepnumber=1,
 	numbersep=9pt,	
 	captionpos=b,
 	escapeinside={(*}{*)},
 	breaklines=true
-}
-
-\lstdefinestyle{csharp}
-{
-	style=standard,
-	language=[Sharp]C
 }
 
 % TIKZ
