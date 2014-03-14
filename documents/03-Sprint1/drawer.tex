@@ -1,66 +1,67 @@
 \section{Drawer}
-The drawer is the part of the Launcher that allows users to give their installed apps a new color.
-It is available in the \lstinline{HomeActivity} activity.
+The drawer is the part of \launcher that allows users to apply a new theme colour to their installed \giraf applications.
+It is available in the \textit{Home} activity.
 
-The drawer is a bar in the left side of the screen, several smaller widgets on it.
-These widgets are the \lstinline{GWidgetCalendar}, the \lstinline{GWidgetConnectivity} and the \lstinline{GWidgetLogout} - they are widgets originating from the \lstinline{OasisLib} project group.
+The drawer is a bar in the left side of the screen, with several smaller widgets on it.
+These widgets are a calendar, implemented as \lstinline{GWidgetCalendar}, a server connection indicator, implemented as \lstinline{GWidgetConnectivity}, and a logout button, implemented as \lstinline{GWidgetLogout}.
+The implementations of these widgets are a part of \lstinline{OasisLib}, a separate component in the \giraf system.
 
-When the bar is manipulated with, it can be placed further towards to center of the screen, revealing a panel with colours.
+When the bar is dragged towards the centre of the screen, a panel with colour samples is revealed.
 Illustrations of the drawer in open and closed form can be seen on figure \vagner{insert} and figure \vagner{insert}, respectively.
 
-While the drawer worked as intended, there were a number of improvements desired to be implemented.
-This section describes the original drawer, the desired improvements and the improved drawer.
+While the drawer basically worked as intended, we identified a number of possibilities for making its use more fluent.
+This section describes the original drawer, the desired improvements and the final result.
 
-\subsection{The original drawer}
+\subsection{The Original Drawer}
 
 The original drawer would open by pressing and holding the bar and sliding it to the right.
-While being opened, the drawer would push the apps along with it to the right, resulting in some apps going out of reach.
-Furthermore, the drawer would stop when pressure was released from the touchscreen, meaning it could be left in a half-opening, half-closed state.
-To change the colour of an app, a colour could be drag-and-dropped onto an app, changing its colour.
+While being opened, the drawer would push the application icons along with it to the right, resulting in some icons disappearing off-screen to the right.
+Furthermore, the drawer would stop when pressure was released from the touchscreen, meaning it could be left in a half-open, half-closed state.
+To change the colour of an application, a colour could be drag-and-dropped onto an icon. The result would be immediately apparent, as the colour framing the icon would change to the selected colour.
 
 The code working this animation was based on an \lstinline{OnTouchListener}, focusing mainly on the \lstinline{MotionEvent.ACTION_MOVE} event.
 \lstinline{MotionEvent.ACTION_MOVE} would set the position of the entire drawer, panel and bar, to the exact point it had currently been moved to and redraw the elements.
-Because the \lstinline{ScrollView} containing the apps was set to \lstinline{android:layout_toRightOf} in the .xml files for the layout, the \lstinline{ScrollView} would adjust itself to the new position each time the event fired.
+Because the \lstinline{ScrollView} containing the application icons was set to \lstinline{android:layout_toRightOf} in the layout XML files, the \lstinline{ScrollView} would adjust itself to the new position each time the event fired.
 
-The panel of colours was implemented using a \lstinline{GridView} - using the command \lstinline{AppColors.setAdapter(new GColorAdapter(this));} would set the \lstinline{GColourAdapter} from the \lstinline{OasisLib} group would create the correct panel.
+The panel of colours was implemented using a \lstinline{GridView} - using the command \lstinline{AppColors.setAdapter(new GColorAdapter(this));} would set the \lstinline{GColourAdapter} from \lstinline{OasisLib} would create the correct panel.\jesper{Does this sentence make any sense?}
 
-Selecting a colour and assigning it to an app worked by means of an \lstinline{OnDragListener} called \lstinline{GAppDragger}.
+Selecting a colour and assigning it to an application worked by means of an \lstinline{OnDragListener} called \lstinline{GAppDragger}.
 
-\subsection{Desired improvements}
+\subsection{Desired Improvements}
 
-Since the project group had yet to have a meeting with the customer, these improvements are based on the groups desires.
-Originally, the following improvements were desired :
+Since the project group had yet to have a meeting with the customer, these suggested improvements wese based on what we found to be natural requirements of such a user interface component. Initially our goal was to implement these requirements:
 
 \begin{itemize}
-\item The drawer should either be opened or closed - a half-open or half-closed state should result in the drawer popping into the closest option.
-\item The drawer should close while a color was being dragged and opened again when the color was dropped.
-\item The drawer should not push the apps outside of the screen.
+\item The drawer should be either open or closed. A half-open or half-closed state should result in the drawer popping into the closest option.
+\item The drawer should close while a colour was being dragged, and open again when the colour was dropped.
+\item The drawer should not push the application icons out of the screen.
 \end{itemize}
 
-When work started, however, additional improvements were found to be desireable:
+However, as work progressed, we established further requirements:
 
 \begin{itemize}
-\item The animation of the drawer and the code positioning all of the elements in \lstinline{HomeActivity} should be refactored in order to:
+\item The source code responsible for the animation of the drawer and the layout of \lstinline{HomeActivity} should be refactored in order to:
 \begin{itemize}
-\item take advantage of standard Android animations and code standards.
-\item allow the activity to dynamically adjust according to screensize.
-\item reduces the amount of clutter in the code and improve readability of the code.
+\item Take advantage of standard Android animations and layout features.
+\item Allow the activity to dynamically adjust according to display size.
+\item Reduce the amount of clutter in the source code and improve readability.
 \end{itemize}
-\item An icon indicating opening and closing functionality of the drawer should be placed on the bar.
+\item An icon indicating to the user that the drawer can be opened, should be placed on the drawer bar.
 \end{itemize}
 
 All of these improvements were implemented before the end of the first sprint. \vagner{verify this is the case when the sprint is done.}
 
-\subsection{The improved drawer}
+\subsection{The Improved Drawer}
 
 Opening and closing the improved drawer was implemented with an \lstinline{OnTouchListener} through the \lstinline{MotionEvent.ACTION_DOWN} event and a standard Android \lstinline{TranslateAnimation}.
 Pressing the bar fires the event and and begins the animation.
 A \lstinline{boolean} variable determines whether the drawer was opened or closed when the event fired and thus if the animation should translate left or right.
 By also adding an \lstinline{OnDragListener} to the drawer, the animation would also play when dragging and dropping colours from the panel; closing the drawer on \lstinline{DragEvent.ACTION_DRAG_STARTED} and opening it again on \lstinline{DragEvent.ACTION_DRAG_ENDED}.
 
-Having the \lstinline{ScrollView} containing the apps stay during the animation is linked to the refactoring of the code positioning elements in the activity.
-Previously, all elements were merely declared in the .xml file, while positioning of the elements was statically set in the \lstinline{HomeActivity} load code - over100 lines of parameter setting code.\vagner{maybe not include mocking the previous group?}
+Having the \lstinline{ScrollView} containing the application icons remain static during the animation, was solved by reorganising the source code responsible for the user interface layout. 
+Previously, all elements were merely declared in the XML layout file, while positioning of the elements was statically set in the \lstinline{HomeActivity} load code - over100 lines of parameter setting code.\vagner{maybe not include mocking the previous group?}
 This was refactored to have the all positioning declared dynamically depending on screen size, apart from positioning of the \lstinline{ScrollView}.\vagner{Stefan, write intelligent stuff about dynamic positioning of the ScrollView}
 \vagner{Add documentation about the icon indicating opening and closing of the drawer}
 
-The improved drawer fullfills all desired improvements in Sprint 1 and provides a smoother and more pleasant experience for the user, while refactoring of the acting code provides clarity and readability of developers.
+The improved drawer fulfils all desired the previously specified requirements, and provides a smoother and more pleasant experience for the user, while refactoring of the acting code provides clarity and readability of developers.\jesper{Is this a little arrogant, considering we haven't actually shown it to users?}
+
