@@ -1,48 +1,35 @@
 \section{Minor Bugs}
 
-There were several minor bugs, anomalies and things that did not work, when the sprint was started.
-These being minor issues, do not warrant their own sections - however it is worth mentioning some of the problems solved.
+There were several minor bugs, anomalies and things that did not work, when the sprint started.
+Considering their negligible significance, we will not discuss them depth, but rather describe each briefly.
+There was also a number of issues so insignificant, that they are not mentioned here.
 
-\subsection*{Inconsistant UI in \lstinline{ScrollView} of \lstinline{ProfileSelector} activity}
-
+\subsubsection*{Inconsistent UI in \lstinline{ScrollView} of \lstinline{ProfileSelector} activity}
 The \lstinline{ScrollView} of the \lstinline{ProfileSelector} activity would overlap the rounded corners of the view when scrolling.
 The issue was resolved by overlaying a shape with the corners rounded and a transparent center on the Listview.
 
-\subsection*{Highlighting and Dehighlighting apps when dragging colour}
+\subsubsection*{Highlighting and Dehighlighting Application Icons when Dragging Colour}
+It was desired to have visual effect for when a colour was dragged over an application icon.
+This was achieved by scaling up the selected application icon (the icon over which the colour is being dragged) by 10\% on \lstinline{DragEvent.ACTION_DRAG_ENTERED,} and scaling it down again on \lstinline{DragEvent.ACTION_DRAG_EXITED} and \lstinline{DragEvent.ACTION_DRAG_ENDED}.
 
-It was desired to have visual effect for when a colur was dragged over an app.
-This achieved by scaling up the app being dragged over by 10\% on \lstinline{DragEvent.ACTION_DRAG_ENTERED} and scaling it down again on \lstinline{DragEvent.ACTION_DRAG_EXITED} and \lstinline{DragEvent.ACTION_DRAG_ENDED}.
+\subsubsection*{Loading Animation on Application Start}
+In the 2012 report \cite{launcher2012}, Anders et al. mention how an animation in \lstinline{LogoActivity} would make it clear to the user that the application is running normally.
+This was made by defining a custom animation, \lstinline{logoanimation.xml}, and launching the animation in \lstinline{LogoActivity}.
 
-\subsection*{Loading Animation on startup}
-
-The previous group expressed that a loading animation when starting Launcher should be available.
-This was made by defining a custom animation \lstinline{logoanimation.xml} and launching the animation on startup.
-
-\subsection*{Back button functionality}
-
-While the starting animation plays in \lstinline{LogoActivity} and while on the login screen in \lstinline{AuthenticationActivity}, it should not be possible to use the back button on the tablet.
-The issue was resolved by overriding the back button to have no effect in those activities.
-
-\subsection*{Child Mode}
-
-Regardless of being logged in on a child or guardian profile, Launcher would open the \lstinline{ProfileSelector} before opening any app.
+\subsubsection*{Child Mode}
+Regardless of whether the currently logged in profile was a child or a guardian, \launcher would open the \lstinline{ProfileSelector} before opening an application.
 It should only open that activity, while in a guardian profile was logged in.
-The issue was solved by checking the \lstinline{getRole()} parameter of a profile and then appropiately override the \lstinline{OnClickListener} depending on the role. 
+The issue was solved by checking the \lstinline{getRole()} parameter of a profile and then appropriately override the \lstinline{OnClickListener}, depending on the role. 
 
-\subsection*{Horizontalize the app}
+\subsubsection*{Force Landscape Mode}
+\launcher was the only application able to enter portrait mode. 
+All other \giraf applications where configured to only work in landscape mode.
+\launcher's \lstinline{AndroidManifest.xml} was edited to only allow landscape mode for all activities.
 
-The Launcher was the only app able to enter portrait mode - all other apps where configured to work in landscape mode.
-The \lstinline{AndroidManifest.xml} for the launcher was edited to only allow landscape mode for all activities.
-
-\subsection*{Bugs related to other groups}
-
-There were two bugs found related to other groups than our own.
-We did not fix these bugs, but simply reported them to the corresponding groups.
+\subsubsection*{Issues related to other groups}
+We also discovered two issues that turned out to be caused by other \giraf components. We reported these issues to the groups responsible for these components. The issues were:
 
 \begin{itemize}
-\item The \lstinline{GButton} widget from the GUI group would crash any activity it was used in
+\item The \lstinline{GButton} widget from \giraf's GUI library would crash any activity it was used in.
 \item Danish characters would not decode correctly from the database.
 \end{itemize}
-
-There were other, smaller issues, not described in this section.
-They were however deemed insignificant.
