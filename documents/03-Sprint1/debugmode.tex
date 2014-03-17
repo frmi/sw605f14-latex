@@ -1,13 +1,13 @@
-\section{Launcher Debug Mode}
-When opening Launcher you are immediately presented to the \lstinline|LogoActivity| activity, which shows a loading animation for a specified amount of time, based on \lstinline|public static final int LOGO_ANIMATION_DURATION = 2000;| from the \lstinline|Constants| class.
-The nature of Launcher also requires the user to authenticate himself when starting the application to gain access to the suite of installed \giraf applications on the device.
-These design decisions imposes us as developers to significant wait times; recompiling and thus restarting Launcher time and again, emphasizes on this fact.
+\section{Debug Mode for Launcher}
+When opening \launcher one is presented \lstinline{LogoActivity} activity, which shows a loading animation for a constant amount of time.
+\launcher also requires the users to authenticate themselves, before being given access to the \lstinline{HomeActivity}.
+While these activities hold meaning in the context of the intended users, a significant amount of debugging time is wasted, as the application is often reinstalled and restarted during this activity. 
 
 \thilemann{We should add a sequence diagram - but maybe not here...}
 \thilemann{Maybe also a class diagram to give an overview?}
 
-To overcome the examples just described, it is decided to implement a debug mode to simplify and quicken the process of working with Launcher.
-Debug mode is controlled from the \lstinline|LogoActivity| class by setting the local fields below:
+To overcome this problem, we decided to implement a debug mode to simplify and quicken the process of working with \launcher.
+The debug mode is controlled from the source code \lstinline|LogoActivity| by setting the local fields below (thus, it is not possible to control debug mode at runtime):
 
 \begin{itemize}
 \item Enable or disable debug mode entirely, overriding other settings:\\
@@ -20,7 +20,7 @@ Debug mode is controlled from the \lstinline|LogoActivity| class by setting the 
 \lstinline|private final boolean loginAsChild = false;|
 \end{itemize}
 
-When the above fields are set, debug mode is enabled globally in Launcher from the \lstinline|onCreate| method in \lstinline|LogoActivity| through the call showed in \cref{lst:debugmode:enable}.
+When the above fields are set, debug mode is enabled globally in \launcher from the \lstinline|onCreate| method in \lstinline|LogoActivity| through the call showed in \cref{lst:debugmode:enable}.
 
 \begin{lstlisting}[caption={Enable debug mode from \lstinline|LogoActivity|.},label={lst:debugmode:enable}]  
 if(DEBUG_MODE)
@@ -28,7 +28,7 @@ if(DEBUG_MODE)
 \end{lstlisting}
 
 The \lstinline|enableDebugging| method is seen in \cref{lst:debugmode:enablemethod}.
-It needs a reference of the calling activity to show debug information on the active activity.
+It needs a reference of the calling activity to show debug information in the active activity.
 
 \begin{lstlisting}[caption={Enable debug mode by calling \lstinline|enableDebugging|.},label={lst:debugmode:enablemethod}]  
 public static void enableDebugging(boolean debugging, boolean loginAsChild, Activity activity) {
@@ -39,7 +39,7 @@ public static void enableDebugging(boolean debugging, boolean loginAsChild, Acti
 }
 \end{lstlisting}
 
-The code in \cref{lst:debugmode:show}............
+The code in \cref{lst:debugmode:show}\jesper{Finish this pararaph.}
 
 
 \begin{lstlisting}[caption={Show a debug information on activity if debug is enabled.},label={lst:debugmode:show}]  
