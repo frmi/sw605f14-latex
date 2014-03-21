@@ -1,24 +1,51 @@
-% Master file
-% Compile this file
-
-%Include preample
 \input{preamble/preamble}
 
-% Load package bundles
-%\LoadBundle{Common}
-% Plugin bundle loader / Load plugins
-%\PluginBundleLoader{plugins}
+% Only compile part of the report
+% Useful if we want feedback on certain parts/chapters
+%\includeonly{documents/01-Front/index,documents/03-Sprint1/index}
 
 \begin{document}
-%%% Report starts here %%%
-%\mainmatter
-\input{documents/index}
+
+% Introduction
+\pagenumbering{roman}
+\pagestyle{empty}
+\include{documents/01-Front/index}
+
+% Some setup
+%\setcounter{page}{4}
+\setcounter{secnumdepth}{3}
+
+\cleardoublepage
+\phantomsection
+
+%Table of content
+\pdfbookmark{\contentsname}{toc}
+\setcounter{tocdepth}{1}
+\tableofcontents
+
+\clearpage
+
+% Input contents
+\pagestyle{headings}
+\pagenumbering{arabic}
+% Use include to do some latex magic when working on big reports
+% Switches to temp .aux file to avoid recompilation of entire project
+\include{documents/02-Introduction/index}
+\include{documents/03-Sprint1/index}
+\include{documents/04-Sprint2/index}
+\include{documents/05-Sprint3/index}
+\include{documents/06-Sprint4/index}
+\include{documents/09-Evaluation/index}
+
+% Appendices
+\appendix
+\include{documents/99-Appendix/index}
+
 \label{totalpage}
-%% For bibliography %%
+
+% Bibliography
 \label{biblo}
-%\bibliographystyle{alpha} % - DETTE VAR DEN ORIGINALE BIBSTYLE
-\bibliographystyle{plain} %Sørger for at kilder bliver angivet med nummer og ikke navn
-\bibliography{sources} %Kildefil: sources.bib
+\bibliography{sources}
 
 %Count the last page	
 \label{lastpage}

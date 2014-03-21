@@ -1,6 +1,16 @@
-% Include commands
-\newcommand{\DOCPATH}[1]{\input{documents/#1}} 			% Include a file in documents
-\newcommand{\PATH}[1]{\input{documents/#1/index}}		% Include a folder in documents
+% Part descriptions
+% Usage \newpart{part name}{part text}
+\newcommand{\newpart}[2]{
+	\part[#1]{#1\\
+		\begin{minipage}[c]{10cm}
+		\centering
+		\vspace{2cm}
+		\normalsize{\textnormal{
+			\textit{#2}
+		}}
+		\end{minipage}
+	}
+}
 
 % Insert figure
 \newcommand{\insertfigure}[4]{%
