@@ -1,4 +1,4 @@
-\section{Drawer}
+\subsection{Drawer}
 The drawer is the part of \launcher that allows users to apply a new theme colour to their installed \giraf applications.
 It is available in the \textit{Home} activity.
 
@@ -12,7 +12,7 @@ Illustrations of the drawer in open and closed form can be seen on figure \vagne
 While the drawer basically worked as intended, we identified a number of possibilities for making its use more fluent.
 This section describes the original drawer, the desired improvements and the final result.
 
-\subsection{The Original Drawer}
+\subsubsection{The Original Drawer}
 
 The original drawer would open by pressing and holding the bar and sliding it to the right.
 While being opened, the drawer would push the application icons along with it to the right, resulting in some icons disappearing off-screen to the right.
@@ -27,7 +27,7 @@ The panel of colours was implemented using a \lstinline{GridView} - using the co
 
 Selecting a colour and assigning it to an application worked by means of an \lstinline{OnDragListener} called \lstinline{GAppDragger}.
 
-\subsection{Desired Improvements}
+\subsubsection{Desired Improvements}
 
 Since the project group had yet to have a meeting with the customer, these suggested improvements wese based on what we found to be natural requirements of such a user interface component. Initially our goal was to implement these requirements:
 
@@ -51,7 +51,7 @@ However, as work progressed, we established further requirements:
 
 All of these improvements were implemented before the end of the first sprint. \vagner{verify this is the case when the sprint is done.}
 
-\subsection{The Improved Drawer}
+\subsubsection{The Improved Drawer}
 
 Opening and closing the improved drawer was implemented with an \lstinline{OnTouchListener} through the \lstinline{MotionEvent.ACTION_DOWN} event and a standard Android \lstinline{TranslateAnimation}.
 Pressing the bar fires the event and and begins the animation.
