@@ -9,7 +9,7 @@
 % Remember to disable todonotes entirely in final version
 % It can be done explicitly in preamble by passing 
 % options [disable] to the todonotes package
-\listoftodos
+%\listoftodos
 
 % Introduction
 \pagenumbering{roman}
@@ -36,10 +36,18 @@
 % Use include to do some latex magic when working on big reports
 % Switches to temp .aux file to avoid recompilation of entire project
 \include{documents/02-Introduction/index}
+
+%\newpart{Sprints}{This is a very small descriptive text that introduces the part... It is sooo nice!}
+%\label{part:sprints}
+
 \include{documents/03-Sprint1/index}
 \include{documents/04-Sprint2/index}
 \include{documents/05-Sprint3/index}
 \include{documents/06-Sprint4/index}
+
+%\newpart{Multi-Project}{This is a very small descriptive text that introduces the part... It is sooo nice!}
+%\label{part:multiproject}
+
 \include{documents/09-Evaluation/index}
 
 % Appendices
