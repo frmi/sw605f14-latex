@@ -1,4 +1,4 @@
-\section{The Authentication Animation}
+\subsection{The Authentication Animation}
 The first time we attempted to start Launcher, we found that it was unable to do so, as the application crashed, and logged an \lstinline{OutOfMemoryError}.
 It turned out that the problem was caused by an animation in the \textit{Authentication} activity, implemented as an instance of the Android class \lstinline{AnimationDrawable}, a class designed to create animations from a sequence of images.
 According to the documentation for Android \cite{androidreference}, the existing implementation was technically correct, but the error persisted.

@@ -1,24 +1,65 @@
-% Master file
-% Compile this file
-
-%Include preample
 \input{preamble/preamble}
 
-% Load package bundles
-%\LoadBundle{Common}
-% Plugin bundle loader / Load plugins
-%\PluginBundleLoader{plugins}
+% Only compile part of the report
+% Useful if we want feedback on certain parts/chapters
+%\includeonly{documents/01-Front/index,documents/03-Sprint1/index}
 
 \begin{document}
-%%% Report starts here %%%
-%\mainmatter
-\input{documents/index}
+
+% Remember to disable todonotes entirely in final version
+% It can be done explicitly in preamble by passing 
+% options [disable] to the todonotes package
+\listoftodos
+
+% Introduction
+\pagenumbering{roman}
+\pagestyle{empty}
+\include{documents/01-Front/_front}
+
+% Some setup
+%\setcounter{page}{4}
+\setcounter{secnumdepth}{3}
+
+\cleardoublepage
+\phantomsection
+
+%Table of content
+\pdfbookmark{\contentsname}{toc}
+\setcounter{tocdepth}{1}
+\tableofcontents
+
+\clearpage
+
+% Input contents
+\pagestyle{headings}
+\pagenumbering{arabic}
+% Use include to do some latex magic when working on big reports
+% Switches to temp .aux file to avoid recompilation of entire project
+\include{documents/02-Intro/_intro}
+
+%\newpart{Sprints}{This is a very small descriptive text that introduces the part... It is sooo nice!}
+%\label{part:sprints}
+
+\include{documents/03-Sprint1/_sprint1}
+\include{documents/04-Sprint2/_sprint2}
+\include{documents/05-Sprint3/_sprint3}
+\include{documents/06-Sprint4/_sprint4}
+
+%\newpart{Multi-Project}{This is a very small descriptive text that introduces the part... It is sooo nice!}
+%\label{part:multiproject}
+
+\include{documents/07-Collaboration/_collaboration}
+\include{documents/09-Evaluation/_evaluation}
+
+% Appendices
+\appendix
+\include{documents/99-Appendix/_appendix}
+
 \label{totalpage}
-%% For bibliography %%
+
+% Bibliography
 \label{biblo}
-%\bibliographystyle{alpha} % - DETTE VAR DEN ORIGINALE BIBSTYLE
-\bibliographystyle{plain} %Sørger for at kilder bliver angivet med nummer og ikke navn
-\bibliography{sources} %Kildefil: sources.bib
+\bibliography{sources}
 
 %Count the last page	
 \label{lastpage}

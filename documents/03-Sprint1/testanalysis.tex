@@ -1,4 +1,4 @@
-\section{Testing}\label{sec:testing_sprint1}
+\subsection{Testing}\label{sec:testing_sprint1}
 
 As one of our goals was to increase the reliability of Launcher, we decided to conduct functional testing on the application.
 We studied the specifications formulated by the earlier development teams in their 2011 \cite{launcher2011} and 2012 \cite{launcher2012} reports, and then studied how well Launcher corresponded to these specifications, by using the program in a number of different ways. 
@@ -14,7 +14,7 @@ As there, at the time, was no central repository of stable application builds, m
 
 We only describe the results we found most interesting in this section, mainly tests that failed in a significant way. \jesper{Should we have a test appendix with the full results?}\vagner{I think so.}
 
-\subsection{Specifications}
+\subsubsection{Specifications}
 In the 2011 report by Andersen et al. \cite{launcher2011} the following specification for Launcher is presented:
 \begin{quote}
 \begin{itemize}
@@ -37,29 +37,6 @@ The 2012 report by Andersen et al. \cite{launcher2012} contains no explicit spec
 \end{itemize}
 \end{quote}
 Note that their report also contains an explanation of each use case. We leave these out for brevity.
-
-\subsection{Test Results}
-Below is shown a selection of our test cases and their results.
-As mentioned in the introduction of this section, we will only discuss the most interesting results, i.e. tests that led to discovery of significant issues.
-
-\subsubsection*{Changing the Colour of an Application Icon}
-\paragraph{Specification:} Configuring an app for a child.
-\paragraph{Test case:} Use the colour drawer to change the colour of an application, and check if the change is applied to both the application's icon, and its own user interface. (Some applications do not support changing the colour of their user interface.\jesper{Det her skal vi lige være sikre på.})
-\paragraph{Result:} The colour of the icon changed immediately, but when starting the application, it still used the pre-change colour. A little experimenting showed that the change is not applied to the application until the user logs into Launcher again.
-\paragraph{Resolution:} The issue was resolved, and the change in colour is now reflected in the application immediately.
-
-\subsubsection*{Applications that Crash Launcher}
-\paragraph{Specification:} Launching an app for a child in guardian mode.
-\paragraph{Test case:} Open an application with a random child profile selected in the profile selector.
-\paragraph{Result:} While not directly related to the intent of the use case, while running the test, we attempted to open what turned out to be a non-working version of a GIRAF application. The application suffered an unhandled exception, causing both it and Launcher to crash. This is not satisfactory, as Launcher should always work on top of the device operating system, denying the children access to device settings when using the device without supervision.
-\paragraph{Resolution:} The issue was resolved, by making Launcher catch all exceptions thrown by the GIRAF applications it hosts.
-
-\subsubsection*{Use of Device Buttons}
-\paragraph{Specfication:} The device buttons (\textit{Back}, \textit{Home}, and \textit{Multitasking}) should have no effect in the \textit{Logo} and \textit{Authentication} activities, as the user should not be able to ``back out'' of Launcher to the device OS.
-\paragraph{Test case:} Use the device buttons in different activities and situations.
-\paragraph{Result:} In both the \textit{Logo} and \textit{Authentication} activities, applying the \textit{Home} and \textit{Back} buttons made Launcher restart. The \textit{Multitasking} button always activates the multitasking screen of the device OS.
-\paragraph{Resolution:} The \textit{Back} button was suppressed. We were however unable to find a similar method for suppressing the other two buttons. This issue was postponed to a later sprint, when it would be easier to determine if it is worth spending the time needed to solve it.
-
 
 
 

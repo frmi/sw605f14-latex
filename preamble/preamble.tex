@@ -1,5 +1,4 @@
-% Document setup
-\documentclass[a4paper,twoside,openright,11pt]{report}
+\documentclass[a4paper,openright,twoside,11pt]{report}
 
 % % Include packages % %
 
@@ -30,21 +29,22 @@
 \usepackage{listings}			% Allows the use of listings
 
 % Misc
+\usepackage{xspace}				% Allows spaces after commands
 \usepackage{todonotes}			% Enable todo notes
 \usepackage{booktabs}			% Various optimizations to LaTeX
-\usepackage{lastpage}			% Allows reference to LastPage (for getting page count)
+\usepackage{lastpage}			% Allows reference to LastPage 
 \usepackage{type1cm}			% Increase flexibility of font sizes
 \usepackage{enumerate}			% Allows one to choose the style of an enumeration
+\usepackage[square,numbers]{natbib}
+\bibliographystyle{unsrt}
 
 % Hyperlinks
 \usepackage[hyphens]{url}		% Create URL's with line breaks
 \usepackage{hyperref}			% Allows hyperlinks
+\usepackage{bookmark}
 
 % Clever refs - although not clever enough to be included before hyperref....
 \usepackage{cleveref}     % Adds intelligent references ("Figure F1-2", instead of "F1-2")
-
-% Colors
-\usepackage{color}
 
 % Toolbox - Used to edit existing environments, e.g. quote
 \usepackage{etoolbox}
