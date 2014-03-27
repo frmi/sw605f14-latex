@@ -2,13 +2,38 @@ This section covers the layout of the first sprint of the project.
 This sets apart from the following sprints, since it focuses on getting to know \giraf in details, setup of the development environment and getting the system up-and-running.
 
 \subsection{Planning}
+The agenda for the first sprint meeting is to get an overview of the development taken place during the preceding semesters and to get the development starting.
+To begin with, each multi-group have chosen a \giraf application to work on, even though this selection is subject to change during the following sprints.
+We have selected the \launcher project, which is further described in \cref{sec:launcher}.
+
+Some activities are also planned to get to know Android development and the \giraf applications:
+
+\begin{itemize}
+\item Android-workshop\\
+Introductory workshop about Android development that can be attended if one does not have any prior experience with Android.
+\item Install party\\
+Intended to get the \giraf development environment up-and-running as last years students worked on. This event failed due to the unstructured nature of the setup of the environment (Eclipse IDE and ANT build system) and thus not every student was able to get \giraf to work.
+\end{itemize}
+
+\thilemann{Maybe add text about ANT vs Gradle somewhere in the report?}
+
+It is also decided that the following tools are used:
+
+\begin{itemize}
+\item \textbf{Redmine} (project management web application)
+\item \textbf{Git} (distributed version control system)
+\item \textbf{Jenkins} (continuous integration)
+\item \textbf{Android Studio} (Android development environment)
+\end{itemize}
+
+This selection differs from that of last year, since Git has replaced SubVersion and Android Studio has replaced Eclips IDE.
 
 
 \subsection{Objectives}
-The first sprint lasted from the \vagner{date} till the \vagner{date}.
-In the following we will describe the tasks we worked on during this phase of the project period. 
-Central activities in the sprint were getting to know the existing codebase, setting up the tools to be used, and initiating the cooperation with the contact persons.
+Learning the tools
+Getting to know \giraf
+Fixing bugs
+Requirement specification
 
-We worked on the system component known as \textit{\launcher}, an interface for accessing other \giraf applications on the device.
-Resolving pre-exisiting issues in the program was the main focus - as these were being resolved, focus shifted towards refactoring source code, improving the user experience and the functionality of the application.
-The sprint ended with a fully operational \launcher, versioned with the other components of the project.\jesper{What do we mean by this?}
+The objective that must be met on sprint end, is a functioning version of each application.
+The rest of this chapter focuses on the \launcher.
