@@ -14,7 +14,7 @@
 % Introduction
 \pagenumbering{roman}
 \pagestyle{empty}
-\include{documents/01-Front/_front}
+\include{documents/Front/_front}
 
 % Some setup
 %\setcounter{page}{4}
@@ -35,25 +35,18 @@
 \pagenumbering{arabic}
 % Use include to do some latex magic when working on big reports
 % Switches to temp .aux file to avoid recompilation of entire project
-\include{documents/02-Intro/_intro}
-
-%\newpart{Sprints}{This is a very small descriptive text that introduces the part... It is sooo nice!}
-%\label{part:sprints}
-
-\include{documents/03-Sprint1/_sprint1}
-\include{documents/04-Sprint2/_sprint2}
-\include{documents/05-Sprint3/_sprint3}
-\include{documents/06-Sprint4/_sprint4}
-
-%\newpart{Multi-Project}{This is a very small descriptive text that introduces the part... It is sooo nice!}
-%\label{part:multiproject}
-
-\include{documents/07-Collaboration/_collaboration}
-\include{documents/09-Evaluation/_evaluation}
+\include{documents/Intro/_intro}
+\include{documents/Giraf/_giraf}
+\include{documents/Sprint1/_sprint1}
+\include{documents/Sprint2/_sprint2}
+\include{documents/Sprint3/_sprint3}
+\include{documents/Sprint4/_sprint4}
+\include{documents/Collaboration/_collaboration}
+\include{documents/Evaluation/_evaluation}
 
 % Appendices
 \appendix
-\include{documents/99-Appendix/_appendix}
+\include{documents/Appendix/_appendix}
 
 \label{totalpage}
 
