@@ -1,35 +1,38 @@
 \subsection{Launcher}\label{sec:launcher}
-\launcher is an application in the \giraf application suite.
-The main purpose of \launcher is to provide a user-friendly means of accessing other applications in the \giraf suite, as well as regulating access to these applications, based on a user profile system.
+A launcher in Android terminology is an application that provides easy access to other applications present on the system.
+When the system is fully booted, the launcher is automatically started and is thus comparable to booting a desktop computer directly to the desktop.
+
+From this point and onwards, when referring to \textit{\launcher} (with capital 'L'), we are drawing attention to the launcher that is part of the \giraf application suite.
+
+The main purpose of \launcher is to provide a user-friendly means of accessing other applications in the \giraf suite, as well as regulating access to these applications.\thilemann{Does this also include native Android apps?}
 
 \subsubsection{Motivation for Working with Launcher}
-Launcher was originally developed by Andersen et al. in 2011 \cite{launcher2011}, and refined further by Andersen et al. in 2012 \cite{launcher2012}.
-On an opening meeting however, the costumer contact persons made us aware that they rarely used Launcher, as it had proven to be unreliable and often would crash. 
-They preferred to access the \giraf applications through the Android tablet's own interface.
-The control committee of the multi-project decided that the focus of the first sprint should be on debugging, and as \launcher was relatively complete, but reported as unreliable, an obvious focus for the sprint was debugging. 
-A separate project group was tasked with handling all negotiations with the customers during this first sprint, in order to compile a backlog for the second sprint.
-Therefore, we were to attempt to resolve all issues, that we could clearly identify as such, without having to discuss them with the costumer.\vagner{We kinda did slightly more than this, ye?}
+Launcher was originally developed by \citet{launcher2011}, and further refined by \citet{launcher2012}.
+On an opening meeting however, the costumer contact persons made us aware that they rarely used Launcher, as it had proven to be unreliable and often would crash. \thilemann{Which opening meeting? Sprint meeting?}
+They preferred to access the \giraf applications through the Android interface (native launcher).
+As mentioned in \cref{sec:sprint1:objectives}, the focus in this sprint is on creating running applications.
+Since \launcher was relatively complete based on the development of \citet{launcher2012}, but reported as being unreliable by the customers, an obvious task for the sprint is to make \launcher run reliably.
 
 \subsubsection{Launcher Functionality}
 The functionality of \launcher can be summed up through a description of its four activities:
-\begin{itemize}
-	\item The \textit{Logo activity} shows the \giraf logo, while loading the subsequent activities.
-	\item The \textit{Authentication activity} requires the user to authenticate him- or herself before proceeding. 
-	Andersen et al. (2012) describes how user identification is necessary, as the \giraf settings must be able to vary from user to user. 
-	The report furthermore describes how autistic children might have problems with a traditional username-password system. 
-	Therefore, the authentication activity is based on a QR-scanner, where each child and guardian has a small brick with a QR-code they scan to identify 		  	themselves. 
-	The activity loads the user information from the database, and proceeds to the \textit{Home activity}.
-	\item The \textit{Home activity} allows the user to launch the available \giraf applications. 
-	The availability of an applications depends on whether the application exists locally on that device, and on whether the user is marked in the database as 	having rights to that application. 
-	Furthermore, a number of widgets allows the user to see the synchronization status of the local database in relation to the remote database, and the 	 	date. 
-	There is also a button that allows the user to log out, and return to the \textit{Authentication activity}. 
-	Finally, there is a colour palette hidden in a drawer component, where the user can change the base colour of applications. 
-	The idea is make it easier for the children to differentiate between the various applications. 
-	Ideally the choice of colour should also reflect in the application launched from the icon, giving the child consistent visual associations throughout \giraf.
-	The latter is for example implemented in the \textit{Timer} application.\vagner{Add a source to this}
-	\item The \textit{Profile Select activity} is started when a guardian launches an application from \launcher. 
-	It displays a list of all children associated with this guardian, allowing him or her to choose which child's profile to use when launching the selected application. 
-	When a child is selected, the application launches, omitting the \textit{Profile Select activity}.
-\end{itemize}\vagner{When referring to the different activities in subsequent sections, we should refer to this section imo}
 
+\paragraph{Logo activity} shows the \giraf logo, while loading the subsequent activities.
 
+\paragraph{Authentication activity} requires the user to authenticate him- or herself before proceeding. 
+Andersen et al. (2012) describes how user identification is necessary, as the \giraf settings must be able to vary from user to user. 
+The report furthermore describes how autistic children might have problems with a traditional username-password system. 
+Therefore, the authentication activity is based on a QR-scanner, where each child and guardian has a small brick with a QR-code they scan to identify 		  	themselves. 
+The activity loads the user information from the database, and proceeds to the \textit{Home activity}.
+
+\paragraph{Home activity} allows the user to launch the available \giraf applications. 
+The availability of an applications depends on whether the application exists locally on that device, and on whether the user is marked in the database as 	having rights to that application. 
+Furthermore, a number of widgets allows the user to see the synchronization status of the local database in relation to the remote database, and the 	 	date. 
+There is also a button that allows the user to log out, and return to the \textit{Authentication activity}. 
+Finally, there is a colour palette hidden in a drawer component, where the user can change the base colour of applications. 
+The idea is make it easier for the children to differentiate between the various applications. 
+Ideally the choice of colour should also reflect in the application launched from the icon, giving the child consistent visual associations throughout \giraf.
+The latter is for example implemented in the \textit{Timer} application.\vagner{Add a source to this}
+
+\paragraph{Profile Select activity} is started when a guardian launches an application from \launcher. 
+It displays a list of all children associated with this guardian, allowing him or her to choose which child's profile to use when launching the selected application. 
+When a child is selected, the application launches, omitting the \textit{Profile Select activity}.
