@@ -1,13 +1,34 @@
-\subsection{Drawer}
-The drawer is the part of \launcher that allows users to apply a new theme colour to their installed \giraf applications.
-It is available in the \textit{Home} activity.
+\subsection{Drawer}\label{sec:launcher:drawer}
+The drawer is a separate view that is situated in the left-hand side of the \textit{Home} activity.
+Its main purpose is to allow \launcher users to apply a new colourscheme to their installed \giraf applications.
 
-The drawer is a bar in the left side of the screen, with several smaller widgets on it.
+The concept of a drawer is a component that can be shown and hidden at will.
+This means that only part of the drawer is visible at all time; it can be dragged towards the centre of the screen to reveal its contents.
+Apart from enabling the users to switch colours of their installed \giraf apps, it also contains various informative widgets.
 These widgets are a calendar, implemented as \lstinline{GWidgetCalendar}, a server connection indicator, implemented as \lstinline{GWidgetConnectivity}, and a logout button, implemented as \lstinline{GWidgetLogout}.
-The implementations of these widgets are a part of \lstinline{OasisLib}, a separate component in the \giraf system.
+The implementations of these widgets are a part of \lstinline{GirafComponents}, a separate project in the \giraf system that handles customized User Interface components.
+It should be utilized throughout all \giraf applications to make them look and feel the same.
 
-When the bar is dragged towards the centre of the screen, a panel with colour samples is revealed.
-Illustrations of the drawer in open and closed form can be seen on figure \vagner{insert} and figure \vagner{insert}, respectively.
+Illustrations of the drawer in closed and opened positions can be seen in \cref{fig:drawerclosed,fig:draweropened} respectively.
+
+\begin{figure}[h] % Billeder af draweren i åben og lukket tilstand
+\centering
+	\begin{subfigure}[b]{.48\textwidth}
+	\centering
+	\includegraphics[width=\textwidth]{screenshots-old-giraf/giraf-homeactivity.png}
+	\caption{Drawer closed.}
+	\label{fig:drawerclosed}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{.48\textwidth}
+	\centering
+	\includegraphics[width=\textwidth]{screenshots-old-giraf/giraf-drawer-fullyextended.png}
+	\caption{Drawer fully extended.}
+	\label{fig:draweropened}
+	\end{subfigure}
+\caption{States of the drawer component shown on \textit{Home} activity.}
+\label{fig:drawerstates}
+\end{figure}
 
 While the drawer basically worked as intended, we identified a number of possibilities for making its use more fluent.
 This section describes the original drawer, the desired improvements and the final result.
