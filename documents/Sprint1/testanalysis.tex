@@ -1,33 +1,39 @@
-\subsection{Testing}\label{sec:testing_sprint1}
+\subsection{Functional Tests}\label{sec:testing_sprint1}
 
-As one of our goals was to increase the reliability of Launcher, we decided to conduct functional testing on the application.
-We studied the specifications formulated by the earlier development teams in their 2011 \cite{launcher2011} and 2012 \cite{launcher2012} reports, and then studied how well Launcher corresponded to these specifications, by using the program in a number of different ways. 
+As one of our goals is to increase the reliability of \launcher, we decided to conduct functional testing on the application.
+We studied the specifications formulated by the earlier development teams in \citet{launcher2011,launcher2012}, and then studied how well \launcher correspond to these specifications, by using the program in a number of different ways. 
 
-Furthermore, a number of test cases were not based directly on the old specifications, but on what we found reasonable to expect of the application, based on our own knowledge of the system.
+Furthermore, a number of test cases are not directly based on the old specifications, but on what we find reasonable to expect of the application, based on our own knowledge of the system.
 
-The tests described here were all performed by operating the running application, and were explicitly not based on our knowledge of the source code. 
-This characterises our tests as dynamic black box testing. 
+The tests described here are performed by operating the running application, and are explicitly not based on our knowledge of the source code. 
+This characterizes our tests as being dynamic black box testing. 
 
-A number of test cases that would have been relevant, were not performed in this sprint, as they would have been too time consuming. 
-These tests required significant changes to the test data built into the GIRAF system, or repeatedly installing and uninstalling applications from the device.
+A number of test cases that would have been relevant, are not performed in this sprint as they would have been too time consuming. 
+The tests requires significant changes to the test data built into the \giraf system, or repeatedly installing and un-installing applications from the device.
 As there, at the time, was no central repository of stable application builds, most of the time would be spent building, installing and resetting different applications.
+\thilemann[inline]{Please consider rewriting to present tense - yes/no?}
 
-We only describe the results we found most interesting in this section, mainly tests that failed in a significant way. \jesper{Should we have a test appendix with the full results?}\vagner{I think so.}
+We only describe the results we find the most interesting in this section; mainly tests that failed in a significant way. \jesper{Should we have a test appendix with the full results?}\vagner{I think so.}\thilemann{A yes that is...}
 
 \subsubsection{Specifications}
-In the 2011 report by Andersen et al. \cite{launcher2011} the following specification for Launcher is presented:
+In the 2011 report by \citet{launcher2011}, the following specification for \launcher is presented:
+
 \begin{quote}
 \begin{itemize}
-	\item \textit{List only applications that is part of the GIRAF system.}
-	\item \textit{List on applications that the user is able to use, according to the user's capabilities.}
-	\item \textit{List only applications if their usage is not limited by the current location or time.}
-	\item \textit{Only display application names if the user is able to read.}
+	\item \textit{List only applications that is part of the \giraf system.}
+	\item \textit{List only applications that the user is able to use, according to the user's capabilities.}
+	\item \textit{List only applications if their usage is not limited by the current location or time.}\thilemann{What does this mean?}
+	\item \textit{Only display application names if the user is able to read.}\thilemann{What does this mean?}
 \end{itemize}
 \end{quote}
 
-Common to all these, is that they were either difficult to test, or simply not implemented (some may have been implemented to some degree in 2011, but then removed by the 2012 team). The difficulty stems from the necessity of manipulating test data, that is hard coded into the local database of each device. We decided it would be more reasonable to revisit these test cases when GIRAF's database system became ready for use.
+Common to all these, is that they are either difficult to test, or simply not implemented (some may have been to some degree in 2011, but then removed by the 2012 team).
+The difficulty stems from the necessity of manipulating test data, that is hard coded into the local database of each device. 
+We decided it would be more reasonable to revisit these test cases when \giraf's database system is ready for use.
 
-The 2012 report by Andersen et al. \cite{launcher2012} contains no explicit specifications, but does contain a list of use cases. We used these as the basis of our tests:
+The 2012 report by \citet{launcher2012} contains no explicit specifications, but does contain a list of use cases. 
+These forms the basis of our tests:
+
 \begin{quote}
 \begin{itemize}
 	\item \textit{New guardian log in.}
@@ -36,10 +42,6 @@ The 2012 report by Andersen et al. \cite{launcher2012} contains no explicit spec
 	\item \textit{Letting a child use an app for a limited time.}
 \end{itemize}
 \end{quote}
-Note that their report also contains an explanation of each use case. We leave these out for brevity.
 
-
-
-
-
-
+Note that their report also contains an explanation of each use case. 
+We leave these out for brevity.
