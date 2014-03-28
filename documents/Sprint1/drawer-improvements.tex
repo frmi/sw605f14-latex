@@ -1,0 +1,23 @@
+\subsection{Drawer Improvements}\label{sec:developments:drawerimprovements}
+The code working this animation was based on an \lstinline{OnTouchListener}, focusing mainly on the \lstinline{MotionEvent.ACTION_MOVE} event.
+\lstinline{MotionEvent.ACTION_MOVE} would set the position of the entire drawer, panel and bar, to the exact point it had currently been moved to and redraw the elements.
+Because the \lstinline{ScrollView} containing the application icons was set to \lstinline{android:layout_toRightOf} in the layout XML files, the \lstinline{ScrollView} would adjust itself to the new position each time the event fired.
+
+The panel of colours was implemented using a \lstinline{GridView} - using the command \lstinline{AppColors.setAdapter(new GColorAdapter(this));} would set the \lstinline{GColourAdapter} from \lstinline{OasisLib} would create the correct panel.\jesper{Does this sentence make any sense?}
+
+Selecting a colour and assigning it to an application worked by means of an \lstinline{OnDragListener} called \lstinline{GAppDragger}.
+
+\subsubsection{The Improved Drawer}
+
+Opening and closing the improved drawer was implemented with an \lstinline{OnTouchListener} through the \lstinline{MotionEvent.ACTION_DOWN} event and a standard Android \lstinline{TranslateAnimation}.
+Pressing the bar fires the event and and begins the animation.
+A \lstinline{boolean} variable determines whether the drawer was opened or closed when the event fired and thus if the animation should translate left or right.
+By also adding an \lstinline{OnDragListener} to the drawer, the animation would also play when dragging and dropping colours from the panel; closing the drawer on \lstinline{DragEvent.ACTION_DRAG_STARTED} and opening it again on \lstinline{DragEvent.ACTION_DRAG_ENDED}.
+
+Having the \lstinline{ScrollView} containing the application icons remain static during the animation, was solved by reorganising the source code responsible for the user interface layout. 
+Previously, all elements were merely declared in the XML layout file, while positioning of the elements was statically set in the \lstinline{HomeActivity} load code - over100 lines of parameter setting code.\vagner{maybe not include mocking the previous group?}
+This was refactored to have the all positioning declared dynamically depending on screen size, apart from positioning of the \lstinline{ScrollView}.\vagner{Stefan, write intelligent stuff about dynamic positioning of the ScrollView}
+\vagner{Add documentation about the icon indicating opening and closing of the drawer}
+
+The improved drawer fulfils all desired the previously specified requirements, and provides a smoother and more pleasant experience for the user, while refactoring of the acting code provides clarity and readability of developers.\jesper{Is this a little arrogant, considering we haven't actually shown it to users?}
+
