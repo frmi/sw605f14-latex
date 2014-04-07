@@ -1,20 +1,26 @@
-\subsection{Test Results}
+\subsection{Test Results}\label{sec:testing_sprint1_results}
 Below is shown a selection of our test cases and their results.
 As mentioned in the introduction of this section, we will only discuss the most interesting results, i.e. tests that led to discovery of significant issues.
 
-\subsubsection*{Changing the Colour of an Application Icon}
+
+\subsubsection{Changing the Colour of an Application Icon}
+
 \paragraph{Specification:} Configuring an app for a child.
 \paragraph{Test case:} Use the colour drawer to change the colour of an application, and check if the change is applied to both the application's icon, and its own user interface. (Some applications do not support changing the colour of their user interface.\jesper{Det her skal vi lige være sikre på.})
 \paragraph{Result:} The colour of the icon changed immediately, but when starting the application, it still used the pre-change colour. A little experimenting showed that the change is not applied to the application until the user logs into Launcher again.
 \paragraph{Resolution:} The issue was resolved, and the change in colour is now reflected in the application immediately.
 
-\subsubsection*{Applications that Crash Launcher}
+
+\subsubsection{Applications that Crash Launcher}
+
 \paragraph{Specification:} Launching an app for a child in guardian mode.
 \paragraph{Test case:} Open an application with a random child profile selected in the profile selector.
 \paragraph{Result:} While not directly related to the intent of the use case, while running the test, we attempted to open what turned out to be a non-working version of a GIRAF application. The application suffered an unhandled exception, causing both it and Launcher to crash. This is not satisfactory, as Launcher should always work on top of the device operating system, denying the children access to device settings when using the device without supervision.
 \paragraph{Resolution:} The issue was resolved, by making Launcher catch all exceptions thrown by the GIRAF applications it hosts.
 
-\subsubsection*{Use of Device Buttons}
+
+\subsubsection{Use of Device Buttons}
+
 \paragraph{Specfication:} The device buttons (\textit{Back}, \textit{Home}, and \textit{Multitasking}) should have no effect in the \textit{Logo} and \textit{Authentication} activities, as the user should not be able to ``back out'' of Launcher to the device OS.
 \paragraph{Test case:} Use the device buttons in different activities and situations.
 \paragraph{Result:} In both the \textit{Logo} and \textit{Authentication} activities, applying the \textit{Home} and \textit{Back} buttons made Launcher restart. The \textit{Multitasking} button always activates the multitasking screen of the device OS.
