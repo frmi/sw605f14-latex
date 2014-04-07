@@ -51,7 +51,17 @@
 }
 
 % TIKZ
-\usetikzlibrary{shapes,arrows,external,petri}	
+\usetikzlibrary{shapes,arrows,external,petri}
+\tikzset{
+    state/.style={
+           rectangle,
+           rounded corners,
+           draw=black, very thick,
+           minimum height=2em,
+           inner sep=2pt,
+           text centered,
+           },
+}
 
 % Make quotes italic
 \AtBeginEnvironment{quote}{\itshape}
