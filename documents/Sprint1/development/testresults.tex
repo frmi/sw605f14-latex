@@ -1,4 +1,4 @@
-\subsection{Test Results}\label{sec:testing_sprint1_results}
+\subsection{Test Results}\label{sec:sprint1:testing_results}
 Below is shown a selection of our test cases and their results.
 As mentioned in the introduction of this section, we will only discuss the most interesting results, i.e. tests that led to discovery of significant issues.
 
@@ -6,7 +6,7 @@ As mentioned in the introduction of this section, we will only discuss the most 
 \subsubsection{Changing the Colour of an Application Icon}
 
 \paragraph{Specification:} Configuring an app for a child.
-\paragraph{Test case:} Use the colour drawer to change the colour of an application, and check if the change is applied to both the application's icon, and its own user interface. (Some applications do not support changing the colour of their user interface.\jesper{Det her skal vi lige være sikre på.})
+\paragraph{Test case:} Use the colour drawer to change the colour of an application, and check if the change is applied to both the application's icon, and its own user interface.
 \paragraph{Result:} The colour of the icon changed immediately, but when starting the application, it still used the pre-change colour. A little experimenting showed that the change is not applied to the application until the user logs into Launcher again.
 \paragraph{Resolution:} The issue was resolved, and the change in colour is now reflected in the application immediately.
 
