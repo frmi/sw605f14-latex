@@ -1,19 +1,19 @@
-\subsection{Minor Bugs}
+\subsection{Minor Bugs}\vagner{I'm contempplating the idea of moving this entire subsection to the appendix and then simply have a reference in the beginning of the Developments section to these minor bugs.}
 
 There were several minor bugs, anomalies and things that did not work, when the sprint started.
-Considering their negligible significance, we will not discuss them depth, but rather describe each briefly.
+Considering their negligible significance, we will not discuss them in depth, but rather describe each briefly.
 There was also a number of issues so insignificant, that they are not mentioned here.
 
 \subsubsection{Inconsistent UI in \lstinline{ScrollView} of \lstinline{ProfileSelector} activity}
 The \lstinline{ScrollView} of the \lstinline{ProfileSelector} activity would overlap the rounded corners of the view when scrolling.
-The issue was resolved by overlaying a shape with the corners rounded and a transparent center on the Listview.
+The issue was resolved by overlaying a shape with the corners rounded and a transparent center on the Listview.\vagner{I'm not sure that we still do this, since it was fixed by the GUI group just before sprint 1 end... but since it was only fixed by the very end should we still include it?}
 
 \subsubsection{Highlighting and Dehighlighting Application Icons when Dragging Colour}
 It was desired to have visual effect for when a colour was dragged over an application icon.
 This was achieved by scaling up the selected application icon (the icon over which the colour is being dragged) by 10\% on \lstinline{DragEvent.ACTION_DRAG_ENTERED,} and scaling it down again on \lstinline{DragEvent.ACTION_DRAG_EXITED} and \lstinline{DragEvent.ACTION_DRAG_ENDED}.
 
 \subsubsection{Loading Animation on Application Start}
-In the 2012 report \cite{launcher2012}, Anders et al. mention how an animation in \lstinline{LogoActivity} would make it clear to the user that the application is running normally.
+The 2012 report by \citet{launcher2012} mentions how an animation in \lstinline{LogoActivity} would make it clear to the user that the application is running normally.
 This was made by defining a custom animation, \lstinline{logoanimation.xml}, and launching the animation in \lstinline{LogoActivity}.
 
 \subsubsection{Child Mode}
