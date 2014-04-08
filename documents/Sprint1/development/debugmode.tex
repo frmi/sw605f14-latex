@@ -1,16 +1,17 @@
-\subsection{Debug Mode for Launcher}
-When opening \launcher one is presented \lstinline{LogoActivity} activity, which shows a loading animation for a constant amount of time.
+\subsection{Debug Mode for Launcher}\vagner{Do we plan on getting this to work? Since it doesnt work in Sprint 2 at all?}
+When opening \launcher one is presented the \lstinline{LogoActivity} activity, which shows a loading animation for a constant amount of time.
 \launcher also requires the users to authenticate themselves, before being given access to the \lstinline{HomeActivity}.
-While these activities hold meaning in the context of the intended users, a significant amount of debugging time is wasted, as the application is often reinstalled and restarted during this activity. 
+While these activities hold meaning in the context of the intended users, a significant amount of debugging time is wasted, as the application is often reinstalled and restarted during development. 
 
-\thilemann{We should add a sequence diagram - but maybe not here...}
+\thilemann{We should add a sequence diagram}
 \thilemann{Maybe also a class diagram to give an overview?}
+\vagner{I say yes for sequence diagram and no for class diagram. However, we are running out of space}
 
 To overcome this problem, we decided to implement a debug mode to simplify and quicken the process of working with \launcher.
 The debug mode is controlled from the source code \lstinline|LogoActivity| by setting the local fields below (thus, it is not possible to control debug mode at runtime):
 
 \begin{itemize}
-\item Enable or disable debug mode entirely, overriding other settings:\\
+\item Enable (true) or disable (false) debug mode entirely, overriding other settings:\\
 \lstinline|private final boolean DEBUG_MODE = true;|
 \item Skip \lstinline|AuthenticationActivity| activity:\\
 \lstinline|private final boolean showAuthentication = false;|
@@ -57,3 +58,4 @@ public static void ShowDebugInformation(Activity a) {
   }
 }
 \end{lstlisting}
+So...\vagner{finish this subsection!}
