@@ -13,9 +13,8 @@ It was decided to have a brainstorm to gather ideas regarding these features, cr
 
 \subsubsection{Profile Selection}
 
-At the end of sprint one, the profile selection would only appear when launching an application.
+At the end of sprint one, the profile selection would only appear when launching an application, as illustrated by the state chart diagram in \Cref{fig:statechartProfileSelectorInitial}.
 Two alternatives where suggested:
-
 \begin{itemize}
 \item Selection of a different profile from within \launcher.
 This would work by pressing the profile picture, giving a list of profiles to choose from.
@@ -26,7 +25,8 @@ While this solution does not require any modification of \launcher, it was a fav
 Each application would then have its own profile selection button to initiate the activities
 \end{itemize}
 
-\inserttexfigure{statechartProfileSelector}{Illustrates the role of OasisLib in the \giraf project.}{fig:statechartProfileSelector}
+\inserttexfigure{statechartProfileSelectorInitial}{State chart diagram for the original process of choosing a profile.}{fig:statechartProfileSelectorInitial}
+\inserttexfigure{statechartProfileSelectorBubble}{State chart diagram for the original process of choosing a profile.}{fig:statechartProfileSelectorBubble}
 
 Common for both alternatives was to display the currently selected profile in the top of the pane.
 Illustrations can be seen on \Cref{fig:profileselectionlauncherdropdown,fig:profileselectionapppopup} respectively.
@@ -56,7 +56,6 @@ At the end of first sprint, settings for different applications where handled in
 The idea of centralizing the settings for the different applications was formed both to streamline data for the database, but also to grant the user a better overview over the settings shared by applications.
 
 Again, two alternatives were presented:
-
 \begin{itemize}
 \item A settings activity, accessible from \launcher only.
 This activity would contain settings for all applications enabled for the selected user, as well as selecting which applications should be enabled for that profile.
@@ -98,7 +97,7 @@ An example of settings for \launcher can be seen in \Cref{fig:appsettingsprototy
 \end{figure}
 
 \subsubsection{Profile Info}
-\frederik{Måske vi skal undlade denne section, kunderne var ikke ælde vilde med det.}
+\frederik{Maaske vi skal undlade denne section, kunderne var ikke vilde med det.}
 The group had an idea of displaying information about the user currently logged in in the drawer section of \launcher.
 This is a relatively small feature that would be trivial to implement.
 An example can be seen in \Cref{fig:profileinfo}.

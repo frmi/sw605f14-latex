@@ -1,0 +1,65 @@
+\begin{tikzpicture}[->,>=stealth']
+	\def \radius {3cm}
+	\def \xshift {3cm}
+	\def \yshift {1.5cm}
+
+
+	\node[dummy,
+	anchor=center,
+	text width=3cm] (DUMMY)
+	{
+	};
+
+	\node[state,
+	below of=DUMMY,
+	text width=3cm] (PROFILESELECTOR)
+	{
+		\textbf{Profile selector}
+	};
+
+	\node[state,
+	left of=DUMMY,
+	xshift=-\xshift,
+	text width=3cm] (LAUNCHER)
+	{
+		\textbf{Launcher}
+	};
+
+	\node[state,
+	circle,
+	fill=black,
+	yshift=0.5cm,
+	above of=LAUNCHER,
+	minimum size=20pt] (INIT) {};
+
+	\node[state,
+	right of=DUMMY,
+	xshift=\xshift,
+	text width=3cm] (APP)
+	{
+		\textbf{Chosen application}
+	};
+
+	\node[state,
+	circle,
+	yshift=-\yshift,
+	below of=LAUNCHER,
+	minimum size=20pt] (TERMINATE) {};
+	\node[state,
+	circle,
+	fill=black,
+	yshift=-\yshift,
+	below of=LAUNCHER,
+	minimum size=13pt] (TERMINATEINNER) {};
+
+\path
+(INIT) edge node[anchor=east] {Start} (LAUNCHER)
+(PROFILESELECTOR) 	edge[bend right=45, anchor=south] node[above, sloped]{Back} (LAUNCHER)
+					edge[bend right=45, anchor=south] node[below, sloped]{Profile chosen} (APP)
+(LAUNCHER) 	edge[bend right=45, anchor=north] node[below, sloped]{Start application} (PROFILESELECTOR)
+			edge node[anchor=east]{Close} (TERMINATE)
+(APP) 	edge[loop right] node[anchor=east]{Do work} (APP)
+		edge[bend right=45, anchor=north] node[above, sloped]{Change profile} (PROFILESELECTOR)
+		edge[bend right=45, anchor=north] node[above, sloped]{Close application} (LAUNCHER);
+
+\end{tikzpicture}
