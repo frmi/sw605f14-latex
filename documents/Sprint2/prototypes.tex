@@ -14,6 +14,7 @@ It was decided to have a brainstorm to gather ideas regarding these features, cr
 \subsubsection{Profile Selection}
 
 At the end of sprint one, the profile selection would only appear when launching an application, as illustrated by the state chart diagram in \Cref{fig:statechartProfileSelectorInitial}.
+\insertfigure{width=\textwidth}{statechartProfileSelectorInitial}{State chart diagram for the original process of choosing a profile.}{fig:statechartProfileSelectorInitial}
 Two alternatives where suggested:
 \begin{itemize}
 \item Selection of a different profile from within \launcher.
@@ -25,11 +26,8 @@ While this solution does not require any modification of \launcher, it was a fav
 Each application would then have its own profile selection button to initiate the activities
 \end{itemize}
 
-\inserttexfigure{statechartProfileSelectorInitial}{State chart diagram for the original process of choosing a profile.}{fig:statechartProfileSelectorInitial}
-\inserttexfigure{statechartProfileSelectorBubble}{State chart diagram for the original process of choosing a profile.}{fig:statechartProfileSelectorBubble}
-
 Common for both alternatives was to display the currently selected profile in the top of the pane.
-Illustrations can be seen on \Cref{fig:profileselectionlauncherdropdown,fig:profileselectionapppopup} respectively.
+Illustrations can be seen on \Cref{fig:profileselectionlauncherdropdown,fig:profileselectionapppopup} respectively. For an explanation of the suggested process of choosing a profile see the state chart diagram in \Cref{fig:statechartProfileSelectorBubble}.
 
 \begin{figure}[h] % Billeder af profile selector
 \centering
@@ -45,7 +43,15 @@ Illustrations can be seen on \Cref{fig:profileselectionlauncherdropdown,fig:prof
     \includegraphics[width=\textwidth]{sprint2/profileselection-dialog-finish}
     \caption{The profile selection pop up. These would only appear while pressing the appropriate button while inside an application.}
     \label{fig:profileselectionapppopup}
+    \end{subfigure}\\
+    \begin{center}
+    \begin{subfigure}[t]{1\textwidth}
+    \includegraphics[width=\textwidth]{figures/statechartProfileSelectorBubble.tikz}
+    \caption{State chart diagram for the suggested alternative process of choosing a profile.}
+    \label{fig:statechartProfileSelectorBubble}
     \end{subfigure}
+    \end{center}
+
 \caption{Suggestions for the new profile selector.}
 \label{fig:drawerstates}
 \end{figure}
