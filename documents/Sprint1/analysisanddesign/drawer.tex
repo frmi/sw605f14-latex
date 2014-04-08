@@ -2,11 +2,11 @@
 The drawer is a separate view that is situated in the left-hand side of the \textit{Home} activity.
 Its main purpose is to allow \launcher users to apply a new colour-scheme to their installed \giraf applications.
 
-The concept of a drawer is a component that can be shown and hidden at will.
+The concept of the drawer is a component that can be shown and hidden at will.
 This means that only part of the drawer is visible at all time; it can be dragged towards the centre of the screen to reveal its contents.
 Apart from enabling the users to switch colours of their installed \giraf applications, it also contains various informative widgets.
 These widgets are a calendar, implemented as \lstinline{GWidgetCalendar}, a server connection indicator, implemented as \lstinline{GWidgetConnectivity}, and a logout button, implemented as \lstinline{GWidgetLogout}.
-The implementations of these widgets are a part of \lstinline{GirafComponents}, a separate project in the \giraf system that handles customized User Interface components.
+The implementations of these widgets are a part of \lstinline{GirafComponents}, a separate project in the \giraf system that handles customized Graphical User Interface components.
 It should be utilized throughout all \giraf applications to make them look and feel the same.
 
 Illustrations of the drawer in closed and opened positions can be seen in \cref{fig:drawerclosed,fig:draweropened} respectively.
@@ -51,8 +51,8 @@ Since no formal requirements are available and the project group had yet to have
 \item The drawer should not push the application icons out of the screen.
 \item The source code responsible for the animation of the drawer and the layout of \lstinline{HomeActivity} should be refactored in order to:
 \begin{itemize}
-\item take advantage of standard Android animations and layout features.
-\item allow the activity to dynamically adjust according to display size.
+\item take advantage of standard Android animations and layout features,
+\item allow the activity to dynamically adjust according to display size and
 \item reduce the amount of clutter in the source code and improve readability.
 \end{itemize}
 \item An icon should be placed on the drawer illustrating that the drawer can be opened or closed by pressing that icon (instead of guessing that this is possible by pressing the indented darker part of the drawer).
