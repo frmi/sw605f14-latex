@@ -23,6 +23,17 @@
     \end{figure} %
 }
 
+% Insert figure
+\newcommand{\inserttexfigure}[3]{%
+    \begin{figure}[H] %
+        \center %
+        \input{figures/#1} %
+        \caption{#2} %
+        \label{#3} %
+        \vspace{-5pt}
+    \end{figure} %
+}
+
 % Allow line break in texttt
 \newcommand*\justify{%
   \fontdimen2\font=0.4em% interword space
