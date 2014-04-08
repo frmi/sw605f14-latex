@@ -3,39 +3,47 @@ This section focuses on the first customer meeting that was held to determine th
 
 It was held together with one customer and an external contact on the 1st of April, 2014.
 The customer is Drazenko Banjak from the institution called Egebakken, which is a school for children with autism.
-The external contact is Pernille Hansen Krogh, the owner of company called Mymo that works with design and decor optimized for learning.
+The external contact is Pernille Hansen Krogh, the owner of company called Mymo that works with design and decor optimized for learning.\footnote{In plural they are referred to as \textit{customers}.}
 
 
 \subsection{Feedback}
 Since the contents of the meeting mostly concerned new developments, a slide show was made to support the presentation of the prototypes.
 Following that the customers not staying to discuss \giraf at the status meeting, a tablet with the most recent version of \launcher was also brought to get feedback on the changes made during the first sprint (\cref{chap:sprint1}).
 
-\subsubsection{Profile Switcher}
 
-Skifte profil i launcheren og i den enkelte app.
+\subsubsection{Profile Switcher}
+The Profile Switcher prototypes (\cref{fig:profileselectionlauncherdropdown,fig:profileselectionapppopup}) was presented, and both customers were both thrilled about the idea of being able to easily switch profiles from \launcher and each \giraf application individually.
+The design was by Pernille considered as being "clean and intuitive".\thilemann{Maybe reference to the summary by Mette.}
+
 
 \subsubsection{Settings}
-Indstillingerne skal være individuel for hver borger. 
-Pernille: mere realistisk at indstille inde i den enkelte app.
-Drazenko: vil bare gerne have det virker. 
-Drazenko mener det er mest overskueligt at indstille inden i den enkelte app - nervøs for kompleksiteten!
+The idea to add settings management to all \giraf applications was of high priority of the group, since it would determine the future development of \launcher.
+Therefore the two possibilities as seen in (\cref{fig:settingsprototype,fig:appsettingsprototype}) were presented.
+The customers liked the visual look of the prototypes, but had a big concern that the design would add to much complexity to \launcher and that Drazenko's colleagues at Egebakken would be scared of using it.
+They liked the idea of changing settings from each application for the logged in user, even though we argued that it would impose higher workloads to the guardians if they need to change settings for many users.
+A hybrid consisting of both possibilities were suggested to overcome this.
 
-Suggestions based on settings:
-En ide kunne være at fjerne muligheden for at bruge andre apps i en hvis periode så fx et spil ikke
-er muligt at bruge mens han arbejder med et andet værktøj.
-”importer app” knap lige som når du henter billeder ind i et word
-dokument
+The customers made the following suggestions based on the presentation of the settings management application:
+
+\begin{itemize}
+\item Add an external (Android) application to \launcher.
+\item Restrict access to use other applications on a per-child basis when it's guardian has assigned a child to work with a specific application.
+\end{itemize}
+
+These suggestions are considered further in \cref{chap:sprint3}.\thilemann{Remember these in sprint 3.}
 
 
 \subsection{Clarification of Issues}
+Although \cref{sec:launcher:drawer} consider improvements to the drawer component in \giraf, a major discussion at the meeting was about whether to keep the drawer or not.
+More specifically, Pernille made us rethink if users should be able to colour applications.
+If not, it will render the drawer unnecessary.
 
-Drawer overflødig hvis ikke farver bruges
-Farveskift relevant?
+To overcome this decision, Pernille also suggested us to hold another meeting with Birken, since they are the originator of the requirement.\thilemann{Maybe ref to requirements specification.}
+This is discussed further in \cref{sec:sprint2:secondmeeting} (\nameref{sec:sprint2:secondmeeting}).
 
-Det er nok en god ide at
-snakke med birken omkring hvad de mente med dette farvekrav og med bostedet
+Discussing the prototypes and the usability of these, Pernille suggested us to conduct a \textit{field test} with the customers to spot the difficulties they might have using the application and the new features.
+This is considered in \thilemann{Add reference to field test...}
 
-Test med brugerne
 
 \subsection{Communication}
 At this meeting the communication between the customers and us were quickly characterized as being problematic.
@@ -43,9 +51,9 @@ The reason being that Drazenko (customer) did not always quite understand what w
 The group establishes two possible reasons:
 (1) he is lacking technical domain knowledge and does not know the correct terminology\footnote{We quickly established this fact and thus made an effort to use as many non-technical terms as possible.} and (2) he is of foreign extraction and is thus not a profound speaker of danish.
 Pernille on the other hand showed great technical understanding even though she, as an external contact, had no previous knowledge of the \giraf project.
+Thus, she did not contribute regarding how \giraf is used 'out in the field', but touched areas that made us rethink previous decisions.\thilemann{Dunno if this sentence fits here...}
 
-The result was that 
+The above facts resulted in a somewhat vague feedback, in the sense of the customer not always being able to clearly formulate his requirements.
+Another problem was that when asking a question on topic \textit{X}, feedback was given on topic \textit{Y} which might be irrelevant in the context of \launcher.
 
-how was the communication with customer
-- Did they understand what we were asking about?
-- Where they able to formulate what they wanted?
+Because of these defects in communication, the meeting is not considered to be a success.
