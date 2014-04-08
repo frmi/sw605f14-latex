@@ -1,93 +1,106 @@
 \subsection{Prototypes}\label{sec:sprint2:prototypes}
 
-At the end of Sprint 1, the existing features of \launcher were polished and the project would only need to be kept updated with the implementation of the database. \vagner{Verify that this is indeed what actually happened}
-However, the Sprint 1 review meeting determined that it was desired for launcher to possibly have additional features:
+At the end of first sprint, the existing features of \launcher were polished and the project would only need to be kept updated with the implementation of the database. \vagner{Verify that this is indeed what actually happened}
+However, the review meeting of sprint one determined that it was desired for launcher to possibly have additional features:
 
 \begin{itemize}
-\item Selection of profiles might be desired to be selectable elsewhere in \launcher without starting an app
-\item Settings for different apps could be set from an activity accessed from \launcher
-\item Specification of which apps different users can access could likewise be set from an accessed from \launcher
+\item Selection of profiles might be desired to be selectable elsewhere in \launcher without starting an application.
+\item Settings for different applications could be set from an activity accessed from \launcher.
+\item Specification of which applications different users can access could likewise be set from and accessed from \launcher.
 \end{itemize}
 
-It was decided to have a brainstorm to gather ideas regarding these features, create prototypes of the best ones\footnote{The prototypes regarded as being the best, were deemed so by the project group} and present these to the customers for feedback.
+It was decided to have a brainstorm to gather ideas regarding these features, create prototypes of the best ones\footnote{The prototypes regarded as being the best, were deemed so by the project group.} and present these to the customers for feedback.
 
 \subsubsection{Profile Selection}
 
-At the end of Sprint 1, the profile selection would only appear when launching an app.
-Two alternatives where developed:
+At the end of sprint one, the profile selection would only appear when launching an application.
+Two alternatives where suggested:
 
 \begin{itemize}
 \item Selection of a different profile from within \launcher.
 This would work by pressing the profile picture, giving a list of profiles to choose from.
 Being relevant only for a guardian, the profiles selectable should only be the guardian itself and the child related to him or her.
-\item Selection of a different profile from within each individual app.
+
+\item Selection of a different profile from within each individual application.
 While this solution does not require any modification of \launcher, it was a favourable option.
-Each app would then have its own profile selection button to initiate the activities
+Each application would then have its own profile selection button to initiate the activities
 \end{itemize}
 
-Common for both alternatives was to display the currently selected profile in the top of the pane.
-Illustrations can be seen on figure \ref{fig:profileselectionlauncherdropdown} and \ref{fig:profileselectionapppopup} respectively.
+\inserttexfigure{statechartProfileSelector}{Illustrates the role of OasisLib in the \giraf project.}{fig:statechartProfileSelector}
 
-\begin{figure}[p]
-    \includegraphics[width=\textwidth]{figures/sprint2/profileselectionhomescreen-dropdown}
+Common for both alternatives was to display the currently selected profile in the top of the pane.
+Illustrations can be seen on \Cref{fig:profileselectionlauncherdropdown,fig:profileselectionapppopup} respectively.
+
+\begin{figure}[h] % Billeder af profile selector
+\centering
+    \begin{subfigure}[t]{.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{sprint2/profileselectionhomescreen-dropdown}
     \caption{The dropdown profile selection option. This would appear when tapping ones profile picture as a guardian.}
     \label{fig:profileselectionlauncherdropdown}
-\end{figure}
-
-\begin{figure}[p]
-    \includegraphics[width=\textwidth]{figures/sprint2/profileselection-dialog-finish}
-    \caption{The profile selection pop up. These would only appear while pressing the appropiate button while inside an app.}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{sprint2/profileselection-dialog-finish}
+    \caption{The profile selection pop up. These would only appear while pressing the appropriate button while inside an application.}
     \label{fig:profileselectionapppopup}
+    \end{subfigure}
+\caption{Suggestions for the new profile selector.}
+\label{fig:drawerstates}
 \end{figure}
 
 \subsubsection{Settings}
 
-At the end of sprint 1, settings for different apps where handled inside those apps exclusively.
-The idea of centralizing the settings for the different apps was formed both to streamline data for the database, but also to grant the user a better overview over the settings shared by apps.
+At the end of first sprint, settings for different applications where handled inside those applications exclusively.
+The idea of centralizing the settings for the different applications was formed both to streamline data for the database, but also to grant the user a better overview over the settings shared by applications.
 
 Again, two alternatives were presented:
 
 \begin{itemize}
-\item A settings app, accessible from \launcher only.
-This app would contain settings for all apps enabled for the selected user, as well as selecting which apps should be enabled for that profile.
+\item A settings activity, accessible from \launcher only.
+This activity would contain settings for all applications enabled for the selected user, as well as selecting which applications should be enabled for that profile.
 This would also include the native Android settings.
-\item Letting each app have a settings button.
+\item Letting each application have a settings button.
 This would preserve the current setup.
 \end{itemize}
 
-The first option is the most encompassing one, containing functionality for both manipulate settings for other apps and decide which apps can be used with different users.
-It was futhermore discussed to add functionality, allowing the user to add apps from Google Play to \launcher.
-The settings part of the settings app can be seen on figure \ref{fig:settingsprototype}, while the app management part can be seen on figure \ref{}
+The first option is the most encompassing one, containing functionality for both manipulate settings for other applications and decide which applications can be used with different users.
+It was furthermore discussed to add functionality, allowing the user to add applications from Google Play to \launcher.
+The settings part of the settings activity can be seen in \Cref{fig:settingsprototype}, while the application management part can be seen in \Cref{fig:appsmanagement}.
 
-The second option is more centered on making the settings screen streamlined across apps and would thus be a operative project with the GUI project group.
-An example of settings for \launcher can e seen on figure \ref{fig:appsettingsprototype}.
+The second option is more centred on making the settings screen streamlined across applications and would thus be a operative project with the GUI project group.
+An example of settings for \launcher can be seen in \Cref{fig:appsettingsprototype}.
 
-\begin{figure}[p]
-    \includegraphics[width=\textwidth]{figures/sprint2/settings}
-    \caption{The settings manipulation part of the settings app. in this example, settings for \launcher can be seen. The current profile being edited can be seen in the top left corner.}
+\begin{figure}[h] % Billeder af draweren i åben og lukket tilstand
+\centering
+    \begin{subfigure}[t]{.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{sprint2/settings}
+    \caption{The settings manipulation part of the settings application. in this example, settings for \launcher can be seen. The current profile being edited can be seen in the top left corner.}
     \label{fig:settingsprototype}
-\end{figure}
-
-\begin{figure}[p]
-    \includegraphics[width=\textwidth]{figures/sprint2/apps-colorexperiment}
-    \caption{The app management part of the settings app. \giraf or Android (Google Play) apps can be choosen in the pane in the top. The current profile being edited can be seen in the top left corner}
-    \label{fig:profileselectionlauncherdropdown}
-\end{figure}
-
-\begin{figure}[p]
-    \includegraphics[width=\textwidth]{figures/sprint2/settings-dialog}
-    \caption{The settings for a single app. In this example, the settings for \launcher can be seen.}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{sprint2/settings-dialog}
+    \caption{The settings for a single application. In this example, the settings for \launcher can be seen.}
     \label{fig:appsettingsprototype}
+    \end{subfigure}\\
+    \begin{subfigure}[t]{.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{sprint2/apps-colorexperiment}
+    \caption{The application management part of the settings application. \giraf or Android (Google Play) applications can be chosen in the pane in the top. The current profile being edited can be seen in the top left corner.}
+    \label{fig:appsmanagement}
+    \end{subfigure}
+\caption{Suggestions for settings and application management.}
+\label{fig:drawerstates}
 \end{figure}
 
 \subsubsection{Profile Info}
-
-The group had an idea of displaying infomation about the user currently logged in in the drawer section of \launcher.
+\frederik{Måske vi skal undlade denne section, kunderne var ikke ælde vilde med det.}
+The group had an idea of displaying information about the user currently logged in in the drawer section of \launcher.
 This is a relatively small feature that would be trivial to implement.
-An example can be seen in figure \ref{}.
+An example can be seen in \Cref{fig:profileinfo}.
 
-\begin{figure}[p]
-    \includegraphics[width=\textwidth]{figures/sprint2/profil-info}
-    \caption{An example of infomation about a user seen in the drawer.}
-    \label{fig:appsettingsprototype}
-\end{figure}
+\insertfigure{width=0.48\textwidth}{sprint2/profil-info}{An example of information about a user seen in the drawer.}{fig:profileinfo}

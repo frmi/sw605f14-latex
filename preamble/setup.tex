@@ -59,8 +59,20 @@
            draw=black, very thick,
            minimum height=2em,
            inner sep=2pt,
-           text centered,
+           text centered
            },
+    dummy/.style={
+           rectangle,
+           rounded corners,
+           minimum height=2em,
+           inner sep=2pt,
+           text centered
+           },
+  	lbl/.style={
+		    above,
+		    sloped % make the text follow the path
+		  	}
+
 }
 
 % Make quotes italic
