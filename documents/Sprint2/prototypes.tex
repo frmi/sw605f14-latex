@@ -14,7 +14,7 @@ It was decided to have a brainstorm to gather ideas regarding these features, cr
 The prototypes created were \textbf{low fidelity, horizontal} prototypes, as described in \citet[p. 184-195]{debBook}, made partly with screenshots of existing functionality and partly with the modelling tool Gliffy (\citet{gliffy}).
 The purpose was to convey several different ways of including the above features, while not spending too much time creating them.
 
-\subsubsection{Profile Selection}
+\subsubsection*{Profile Selection}
 
 At the end of sprint one, the profile selection would only appear when launching an application, as illustrated by the state chart diagram in \Cref{fig:statechartProfileSelectorInitial}.
 \insertfigure{width=\textwidth}{statechartProfileSelectorInitial}{State chart diagram for the original process of choosing a profile.}{fig:statechartProfileSelectorInitial}
@@ -59,7 +59,7 @@ Illustrations can be seen on \Cref{fig:profileselectionlauncherdropdown,fig:prof
 \label{fig:drawerstates}
 \end{figure}
 
-\subsubsection{Settings}
+\subsubsection*{Settings}
 
 At the end of first sprint, settings for different applications where handled inside those applications exclusively.
 The idea of centralizing the settings for the different applications was formed both to streamline data for the database, but also to grant the user a better overview over the settings shared by applications.
@@ -101,15 +101,18 @@ An example of settings for \launcher can be seen in \Cref{fig:appsettingsprototy
     \caption{The application management part of the settings application. \giraf or Android (Google Play) applications can be chosen in the pane in the top. The current profile being edited can be seen in the top left corner.}
     \label{fig:appsmanagement}
     \end{subfigure}
+    \begin{subfigure}[t]{.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{sprint2/profil-info}
+        \caption{An example of information about a user seen in the drawer.}
+        \label{fig:profileinfo}
+        \end{subfigure}
 \caption{Suggestions for settings and application management.}
 \label{fig:drawerstates}
 \end{figure}
 
-\subsubsection{Profile Info}
-\frederik{Maaske vi skal undlade denne section, kunderne var ikke vilde med det.}
-\thilemann{Tror det kan vaere fint nok at have med for simpelthen at kunne sige at kunderne ogsaa nogle gange fravaelger funktionalitet.}
+\subsubsection*{Profile Info}
+
 The group had an idea of displaying information about the user currently logged in in the drawer section of \launcher.
 This is a relatively small feature that would be trivial to implement.
 An example can be seen in \Cref{fig:profileinfo}.
-
-\insertfigure{width=0.48\textwidth}{sprint2/profil-info}{An example of information about a user seen in the drawer.}{fig:profileinfo}

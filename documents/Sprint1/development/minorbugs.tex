@@ -4,25 +4,25 @@ There were several minor bugs, anomalies and things that did not work, when the 
 Considering their negligible significance, we will not discuss them in depth, but rather describe each briefly.
 There was also a number of issues so insignificant, that they are not mentioned here.
 
-\subsubsection{Highlighting and Dehighlighting Application Icons when Dragging Colour}
+\subsubsection*{Highlighting and Dehighlighting Application Icons when Dragging Colour}
 It was desired to have visual effect for when a colour was dragged over an application icon.
 This was achieved by scaling up the selected application icon (the icon over which the colour is being dragged) by 10\% on \lstinline{DragEvent.ACTION_DRAG_ENTERED,} and scaling it down again on \lstinline{DragEvent.ACTION_DRAG_EXITED} and \lstinline{DragEvent.ACTION_DRAG_ENDED}.
 
-\subsubsection{Loading Animation on Application Start}
+\subsubsection*{Loading Animation on Application Start}
 The 2012 report by \citet{launcher2012} mentions how an animation in \lstinline{LogoActivity} would make it clear to the user that the application is running normally.
 This was made by defining a custom animation, \lstinline{logoanimation.xml}, and launching the animation in \lstinline{LogoActivity}.
 
-\subsubsection{Child Mode}
+\subsubsection*{Child Mode}
 Regardless of whether the currently logged in profile was a child or a guardian, \launcher would open the \lstinline{ProfileSelector} before opening an application.
 It should only open that activity, while in a guardian profile was logged in.
 The issue was solved by checking the \lstinline{getRole()} parameter of a profile and then appropriately override the \lstinline{OnClickListener}, depending on the role. 
 
-\subsubsection{Force Landscape Mode}
+\subsubsection*{Force Landscape Mode}
 \launcher was the only application able to enter portrait mode. 
 All other \giraf applications where configured to only work in landscape mode.
 \launcher's \lstinline{AndroidManifest.xml} was edited to only allow landscape mode for all activities.
 
-\subsubsection{Issues related to other groups}
+\subsubsection*{Issues related to other groups}
 We also discovered two issues that turned out to be caused by other \giraf components. We reported these issues to the groups responsible for these components. The issues were:
 
 \begin{itemize}

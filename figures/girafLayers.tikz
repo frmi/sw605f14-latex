@@ -11,7 +11,7 @@ anchor=center,
 xshift=1cm,
 text width=3cm] (CARS)
 {
-	\textbf{Cars}
+	\small\textbf{Cars}
 };
 
 \node[state,
@@ -19,7 +19,7 @@ xshift=1.5cm,
 right of=CARS,
 text width=1cm] (DUMMYSTATE)
 {
-...
+\small ...
 };
 
 \node[state,
@@ -27,14 +27,14 @@ xshift=-2.5cm,
 left of=CARS,
 text width=3cm] (GIRAF)
 {
-	\textbf{Giraf}
+	\small\textbf{Giraf}
 };
 
 \node[dummy,
 yshift=-1em,
 xshift=2.8em,
 above=of APPLAYER.west] (TITLE)
-{Applications};
+{\small Applications};
 
 \node[layer,
 below=of APPLAYER,
@@ -46,14 +46,14 @@ yshift=1em] (LIBLAYER)
 yshift=-1em,
 xshift=2em,
 above=of LIBLAYER.west] (TITLE)
-{Libraries};
+{\small Libraries};
 
 \node[state,
 xshift=1.8cm,
 text width=3cm,
 below=of APPLAYER] (OASISLIB)
 {
-	\textbf{OasisLib}
+	\small\textbf{OasisLib}
 };
 
 \node[state,
@@ -61,34 +61,34 @@ left of=OASISLIB,
 xshift=-2.5cm,
 text width=3cm] (GIRAFCOMPONENTS)
 {
-	\textbf{GIRAF Components}
+	\small\textbf{GIRAF Components}
 };
 
 \node[layer,
 below=of LIBLAYER,
 yshift=1em] (LOCALDBLAYER)
 {
-	\textbf{Local database}
+	\small\textbf{Local database}
 };
 
 \node[dummy,
 yshift=-1em,
 xshift=1.5em,
 above=of LOCALDBLAYER.west] (DEVICE)
-{Device};
+{\small Device};
 
 \node[layer,
 below=of LOCALDBLAYER,
 yshift=1em] (REMOTEDBLAYER)
 {
-	\textbf{Remote database}
+	\small\textbf{Remote database}
 };
 
 \node[dummy,
 yshift=-1em,
 xshift=1.4em,
 above=of REMOTEDBLAYER.west] (REMOTE)
-{Server};
+{\small Server};
 
 \path (APPLAYER) edge (LIBLAYER)
 (LIBLAYER) edge (LOCALDBLAYER)
