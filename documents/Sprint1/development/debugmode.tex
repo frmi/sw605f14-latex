@@ -3,10 +3,6 @@ When opening \launcher one is presented the \lstinline{LogoActivity} activity, w
 \launcher also requires the users to authenticate themselves, before being given access to the \lstinline{HomeActivity}.
 While these activities hold meaning in the context of the intended users, a significant amount of debugging time is wasted, as the application is often reinstalled and restarted during development. 
 
-\thilemann{We should add a sequence diagram}
-\thilemann{Maybe also a class diagram to give an overview?}
-\vagner{I say yes for sequence diagram and no for class diagram. However, we are running out of space}
-
 To overcome this problem, we decided to implement a debug mode to simplify and quicken the process of working with \launcher.
 The debug mode is controlled from the source code \lstinline|LogoActivity| by setting the local fields below (thus, it is not possible to control debug mode at runtime):
 
