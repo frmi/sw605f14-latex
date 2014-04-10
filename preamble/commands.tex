@@ -57,18 +57,22 @@
 % TODO NOTES COMMANDS
 \newcommand{\namedtodo}[5]
 {
+  \stepcounter{todocounter}
   \ifthenelse{\equal{#1}{inline}}
   % INLINE TODO
   {
-    \todo[color=#4,caption={\textbf{#3: } #2},inline]
-    {\textbf{#3: }\color{#5}#2}
+    \todo[color=#4,caption={\textbf{\inserttodocounter #3: } #2},inline]
+    {\textbf{\inserttodocounter #3: }\color{#5}#2}
   }
   % NORMAL TODO
   {
-    \todo[color=#4,caption={\textbf{#3: } #2}]
-    {\textbf{#3: }\color{#5}#2}
+    \todo[color=#4,caption={\textbf{\inserttodocounter #3: } #2}]
+    {\textbf{\inserttodocounter #3: }\color{#5}#2}
   }
 }
+% Counter format
+\newcommand{\inserttodocounter}{\#\thetodocounter\;}
+
 % FORMAT FOR TODO:
 % [inline] (optional) besked navn bg-farve font-farve
 \newcommand{\vagner}[2][]{\namedtodo{#1}{#2}{Vagner}{CarnationPink}{black}}
