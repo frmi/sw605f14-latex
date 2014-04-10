@@ -1,0 +1,97 @@
+\begin{tikzpicture}[->,>=triangle 60,ultra thick,transform shape]
+
+\node[layer,
+anchor=center] (APPLAYER)
+{
+};
+
+
+\node[state,
+anchor=center,
+xshift=1cm,
+text width=3cm] (CARS)
+{
+	\textbf{Cars}
+};
+
+\node[state,
+xshift=1.5cm,
+right of=CARS,
+text width=1cm] (DUMMYSTATE)
+{
+...
+};
+
+\node[state,
+xshift=-2.5cm,
+left of=CARS,
+text width=3cm] (GIRAF)
+{
+	\textbf{Giraf}
+};
+
+\node[dummy,
+yshift=-1em,
+xshift=2.8em,
+above=of APPLAYER.west] (TITLE)
+{Applications};
+
+\node[layer,
+below=of APPLAYER,
+yshift=1em] (LIBLAYER)
+{
+};
+
+\node[dummy,
+yshift=-1em,
+xshift=2em,
+above=of LIBLAYER.west] (TITLE)
+{Libraries};
+
+\node[state,
+xshift=1.8cm,
+text width=3cm,
+below=of APPLAYER] (OASISLIB)
+{
+	\textbf{OasisLib}
+};
+
+\node[state,
+left of=OASISLIB,
+xshift=-2.5cm,
+text width=3cm] (GIRAFCOMPONENTS)
+{
+	\textbf{GIRAF Components}
+};
+
+\node[layer,
+below=of LIBLAYER,
+yshift=1em] (LOCALDBLAYER)
+{
+	\textbf{Local database}
+};
+
+\node[dummy,
+yshift=-1em,
+xshift=1.5em,
+above=of LOCALDBLAYER.west] (DEVICE)
+{Device};
+
+\node[layer,
+below=of LOCALDBLAYER,
+yshift=1em] (REMOTEDBLAYER)
+{
+	\textbf{Remote database}
+};
+
+\node[dummy,
+yshift=-1em,
+xshift=1.4em,
+above=of REMOTEDBLAYER.west] (REMOTE)
+{Server};
+
+\path (APPLAYER) edge (LIBLAYER)
+(LIBLAYER) edge (LOCALDBLAYER)
+(LOCALDBLAYER) edge (REMOTEDBLAYER);
+
+\end{tikzpicture}

@@ -51,27 +51,36 @@
 }
 
 % TIKZ
-\usetikzlibrary{shapes,arrows,external,petri}
+\usetikzlibrary{positioning,fit,calc,shapes,arrows,external,petri}
 \tikzset{
     state/.style={
-           rectangle,
-           rounded corners,
-           draw=black, very thick,
-           minimum height=2em,
-           inner sep=2pt,
-           text centered
-           },
+		rectangle,
+		rounded corners,
+		draw=black, very thick,
+		minimum height=2em,
+		inner sep=2pt,
+		text centered
+	},
+    layer/.style={
+		rectangle,
+		rounded corners,
+		draw=black, very thick,
+		minimum height=4em,
+    	minimum width=10cm,
+		inner sep=2pt,
+		text centered
+   },
     dummy/.style={
-           rectangle,
-           rounded corners,
-           minimum height=2em,
-           inner sep=2pt,
-           text centered
-           },
-  	lbl/.style={
-		    above,
-		    sloped % make the text follow the path
-		  	}
+		rectangle,
+		rounded corners,
+		minimum height=2em,
+		inner sep=2pt,
+		text centered
+   },
+	lbl/.style={
+		above,
+		sloped % make the text follow the path
+	}
 
 }
 
