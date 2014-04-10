@@ -17,6 +17,8 @@ latex repository for study project
 		<li>Chapters are prefixed with label=chap:name</li>
 		<li>Tabels are prefixed with label=tab:name</li>
 	</ul>
+	<li>When talking about activities as a concept, inline listings are not used</li>
+	<li>When talking about activities as classes, inline listings ARE used</li>
 </ul>
 
 Furthermore, the following commands are used:
