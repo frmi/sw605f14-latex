@@ -1,0 +1,22 @@
+\subsection{The Settings Library}
+The idea behind the settings library was to create a streamlined and uniform user interface for changing settings across the entire \giraf project. As discussed in \jesper{Indsæt ref til kundemøde 2}, we agreed with the clients that settings should accessible through two methods:
+\begin{itemize}
+	\item A dialogue box in each individual application, containing only settings relevant to that specific application. The dialogue box should be displayed when the user presses a button that is identical throughout all \giraf applications, making it easier for users to find.
+	\item A unified settings activity, where the user has immediate access to all settings for all \giraf applications. This activity should be a part of the Launcher. Besides the settings of the individual applications, it should also contain relevant settings pertaining to the user, e.g. which applications the user should be allowed access to.
+\end{itemize}
+
+It is immediately apparent that for making both these approaches work concurrently, we would need to create a single plan for how user settings should be handled throughout the \giraf project. In the following we will describe this plan.
+
+\subsubsection{Concept}
+We decided that the entire system should consist of four components, to be implemented separately:
+\begin{itemize}
+	\item The unified settings activity should be implemented as a part of the Launcher, and therefore the implementation of this component naturally falls to ourselves. Excluded from this task is the settings of the individual applications.
+	\item A dialogue box able to contain the settings for an arbitrary \giraf application. Included in this is a standard button for launching the dialogue box. As this is user interface component useful to all applications, it should be implemented by the group responsible for the \giraf GUI library.
+	\item A set of settings for each \giraf applications. As these sets may vary widely in content and complexity from application to application, and furthermore may change along with their associated applications over time, these should be defined and implemented by the individual project groups. 
+	\item A method for storing the settings in the database, allowing the users to easily use the same settings across several devices. This should be implemented by the database group. 
+\end{itemize}
+
+\subsubsection{Technical Design}
+The big challenge of implementing the above concept, is how to allow the settings interface layout of each application to also be used in the unified settings activity. 
+
+Our initial idea was to ask each group to create a fragment with their settings layout within their own activity, which our settings activity would then be able to load into the unified settings activity. This would isolate the responsibilities of each group, and keep overall complexity to a minimum. However, after some research it turns out that sharing fragments across applications is an ``unnatural'' operation in Android. While possible, it is not very elegant, even when only sharing a single fragment between two applications, and it results in considerable complexity when scaled to our needs.\jesper{Hvordan var det præcis det virkede?} 
