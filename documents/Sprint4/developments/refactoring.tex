@@ -1,0 +1,32 @@
+\subsection{Refactoring}\label{sect:sprint4:refactoring}
+While some refactoring was carried out in sprint 3, as described in \cref{sect:sprint3:refactoring}, much more work was done in sprint 4.
+The most noticeable actions were:
+\begin{itemize}
+\item \lstinline!LauncherUtility! was split up into several smaller classes
+\item All generation of \lstinline!AppImageView!s into a given \lstinline!targetlayout! was moved to a new class, \lstinline!LoadApplicationTask!, which is derived from \lstinline!AsyncTask!.
+\item All activities and functions were properly documented and commented. 
+\end{itemize}\vagner{Ensure that these are actually the things we did before turning in the report! Also add more if we did more}
+
+These actions will now be described:
+
+\subsubsection{LauncherUtility}\vagner{Finish this subsection}
+Before refactoring, \lstinline!LauncherUtility! was  a 1200 lines long class with static methods for many different purposes.
+By dividing the class into smaller classes, each with a certain purpose, the maintainability of the program will hopefully be increased and future developers will have an easier time understanding the code.
+Furthermore, many of the existing functions were either simplified or removed due to lack of use or redundancy
+
+\subsubsection{LoadApplicationTask}\vagner{Finish this subsection}
+There are three \lstinline!View!s that get populated by apps in the \launcher project:
+
+\begin{itemize}
+\item The container in \lstinline!GirafFragment!, populated by \giraf applications only
+\item The container in \lstinline!AndroidFragment!, populated by Android applications only
+\item The main container in \lstinline!HomeActivity!, populated by both Android and \giraf applications
+\end{itemize}
+
+Since all three \lstinline!View!s needed some time to load the applications, it was deemed important to populate them off the UI thread.
+Furthermore, populating all three \lstinline!View!s in the same way would also simplify the code.
+
+\subsubsection{Comments and Documentation}\vagner{Finish this subsection}
+The code was documented and commented to make it easier for future developers to understand the code.
+While many comments simply explain what the functions and activities do, some comments also contain information about commented functions or classes, along with the reasoning behind them being commented.
+Finally, some comments include information related to future works.
