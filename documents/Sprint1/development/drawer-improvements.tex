@@ -1,4 +1,4 @@
-\subsection{Drawer Improvements}\label{sec:developments:drawerimprovements}
+\subsection{Drawer Improvements}\label{sec:developments:drawerimprovements}\thilemann{Reduce the amount of text here.}
 As mentioned in \cref{sec:launcher:drawer}, the drawer was opened by pressing and dragging the drawer border.
 The code working this animation was based on an \lstinline{OnTouchListener}, focusing mainly on the \lstinline{MotionEvent.ACTION_MOVE} event.
 \lstinline{MotionEvent.ACTION_MOVE} would set the position of the entire drawer, panel and bar, to the exact point it had currently been moved to and redraw the elements.
@@ -17,8 +17,7 @@ By also adding an \lstinline{OnDragListener} to the drawer, the animation would 
 
 Having the \lstinline{ScrollView} containing the application icons remain static during the animation, was solved by reorganising the source code responsible for the user interface layout. 
 Previously, all elements were declared in the XML layout file, while positioning of the elements was set to static values in \lstinline{HomeActivity}.
-This was refactored to have the all positioning declared dynamically depending on screen size, apart from the positioning of the \lstinline{ScrollView}.\vagner{Stefan, write intelligent stuff about dynamic positioning of the ScrollView}
-\vagner{Add documentation about the icon indicating opening and closing of the drawer}
+This was refactored to have the all positioning declared dynamically depending on screen size, apart from the positioning of the \lstinline{ScrollView}.\thilemann{Stefan, write intelligent stuff about dynamic positioning of the ScrollView}
 
 While it has not been tested, we believe that the new drawer and colour picking mechanism is a significant improvement over the original version.
 
