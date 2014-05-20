@@ -20,6 +20,7 @@ latex repository for study project
 	<li>When talking about activities as a concept, inline listings are not used</li>
 	<li>When talking about activities as classes, inline listings ARE used</li>
 	<li>When talking about methods, add two parenthesis to the end</li>
+	<li>Use Present tense ALWAYS</li>
 </ul>
 
 Furthermore, the following commands are used:
