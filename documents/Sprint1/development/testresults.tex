@@ -23,6 +23,4 @@ As mentioned in the introduction of this section, we will only discuss the most 
 \paragraph{Specification:} The device buttons (\textit{Back}, \textit{Home}, and \textit{Multitasking}) should have no effect in the \textit{Main} and \textit{Authentication} activities, as the user should not be able to ``back out'' of \launcher to the device OS.
 \paragraph{Test case:} Use the device buttons in different activities and situations.
 \paragraph{Result:} In both the \textit{Main} and \textit{Authentication} activities, applying the \textit{Home} and \textit{Back} buttons made \launcher restart. The \textit{Multitasking} button always activates the multitasking screen of the device OS.
-\paragraph{Resolution:} The \textit{Back} button was suppressed. We were however unable to find a similar method for suppressing the other two buttons. 
-It was later discussed with the customer and was solved in an alternative way.
-See \jesper{check writting for being stupid and add reference to future section.} for more.
+\paragraph{Resolution:} The \textit{Back} button was suppressed by overriding a listener method. We were unable to find similar means for suppressing the other two buttons. We unsuccessfully returned to this issue in the second sprint, as described in \cref{sec:sprint2:conclusionmeetings}.
