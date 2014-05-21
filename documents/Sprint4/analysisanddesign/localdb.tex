@@ -1,1 +1,7 @@
-\subsection{Integration of the local database into Launcher}
+\subsection{Integration of the local database into \launcher}
+\label{sec:developments:localdbtolauncher}
+For explanations on why the integration of the local database in to \launcher was requested please refer to \Cref{sec:collab:localdbtolauncher}.\\
+
+It was required that the local database was integrated to the launcher for distribution reasons.
+The process of integrating it with \launcher was fairly simple. \thilemann{May i use ``was"?} The local database project consists of a single provider.
+In order to start a provider/service from a dependency the android manifests has to be merged, moving the proivder/service to the \launcher manifest file.
