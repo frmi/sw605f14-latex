@@ -1,26 +1,26 @@
 This appendix descipes the implementation of a debug mode, making developers able to skip certain steps in the launcher, such as the animation screen and the authentication screen.\\
 
-When opening \launcher one is presented the \lstinline{LogoActivity} activity, which shows a loading animation for a constant amount of time.
+When opening \launcher one is presented the \lstinline{MainActivity} activity, which shows a loading animation for a constant amount of time.
 \launcher also requires the users to authenticate themselves, before being given access to the \lstinline{HomeActivity}.
 While these activities hold meaning in the context of the intended users, a significant amount of debugging time is wasted, as the application is often reinstalled and restarted during development. 
 
 To overcome this problem, we decided to implement a debug mode to simplify and quicken the process of working with \launcher.
-The debug mode is controlled from the source code \lstinline|LogoActivity| by setting the local fields below (thus, it is not possible to control debug mode at runtime):
+The debug mode is controlled from the source code \lstinline|MainActivity| by setting the local fields below (thus, it is not possible to control debug mode at runtime):
 
 \begin{itemize}
 \item Enable (true) or disable (false) debug mode entirely, overriding other settings:\\
 \lstinline|private final boolean DEBUG_MODE = true;|
 \item Skip \lstinline|AuthenticationActivity| activity:\\
 \lstinline|private final boolean showAuthentication = false;|
-\item Skip the animation on \lstinline|LogoActivity| activity:\\
-\lstinline|private final boolean showLogoAnimation = false;|
+\item Skip the animation on \lstinline|MainActivity| activity:\\
+\lstinline|private final boolean showMainAnimation = false;|
 \item Login either as a guardian or child when skipping authentication:\\
 \lstinline|private final boolean loginAsChild = false;|
 \end{itemize}
 
-When the above fields are set, debug mode is enabled globally in \launcher from the \lstinline|onCreate| method in \lstinline|LogoActivity| through the call showed in \cref{lst:debugmode:enable}.
+When the above fields are set, debug mode is enabled globally in \launcher from the \lstinline|onCreate| method in \lstinline|MainActivity| through the call showed in \cref{lst:debugmode:enable}.
 
-\begin{lstlisting}[caption={Enable debug mode from \lstinline|LogoActivity|.},label={lst:debugmode:enable}]  
+\begin{lstlisting}[caption={Enable debug mode from \lstinline|MainActivity|.},label={lst:debugmode:enable}]  
 if(DEBUG_MODE)
   LauncherUtility.enableDebugging(DEBUG_MODE, loginAsChild, this);
 \end{lstlisting}

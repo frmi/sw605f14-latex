@@ -22,7 +22,7 @@ Screenshots of each activity is found in \cref{fig:launcheractivities}.
 	\begin{subfigure}[b]{.48\textwidth}
 	\centering
 	\includegraphics[width=\textwidth, height=3in, keepaspectratio=true] {screenshots-old-giraf/giraf-logoactivity.png}
-	\caption{\textit{Logo} activity.}
+	\caption{\textit{Main} activity.}
 	\label{fig:launcheractivity:logo}
 	\end{subfigure}
 	\hfill
@@ -50,7 +50,6 @@ Screenshots of each activity is found in \cref{fig:launcheractivities}.
 \caption{Activities of the \giraf application.}
 \label{fig:launcheractivities}
 \end{figure}
-\vagner{sørg for at all steder der har stået logo activity, kommer til at være main activity}
 \paragraph{Main activity} is only responsible for showing the \giraf logo for a specified amount of time (as seen in \cref{fig:launcheractivity:logo}), and then redirecting the users to the proper activity.\footnote{Please note that MainActivity was previously named LogoActivity. It was renamed to MainActivity to follow Android best practice.}
 It redirects to Authentication activity if the user is not logged in, or to the Home activity if the user is already logged in.
 
