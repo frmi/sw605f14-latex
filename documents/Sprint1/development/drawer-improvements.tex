@@ -1,14 +1,10 @@
-\subsection{Drawer Improvements}\label{sec:developments:drawerimprovements}\thilemann{Reduce the amount of text here.}
-As mentioned in \cref{sec:launcher:drawer}, the drawer was opened by pressing and dragging the drawer border.
-The code working this animation was based on an \lstinline{OnTouchListener}, focusing mainly on the \lstinline{MotionEvent.ACTION_MOVE} event.
-\lstinline{MotionEvent.ACTION_MOVE} would set the position of the entire drawer, panel and bar, to the exact point it had currently been moved to and redraw the elements.
-Because the \lstinline{ScrollView} containing the application icons was set to \lstinline{android:layout_toRightOf} in the layout XML files, the \lstinline{ScrollView} would adjust itself to the new position each time the event fired.
+\subsection{Improved Behaviour of the Drawer}
+As mentioned in \cref{sec:launcher:drawer}, the drawer is opened by pressing and dragging the vertical bar to the right.
+The code working the animation of the drawer is based on an touch listener, using a motion event which is fired only by movement.
+The event sets the position of the entire drawer, panel and bar to the exact point it has just been moved to before redrawing the elements.
+Since the position is not limited, the user can leave it in any position between fully extended and closed state as explained in \cref{sec:drawer:behaviour}.
 
-The panel of colours was implemented using a \lstinline{GridView} - using the command \lstinline{AppColors.setAdapter(new GColorAdapter(this));}, the \lstinline{GColourAdapter} from \lstinline{OasisLib} would create the correct panel.
-
-Selecting a colour and assigning it to an application worked by means of an \lstinline{OnDragListener} called \lstinline{GAppDragger}.
-
-\subsubsection{The Improved Drawer}
+To change this behaviour .... \thilemann{Write!}
 
 Opening and closing the improved drawer was implemented with an \lstinline{OnTouchListener} through the \lstinline{MotionEvent.ACTION_DOWN} event and a standard Android \lstinline{TranslateAnimation}.
 Pressing the bar fires the event and begins the animation.
@@ -18,6 +14,3 @@ By also adding an \lstinline{OnDragListener} to the drawer, the animation would 
 Having the \lstinline{ScrollView} containing the application icons remain static during the animation, was solved by reorganising the source code responsible for the user interface layout. 
 Previously, all elements were declared in the XML layout file, while positioning of the elements was set to static values in \lstinline{HomeActivity}.
 This was refactored to have the all positioning declared dynamically depending on screen size, apart from the positioning of the \lstinline{ScrollView}.\thilemann{Stefan, write intelligent stuff about dynamic positioning of the ScrollView}
-
-While it has not been tested, we believe that the new drawer and colour picking mechanism is a significant improvement over the original version.
-
