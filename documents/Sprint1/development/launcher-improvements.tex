@@ -1,12 +1,13 @@
-\subsubsection{Launcher improvements}
+\subsection{Launcher improvements}
+\thilemann{Remember intro}
 
-\subsubsection*{Highlighting and Dehighlighting Application Icons when Dragging Colour}
+\subsubsection{Highlight of Application Icons}
 It was desired to have visual effect for when a colour was dragged over an application icon.
 This was achieved by scaling up the selected application icon (the icon over which the colour is being dragged) by 10\% on \lstinline{DragEvent.ACTION_DRAG_ENTERED,} and scaling it down again on \lstinline{DragEvent.ACTION_DRAG_EXITED} and \lstinline{DragEvent.ACTION_DRAG_ENDED}.
 
-\subsubsection*{Loading Animation on Application Start}
-The 2012 report by \citet{launcher2012} mentions how an animation in \lstinline{MainActivity} would make it clear to the user that the application is running normally.
-This was made by defining a custom animation, \lstinline{logoanimation.xml}, and launching the animation in \lstinline{MainActivity}.
+\subsubsection{Loading Animation on Application Start}
+The 2012 report by \citet{launcher2012} mentions how an animation in the main activity would make it clear to the user that the application is starting and running (e.g. loading data).
+This was made by defining a custom animation and launching the it in \lstinline{MainActivity}. \thilemann{Write a little more about this}
 
 \thilemann{Write about the improvements of the launcher}
 \thilemann{Maybe also something about refactoring the xml files}
