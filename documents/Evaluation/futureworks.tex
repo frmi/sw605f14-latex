@@ -4,11 +4,11 @@ As such, it acts as a backlog for the next group working on the project.
 \subsection{Database Syncronization}\vagner{finish these sections}
 The data still needs to syncronized if the database
 
-\subsection{Proper icon scaling}\vagner{finish these sections}
+\subsection{Proper i{finish these sections}
 When scaling icons, it might be desirable to use different icons, depending on how large or small the icon should be.
 
 \subsection{Widgets}
-Samarbejde mellem GIRAF\_Components
+RAF\_Components
 
 \subsection{Ugeskema Calendarwidget}\vagner{finish these sections}
 Currently, the Sidebar of \launcher does not contain a \lstinline!GCalenderWidget!, since the widget is non-functional.
@@ -31,22 +31,35 @@ It is desirable to change the animation, so it displays the tablet held correctl
 
 \subsection{Add sound to Launcher}
 Currently, none of the actions a user carries out when using \launcher provides audio feedback.
-Adding minor sounds for button pressed, application launching, setting changes and the like, could be a nice touch to add to \launcher. 
+uld be a nice touch to add to \launcher. 
 
 \subsection{Android and Gradle build system}
-Måske skriv at projektet bør opgraderes (inkl alle andre giraf projekter)
+l alle andre giraf projekter)
 
 \subsection{Preference indentation}
-Beskriv fejlen og hvad vi har undersøgt
+søgt
 
 \subsection{Change QR admin}
 
 \subsection{App loading}
+
 Aner ikk hvad dette indebærer
 
 \subsection{Profile Selection dialog}
-Childs and guardians in their own view to make it easier to distinct guardians from childs - should be implemented together with g components.
+w to make it easier to distinct guardians from childs - should be implemented together with g components.
 
-\subsection{Copying settings from one user to another}
-For many citizens, the settings may be quite similar.
-For this reason, it would be preferable to be able to copy settings from one user to another.
+Currently, none of the actions a user carries out when using \launcher provides audio feedback.
+Adding minor sounds for button pressed, application launching, setting changes and the like, could be a nice touch to add to \launcher. 
+
+\subsection{Copy settings from one user to another}
+Settings for two users might be quite similar.
+For this reason, it would be preferable to be able to copy settings from one user to another.                                                                                   
+                                                                                   
+\subsection{AuthenticationActivity polishing}
+
+As mentioned in \vagner{insert reference} users had problems with trying to press "Log In" while simulataneously trying to scan the QR code, AFTER the code had been scanned.
+It could be an idea to make \lstinline!AuthenticationActivity! reflect more strongly that no further scanning is needed.
+
+\subsection{Remove access to Settings when logging in as a child}
+
+If a child logs in with his QR code, it should not be able to access or edit the settings.

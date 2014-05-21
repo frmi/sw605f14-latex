@@ -1,4 +1,21 @@
 \subsection{Implementation of "Apps" in SettingsActivity}
-This section will describe the \lstinline!AppContainerFragment! and how it loads \lstinline!GirafFragment! and  \lstinline!AndroidFragment!.
+This section follows up from the design described in \cref{sprint3:design:apps}.
+The fragment filled into the fragment container in \lstinline!SettingsActivity! was named \lstinline!AppManagementFragment!.
+\lstinline!AppManagementFragment! in turn contains another fragment container, \lstinline!AppsContainer!, where the two fragments derived from \lstinline!AppContainerFragment! will be loaded in - the fragments showing the applications.
+Furthermore, \lstinline!AppManagementFragment! implements three buttons in the top of the layout:
+
+\begin{itemize}
+\item The \textbf{GirafButton} loads the \lstinline!GirafFragment! into the fragment container
+\item The \textbf{AndroidButton} loads the \lstinline!AndroidFragment! into the fragment container
+\item The \textbf{GooglePlayButton} opens the Play Store App. If the apps is not installed on the device, it opens the Play Store in the default browser.
+\end{itemize}
+
+While the \textbf{GirafButton} and the \textbf{AndroidButton} simply load a new fragment into \lstinline!AppsContainer!, the code behind the \textbf{GooglePlayButton} is more interesting and launches the correct intent. \vagner{finish writting this section and also, should we include code for the intent launching}
+
+\subsubsection{AppManagementFragment}
+
+
+
+ and how it loads \lstinline!GirafFragment! and  \lstinline!AndroidFragment!.
 
 \vagner{Once again, remember that this is Sprint 3 and should therefore only be the things included in sprint 3!}

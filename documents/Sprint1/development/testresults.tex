@@ -1,4 +1,4 @@
-\subsection{Test Results}\label{sec:sprint1:testing_results}
+\subsection{Test Results}\label{sec:sprint1:testing_results}\frederik{Flyt alt om tests til en ny section efter developments}
 Below is shown a selection of our test cases and their results.
 As mentioned in the introduction of this section, we will only discuss the most interesting results, i.e. tests that led to discovery of significant issues.
 
@@ -20,8 +20,9 @@ As mentioned in the introduction of this section, we will only discuss the most 
 
 \subsubsection{Use of Device Buttons}
 
-\paragraph{Specification:} The device buttons (\textit{Back}, \textit{Home}, and \textit{Multitasking}) should have no effect in the \textit{Logo} and \textit{Authentication} activities, as the user should not be able to ``back out'' of \launcher to the device OS.
+\paragraph{Specification:} The device buttons (\textit{Back}, \textit{Home}, and \textit{Multitasking}) should have no effect in the \textit{Main} and \textit{Authentication} activities, as the user should not be able to ``back out'' of \launcher to the device OS.
 \paragraph{Test case:} Use the device buttons in different activities and situations.
-\paragraph{Result:} In both the \textit{Logo} and \textit{Authentication} activities, applying the \textit{Home} and \textit{Back} buttons made \launcher restart. The \textit{Multitasking} button always activates the multitasking screen of the device OS.
-\paragraph{Resolution:} The \textit{Back} button was suppressed. We were however unable to find a similar method for suppressing the other two buttons. This issue was postponed to a later sprint, when it would be easier to determine if it is worth spending the time needed to solve it.
-\thilemann{Android buttons - should we remove it from here?}
+\paragraph{Result:} In both the \textit{Main} and \textit{Authentication} activities, applying the \textit{Home} and \textit{Back} buttons made \launcher restart. The \textit{Multitasking} button always activates the multitasking screen of the device OS.
+\paragraph{Resolution:} The \textit{Back} button was suppressed. We were however unable to find a similar method for suppressing the other two buttons. 
+It was later discussed with the customer and was solved in an alternative way.
+See \jesper{check writting for being stupid and add reference to future section.} for more.

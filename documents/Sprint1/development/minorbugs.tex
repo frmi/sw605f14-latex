@@ -1,16 +1,8 @@
-\subsection{Minor Bugs}\vagner{I'm contempplating the idea of moving this entire subsection to the appendix and then simply have a reference in the beginning of the Developments section to these minor bugs.}
+\subsection{Minor Bugs}
 
 There were several minor bugs, anomalies and things that did not work, when the sprint started.
 Considering their negligible significance, we will not discuss them in depth, but rather describe each briefly.
 There was also a number of issues so insignificant, that they are not mentioned here.
-
-\subsubsection*{Highlighting and Dehighlighting Application Icons when Dragging Colour}
-It was desired to have visual effect for when a colour was dragged over an application icon.
-This was achieved by scaling up the selected application icon (the icon over which the colour is being dragged) by 10\% on \lstinline{DragEvent.ACTION_DRAG_ENTERED,} and scaling it down again on \lstinline{DragEvent.ACTION_DRAG_EXITED} and \lstinline{DragEvent.ACTION_DRAG_ENDED}.
-
-\subsubsection*{Loading Animation on Application Start}
-The 2012 report by \citet{launcher2012} mentions how an animation in \lstinline{LogoActivity} would make it clear to the user that the application is running normally.
-This was made by defining a custom animation, \lstinline{logoanimation.xml}, and launching the animation in \lstinline{LogoActivity}.
 
 \subsubsection*{Child Mode}
 Regardless of whether the currently logged in profile was a child or a guardian, \launcher would open the \lstinline{ProfileSelector} before opening an application.
