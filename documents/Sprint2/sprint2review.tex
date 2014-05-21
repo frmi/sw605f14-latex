@@ -1,14 +1,60 @@
-\subsection*{Evaluation}
+\thilemann{Add some kind of intro...}
 
-The main task of the sprint was to have a design of the Settings.
-Furthermore, the \textit{OasisLib} group updated their API, and \launcher needed to be updated to utilize the new API correctly.
-Both tasks have been successfully completed and the sprint was an overall success. \\
+\subsection{Migrating OasisLib}\label{sec:oasismigration}
+During sprint one, the group responsible for OasisLib rewrote their API, which many groups (including us) has as a dependency.
+They did this because the local database layout was updated to match that of the remote database.
+What made the migration difficult was that the old API had been removed completely and there was no documentation on how to migrate to the new version.
+Because of the difficulties the migration was postponed to later in the sprint, since we did not want to spend time migrating to the new OasisLib without documentation.
 
-The Sprint End meeting is handled by a member of this group and is therefore describe in the \nameref{chap:collaboration} chapter, in \cref{collab:sprintend:two}.
+Since other applications in the \giraf project are relying on \launcher passing on information about the currently logged in user, their development effectively came to a standstill until our implementation was fixed.
+Because of this, we soon started to get requests from the other groups on a new version of \launcher, as they had already migrated to the new OasisLib and local database (see \cref{fig:dependendOasislib}).
+This meant that the old \launcher did not support the new local database, which now would be installed on the devices resulting in \launcher crashing.
 
-\subsection*{Backlog}
+\inserttexfigure{oasislibdependency}{Illustrates the role of OasisLib in the \giraf project.}{fig:dependendOasislib}
+
+This added pressure on us to get the process of migrating to the new version started.
+Many of the methods in the API had been given new names and there was not consistence in the naming of methods, using both full out spellings and abbreviations, which made it difficult.\thilemann{Stupid sentence! Please rephrase!}
+For example, a method to get the package name for an android application was named \lstinline{getPack()} where another was \lstinline{getProfile()}.
+
+\subsubsection{How to update an API}
+Since this project is developed in Java, one has the possibility to use the Java annotation \lstinline{@deprecated}.
+This annotation is used in Java when you are updating an API and you want the developers who are using the API to migrate to the new.
+By using this annotation the compiler or developing environment warns the developer that a deprecated class, method or field is being used.
+
+According to \citet{deprecatedreference}, a valid reason to deprecate the old API includes ``it is going away in a future release". The deprecation comments helps the developers to chose when to use the new API and could tell which method should be used instead, see \cref{lst:deprecated}.
+
+\begin{lstlisting}[caption={Example of a deprecated method could look like this.}, label={lst:deprecated}]
+/**
+* Get the ID of the currently logged in guardian.
+* @return The guardian ID.
+* 
+* @deprecated Should no longer be used.
+* 	This method has been renamed to create consistence in method naming.
+*	One should use getGuardianID instead.
+*/
+@Deprecated public int getGuardID() {
+return mGuardian.getId();
+}
+\end{lstlisting}
+
+\subsection{Evaluation}
+
+The main task of this sprint was to develop a prototype design of the Settings part of \launcher.
+\thilemann{Add explanation of customers to preface if not already there...}
+Multiple versions of the prototypes were presented to the customers present at each meeting.
+They responded positively on the prototypes presented, even though problems were found in communicating our intentions with the designs.
+
+As described in \cref{sec:oasismigration} problems arised when OasisLib was updated.
+The group is aware that the migration could have been handled with more grace, because of other groups being dependant on \launcher.
+Despite of this fact, the group agree that group in charge of OasisLib should have been more careful and use better software development practices when updating their API.
+
+As the tasks of creating prototypes and holding meetings with the customers have been successfully completed, and the problems found with OasisLib, the sprint is considered to be a success.
+
+\thilemann{Are we saying this for each sprint end?}
+The Sprint End meeting is handled by a member of this group and is therefore described in the \nameref{chap:collaboration} chapter, in \cref{collab:sprintend:two}.
+
+\subsection{Backlog}
 
 Since this sprint ended with having a design for the settings, the backlog for the next sprint contains the task of implementing the design.
 
-As has happened this sprint, it is also inevitable that changes to dependencies will affect our work in the coming sprints.
-This added time will be accounted for.
+As has happened this sprint, it is also inevitable that changes to dependencies will affect our work in the coming sprints.\thilemann{Remember this, and maybe refer back to this.}
