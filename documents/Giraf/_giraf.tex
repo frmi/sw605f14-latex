@@ -7,31 +7,23 @@ The project has subsequently evolved with each class of students bringing new id
 This chapter gives a short introduction to the \giraf multi-project and the software engineering concepts used during its development.
 
 \section{\giraf Applications}\label{sec:giraf:applications}
-The \giraf suite consists of many kinds of applications, ranging over administrative tools on tablet and web, games, back-end such as database access and others more specific to the task of helping the users.
-This section briefly describes the most central applications in the \giraf suite.
-\jesper{Should we rename the applications listed below, and should we add some other? Fx metadata?}
+The \giraf suite consists of several components, not the least a multitude of front end applications, providing various features to the users. 
+The suite however, also includes a number of back end components, allowing sharing and controlling data across the range of applications. 
+These parts of the system will be described in the following.
+
+\subsection{Front End Applications}
+\label{sec:giraf:applications:frontend}
+Below is a list of the applications included in the \giraf suite.
 
 \paragraph{\launcher}
-is the only application directly associated with the name \giraf.
-It is the main entry-point for accessing any other application (except web-based tools) on Android devices.
-The purpose of \launcher is to shield the users from interacting with the Android system.
+provides an interface for accessing the other tablet applications in a controlled environment, that is easy to use for both guardians and citizens. 
+Through \launcher, the guardians should be able to control what applications the citizens should be allowed to use. In the application interface, \launcher is referred to as \giraf.
 
-\paragraph{OasisLib}
-is a general component used to query the (remote) database.
-Hence, it queries the database by sending SQL commands and returns the data de-serialized as Java Objects.
-OasisLib is central to every \giraf application working with data and is thus a dependency in almost every application.
+\paragraph{Sekvens}
+allows users to build sentences from pictograms, a central activity in the lives of the citizens \giraf is made to service. Many citizens with autism, especially young children, have difficulty formulating sentences in speech. A central feature of \textit{Sekvens} is also \jesper{Continue writing this.}
 
-\paragraph{Database(s)}
-is providing each user with settings and other data to be used in the \giraf applications.
-Since all applications are intended to work in offline-mode (since not all tablets have a mobile broadband connection), \giraf comprises of a local database holding all user data and a separate remote database that is queried whenever Internet access is available to synchronize the local database. 
-
-\paragraph{\giraf Components}
-is not an application in \giraf, but an internal library that is used to render User Interface components defining the look and feel of the project.
-It is thus used by all Android applications.
-
-\paragraph{Parrot}
-is an application that helps speech impaired users communicate (and learn how to speak the words) by the use of pictograms\footnote{Small icons resembling physical objects, fx an icon of a table.}.
-By arranging sequences of pictograms the users are able to form sentences that can be heard by a guardian, communicating the message of the user.
+\paragraph{Pictooplæser}
+is similar to \textit{Sekvens}, but is focused on building more ad hoc sentences, which the application is then able to read aloud using either an existing recording, or an online text-to-speech tool. 
 
 \paragraph{Cars (game)}
 is one of the games in \giraf.
