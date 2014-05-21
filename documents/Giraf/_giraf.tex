@@ -66,11 +66,13 @@ is a web-version of \textit{Ugeplan}, specifically design for large touchscreens
 is a web-based administration tool for manipulating the user information in the database.
 
 \subsection{Back End Components}
+\label{sec:giraf:applications:backend}
 Central to most of the Android applications is \textit{OasisLib}, which provides both models for the entire problem domain, and interfaces for retriving data from the local database. Every device has its own local database, that regularly synchronises with a single remote database. Finally, \textit{\giraf Components} contains common user interface components with a uniform look-and-feel. 
 
 \section{GIRAF Architecture}
+\label{sec:giraf:architecture}
 % Sådan er multiprojektet bygget op.
-The \giraf system is illustrated in \Cref{fig:girafLayers} and as illustrated in consists of several layers. From the top we have applications such as those described in \Cref{sec:girafapplications:frontend} which communicate with a local database on the device through the library OasisLib which is a part of the \giraf backend.
+The \giraf system is illustrated in \Cref{fig:girafLayers} and as illustrated in consists of several layers. From the top we have applications such as those described in \Cref{sec:giraf:applications:frontend} which communicate with a local database on the device through the library OasisLib which is a part of the \giraf backend.
 
 The local database is responsible for communicating with the remote database to synchronize local or remote changes in the system.
 
