@@ -41,11 +41,16 @@ It aims to strengthen the speech of its users by using their voice to move a car
 %Timer, Train, Tortoise, Parrot, Sequence, Picto Search, CAT, \giraf Admin.
 
 \subsubsection{Architecture}
+% Sådan er multiprojektet bygget op.
+The \giraf system is illustrated in \Cref{fig:girafLayers} and as illustrated in consists of several layers. From the top we have applications such as those described in \Cref{sec:girafapplications:frontend} which communicate with a local database on the device through the library OasisLib which is a part of the \giraf backend.
 
-Sådan er multiprojektet bygget op.
-\frederik{skriv om arkitekturen af Launche projektet}
+The local database is responsible for communicating with the remote database to synchronize local or remote changes in the system.
 
-\insertfigure{width=\textwidth}{girafLayers}{Illustration of the layers and dependencies in the \giraf application suite.}{fig:girafLayers}
+To ensure that the layout in all applications has the same look and feel the library GIRAF Components has been introduced.
+This library consists of multiple graphical components and provide common services to applications.
+A common service which applications needs is when a guardian has to choose which citizen settings or an application should be loaded for. Then GIRAF Components provides a component to show a list of citizens which the guardian can choose from. By providing this component, the process of choosing a citizen will be the same in all applications in the \giraf system.
+
+\insertfigure{width=0.8\textwidth}{girafLayers}{Illustration of the layers and dependencies in the \giraf application suite.}{fig:girafLayers}
 
 \section{Multi-Project Development Method}\label{sec:giraf:development}
 The \giraf development team of 2014 consists of about 60 students, organised into 16 project groups. 
