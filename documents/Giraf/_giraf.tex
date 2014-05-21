@@ -27,19 +27,48 @@ provides an interface for accessing the other tablet applications in a controlle
 Through \launcher, the guardians should be able to control what applications the citizens should be allowed to use. In the application interface, \launcher is referred to as \giraf.
 
 \paragraph{Sekvens}
-allows users to build sentences from pictograms, a central activity in the lives of the citizens \giraf is made to service. Many citizens with autism, especially young children, have difficulty formulating sentences in speech. A central feature of \textit{Sekvens} is also \jesper{Continue writing this.}
+allows users to build sentences from pictograms, a central activity in the lives of the citizens \giraf is made to service. Many citizens with autism, especially young children, have difficulty formulating sentences in speech. A central feature of \textit{Sekvens} is also the possibility to save often used sequences of pictograms.
 
 \paragraph{Pictooplæser}
 is similar to \textit{Sekvens}, but is focused on building more ad hoc sentences, which the application is then able to read aloud using either an existing recording, or an online text-to-speech tool. 
 
-\paragraph{Cars (game)}
-is one of the games in \giraf.
-It aims to strengthen the speech of its users by using their voice to move a car, traveling horizontally across the screen, vertically by volume level.
+\paragraph{Kategoriværktøjet}
+allows guardians to manage the categories into which the pictograms are organised, including adding and deleting categories and subcategories.
 
-%\paragraph{Other \giraf Applications}
-%Timer, Train, Tortoise, Parrot, Sequence, Picto Search, CAT, \giraf Admin.
+\paragraph{Oasis App}
+is an administration tool for manipulating the user information in the database. 
 
-\subsubsection{Architecture}
+\paragraph{Pictosearch}
+is not used as a standalone application, but provides other applications with a common interface for searching through the device's collection of pictograms.
+
+\paragraph{Pictotegner}
+allows the user to create their own pictograms with basic graphics tools, such as a free-hand pen tool, a rectangle tool, a circle tool etc. 
+
+\paragraph{Livshistorier}
+is also similar to \textit{Sekvens}, but is created specifically for saving pictogram sequences that contain instructions for the citizen's everyday life, e.g. instructions on how to use the bathroom.
+
+\paragraph{Ugeplan}
+allows the users to build weekly activity schedules using pictograms. Autistic citizens thrive best in highly strutured environments with regularly scheduled days.
+
+\paragraph{Tidstager}
+provides the ability to time an activity, allowing a guardian to let a citizen use an application, e.g. a game, for a set amount of time. When the time runs out, the device locks, forcing the citizen to move on to the next scheduled activity.
+
+\paragraph{Stemmespillet}
+is a game, where the citizen controls a car by varying the volume of his or her voice. 
+
+\paragraph{Kategorispillet}
+is a game, where the citizen unloads pictograms from a train. The pictograms must be unloaded at different stations, where each station accepts a certain category of pictograms.
+
+\paragraph{Web Ugeplan}
+is a web-version of \textit{Ugeplan}, specifically design for large touchscreens. A few costumers had access to TV-size touchscreen, which they specifically wished to use for their week schedules.
+
+\paragraph{Webadmin}
+is a web-based administration tool for manipulating the user information in the database.
+
+\subsection{Back End Components}
+Central to most of the Android applications is \textit{OasisLib}, which provides both models for the entire problem domain, and interfaces for retriving data from the local database. Every device has its own local database, that regularly synchronises with a single remote database. Finally, \textit{\giraf Components} contains common user interface components with a uniform look-and-feel. 
+
+\section{GIRAF Architecture}
 % Sådan er multiprojektet bygget op.
 The \giraf system is illustrated in \Cref{fig:girafLayers} and as illustrated in consists of several layers. From the top we have applications such as those described in \Cref{sec:girafapplications:frontend} which communicate with a local database on the device through the library OasisLib which is a part of the \giraf backend.
 
