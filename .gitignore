@@ -34,3 +34,4 @@ master.pdf
 
 #compile scrips
 *.bat
+*.gz(busy)
