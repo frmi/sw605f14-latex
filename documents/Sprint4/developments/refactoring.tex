@@ -30,3 +30,67 @@ Furthermore, populating all three \lstinline!View!s in the same way would also s
 The code was documented and commented to make it easier for future developers to understand the code.
 While many comments simply explain what the functions and activities do, some comments also contain information about commented functions or classes, along with the reasoning behind them being commented.
 Finally, some comments include information related to future works.
+
+\subsubsection{General Refactoring (Could be divided into activities)}
+* | | 5df867e (5 days ago) thilemann@gmail.com Changed constructors to be chained with private constructor and added documentation to each public constructor.
+| | * | | 29b3f39 (5 days ago) thilemann@gmail.com Removed method for setting 'correct' case of application names since it makes more sense that each app is responsible for setting its own name correctly (fo
+r example shoud Giraf be written as GIRAF). Also moved getInstalledSettingsApps() method to top of class.
+| | * 3c2d0b7 (6 days ago) jesper.b.kjaer@gmail.com Moved Launcher settings' UI strings to settings\_strings.xml.
+| * | 725dc47 (6 days ago) tonaplo@msn.com attached AppsFragmentInterface on AppContainerFragment instead and moved the methods in GirafFragment and AndroidFragment into AppContainerFragment instead, since t
+hey where they same anyways.
+| * | 4edd44a (6 days ago) tonaplo@msn.com Moved onViewCreate in AndroidFragment and GirafFragment to AppContainerFragment, since they did the same anyways.
+* | | 6d91fd3 (6 days ago) tonaplo@msn.com commented AndroidAppsFragmentInterface and renamed it to AppsFragmentInterface, since both GirafFragment and AndroidFragment implements it. Also made AppContainerFr
+agment abstract, since it should always be inherited from and never implemented directly
+| * | | | e317dfa (6 days ago) thilemann@gmail.com Refactored listener to be a global variable set from a method called in onCreateView
+* | | | | 22dc042 (6 days ago) tonaplo@msn.com Refactored and commented the AndroidFragment class
+* | | | 5315298 (6 days ago) thilemann@gmail.com Fixed bug where starting a new activity would preserve the state of the selection in the ListView. Now dont set selected item, but instead notify the adapter
+that something has changed. This forces the adapter to redraw its views, and since it is not setting a new selected item, it will draw views in the state prior to starting the activity.
+* | | 132ce88 (7 days ago) thilemann@gmail.com Refactored SettingsUtility to exclude methods already available in LauncherUtility. Also added documentation.
+* | | 374cc7b (7 days ago) thilemann@gmail.com When adding native android settings to the list, the name is now taken from a string ressource
+| * 6a3fe58 (13 days ago) tonaplo@msn.com refactored LauncherUtility so it was more apparent what method to use to call different applications.
+* 5cb9846 (12 days ago) thilemann@gmail.com Refactored settings app so SettingsActivity does not know about the adapter nor the listview. The activity now implements the getInstalledGirafApps interface metho
+d to return a list containing only valid giraf apps. The listview and adapter is now handled in SettingsListFragment instead. This makes more sense since onCreateView in SettingsListFragment is called before
+ onCreate in SettingsActivity.
+ | | * d21701c (8 days ago) jesper.b.kjaer@gmail.com Removed uneeded members of AppInfo. Refactored the functions for updating the AppInfo hash map.
+ | * | a356d54 (8 days ago) thilemann@gmail.com Changed constructor of SettingsListAdapter to take a ListView as input and added full documentation to SettingsListAdapter.
+ * | | 28b33a2 (9 days ago) jesper.b.kjaer@gmail.com Changed some method responsibilities, renamed methods and constants, and added documentation.
+ * | 5c590d8 (9 days ago) sthile11@student.aau.dk Completely refactored SettingsListAdapter by implementing the ViewHolder design pattern to minimize calls to findViewById. This also made it possible to replace the methods responsible for setting visibility for each shadow view by a single method just setting the visibility.
+ * | 12989ff (9 days ago) thilemann@gmail.com Refactored SettingsActivity so the SettingsListFragment now is responsible for getting the logged in user and then updating this through a interface callback to t
+ he activity.
+ * | 056508e (9 days ago) thilemann@gmail.com Renamed and added icons for android settings and applications in Settings part of launcher
+ * | d66b6a5 (9 days ago) jesper.b.kjaer@gmail.com Removed unused classes: ProfileLauncher and ProfileSelectActivity.
+ | | * | | f18363f (8 days ago) jesper.b.kjaer@gmail.com Moved AppInfo hashmap to LauncherUtilities. Fixed check for no available apps.
+ 
+ \subsubsection{Splitting up LauncherUtility}
+ * | 3f60829 (8 days ago) tonaplo@msn.com Refactored the last part of LauncherUtility and commented some of the remaining functions.
+ * | 971f45f (8 days ago) tonaplo@msn.com Refactored GirafFragment to work like Android Fragment and removed some redundant calls to udateAppInfoHashMap
+ * | ae5936e (8 days ago) tonaplo@msn.com Removed all functions related to getting or checking applications to a new class called ApplicationControlUtility. Also removed two redundant functions.
+
+\subsubsection{Cleaning up after previous groups and IDEs}
+* | | 2cca78b (7 days ago) thilemann@gmail.com Removed leftovers from last project groups: srcTest
+| * | 0ebbcd5 (8 days ago) thilemann@gmail.com Renamed module 'android' to 'barcodescanner' and changed gradle files accordingly + removed Launcher module and files until whole launcher is added as a module.
+| * | 3060f1e (8 days ago) thilemann@gmail.com Deleted unused files that was a leftover from when Eclipse IDE was used.
+
+\subsubsection{Android Best Practices}
+* | | | 4850aa8 (6 days ago) thilemann@gmail.com Moved Launcher files into its own module as supposed when using Gradle.
+| | | * | e9f9693 (8 days ago) fmikke11@student.aau.dk Changed textsizes from type dp to type sp to match android best practices
+| | | * | ae78814 (8 days ago) milars11@student.aau.dk Moved all files into an android sub-directory, before merging into launcher.
+
+\subsubsection{Minor bug fixes}
+* | | da31f89 (5 days ago) fmikke11@student.aau.dk Fixed nullpointer exception when the fragment was closed before the loading task had finished
+| * | | | 64269ef (7 days ago) tonaplo@msn.com Fixed the bug where the progress bar would sometimes keep on spinning after onResume was called.
+| * | | cf70e01 (7 days ago) jesper.b.kjaer@gmail.com Fixed problem with the last row in an app container being full.
+* | | | 7641e9a (7 days ago) thilemann@gmail.com Fixed error when loading into view first time. Before doInBackground would get an divide-by-zero error.
+| * a70262d (13 days ago) fmikke11@student.aau.dk App scaling is now working properly
+| * | 91333ed (7 days ago) jesper.b.kjaer@gmail.com The skip animation setting now works (though the logic is reversed).
+| | * bd67309 (8 days ago) jesper.b.kjaer@gmail.com Added missing list conversion in updateAppInfoHashMap.
+
+\subsubsection{Minor visual improvements}
+* | f5596bb (5 days ago) fmikke11@student.aau.dk Removed padding on 'no apps message text view' in HomeActivity
+| | | * | 8cb881b (5 days ago) jesper.b.kjaer@gmail.com Fixed uncapitalized GIRAF tab in settings.
+* | 791d914 (5 days ago) thilemann@gmail.com Changed color shown below logo animation when starting launcher
+* | | 7eea4d3 (7 days ago) thilemann@gmail.com Added required attributes to elements (width/height)
+* | | eee7d65 (7 days ago) thilemann@gmail.com Changed settings activity not found error message to be a bit more verbose
+* | | 6381ac1 (7 days ago) thilemann@gmail.com Used dimensions for profile selection from the just added dimens ressource
+* | | ae04800 (7 days ago) thilemann@gmail.com Extracted dimensions and added a dimens ressource
+| * 7b857ce (13 days ago) fmikke11@student.aau.dk Android apps are now launched properly and an animation has been added when an app is pressed on the homescreen
