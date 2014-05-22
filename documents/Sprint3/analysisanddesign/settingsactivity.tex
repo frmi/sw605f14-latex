@@ -1,9 +1,17 @@
-\subsection{Design of Settings Activity}
-
+\subsection{Design of Settings Activity}\label{sec:sprint3:designsettings}
+\thilemann{The settings activity should be better introduced - we have not yet talked about it, so talking about settings activity makes not sense! Should be an extension of the prototypes we made}
 Here, the organization of the settings activity is described.
 This includes the general analysis, design and structure of the activity.
 \vagner{REMEMBER that this is ONLY sprint 3, so we only describe the basics here! Also, remember to add a nice figure, showing the structure.}
 
 \input{documents/Sprint3/analysisanddesign/settingslib}
 
-\frederik[inline]{Jeg ved ikke hvor fÃ¸lgende hÃ¸rer til}\color{red}{* | ed2d9a5 (3 weeks ago) fmikke11@student.aau.dk changed views to imageViews. Apps are now shown as Bitmaps}
+\frederik[inline]{Jeg ved ikke hvor følgende hører til}\color{red}{* | ed2d9a5 (3 weeks ago) fmikke11@student.aau.dk changed views to imageViews. Apps are now shown as Bitmaps}
+* | ed2d9a5 (3 weeks ago) fmikke11@student.aau.dk changed views to imageViews. Apps are now shown as Bitmaps\\ 
+
+\subsubsection{Loading Apps into View}\label{sec:sprint:designlauncher}
+
+The methods that load applications into a given view are in \lstinline!HomeActivity!.
+In \lstinline!SettingsActivity! the pane where applications are added and removed from users also needs to load applications into a given view.
+Therefore, we refactor \lstinline!HomeActivity! and move the relevant functions into \lstinline!LauncherUtility!.
+Then both activities can call the same method and code redundancy is reduced. 

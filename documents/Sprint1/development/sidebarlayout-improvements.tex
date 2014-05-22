@@ -1,7 +1,7 @@
 \subsection{Sidebar Layout Re-factoring}
 \thilemann{Check naming of sidebar (vertical bar or whatever we call it)}
 The behaviour of the drawer (as described in \cref{sec:drawer:behaviour}) has the unfortunate effect on the list of applications that it pushes their containing view to the right as the drawer is dragged open.
-This is caused by the view (\lstinline|HorizontalScrollView|) having the  \lstinline{android:layout_toRightOf} parameter set to be placed to the right of the vertical bar in the layout XML files, which makes its position adjust automatically to the newest rightmost position of the vertical bar each time the bar is moved, effectively pushing the icons of the screen.
+This is caused by the view (\lstinline|ScrollView|) having the  \lstinline{android:layout_toRightOf} attribute set to be placed to the right of the vertical bar in the layout XML files, which makes its position adjust automatically to the newest rightmost position of the vertical bar each time the bar is moved, effectively pushing the icons of the screen.
 
 The improved implementation includes restructuring all parts of the XML file defining the layout of the home activity, making it adapt to devices with various screen sizes (and pixel density).
 Despite of the layout elements not being used correctly and thus not following Android design guidelines, the main issue lies in the fact that many parameters such as heights and widths are set at compile-time through a class containing mostly static fields.
@@ -27,13 +27,19 @@ The custom view is further described in \cref{sec:siebarlayout:java}.
 </RelativeLayout>
 
 </dk.aau.cs.giraf.launcher.layoutcontroller.SideBarLayout>
+
+<ScrollView android:id="@+id/appScrollView"/>
 \end{lstlisting}
 
+Notice the \lstinline|ScrollView| on the last line in \Cref{lst:sidebarlayout}.
+The before mentioned \lstinline{android:layout_toRightOf} attribute have been removed, to keep it from being pushed out of the screen.
 The negative margin of 400dp defined on line 1 effectively hides the \lstinline|SideBarLayout| when the home activity is just started, revealing only the \lstinline|HomeBar|.
-Since it is placed next to the \lstinline|GridView| with the id of \textit{appcolors} and this view has the same width as the negative margin defined on \lstinline|SideBarLayout|, it is the only visible element; giving the impression of a closed drawer.
+Since the \lstinline|HomeBar| is placed next to the \lstinline|GridView| (in the layout file) with the id of \textit{appcolors} and this view has the same width as the negative margin defined on \lstinline|SideBarLayout|, it is the only visible element; giving the impression of a closed drawer.
 
 \subsubsection{Extending an Android View Class}\label{sec:siebarlayout:java}
-
+In \cref{lst:sidebarlayout}, the \lstinline|dk.aau.cs.giraf.launcher.layoutcontroller.SideBarLayout| is a reference to the implementation of this class as seen in \cref{lst:sidebarlayout:java}.
+The main reason for not using a \lstinline|RelativeLayout| is that when overriding the \lstinline|onAnimation| methods from the containing activity, is is not being drawn properly, making the drawer flicker when animated.
+Using a custom implementation, it is possible to extend the layout with tailor-made functionality to obtain the desired behaviour.
 
 \begin{lstlisting}[caption={Extending the Android \lstinline|RelativeLayout| class.},label={lst:sidebarlayout:java}]
 public class SideBarLayout extends RelativeLayout {
@@ -67,49 +73,43 @@ public class SideBarLayout extends RelativeLayout {
 }
 \end{lstlisting}
 
+The code (\cref{lst:sidebarlayout:java}) is of trivial character, but makes the implementation of the drawer a lot easier, since it makes it responsible for its placement after animating.
+An Android \lstinline|TranslateAnimation| does not animate the view, but obtains a bitmap of the view which is then animated.
+Without controlling its position after initiating the animation, it would pop back to its original position.
+The position of the \lstinline|SideBarLayout| is set relative to the position of the \lstinline|HomeBar| when \lstinline|onAnimationEnd()| is called.
+\lstinline|this.bringToFront()| simply ensures that the view is rendered on top of other layouts, making it slide on top of them.
+The public field \lstinline|isSideBarHidden| is used to calculating if the drawer should be animated to either opened or closed state (as seen in \cref{lst:sidebarlayout:java,lst:draweranimation:homeactivity}).
+
 \subsubsection{Animating the Drawer}
+The animation of the drawer is started from a touch listener located on the \lstinline|HomeBar| in \lstinline|HomeActivity|.
+\Cref{lst:draweranimation:homeactivity} shows an excerpt of the code that gets called to start the animation.
 
+\begin{lstlisting}[caption={Excerpt of \lstinline|placeDrawer()| method from the home activity.},label={lst:draweranimation:homeactivity}]
+int to;
 
-\begin{lstlisting}[caption={Using the animation of the drawer from the home activity.},label={lst:draweranimation:homeactivity}]
-private void placeDrawer(){
-  int to;
-
-  if(mSideBarView.isSideBarHidden)
+if(mSideBarView.isSideBarHidden)
     to = mHomeDrawerView.getWidth();
-  else
+else
     to = -mHomeDrawerView.getWidth();
 
-  // then animate the view translating from (0, 0)
-  TranslateAnimation ta = new TranslateAnimation(0, to, 0, 0);
-  ta.setDuration(500);
-  if(!mDrawerAnimationRunning){
-    mSideBarView.startAnimation(ta);
-    mDrawerAnimationRunning = true;
-  }
-
-  ta.setAnimationListener(new TranslateAnimation.AnimationListener() {
-
-    @Override
-    public void onAnimationStart(Animation animation) {
-      // Sets the left margin of the scrollview based on the width of the homebar
-      mAppsScrollViewParams = new RelativeLayout.LayoutParams(mAppsScrollView.getLayoutParams());
-      mAppsScrollViewParams.leftMargin = mHomeBarLayout.getWidth();
-      mAppsScrollView.setLayoutParams(mAppsScrollViewParams);
-    }
-
-    @Override
-    public void onAnimationRepeat(Animation animation) {
-    }
-
-    @Override
-    public void onAnimationEnd(Animation animation) {
-        mDrawerAnimationRunning = false;
-    }
-  });
+// Animate the drawer (fromX, toX, fromY, toY)
+TranslateAnimation ta = new TranslateAnimation(0, to, 0, 0);
+ta.setDuration(500);
+if(!mDrawerAnimationRunning){
+  mSideBarView.startAnimation(ta);
+  mDrawerAnimationRunning = true;
 }
+
+ta.setAnimationListener(new TranslateAnimation.AnimationListener(){
+  @Override
+  public void onAnimationStart(Animation animation){
+    mAppsScrollView.setLeft(mHomeBarView.getWidth());
+  }
+  ...
+});
 \end{lstlisting}
 
-
-
-
-
+The member \lstinline|to| is used to decide which direction on the x-axis the view should be animated when instantiating a new \lstinline|TranslateAnimation|.
+Its constructor takes values relative to its current position, which is why all but one parameter is 0.
+The parameter not 0 is the position the animation should animate to on the x-axis.
+Before starting the animation, the left margin of \lstinline|mAppsScrollView| is set to the rightmost position of the \lstinline|HomeBar| to make the \lstinline|ScrollView| stay at its current position.
