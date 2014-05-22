@@ -1,25 +1,63 @@
-This section follows up from the design described in \cref{sprint3:design:apps}.
-The fragment filled into the fragment container in \lstinline!SettingsActivity! was named \lstinline!AppManagementFragment!.
+This section follows up from the design described in \cref{sec:sprint3:designsettings}.
+When clicking the ''Apps'' pane, the fragment filled into the fragment container in \lstinline!SettingsActivity! is \lstinline!AppManagementFragment!.
 \lstinline!AppManagementFragment! in turn contains another fragment container, \lstinline!AppsContainer!, where the two fragments derived from \lstinline!AppContainerFragment! will be loaded in - the fragments showing the applications.
-Furthermore, \lstinline!AppManagementFragment! implements three buttons in the top of the layout:
+Furthermore, \lstinline!AppContainerFragment! implements three buttons in the top of the layout:
 
 \begin{itemize}
-\item The \textbf{Giraf} buton loads the \lstinline!GirafFragment! into the fragment container
-\item The \textbf{AndroidButton} loads the \lstinline!AndroidFragment! into the fragment container
+\item The \textbf{Giraf} button loads the \lstinline!GirafFragment! into the fragment container
+\item The \textbf{Android} button loads the \lstinline!AndroidFragment! into the fragment container
 \item The \textbf{Google Play} button opens the Play Store App. If the apps is not installed on the device, it opens the Play Store in the default browser.
 \end{itemize}
 
-The \textbf{Giraf} button and the \textbf{Android} button loads a new fragment into \lstinline!AppsContainer!.
-The \textbf{Google Play} button launches the correct intent - The Play Store application or opening the native brower with the Play Store url.
+The \textbf{Giraf} button and the \textbf{Android} button loads a new fragment into \lstinline!AppsContainer!, by using a \lstinline!FragmentManager!
+An  \lstinline!OnClickListener! is attached to the \textbf{Giraf} and \textbf{Android} buttons, which call the method \lstinline!replaceFragment()!, sending the appropriate fragment as argument to \lstinline!replaceFragment()!.
+The method \lstinline!replaceFragment()! can be seen in \cref{lst:replaceFragment}.
 
-\vagner{finish thissection}
-\paragraph{AppManagementFragment}
+\begin{lstlisting}[caption={Method used to replace the fragment currently loaded into the fragment container in AppManagementFragment}, label={lst:replaceFragment}]
+/**
+ * Replace active fragment by running the transaction in a new thread.
+ * Adds responsiveness when loading list of installed apps_container.
+ * @param fragment
+ */
+private void replaceFragment(final Fragment fragment){
+    new Runnable() {
+        @Override
+        public void run() {
+            FragmentTransaction ft = fragmentManager.beginTransaction();
+            ft.replace(R.id.app_settings_fragmentlayout, fragment);
+            ft.commit();
+        }
+    }.run();
+}
+\end{lstlisting}
 
- and how it loads \lstinline!GirafFragment! and  \lstinline!AndroidFragment!.
+The \textbf{Google Play} button opens the Google Play Store, so the user can download additional Android applications, if desired. 
+Firstly, we researched how to use the inbuilt API for Google Services  to open the Play Store in this way.
+However, there were some problems with the API when attempting to implement.
+Furthermore, it was discovered that the API is intended to be used for syncronization with Google+, Google Drive and Google Games.
+Therefore, we ultimately chose to open the Play Store as a separate activity with the \lstinline!Intent.FLAG_ACTIVITY_NEW_TASK! and the \lstinline!Intent.FLAG_ACTIVITY_CLEAR_TOP! flags.
+The code can be seen in \cref{lst:launchergoogleplay}.\vagner{Please read this and refactor it.}
 
-A requirement from Sprint 2 was a pane in settings, where it can be set up which applications each user has access to.
- \lstinline!SettingsActivity! loads fragments into its container, but because "Apps" should distinguish between \giraf and other Android applications, an additional fragmentcontainer needs to be inserted.
- The idea can be seen visualized in \cref{fig:settingsappfragments}.
+\begin{lstlisting}[caption={The OnClickListener for the googlePlayButton, launching the Play Store correctly}, label={lst:launchergoogleplay}]
+/** Attempt to open the Play Store. If it is not installed on the device, open Play Store in the browser instead.*/
+googlePlayButton.setOnClickListener(new View.OnClickListener() {
+	public void onClick(View v) {
+		// Try to start the Google Play app
+		try {
+			Intent intent = new Intent();
+			intent.setData(Uri.parse(MARKET_SEARCH_APP_URI + PUBLISHER_NAME));
+			intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			startActivity(intent);
+			// If Google Play is not found, parse the url for Google Play website
+		} 
+		catch (android.content.ActivityNotFoundException e) {
+			startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(MARKET_SEARCH_WEB_URI + PUBLISHER_NAME)));
+		}
+	}
+}
+\end{lstlisting}
+
+The full design can be seen visualized in \cref{fig:settingsappfragments}.
  
 \begin{figure}[h]
 \centering
@@ -28,26 +66,57 @@ A requirement from Sprint 2 was a pane in settings, where it can be set up which
 \label{fig:settingsappfragments}
 \end{figure}
 
-Because the \giraf and Android pane fragments will contain many of the same variables, these should inherit all shared information from a superclass, consequently reducing redundancy and clarifying how the two fragments are different.
+\paragraph{AppContainerFragment and the derived classes}
 
-Finally, the navigation buttons inside the \lstinline!SettingsActivity! fragment container should also have a button opening the Google Play Store, so the user can download additional Android applications, if desired. 
-Firstly, we researched how to use the inbuilt API for Google Services  to open the Play Store in this way.
-However, there were some problems with the API when attempting to implement.
-Furthermore, it was discovered that the API is intended to be used for syncronization with Google+, Google Drive and Google Games.
-Therefore, we ultimately chose to open the Play Store as a separate activity.\vagner{Please read this and refactor it.}
+Because the \giraf and Android fragments contain many of the same variables, these inherit all shared information from a superclass, consequently reducing redundancy and clarifying how the two fragments are different.
+This superclass is called \lstinline!AppManagementFragment! and the main responsibilities are:
 
-\vagner{Once again, remember that this is Sprint 3 and should therefore only be the things included in sprint 3!}
+\begin{itemize}
+\item Initialize shared variable in \lstinline!onCreate()!
+\item Implement shared methods handling when to load applications
+\end{itemize}
 
-| * | 1973797 (3 weeks ago) tonaplo@msn.com the basics of the Android settings tab is now working and have been added.\\
-| * | 67726e2 (2 weeks ago) tonaplo@msn.com made the app management part of settings able to load in giraf applications. the onclicklistener used is still wrong, however, and launcher will crash if you choose on of them within settings.\\
-* | | d3dd946 (2 weeks ago) fmikke11@student.aau.dk added functionality to laod apps from device\\
-* | ec951f4 (2 weeks ago) fmikke11@student.aau.dk Renamed AppFragment to AppManagementFragment. The name was needed for a future class\\
-* | 2dd77db (2 weeks ago) fmikke11@student.aau.dk added fragment super class to giraf and android fragments\\
-* | | a084d86 (2 weeks ago) fmikke11@student.aau.dk Apps in AndroidFragment are now marked instead of started when clicked\\
-* | | bf2409a (2 weeks ago) fmikke11@student.aau.dk started working on parsing list of android apps to home activity\\
-| * | | ef137e9 (2 weeks ago) tonaplo@msn.com added functionality to add and remove apps from profiles\\
-| * | b837ac1 (2 weeks ago) tonaplo@msn.com Adding and removing GIRAF apps is now fully implemented, both in UI and in function\\
-* | | 7787e2e (2 weeks ago) fmikke11@student.aau.dk Apps are now sorted alphabetically, and the functionality for adding android apps to the home activity is now working properply\\
-* | | | efc77b3 (2 weeks ago) fmikke11@student.aau.dk Apps are now loaded by another thread\vagner{Betyder dette at vi allerede her havde background loaderen implementeret?}
+As a result, the two derived classes get their shared variables initialized by a call to \lstinline!super.onCreate()! and reloading of applications is handled automatically by \lstinline!AppContainerFragment!. \\
 
-AppContainerFragment
+However, which type of apps are loaded where different between \lstinline!AndroidFragment! and \lstinline!GirafFragment!.
+As noted in \cref{sec:sprint:designlauncher} and explained in \cref{sect:sprint3:refactoring}, the functions used to load applications into view was moved from \lstinline!HomeActivity! to \lstinline!LauncherUtility!.
+This was solved by initializing the shared variable \lstinline!apps! differently in the two derived classes -
+\lstinline!GirafFragment! loaded \giraf applications into \lstinline!apps!, while \lstinline!AndroidFragment! loaded Android applications into it.
+
+Since the automatic load methods mentioned above work on the \lstinline!apps! variable, this solution solved the problem. \\
+
+However, one problem has to be directly inside the two derived classes, namely marking the applications as selected and adding them to the users list of selected applications.
+This is due to the fact that \giraf applications are saved as the \textbf{OasisLib}\vagner{bold eller lstinline her?} type \lstinline!Application!, while Android applications are saved as the type \lstinline!ResolveInfo!.
+
+The \giraf applications connected to a user are saved or removed through a call to an \textbf{OasisLib} method, as can be seen in \cref{lst:addinggirafapplications}.
+
+\begin{lstlisting}[caption={The methods used for adding or removing a Giraf application to a user}, label={lst:addinggirafapplications}]
+ProfileApplicationController pac = new ProfileApplicationController(context);
+ProfileApplication pa = new ProfileApplication(currentUser.getId(), app.getApp().getId());
+if(pa == null)
+	pac.insertProfileApplication(pa);
+else
+	pac.removeProfileApplicationByProfileAndApplication(app.getApp(), currentUser);
+\end{lstlisting}
+
+Android applications are saved as a file containing \lstinline!Set<String>!, stored in the native \lstinline!SharedPreferences! of Android.
+Each file name is made, unique to each user, by incorporating the users ID as part of the file name.
+the code can be seen in \cref{lst:addingandroidapplications}\\
+
+\begin{lstlisting}[caption={The methods used for adding or removing a Giraf application to a user}, label={lst:addingandroidapplications}]
+String activityName = app.getActivity();
+
+/** If the user had previously selected the app, removed it from the list of selected apps
+ * otherwise add it to the list of selected apps.*/
+if (selectedApps.contains(activityName)){
+    selectedApps.remove(activityName);
+    Log.d(Constants.ERROR_TAG, "Removed '" + activityName + "' to list: " + selectedApps.size());
+}
+else{
+    selectedApps.add(activityName);
+    Log.d(Constants.ERROR_TAG, "Added '" + activityName + "' to list: " + selectedApps.size());
+}
+\end{lstlisting}
+
+This also means that the two fragments must handle the selected applications different, when marking them the first time a fragment is loaded.
+The code is not included, since it is similar to that of \cref{lst:addinggirafapplications} and \cref{lst:addingandroidapplications} - the same checks are carried out, but rather than being for a single application, they are carried out on all installed applications.
