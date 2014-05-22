@@ -1,10 +1,57 @@
 \subsection{Implement new Profile Selector}\label{sec:sprint3:devprofileselector}
-| * | 462e7fb (5 days ago) tonaplo@msn.com made the profilepicture show in SettingsActivity as well and fixed some line breaks.
-* | | e396b7a (6 days ago) jesper.b.kjaer@gmail.com Fixed profile picture problem.
-| | * | d468059 (origin/testMaster, testMaster) (13 days ago) tonaplo@msn.com Set up Profile Selection to work in Launcher. Still need to add the correct picture to the button though
-* | cfda621 (13 days ago) thilemann@gmail.com Removed test string array after profileselector has been implemented
-* | 60cbd06 (13 days ago) thilemann@gmail.com Added header to profile selector and refactored the layout a bit
-| * 83ecef3 (13 days ago) tonaplo@msn.com profile selection is now done cosmetically. not sure everything works with saving the correct settings to the correct people
-| * f0e7bf8 (13 days ago) tonaplo@msn.com profile selection now works as it should in Homeactivity
-| * 3d1f227 (13 days ago) tonaplo@msn.com Profile selection works in Homeactivity, but the apps do not change yet
-* fa253af (12 days ago) thilemann@gmail.com Changed text of profile selector header
+
+As described in \cref{sec:sprint3:designprofileselector}, the new Profile Selector is ready to be implemented.
+
+It was implemented by adding the \lstinline!GWidgetProfileSelection! as a view in the home.xml and settings.xml files.
+This is the button showing the profile picture of the current user.
+This component is attached an \lstinline!OnClickListener!, which should call the profile selector dialogbox, \lstinline!GProfileSelector!.
+The code can be seen in \cref{lst:newprofileselectoronclick}
+
+\begin{lstlisting}[caption={The OnClickListener for the Profile Selector button.}, label={lst:newprofileselectoronclick}]
+mWidgetProfileSelection.setOnClickListener(new View.OnClickListener() {
+	@Override
+	public void onClick(View v) {
+		mProfileSelectorDialog.show();
+	}
+});
+\end{lstlisting}
+
+The \lstinline!GProfileSelector! object is instantiated as such:\\
+
+\begin{center}
+\lstinline!mProfileSelectorDialog = new GProfileSelector(mContext, mLoggedInGuardian, mCurrentUser);!
+\end{center}
+
+However, this way of instantiating the object means that every time a new user is chosen on the list, the selector must be instantiated again with a new current user.
+This is insured by attaching an \lstinline!OnListItemClickListener! for the object, which instantiates itself again.
+Furthermore, it is reset up to recursively attach the listener, so it works each time the \lstinline!GWidgetProfileSelection! button is clicked.
+The listener can be seen \cref{lst:newprofileselectoronitemclick}.
+
+\begin{lstlisting}[caption={The recursive method setting instantiating the Profile Selector with the correct arguments each time a new user is selected.}, label={lst:newprofileselectoronitemclick}]
+/**
+* Updates the ProfileSelector. It is needed when a new user has been selected, as a different
+* listener is needed, and the app container has to be reloaded.
+* */
+private void updatesProfileSelector(){
+ mProfileSelectorDialog.setOnListItemClick(new AdapterView.OnItemClickListener() {
+  @Override
+  public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+   ProfileController pc = new ProfileController(mContext);
+   mCurrentUser = pc.getProfileById((int) l);
+   mProfileSelectorDialog.dismiss();
+  
+   if (mCurrentUser.getRole() != Profile.Roles.GUARDIAN)
+    mProfileSelectorDialog = new GProfileSelector(mContext, mLoggedInGuardian, mCurrentUser);
+   else
+    mProfileSelectorDialog = new GProfileSelector(mContext, mLoggedInGuardian, null);
+  
+   mWidgetProfileSelection.setImageBitmap(mCurrentUser.getImage());
+  
+   updatesProfileSelector();
+  
+   //Reload the application container, as a new user has been selected.
+   reloadApplications();
+  }
+ });
+} 
+\end{lstlisting}
