@@ -7,6 +7,9 @@ This was done by finishing this instances \lstinline|'SettingsActivity| and then
 \item When having loaded applications in \lstinline|GirafFragment| and \lstinline|AndroidFragment| once, selecting the panes subsequently does not cause the fragment to reload applications. This is a hugh optimization.\frederik{Vagner siger at dette er Frederiks afsnit, da han har lavet koden og ved hvad den gør}
 \end{itemize}
 
+\subsubsection{ViewHolder Design Pattern}
+5c590d8 (9 days ago) sthile11@student.aau.dk Completely refactored SettingsListAdapter by implementing the ViewHolder design pattern to minimize calls to findViewById. This also made it possible to replace the methods responsible for setting visibility for each shadow view by a single method just setting the visibility.
+
 \subsection{LoadApplicationTask}\label{sec:sprint4:dev:loadapplicationtask}\vagner{I dont like that in this section that is supposedly about SettingsActivity, we are writting things about HomeActivity.}
 There are three \lstinline!View!s that get populated by apps in the \launcher project:
 

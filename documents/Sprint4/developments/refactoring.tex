@@ -1,20 +1,5 @@
-\subsection{Refactoring}\label{sect:sprint4:refactoring}
-While some refactoring was carried out in sprint 3, as described in \cref{sect:sprint3:refactoring}, much more work was done in sprint 4.
-The most noticeable actions were:
-\begin{itemize}
-\item \lstinline!LauncherUtility! was split up into several smaller classes
-\item All generation of \lstinline!AppImageView!s into a given \lstinline!targetlayout! was moved to a new class, \lstinline!LoadApplicationTask!, which is derived from \lstinline!AsyncTask!.
-\item All activities and functions were properly documented and commented. 
-\end{itemize}\vagner{Ensure that these are actually the things we did before turning in the report! Also add more if we did more}
+\subsection{Refactoring LauncherUtility}\label{sect:sprint4:refactoring}
 
-These actions will now be described:
-
-\subsubsection{General Refactoring}
-
-\subsubsection{ViewHolder Design Pattern}
-5c590d8 (9 days ago) sthile11@student.aau.dk Completely refactored SettingsListAdapter by implementing the ViewHolder design pattern to minimize calls to findViewById. This also made it possible to replace the methods responsible for setting visibility for each shadow view by a single method just setting the visibility.
- 
-\subsubsection{Splitting up LauncherUtility}
 * | 3f60829 (8 days ago) tonaplo@msn.com Refactored the last part of LauncherUtility and commented some of the remaining functions.
 * | 971f45f (8 days ago) tonaplo@msn.com Refactored GirafFragment to work like Android Fragment and removed some redundant calls to udateAppInfoHashMap
 * | ae5936e (8 days ago) tonaplo@msn.com Removed all functions related to getting or checking applications to a new class called ApplicationControlUtility. Also removed two redundant functions.
