@@ -100,9 +100,9 @@ if(!mDrawerAnimationRunning){
   mDrawerAnimationRunning = true;
 }
 
-ta.setAnimationListener(new TranslateAnimation.AnimationListener() {
+ta.setAnimationListener(new TranslateAnimation.AnimationListener(){
   @Override
-  public void onAnimationStart(Animation animation) {
+  public void onAnimationStart(Animation animation){
     mAppsScrollView.setLeft(mHomeBarView.getWidth());
   }
   ...
