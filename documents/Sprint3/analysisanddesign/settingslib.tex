@@ -1,4 +1,4 @@
-\subsection{The Settings Library}
+\subsubsection{The Settings Component}\vagner{This needs to be proofread}
 The idea behind the settings library was to create a streamlined and uniform user interface for changing settings across the entire \giraf project. As discussed in \cref{sec:sprint2:secondmeeting}, we agreed with the clients that settings should accessible through two methods:
 \begin{itemize}
 	\item A dialogue box in each individual application, containing only settings relevant to that specific application. The dialogue box should be displayed when the user presses a button that is identical throughout all \giraf applications, making it easier for users to find.
@@ -7,7 +7,7 @@ The idea behind the settings library was to create a streamlined and uniform use
 
 It is immediately apparent that for making both these approaches work concurrently, we would need to create a single plan for how user settings should be handled throughout the \giraf project. In the following we will describe this plan.
 
-\subsubsection{Concept}
+\paragraph{Concept}
 We decided that the entire system should consist of four components, to be implemented separately:
 \begin{itemize}
 	\item The unified settings activity should be implemented as a part of the Launcher, and therefore the implementation of this component naturally falls to ourselves. Excluded from this task is the settings of the individual applications.
@@ -16,7 +16,7 @@ We decided that the entire system should consist of four components, to be imple
 	\item A method for storing the settings in the database, allowing the users to easily use the same settings across several devices. This should be implemented by the database group. 
 \end{itemize}
 
-\subsubsection{Technical Design}
+\paragraph{Technical Analysis}
 The big challenge of implementing the above concept, is how to allow the settings interface layout of each application to also be used in the unified settings activity. 
 
 Our initial idea was to ask each group to create a fragment with their settings layout within their own activity, which our settings activity would then be able to load into the unified settings activity. This would isolate the responsibilities of each group, and keep overall complexity to a minimum. Although there is a official way for custom class loading\citet{customClassLoading}, it is complex and it will make the coupling of the launcher and the other android applications very tight. Additionally it is difficult to make the loading of custom classes dynamic the name of the class to be loaded has to be known. The method of custom class loading is intendet to be used when a project exeeds 64.000 method references which is the limit of the Dalvik executable which is the executable of a compiled android application.

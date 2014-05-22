@@ -6,33 +6,20 @@ This was especially due to the need of loading Android applications that are not
 \subsubsection{Minor changes}
 | * | | 7b01c72 (2 weeks ago) thilemann@gmail.com Renamed private members and removed the google play fragment and moved the button click listeners to a new private method setButtonListeners to make the code
  more clear\\
- 
 | | * a12131f (2 weeks ago) fmikke11@student.aau.dk removed <uses sdk../> tag from manifest. This is controlled by gradle.build.\\
 | | * 2521b62 (13 days ago) tonaplo@msn.com removed the Tests for my app stuff from androidmanifest\\
- 
  Removing unused code.\\
  
-\subsubsection{Converting Apps from Views to ImageView}
-* | ed2d9a5 (3 weeks ago) fmikke11@student.aau.dk changed views to imageViews. Apps are now shown as Bitmaps\\
-
-\subsubsection{Moved functions from HomeActivity to LauncherUtility}
-* | 8e6bc6f (3 weeks ago) fmikke11@student.aau.dk Refactored HomeActivity - Moved loadApplications from HomeActivity to LauncherUtility to make it accessable for other classes\\
-* | 56bdf59 (2 weeks ago) fmikke11@student.aau.dk Refactored shared functionality in functions creating an app view/imageView\\
-
 \subsubsection{Refactoring of LauncherUtility}
 * | | 01e1fae (13 days ago) thilemann@gmail.com Refactored how items are added to the list of applications. They are now added through either addApplicationByName or addApplicationByPackageName. addApplicati
 onByPackageName is always preferred over the other, since it application name and icon are added dynamically by the packagename supplied. addApplicationByName is used when adding settings not part of a packa
 ge, such as the one added for Android.\\
-
-\subsubsection{Renaming of classes}
-| * | 4d6f50a (2 weeks ago) tonaplo@msn.com added the namechange from Utility to Settingsutiliy\\
+* | 8e6bc6f (3 weeks ago) fmikke11@student.aau.dk Refactored HomeActivity - Moved loadApplications from HomeActivity to LauncherUtility to make it accessable for other classes\\
+* | 56bdf59 (2 weeks ago) fmikke11@student.aau.dk Refactored shared functionality in functions creating an app view/imageView\\
 
 \subsubsection{Android Best Practices}
 * | 81c62b6 (2 weeks ago) sthile11@student.aau.dk Refactored whole Settings App to better comply with Google Developers guidelines and handle fragment to activity communication through an interface callback.Design of individual list items is managed through the custom list adapter SettingsListAdapter instead of in the list itself to be able to handle onClick events in containing activity (through the interface
  callback)\\
  
- \subsubsection{The Appwatcher class}
+ \subsubsection{The AppsObserver class}
  * | 6b4112c (3 weeks ago) fmikke11@student.aau.dk Added feature to automatically detect and show newly installed applciations.\frederik{Vagner skriver at dette nok skal skrives af Frederik eller Jesper, siden det var dem der lavede den første version af dette.}
- 
- \subsubsection{Guardian only apps no longer requires selecting a child}
- | * 84d80e1 (3 weeks ago) jesper.b.kjaer@gmail.com Added constant string of arrays with names of apps that are guardian-only. These apps no longer present a profile selection screen when launched.\\
