@@ -1,4 +1,4 @@
-\subsection{Implementation of "Apps" in SettingsActivity}
+
 This section follows up from the design described in \cref{sprint3:design:apps}.
 The fragment filled into the fragment container in \lstinline!SettingsActivity! was named \lstinline!AppManagementFragment!.
 \lstinline!AppManagementFragment! in turn contains another fragment container, \lstinline!AppsContainer!, where the two fragments derived from \lstinline!AppContainerFragment! will be loaded in - the fragments showing the applications.
@@ -19,3 +19,15 @@ The \textbf{Google Play} button launches the correct intent - The Play Store app
  and how it loads \lstinline!GirafFragment! and  \lstinline!AndroidFragment!.
 
 \vagner{Once again, remember that this is Sprint 3 and should therefore only be the things included in sprint 3!}
+
+| * | 1973797 (3 weeks ago) tonaplo@msn.com the basics of the Android settings tab is now working and have been added.\\
+| * | 67726e2 (2 weeks ago) tonaplo@msn.com made the app management part of settings able to load in giraf applications. the onclicklistener used is still wrong, however, and launcher will crash if you choose on of them within settings.\\
+* | | d3dd946 (2 weeks ago) fmikke11@student.aau.dk added functionality to laod apps from device\\
+* | ec951f4 (2 weeks ago) fmikke11@student.aau.dk Renamed AppFragment to AppManagementFragment. The name was needed for a future class\\
+* | 2dd77db (2 weeks ago) fmikke11@student.aau.dk added fragment super class to giraf and android fragments\\
+* | | a084d86 (2 weeks ago) fmikke11@student.aau.dk Apps in AndroidFragment are now marked instead of started when clicked\\
+* | | bf2409a (2 weeks ago) fmikke11@student.aau.dk started working on parsing list of android apps to home activity\\
+| * | | ef137e9 (2 weeks ago) tonaplo@msn.com added functionality to add and remove apps from profiles\\
+| * | b837ac1 (2 weeks ago) tonaplo@msn.com Adding and removing GIRAF apps is now fully implemented, both in UI and in function\\
+* | | 7787e2e (2 weeks ago) fmikke11@student.aau.dk Apps are now sorted alphabetically, and the functionality for adding android apps to the home activity is now working properply\\
+* | | | efc77b3 (2 weeks ago) fmikke11@student.aau.dk Apps are now loaded by another thread\vagner{Betyder dette at vi allerede her havde background loaderen implementeret?}
