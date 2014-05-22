@@ -1,11 +1,13 @@
-\subsection{Finishing up SettingsActivity}
+\subsection{Finishing up the ''Apps'' Pane}
 
-\subsubsection{Finishing up the ''Apps'' Pane}
-| | * | | c553b1f (13 days ago) fmikke11@student.aau.dk Preferences are now saved per user
-* fcf48a8 (9 days ago) fmikke11@student.aau.dk Settings are now reflected on giraf apps as well when changing profile
-| * | cd0ee43 (9 days ago) fmikke11@student.aau.dk Settings are now profile individual, and is reflected on the home screen except giraf apps
+The \textbf{Apps} pane is improved in a number of ways:
+\begin{itemize}
+\item Choosing a new profile loads the settings of the chosen user.
+This was done by finishing this instances \lstinline|'SettingsActivity| and then starting up a new instance of it with the new user as \lstinline|currentUser|.
+\item When having loaded applications in \lstinline|GirafFragment| and \lstinline|AndroidFragment| once, selecting the panes subsequently does not cause the fragment to reload applications. This is a hugh optimization.\frederik{Vagner siger at dette er Frederiks afsnit, da han har lavet koden og ved hvad den gør}
+\end{itemize}
 
-\subsubsection{LoadApplicationTask}\label{sec:sprint4:dev:loadapplicationtask}
+\subsection{LoadApplicationTask}\label{sec:sprint4:dev:loadapplicationtask}\vagner{I dont like that in this section that is supposedly about SettingsActivity, we are writting things about HomeActivity.}
 There are three \lstinline!View!s that get populated by apps in the \launcher project:
 
 \begin{itemize}
@@ -83,13 +85,3 @@ class loadGirafApplicationTask extends LoadApplicationTask {
 	}
 }
 \end{lstlisting}
-
-\subsection{Additional Improvements}
-
-\subsubsection{Saving loaded apps in AppManagementFragment}
-| | * e6758cc (5 days ago) fmikke11@student.aau.dk Added comment to GoogleAnalytics xml file. Furhtermore we do no longer load apps each time we change fragment in the apps settings. This is a hugh optimizat
-ion.
-
-\subsubsection{Opening the Play Store from SettingsActivity}
-| * | 926e5f4 (5 days ago) tonaplo@msn.com commented the rest of AuthenticationActivity and HomeActivity, and made the Play Store open correctly
-* | 6b291fa (13 days ago) thilemann@gmail.com Corrected Google Play queries and added them as constants instead of hardcoded values
