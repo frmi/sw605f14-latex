@@ -1,25 +1,3 @@
-\subsection{Refactoring}\label{sect:sprint3:refactoring}
-In order to implement the \lstinline!SettingsActivity! much of the existing code needed to be refactored.
-This was especially due to the need of loading Android applications that are not part of the GIRAF framework \vagner{framework? Project?} into the Launcher. 
-\vagner{Once again, remember that this is Sprint 3 and should therefore only be the things included in sprint 3!}
-
-\subsubsection{Minor changes}
-| * | | 7b01c72 (2 weeks ago) thilemann@gmail.com Renamed private members and removed the google play fragment and moved the button click listeners to a new private method setButtonListeners to make the code
- more clear\\
-| | * a12131f (2 weeks ago) fmikke11@student.aau.dk removed <uses sdk../> tag from manifest. This is controlled by gradle.build.\\
-| | * 2521b62 (13 days ago) tonaplo@msn.com removed the Tests for my app stuff from androidmanifest\\
- Removing unused code.\\
- 
-\subsubsection{Refactoring of LauncherUtility}
-* | | 01e1fae (13 days ago) thilemann@gmail.com Refactored how items are added to the list of applications. They are now added through either addApplicationByName or addApplicationByPackageName. addApplicati
-onByPackageName is always preferred over the other, since it application name and icon are added dynamically by the packagename supplied. addApplicationByName is used when adding settings not part of a packa
-ge, such as the one added for Android.\\
-* | 8e6bc6f (3 weeks ago) fmikke11@student.aau.dk Refactored HomeActivity - Moved loadApplications from HomeActivity to LauncherUtility to make it accessable for other classes\\
-* | 56bdf59 (2 weeks ago) fmikke11@student.aau.dk Refactored shared functionality in functions creating an app view/imageView\\
-
-\subsubsection{Android Best Practices}
+\subsection{Android Best Practices}
 * | 81c62b6 (2 weeks ago) sthile11@student.aau.dk Refactored whole Settings App to better comply with Google Developers guidelines and handle fragment to activity communication through an interface callback.Design of individual list items is managed through the custom list adapter SettingsListAdapter instead of in the list itself to be able to handle onClick events in containing activity (through the interface
  callback)\\
- 
- \subsubsection{The AppsObserver class}
- * | 6b4112c (3 weeks ago) fmikke11@student.aau.dk Added feature to automatically detect and show newly installed applciations.\frederik{Vagner skriver at dette nok skal skrives af Frederik eller Jesper, siden det var dem der lavede den første version af dette.}
