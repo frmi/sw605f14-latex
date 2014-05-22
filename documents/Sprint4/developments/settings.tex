@@ -1,0 +1,33 @@
+\subsection{Finishing up SettingsActivity}
+
+\subsubsection{Saving loaded apps in AppManagementFragment}
+| | * e6758cc (5 days ago) fmikke11@student.aau.dk Added comment to GoogleAnalytics xml file. Furhtermore we do no longer load apps each time we change fragment in the apps settings. This is a hugh optimizat
+ion.
+
+\subsubsection{Finishing up the ''Apps'' Pane}
+| | * | | c553b1f (13 days ago) fmikke11@student.aau.dk Preferences are now saved per user
+* fcf48a8 (9 days ago) fmikke11@student.aau.dk Settings are now reflected on giraf apps as well when changing profile
+| * | cd0ee43 (9 days ago) fmikke11@student.aau.dk Settings are now profile individual, and is reflected on the home screen except giraf apps
+
+\subsubsection{background worker in Settings}
+| * | 63c0ca5 (8 days ago) thilemann@gmail.com Commented remaning parts and simplified logic in which apps are loaded since it can be loaded by either a fragment or intent.
+* | | b567fd6 (8 days ago) tonaplo@msn.com Everything regarding adding and removing applications now works, including the ackground workers under any circumstances.
+| * | | d6ed500 (8 days ago) tonaplo@msn.com Choosing apps in settings is now completely done.
+| * | | | 497235c (8 days ago) tonaplo@msn.com Made marking work with Giraf Apps, still need to make it work with Android Apps.
+| * | | c3a5b62 (8 days ago) fmikke11@student.aau.dk Committed the second part of the background worker
+| * | | 9724077 (8 days ago) fmikke11@student.aau.dk Committed the first part of the background worker changes
+| * | 2fad2e8 (9 days ago) fmikke11@student.aau.dk Added progress bar to the Android application settings fragment
+
+\subsubsection{Opening the Play Store from SettingsActivity}
+| * | 926e5f4 (5 days ago) tonaplo@msn.com commented the rest of AuthenticationActivity and HomeActivity, and made the Play Store open correctly
+* | 6b291fa (13 days ago) thilemann@gmail.com Corrected Google Play queries and added them as constants instead of hardcoded values
+
+\subsubsection{Automatically load newly installed applications in SettingsActivity}
+| * | 1530e37 (6 days ago) tonaplo@msn.com Made applications in GirafFragment and AndroidFragment automatically load newly installed applications
+
+\subsubsection{Starting settings of other apps from Settings}
+* | | c51e137 (7 days ago) thilemann@gmail.com Cleaned file and removed unnecessary intent-filter from SettingsActivity. This activity should not be available through an intent.
+* | bd0c2c7 (7 days ago) thilemann@gmail.com When adding an intent by packagename there were no checks that the intent indeed contains the action needed to start the settings of the application. This is now
+handled so it is not added to the list if it does not exist.
+* | | | 6f19b2e (7 days ago) thilemann@gmail.com Added Sequence (Zebra) to settings
+| * | | 0bb96b3 (7 days ago) jesper.b.kjaer@gmail.com Added handling of ActivityNotFound exception in settings.
