@@ -9,28 +9,6 @@ The most noticeable actions were:
 
 These actions will now be described:
 
-\subsubsection{LauncherUtility}\vagner{Finish this subsection}
-Before refactoring, \lstinline!LauncherUtility! was  a 1200 lines long class with static methods for many different purposes.
-By dividing the class into smaller classes, each with a certain purpose, the maintainability of the program will hopefully be increased and future developers will have an easier time understanding the code.
-Furthermore, many of the existing functions were either simplified or removed due to lack of use or redundancy
-
-\subsubsection{LoadApplicationTask}\vagner{Finish this subsection}
-There are three \lstinline!View!s that get populated by apps in the \launcher project:
-
-\begin{itemize}
-\item The container in \lstinline!GirafFragment!, populated by \giraf applications only
-\item The container in \lstinline!AndroidFragment!, populated by Android applications only
-\item The main container in \lstinline!HomeActivity!, populated by both Android and \giraf applications
-\end{itemize}
-
-Since all three \lstinline!View!s needed some time to load the applications, it was deemed important to populate them off the UI thread.
-Furthermore, populating all three \lstinline!View!s in the same way would also simplify the code.
-
-\subsubsection{Comments and Documentation}\vagner{Finish this subsection}
-The code was documented and commented to make it easier for future developers to understand the code.
-While many comments simply explain what the functions and activities do, some comments also contain information about commented functions or classes, along with the reasoning behind them being commented.
-Finally, some comments include information related to future works.
-
 \subsubsection{General Refactoring (Could be divided into activities)}
 * | | 5df867e (5 days ago) thilemann@gmail.com Changed constructors to be chained with private constructor and added documentation to each public constructor.
 | | * | | 29b3f39 (5 days ago) thilemann@gmail.com Removed method for setting 'correct' case of application names since it makes more sense that each app is responsible for setting its own name correctly (fo
@@ -65,32 +43,6 @@ d to return a list containing only valid giraf apps. The listview and adapter is
  * | 3f60829 (8 days ago) tonaplo@msn.com Refactored the last part of LauncherUtility and commented some of the remaining functions.
  * | 971f45f (8 days ago) tonaplo@msn.com Refactored GirafFragment to work like Android Fragment and removed some redundant calls to udateAppInfoHashMap
  * | ae5936e (8 days ago) tonaplo@msn.com Removed all functions related to getting or checking applications to a new class called ApplicationControlUtility. Also removed two redundant functions.
-
-\subsubsection{Cleaning up after previous groups and IDEs}
-* | | 2cca78b (7 days ago) thilemann@gmail.com Removed leftovers from last project groups: srcTest
-| * | 0ebbcd5 (8 days ago) thilemann@gmail.com Renamed module 'android' to 'barcodescanner' and changed gradle files accordingly + removed Launcher module and files until whole launcher is added as a module.
-| * | 3060f1e (8 days ago) thilemann@gmail.com Deleted unused files that was a leftover from when Eclipse IDE was used.
-
-\subsubsection{Android Best Practices}
-* | | | 4850aa8 (6 days ago) thilemann@gmail.com Moved Launcher files into its own module as supposed when using Gradle.
-| | | * | e9f9693 (8 days ago) fmikke11@student.aau.dk Changed textsizes from type dp to type sp to match android best practices
-| | | * | ae78814 (8 days ago) milars11@student.aau.dk Moved all files into an android sub-directory, before merging into launcher.
-
-\subsubsection{Minor bug fixes}
-* | | da31f89 (5 days ago) fmikke11@student.aau.dk Fixed nullpointer exception when the fragment was closed before the loading task had finished
-| * | | | 64269ef (7 days ago) tonaplo@msn.com Fixed the bug where the progress bar would sometimes keep on spinning after onResume was called.
-| * | | cf70e01 (7 days ago) jesper.b.kjaer@gmail.com Fixed problem with the last row in an app container being full.
-* | | | 7641e9a (7 days ago) thilemann@gmail.com Fixed error when loading into view first time. Before doInBackground would get an divide-by-zero error.
-| * a70262d (13 days ago) fmikke11@student.aau.dk App scaling is now working properly
-| * | 91333ed (7 days ago) jesper.b.kjaer@gmail.com The skip animation setting now works (though the logic is reversed).
-| | * bd67309 (8 days ago) jesper.b.kjaer@gmail.com Added missing list conversion in updateAppInfoHashMap.
-
-\subsubsection{Minor visual improvements}
-* | f5596bb (5 days ago) fmikke11@student.aau.dk Removed padding on 'no apps message text view' in HomeActivity
-| | | * | 8cb881b (5 days ago) jesper.b.kjaer@gmail.com Fixed uncapitalized GIRAF tab in settings.
-* | 791d914 (5 days ago) thilemann@gmail.com Changed color shown below logo animation when starting launcher
-* | | 7eea4d3 (7 days ago) thilemann@gmail.com Added required attributes to elements (width/height)
-* | | eee7d65 (7 days ago) thilemann@gmail.com Changed settings activity not found error message to be a bit more verbose
-* | | 6381ac1 (7 days ago) thilemann@gmail.com Used dimensions for profile selection from the just added dimens ressource
-* | | ae04800 (7 days ago) thilemann@gmail.com Extracted dimensions and added a dimens ressource
-| * 7b857ce (13 days ago) fmikke11@student.aau.dk Android apps are now launched properly and an animation has been added when an app is pressed on the homescreen
+ Before refactoring, \lstinline!LauncherUtility! was  a 1200 lines long class with static methods for many different purposes.
+ By dividing the class into smaller classes, each with a certain purpose, the maintainability of the program will hopefully be increased and future developers will have an easier time understanding the code.
+ Furthermore, many of the existing functions were either simplified or removed due to lack of use or redundancy
