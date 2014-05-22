@@ -7,6 +7,9 @@ This was especially due to the need of loading Android applications that are not
 | * | | 7b01c72 (2 weeks ago) thilemann@gmail.com Renamed private members and removed the google play fragment and moved the button click listeners to a new private method setButtonListeners to make the code
  more clear\\
  
+| | * a12131f (2 weeks ago) fmikke11@student.aau.dk removed <uses sdk../> tag from manifest. This is controlled by gradle.build.\\
+| | * 2521b62 (13 days ago) tonaplo@msn.com removed the Tests for my app stuff from androidmanifest\\
+ 
  Removing unused code.\\
  
 \subsubsection{Converting Apps from Views to ImageView}
@@ -27,3 +30,9 @@ ge, such as the one added for Android.\\
 \subsubsection{Android Best Practices}
 * | 81c62b6 (2 weeks ago) sthile11@student.aau.dk Refactored whole Settings App to better comply with Google Developers guidelines and handle fragment to activity communication through an interface callback.Design of individual list items is managed through the custom list adapter SettingsListAdapter instead of in the list itself to be able to handle onClick events in containing activity (through the interface
  callback)\\
+ 
+ \subsubsection{The Appwatcher class}
+ * | 6b4112c (3 weeks ago) fmikke11@student.aau.dk Added feature to automatically detect and show newly installed applciations.\frederik{Vagner skriver at dette nok skal skrives af Frederik eller Jesper, siden det var dem der lavede den første version af dette.}
+ 
+ \subsubsection{Guardian only apps no longer requires selecting a child}
+ | * 84d80e1 (3 weeks ago) jesper.b.kjaer@gmail.com Added constant string of arrays with names of apps that are guardian-only. These apps no longer present a profile selection screen when launched.\\

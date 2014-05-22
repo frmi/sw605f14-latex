@@ -1,0 +1,13 @@
+\subsection{Disabling the Drawer}
+As described in \vagner{add reference to Customer Meeting}, the purpose of the drawer is founded in a misinterpretation.
+It was thought that it was important to be able to colour the different applications in \launcher.
+However, at the meeting it was clarified that it was important to be able to toggle \textit{pictograms} from being in colour to black and white, since some citizens handle coloured picture better than black and white ones and vice versa.\\
+
+There are some additional problems with the drawer.
+These are mostly centered upon other applications absorbing the colour given to them by \launcher and using that colour as their main theme.
+However, this means that for each possible colour the \launcher can give an application, it needs to implement a colour scheme that fits with the given colour.
+This is especially a problem for application using a wide variety of colours.\\
+
+Since the purpose of the drawer is not a requirement per se, and the functionality caused problems in other applications, it was decided to disable the drawer.
+The source code still contains all the code needed for the drawer to be re-enabled, with comments as to why it has been disabled.
+This way, should a future group need to implement the drawer, they merely have to uncomment part of the code.
