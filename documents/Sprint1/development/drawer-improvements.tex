@@ -4,13 +4,6 @@ The code working the animation of the drawer is based on an touch listener, usin
 The event sets the position of the entire drawer, panel and bar to the exact point it has just been moved to before redrawing the elements.
 Since the position is not limited, the user can leave it in any position between fully extended and closed state as explained in \cref{sec:drawer:behaviour}.
 
-To change this behaviour .... \thilemann{Write!}
-
-Opening and closing the improved drawer was implemented with an \lstinline{OnTouchListener} through the \lstinline{MotionEvent.ACTION_DOWN} event and a standard Android \lstinline{TranslateAnimation}.
-Pressing the bar fires the event and begins the animation.
-A \lstinline{boolean} variable determines whether the drawer was open or closed when the event fired and thus if the animation should translate left or right.
-By also adding an \lstinline{OnDragListener} to the drawer, the animation would also play when dragging and dropping colours from the panel; closing the drawer on \lstinline{DragEvent.ACTION_DRAG_STARTED} and opening it again on \lstinline{DragEvent.ACTION_DRAG_ENDED}.
-
-Having the \lstinline{ScrollView} containing the application icons remain static during the animation, was solved by reorganising the source code responsible for the user interface layout. 
-Previously, all elements were declared in the XML layout file, while positioning of the elements was set to static values in \lstinline{HomeActivity}.
-This was refactored to have the all positioning declared dynamically depending on screen size, apart from the positioning of the \lstinline{ScrollView}.\thilemann{Stefan, write intelligent stuff about dynamic positioning of the ScrollView}
+To change this behaviour an Android \lstinline{TranslateAnimation} is implemented to start as soon as the user touches the vertical bar of the drawer.
+A \lstinline{boolean} variable determines whether the drawer is open or closed to force the animation to either translate left or right depending on its current state.
+By also adding an \lstinline{OnDragListener} to the drawer, the animation would also play when dragging and dropping colours from the panel; closing the drawer when a drag is initiated and closing it again when the drag has ended.
