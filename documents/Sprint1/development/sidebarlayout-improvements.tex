@@ -16,7 +16,7 @@ The custom view is further described in \cref{sec:siebarlayout:java}.
 \begin{lstlisting}[caption={Structure of the XML layout of the drawer.},label={lst:sidebarlayout}, language=XML]
 <dk.aau.cs.giraf.launcher.layoutcontroller.SideBarLayout android:id="@+id/SideBarLayout" android:layout_marginLeft="-400dp">
 
-<RelativeLayout android:id="@+id/HomeDrawer">
+<RelativeLayout android:id="@+id/HomeDrawer" android:layout_width="400dp">
 <GridView android:id="@+id/appcolors" />
 </RelativeLayout>
 
@@ -28,6 +28,9 @@ The custom view is further described in \cref{sec:siebarlayout:java}.
 
 </dk.aau.cs.giraf.launcher.layoutcontroller.SideBarLayout>
 \end{lstlisting}
+
+The negative margin of 400dp defined on line 1 effectively hides the \lstinline|SideBarLayout| when the home activity is just started, revealing only the \lstinline|HomeBar|.
+Since it is placed next to the \lstinline|GridView| with the id of \textit{appcolors} and this view has the same width as the negative margin defined on \lstinline|SideBarLayout|, it is the only visible element; giving the impression of a closed drawer.
 
 \subsubsection{Extending an Android View Class}\label{sec:siebarlayout:java}
 
@@ -63,3 +66,50 @@ public class SideBarLayout extends RelativeLayout {
   }
 }
 \end{lstlisting}
+
+\subsubsection{Animating the Drawer}
+
+
+\begin{lstlisting}[caption={Using the animation of the drawer from the home activity.},label={lst:draweranimation:homeactivity}]
+private void placeDrawer(){
+  int to;
+
+  if(mSideBarView.isSideBarHidden)
+    to = mHomeDrawerView.getWidth();
+  else
+    to = -mHomeDrawerView.getWidth();
+
+  // then animate the view translating from (0, 0)
+  TranslateAnimation ta = new TranslateAnimation(0, to, 0, 0);
+  ta.setDuration(500);
+  if(!mDrawerAnimationRunning){
+    mSideBarView.startAnimation(ta);
+    mDrawerAnimationRunning = true;
+  }
+
+  ta.setAnimationListener(new TranslateAnimation.AnimationListener() {
+
+    @Override
+    public void onAnimationStart(Animation animation) {
+      // Sets the left margin of the scrollview based on the width of the homebar
+      mAppsScrollViewParams = new RelativeLayout.LayoutParams(mAppsScrollView.getLayoutParams());
+      mAppsScrollViewParams.leftMargin = mHomeBarLayout.getWidth();
+      mAppsScrollView.setLayoutParams(mAppsScrollViewParams);
+    }
+
+    @Override
+    public void onAnimationRepeat(Animation animation) {
+    }
+
+    @Override
+    public void onAnimationEnd(Animation animation) {
+        mDrawerAnimationRunning = false;
+    }
+  });
+}
+\end{lstlisting}
+
+
+
+
+
