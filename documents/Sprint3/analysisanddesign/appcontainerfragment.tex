@@ -14,3 +14,7 @@ A requirement from Sprint 2 was a pane in settings, where it can be set up which
 Because the \giraf and Android pane fragments will contain many of the same variables, these should inherit all shared information from a superclass, consequently reducing redundancy and clarifying how the two fragments are different.
 
 Finally, the navigation buttons inside the \lstinline!SettingsActivity! fragment container should also have a button opening the Google Play Store, so the user can download additional Android applications, if desired. 
+Firstly, we researched how to use the inbuilt API for Google Services  to open the Play Store in this way.
+However, there were some problems with the API when attempting to implement.
+Furthermore, it was discovered that the API is intended to be used for syncronization with Google+, Google Drive and Google Games.
+Therefore, we ultimately chose to open the Play Store as a separate activity.\vagner{Please read this and refactor it.}
