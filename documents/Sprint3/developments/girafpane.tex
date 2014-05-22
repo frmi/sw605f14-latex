@@ -1,2 +1,29 @@
-* | | | 45bd77d (3 weeks ago) fmikke11@student.aau.dk Apps are now scalable\\
-* | 1a580aa (2 weeks ago) fmikke11@student.aau.dk Added use of preference when starting the launcher to show animation or not\\
+This section describes the pane which contains the settings for the \launcher, as described in \Cref{sec:sprint3:designsettings}.
+
+Before describing the settings and implementation of the settings in this pane we explain how settings can be managed in Android.
+
+\paragraph{Managing Settings in Android}
+To explain the functionality we use to save preferences in our application this section describes the excellent features which Android provides for managing preferences on a per application basis. This feature is provided through the SharedPreference class.
+
+With this class you can either save the preferences in the context of the application, if they are application specific. It is also possible to define the name of the file in which the preferences are saved or read from. If the preference file does not exist when requested it is created.
+
+We use these features to save preferences for each user. We create a unique file by the user role and id.
+This means that a \textit{citizen} profile with the \textit{id 1}, would get the file name \textit{c1}, with the package name of our application as a prefix.
+
+Preferences identified by a key, and they are edited through the Editor class and with a proper method matching the type of the variable which needs to saved, e.g. \lstinline!putBoolean()!.
+If the preference exists it is updated if not it is created.
+
+When a preference is to be read it is retrieved by a get method, e.g. \lstinline!putBoolean()!, this method is provided the key for the preference and a default value in case the preference has not yet been set.
+
+\paragraph{The Settings} implemented in the GIRAF pane are
+\begin{itemize}
+ 	\item disabling of the start animation, when starting \launcher the first time after a system restart,
+ 	\item and changing the size of application icons on the home activity.
+ \end{itemize} 
+It should be noted that these settings are added as suggestions to which settings could be relevant and they made it to the final release.
+
+The most interesting of the two preferences is the icon scaling preference, since the ``Show start up animation" preference is created with a standard Android preference component which provides the UI with a two-state switch.
+
+The icon scaling preference is created by extending the standard preference class in Android there by inheriting the native setup, e.g. title and summery fields, and constructors for such a component. We have then supplied it with a custom UI containing a slider and an application icon as those used in the home activity.
+
+Settings in this pane are automatically saved when the user either changes pane or exits the activity.
