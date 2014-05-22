@@ -16,14 +16,73 @@ There are three \lstinline!View!s that get populated by apps in the \launcher pr
 
 Since all three \lstinline!View!s needed some time to load the applications, it was deemed important to populate them off the UI thread.
 Furthermore, populating all three \lstinline!View!s in the same way would also simplify the code.
+Thus, the class \lstinline!LoadApplicationTask! has been created to load applications. 
+It inherits from \lstinline!ASyncTask! and must therefore implement three methods:
 
-| * | 63c0ca5 (8 days ago) thilemann@gmail.com Commented remaning parts and simplified logic in which apps are loaded since it can be loaded by either a fragment or intent.
-* | | b567fd6 (8 days ago) tonaplo@msn.com Everything regarding adding and removing applications now works, including the ackground workers under any circumstances.
-| * | | d6ed500 (8 days ago) tonaplo@msn.com Choosing apps in settings is now completely done.
-| * | | | 497235c (8 days ago) tonaplo@msn.com Made marking work with Giraf Apps, still need to make it work with Android Apps.
-| * | | c3a5b62 (8 days ago) fmikke11@student.aau.dk Committed the second part of the background worker
-| * | | 9724077 (8 days ago) fmikke11@student.aau.dk Committed the first part of the background worker changes
-| * | 2fad2e8 (9 days ago) fmikke11@student.aau.dk Added progress bar to the Android application settings fragment
+\begin{itemize}
+\item \lstinline!onPreExecute()! is called before the task is carried out and runs on the UI thread.
+\item \lstinline!doInBackground()! should contain the task to be carried out and will carry it out in a background thread.
+\item \lstinline!onPostExecute()! is called after the task has been carried out and runs on the UI thread.
+\end{itemize}
+
+We override \lstinline!onPreExecute()! and \lstinline!onPostExecute()! to start and stop showing a loading animation, respectively.
+
+The method in \lstinline!LauncherUtility! used to populate a view with apps, \lstinline!loadApplications()! is deleted, and the contents are moved into \lstinline!doinBackground()!.
+Since the views can only be manipulated in the UI thread, we add the applications as views to a list of views.
+Once \lstinline!doinBackground()! finishes, \lstinline!onPostExecute()! then adds the application to the target view. 
+ The constructor of \lstinline!LoadApplicationTask! is also adjusted to take as parameter all the information needed to populate a given view.\\
+ 
+ In theory, all that is needed to load applications into a given view now, is the code shown in \cref{lst:simplelat} 
+ 
+ \begin{lstlisting}[caption={The simple way of implementing LoadApplicationTask.}, label={lst:simplelat}]
+ LoadApplicationTask lat = new LoadApplicationTask(context, currentUser, guardianUser, targetView, iconsize, onClickListener);
+ loadApplicationTask.execute(applicationsToLoad);
+ \end{lstlisting}
+ 
+ However, doing it this way makes it impossible to implement the \lstinline!AppsObserver!, described in \cref{sec:sprint3:observing}, because the observer must be initiated in \lstinline!onPostExecute()! and terminated in \lstinline!onPreExecute()!.
+ Because the observer must be implemented in the class it is used, namely \lstinline!HomeActivity!, \lstinline!GirafFragment! and \lstinline!AndroidFragment!, we can not  load applications into view with the code showing in \cref{lst:simplelat} .\\
+ 
+ Instead, we must implement a derived class of \lstinline|LoadApplicationTask| in each of the classes it is used.
+ The derived class is called the same way as in \cref{lst:simplelat} and the class is quite simple.
+ All of the three methods are overridden and call \lstinline!super.FooBar()!, thus executing all the work done by the superclass.\vagner{Det her lugter så åndssvagt meget af at man godt ville kunne merge dem. Jeg kan ikke helt huske den præcise tekniske grund for at vi ikke kunne, så dette skal måske rettes i.}
+ Then the observer is enabled and disabled in  \lstinline!onPostExecute()! and \lstinline!onPreExecute()!, respectively.\\
+ 
+ The three derived classes are very similar, therefore code is only given for one of them.
+ The code can be seen in \cref{lst:derivedlat} for \lstinline!GirafFragment! 
+ 
+  \begin{lstlisting}[caption={The loadGirafApplicationTask, derived from LoadApplicationTask. This is the derived class used by GirafFragment to load applications into view. Please note that all comments have been removed to make the listing smaller}, label={lst:derivedlat}]
+class loadGirafApplicationTask extends LoadApplicationTask {
+
+	public loadGirafApplicationTask(Context context, Profile currentUser, Profile guardian, LinearLayout targetLayout, int iconSize, View.OnClickListener onClickListener) {
+		super(context, currentUser, guardian, targetLayout, iconSize, onClickListener);
+	}
+	
+	@Override
+	protected void onPreExecute() {
+		if(appsUpdater != null)
+		appsUpdater.cancel();
+		
+		super.onPreExecute();
+	}
+	
+	@Override
+	protected HashMap<String, AppInfo> doInBackground(Application... applications) {
+		apps = ApplicationControlUtility.getGirafAppsOnDeviceButLauncherAsApplicationList(context);
+		applications = apps.toArray(applications);
+		appInfos = super.doInBackground(applications);
+		
+		return appInfos;
+	}
+	
+	@Override
+	protected void onPostExecute(HashMap<String, AppInfo> appInfos) {
+		super.onPostExecute(appInfos);
+		loadedApps = appInfos;
+		startObservingApps();
+		haveAppsBeenAdded = true;
+	}
+}
+\end{lstlisting}
 
 \subsection{Additional Improvements}
 
