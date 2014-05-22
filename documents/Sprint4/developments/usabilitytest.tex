@@ -28,4 +28,45 @@ We conducted test sessions with four different subjects:
 \end{itemize}
 
 \subsection{Results}
-Results
+The observations from the four tests were compiled into a list of concrete usability problems. We assigned each problem a seriousness rating on the following scale:
+\begin{itemize}
+	\item A problem is \textit{critical} if it prevents the user is unable to finish their task as a result of it.
+	\item A problem is \textit{serious} if the user is delayed a significant amount of time, before figuring out how to solve the task.
+	\item A problem is \textit{cosmetic} if the user is only delayed for short time, before figuring out how to solve the task. Cosmetic problems also include issues that didn't give the user any problems, but were nonetheless identified as an area of possible improvement.
+\end{itemize}
+
+For most problems, we also present a suggested solution, which may be implemented by any future development team.
+
+\subsubsection{Doubt about how the application selection screen works}
+
+\paragraph{Problem:} Some test subjects had difficulty figuring out how to add applications to a profiles home screen. Some tried dragging the icon. Some figured out how to mark the application as added (by clicking the icon), but were unsure of whether this solved the task.
+\paragraph{Rating:} Critical.
+\paragraph{Suggested solution:} It might be more intuitive to have two containers: one with applications not added to the profile, and one with applications added to the profile. Applications are then dragged between the two. This allows the user to go with their initial impulse to drag the icons instead of clicking them. If the containers are named with labels, it should also be easy to figure out the state of an application.
+
+\subsubsection{Difficulty finding Google Play}
+
+\paragraph{Problem:} Some test subjects had difficulty with finding the shortcut to Google Play, when asked to install a certain application. The often started pressing the ``Android Settings'' pane. Some also correctly chose the ``Apps'' pane, but then went to the section labelled ``Android''. 
+\paragraph{Rating:} Serious.
+\paragraph{Suggested solution:} We propose a renaming of various panes. The ``Android Settings'' pane should be named ``Device Settings'', to lessen association with Android as a software platform. The ``GIRAF'' and ``Android'' panes in the Apps screen, should be renamed ``GIRAF Apps'' and ``Android Apps'', to make it clearer that these panes contain application lists, and no settings as such. Furthermore, the ``Store'' button should be resized to match the other two, to make it more visible.
+
+\subsubsection{Finding the Back-button}
+
+\paragraph{Problem:} The test subjects with little Android experience, initially had difficulty figuring out how to back to a previous screen. They had to be pointed to the hardware Back-button. After this first confusion, the clients had no problem finding the button again.
+\paragraph{Rating:} Serious.
+\paragraph{Suggested solution:} Throughout the project period, is has been discussed a number of times to add a software Back-button to all the \giraf applications. This should completely eliminate any confusion. Based on our observations, we however, believe that it is only a question of getting used to the existence of a hardware button. When users have learnt to use the hardware button, a software button will only clutter up the user interfaces.
+
+\subsubsection{Unsure whether changes are saved}
+
+\paragraph{Problem:} The first times a test subject changed a setting, they were unsure how to continue, because they could not figure out whether the change had been saved, or if they had to do so themselves.
+\paragraph{Rating:} Serious.
+\paragraph{Suggested solutions:} We discussed various possibilities for indicating that the changes had been saved, including an Android Toast, a check mark next to the setting, and even a dummy save button. However, it is an Android (and iOS) norm to save changes as they are made. We therefore decided that, as with the Back-button issue, it is a question of the users getting used to the current system.
+
+\subsubsection{Misunderstanding the authentication screen}
+
+\paragraph{Problem:} Some test subjects did not fully understand how the authentication activity worked, as they tried to keep the cameras focus on the QR code, after it had verified the code. This made it difficult for them to press the login button, as they awkwardly tried to keep the tablet in position while doing so. 
+\paragraph{Rating:} Cosmetic.
+\paragraph{Suggested solution:} The camera feed could be turned off as soon as a valid code has been scanned, maybe even turning into the login button, instead of the button appearing under the feed. 
+
+
+
+
