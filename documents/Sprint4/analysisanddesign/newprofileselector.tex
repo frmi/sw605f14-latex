@@ -1,7 +1,12 @@
-\subsection{New Profile Selector}
+\subsection{New Profile Selector}\label{sec:sprint3:designprofileselector}
 
 As mentioned in \cref{sec:sprint2:conclusionmeetings}, the customer meetings held during the second sprint concluded that the \textbf{Profile Selector} should change.
 More specifically should it be possible to switch between profiles both in \launcher and inside the other \giraf applications.
 Therefore, the \textbf{GUI} group was given the task of making a new Profile Selector for all groups to use.
-The component is no available and is therefore implemented, both in \lstinline!HomeAcitivty! and in \lstinline!SettingsActivity!. 
+The component is now available and is therefore implemented, both in \lstinline!HomeAcitivty! and in \lstinline!SettingsActivity!. 
+
+The old Profile Selector was launched when an application was clicked in \lstinline!HomeActivity! and started the application with the selected profile as the user.
+
+The new Profile Selector is launched when clicking the profile picture and it should return to be previous activity with a new user when a new profile is selected.
+
 The implementation of the new Profile Selector is explained in \cref{sec:sprint3:devprofileselector}.
