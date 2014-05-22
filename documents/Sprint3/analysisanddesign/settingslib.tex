@@ -1,34 +1,16 @@
-\subsubsection{The Settings Component}\vagner{This needs to be proofread}
-The idea behind the settings library was to create a streamlined and uniform user interface for changing settings across the entire \giraf project. As discussed in \cref{sec:sprint2:secondmeeting}, we agreed with the clients that settings should accessible through two methods:
-\begin{itemize}
-	\item A dialogue box in each individual application, containing only settings relevant to that specific application. The dialogue box should be displayed when the user presses a button that is identical throughout all \giraf applications, making it easier for users to find.
-	\item A unified settings activity, where the user has immediate access to all settings for all \giraf applications. This activity should be a part of the Launcher. Besides the settings of the individual applications, it should also contain relevant settings pertaining to the user, e.g. which applications the user should be allowed access to.
-\end{itemize}
 
-It is immediately apparent that for making both these approaches work concurrently, we would need to create a single plan for how user settings should be handled throughout the \giraf project. In the following we will describe this plan.
 
-\paragraph{Concept}
-We decided that the entire system should consist of four components, to be implemented separately:
-\begin{itemize}
-	\item The unified settings activity should be implemented as a part of the Launcher, and therefore the implementation of this component naturally falls to ourselves. Excluded from this task is the settings of the individual applications.
-	\item A dialogue box able to contain the settings for an arbitrary \giraf application. Included in this is a standard button for launching the dialogue box. As this is user interface component useful to all applications, it should be implemented by the group responsible for the \giraf GUI library.\frederik{Dette blev ikke gjort}
-	\item A set of settings for each \giraf application. As these sets may vary widely in content and complexity from application to application, and furthermore may change along with their associated applications over time, these should be defined and implemented by the individual project groups. 
-	\item A method for storing the settings in the database, allowing the users to easily use the same settings across several devices. This should be implemented by the database group. 
-\end{itemize}
+% THIS FILE SHOULD BE DELETED AND REMOVED FROM THE INDEX
+% IT NO LONGER SERVES ANY PURPOSE!!!
+\subsection{DELETE ME!!!}
 
-\paragraph{Technical Analysis}
-The big challenge of implementing the above concept, is how to allow the settings interface layout of each application to also be used in the unified settings activity. 
+\frederik[inline]{Jeg ved ikke hvor foelgende hoerer til}
+\thilemann[inline]{Jeg tror det var da alle views med ikoner blev konverteret til bitmaps for bedre at skalere ikoner?}
+{\color{red}* | ed2d9a5 (3 weeks ago) fmikke11@student.aau.dk changed views to imageViews. Apps are now shown as Bitmaps}
 
-Our initial idea was to ask each group to create a fragment with their settings layout within their own activity, which our settings activity would then be able to load into the unified settings activity. This would isolate the responsibilities of each group, and keep overall complexity to a minimum. Although there is a official way for custom class loading\citet{customClassLoading}, it is complex and it will make the coupling of the launcher and the other android applications very tight. Additionally it is difficult to make the loading of custom classes dynamic the name of the class to be loaded has to be known. The method of custom class loading is intendet to be used when a project exeeds 64.000 method references which is the limit of the Dalvik executable which is the executable of a compiled android application.
 
-To simplify this, \launcher could include all other projects as dependencies when compiling, but this would have made the \launcher project unnecessary bloated and difficult to work with.
-
-Another possibility was make the individual applications implement an interface, where a function would add the application's setting-widgets to a given view. While Android provides facilities for inter-application communication through its \textit{Broadcast} mechanism\cite{broadcastReceiver}, this requires all the involved applications to be running. This is not an acceptable condition in this situation. 
-
-The design which has been chosen is using Intent Filters\cite{intentFilter}, which is an Android feature that allows applications to communicate activity to activity, by add an action element with a certain action string.
-With this method we will examin all applications on the device, looking for an intent filter with a certain action string.
-If an application implements this intent filter, we know that the application has a settings activity which we can add to our list of settings.
-
-With this design we are not able to load settings from other applications as fragments in our application, we will have to start the application and their settings activity. However, this only simplyfies the complexity about saving the settings, since if we load their settings as a fragment we load it in context of our application. We would then have to save it again in their context or we would have to figure out a solution for them to load the settings from our context.
-
-%We finally decided on creating a common settings library, to which all groups added a layout fragment for their own application. This library should then be included with every project that contributes to it, so they can read their own settings from it, and to \launcher, which can use the layouts for the settings activity. This requires a single project to which all developers on the \giraf project have write access, which makes it hard to manage, but it is on the other hand the simplest technical solution. A concrete disadvantage is that errors in the various settings fragments will influence \launcher, but our group will have complete authority over the settings library project, and have the right to make changes necessary to allow \launcher to compile and execute. 
+\subsubsection{Loading Apps into View}\label{sec:sprint:designlauncher}
+The methods that load applications into a given view are in \lstinline!HomeActivity!.
+In \lstinline!SettingsActivity! the pane where applications are added and removed from users also needs to load applications into a given view.
+Therefore, we refactor \lstinline!HomeActivity! and move the relevant functions into \lstinline!LauncherUtility!.
+Then both activities can call the same method and code redundancy is reduced. 

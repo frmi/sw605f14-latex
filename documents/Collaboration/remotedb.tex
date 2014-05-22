@@ -1,0 +1,7 @@
+For reasons on why the remote database relates to \launcher please refer to \Cref{sec:developments:remotedb}.\\
+
+The activation of the remote database synchronisation introduces a sequence of issues. These were introduced since the local database and the remote database tables did not match. The group responsible for the local database did make changes which they did not notify the remote database group. Thus, many of the issues introduced were caused by weak communication between the two groups.
+
+Furthermore the group developing the web administration tool did tests on the data in the remote database, which also was the data every group was using for tests.
+The web administration tool group did test their QR code generator, this they did on the test user all groups were using.
+Since the remote database synchronisation had been activated the devices loaded data in which the QR code they had did not match the one in the database, and no one could log in to the system.
