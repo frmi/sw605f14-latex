@@ -9,40 +9,15 @@ The most noticeable actions were:
 
 These actions will now be described:
 
-\subsubsection{General Refactoring (Could be divided into activities)}
-* | | 5df867e (5 days ago) thilemann@gmail.com Changed constructors to be chained with private constructor and added documentation to each public constructor.
-| | * | | 29b3f39 (5 days ago) thilemann@gmail.com Removed method for setting 'correct' case of application names since it makes more sense that each app is responsible for setting its own name correctly (fo
-r example shoud Giraf be written as GIRAF). Also moved getInstalledSettingsApps() method to top of class.
-| | * 3c2d0b7 (6 days ago) jesper.b.kjaer@gmail.com Moved Launcher settings' UI strings to settings\_strings.xml.
-| * | 725dc47 (6 days ago) tonaplo@msn.com attached AppsFragmentInterface on AppContainerFragment instead and moved the methods in GirafFragment and AndroidFragment into AppContainerFragment instead, since t
-hey where they same anyways.
-| * | 4edd44a (6 days ago) tonaplo@msn.com Moved onViewCreate in AndroidFragment and GirafFragment to AppContainerFragment, since they did the same anyways.
-* | | 6d91fd3 (6 days ago) tonaplo@msn.com commented AndroidAppsFragmentInterface and renamed it to AppsFragmentInterface, since both GirafFragment and AndroidFragment implements it. Also made AppContainerFr
-agment abstract, since it should always be inherited from and never implemented directly
-| * | | | e317dfa (6 days ago) thilemann@gmail.com Refactored listener to be a global variable set from a method called in onCreateView
-* | | | | 22dc042 (6 days ago) tonaplo@msn.com Refactored and commented the AndroidFragment class
-* | | | 5315298 (6 days ago) thilemann@gmail.com Fixed bug where starting a new activity would preserve the state of the selection in the ListView. Now dont set selected item, but instead notify the adapter
-that something has changed. This forces the adapter to redraw its views, and since it is not setting a new selected item, it will draw views in the state prior to starting the activity.
-* | | 132ce88 (7 days ago) thilemann@gmail.com Refactored SettingsUtility to exclude methods already available in LauncherUtility. Also added documentation.
-* | | 374cc7b (7 days ago) thilemann@gmail.com When adding native android settings to the list, the name is now taken from a string ressource
-| * 6a3fe58 (13 days ago) tonaplo@msn.com refactored LauncherUtility so it was more apparent what method to use to call different applications.
-* 5cb9846 (12 days ago) thilemann@gmail.com Refactored settings app so SettingsActivity does not know about the adapter nor the listview. The activity now implements the getInstalledGirafApps interface metho
-d to return a list containing only valid giraf apps. The listview and adapter is now handled in SettingsListFragment instead. This makes more sense since onCreateView in SettingsListFragment is called before
- onCreate in SettingsActivity.
- | | * d21701c (8 days ago) jesper.b.kjaer@gmail.com Removed uneeded members of AppInfo. Refactored the functions for updating the AppInfo hash map.
- | * | a356d54 (8 days ago) thilemann@gmail.com Changed constructor of SettingsListAdapter to take a ListView as input and added full documentation to SettingsListAdapter.
- * | | 28b33a2 (9 days ago) jesper.b.kjaer@gmail.com Changed some method responsibilities, renamed methods and constants, and added documentation.
- * | 5c590d8 (9 days ago) sthile11@student.aau.dk Completely refactored SettingsListAdapter by implementing the ViewHolder design pattern to minimize calls to findViewById. This also made it possible to replace the methods responsible for setting visibility for each shadow view by a single method just setting the visibility.
- * | 12989ff (9 days ago) thilemann@gmail.com Refactored SettingsActivity so the SettingsListFragment now is responsible for getting the logged in user and then updating this through a interface callback to t
- he activity.
- * | 056508e (9 days ago) thilemann@gmail.com Renamed and added icons for android settings and applications in Settings part of launcher
- * | d66b6a5 (9 days ago) jesper.b.kjaer@gmail.com Removed unused classes: ProfileLauncher and ProfileSelectActivity.
- | | * | | f18363f (8 days ago) jesper.b.kjaer@gmail.com Moved AppInfo hashmap to LauncherUtilities. Fixed check for no available apps.
+\subsubsection{General Refactoring}
+
+\subsubsection{ViewHolder Design Pattern}
+5c590d8 (9 days ago) sthile11@student.aau.dk Completely refactored SettingsListAdapter by implementing the ViewHolder design pattern to minimize calls to findViewById. This also made it possible to replace the methods responsible for setting visibility for each shadow view by a single method just setting the visibility.
  
- \subsubsection{Splitting up LauncherUtility}
- * | 3f60829 (8 days ago) tonaplo@msn.com Refactored the last part of LauncherUtility and commented some of the remaining functions.
- * | 971f45f (8 days ago) tonaplo@msn.com Refactored GirafFragment to work like Android Fragment and removed some redundant calls to udateAppInfoHashMap
- * | ae5936e (8 days ago) tonaplo@msn.com Removed all functions related to getting or checking applications to a new class called ApplicationControlUtility. Also removed two redundant functions.
- Before refactoring, \lstinline!LauncherUtility! was  a 1200 lines long class with static methods for many different purposes.
- By dividing the class into smaller classes, each with a certain purpose, the maintainability of the program will hopefully be increased and future developers will have an easier time understanding the code.
- Furthermore, many of the existing functions were either simplified or removed due to lack of use or redundancy
+\subsubsection{Splitting up LauncherUtility}
+* | 3f60829 (8 days ago) tonaplo@msn.com Refactored the last part of LauncherUtility and commented some of the remaining functions.
+* | 971f45f (8 days ago) tonaplo@msn.com Refactored GirafFragment to work like Android Fragment and removed some redundant calls to udateAppInfoHashMap
+* | ae5936e (8 days ago) tonaplo@msn.com Removed all functions related to getting or checking applications to a new class called ApplicationControlUtility. Also removed two redundant functions.
+Before refactoring, \lstinline!LauncherUtility! was  a 1200 lines long class with static methods for many different purposes.
+By dividing the class into smaller classes, each with a certain purpose, the maintainability of the program will hopefully be increased and future developers will have an easier time understanding the code.
+Furthermore, many of the existing functions were either simplified or removed due to lack of use or redundancy
