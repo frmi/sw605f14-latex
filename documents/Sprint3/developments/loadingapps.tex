@@ -1,9 +1,15 @@
 \subsection{LauncherUtility and Loading Apps}\label{sect:sprint3:refactoring}
 In order to implement the \lstinline!SettingsActivity! much of the existing code needed to be refactored.
 This was especially due to the need of loading Android applications that are not part of the GIRAF framework \vagner{framework? Project?} into the Launcher. 
-\vagner{Once again, remember that this is Sprint 3 and should therefore only be the things included in sprint 3!}
+Most of the functions from \lstinline|HomeActivity| that dealt with populating a view with applications are moved to \lstinline|LauncherUtility|.\vagner{It feels like I have read or written this before, in a different part of the report...}
 
 \subsubsection{Refactoring of LauncherUtility}
+The methods that load applications into a given view are in \lstinline!HomeActivity!.
+In \lstinline!SettingsActivity! the pane where applications are added and removed from users also needs to load applications into a given view.
+Therefore, we refactor \lstinline!HomeActivity! and move the relevant functions into \lstinline!LauncherUtility!.
+Then both activities can call the same method and code redundancy is reduced. 
+
+ ed2d9a5 (3 weeks ago) fmikke11@student.aau.dk changed views to imageViews. Apps are now shown as Bitmaps
 * | | 01e1fae (13 days ago) thilemann@gmail.com Refactored how items are added to the list of applications. They are now added through either addApplicationByName or addApplicationByPackageName. addApplicati
 onByPackageName is always preferred over the other, since it application name and icon are added dynamically by the packagename supplied. addApplicationByName is used when adding settings not part of a packa
 ge, such as the one added for Android.\\
