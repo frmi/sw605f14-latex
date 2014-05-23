@@ -85,17 +85,13 @@ Each file name is made, unique to each user, by incorporating the users ID as pa
 More about saving settings in Android can be found in \cref{para:sprint4:managingsettingsandroid}.
 The code can be seen in \cref{lst:addingandroidapplications}\\
 
-\begin{lstlisting}[caption={The methods used for adding or removing a Giraf application to a user}, label={lst:addingandroidapplications}]
+\begin{lstlisting}[caption={The methods used for adding or removing a Giraf application to a user. Please note that the documentation has been removed.}, label={lst:addingandroidapplications}]
 String activityName = app.getActivity();
 
-if (selectedApps.contains(activityName)){
+if (selectedApps.contains(activityName))
     selectedApps.remove(activityName);
-    Log.d(Constants.ERROR_TAG, "Removed '" + activityName + "' to list: " + selectedApps.size());
-}
-else{
+else
     selectedApps.add(activityName);
-    Log.d(Constants.ERROR_TAG, "Added '" + activityName + "' to list: " + selectedApps.size());
-}
 \end{lstlisting}
 
 This also means that the two fragments must handle the selected applications different, when marking them the first time a fragment is loaded.
