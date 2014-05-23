@@ -1,4 +1,7 @@
 \subsection{SettingsActivity}
+The class \lstinline|SettingsActivity| is responsible for \textit{inflating} the settings layout.
+The layout inflated is seen in \cref{lst:settingsactivity:layout}.
+Its layout is fairly simple, since it is not responsible for rendering any contents.
 
 \begin{lstlisting}[caption={Excerpt of the layout defined for \lstinline|SettingsActivity|.}, label={lst:settingsactivity:layout}]
 <fragment
@@ -13,12 +16,55 @@
 </FrameLayout>
 \end{lstlisting}
 
+Instead it defines two containers.
+The first being the \lstinline|<fragment>| element, which is the Android way of defining a \textit{static} fragment that can not be changed after instantiation.
+As indicated by the \lstinline|class| attribute, it is inflating the \lstinline|SettingsListFragment|, which purpose is explained in \cref{sec:settingslistfragment}.
+The second container being a \lstinline|FrameLayout| that will contain the settings selected from \lstinline|SettingsListFragment|.
 
-\subsection{SettingsListFragment}
+Since Android disproves of inter-fragment communication, \lstinline|SettingsActivity| will have to stand between and respond to requests send from its active fragments.
+This is done by implementing the \lstinline|SettingsListFragment.SettingsListFragmentListener| interface to define methods for what the \lstinline|SettingsListFragment| wants to communicate, as seen in \cref{lst:settingslistfragment:interface}.
+Defining the methods of the interface, no coupling between the fragment and activity exist because the fragment does not know of the activity.
 
-\subsection{SettingsListItem}
+\begin{lstlisting}[caption={The interface implemented in \lstinline|SettingsActivity| defined in \lstinline|SettingsListFragment|.}, label={lst:settingslistfragment:interface}]
+public interface SettingsListFragmentListener {
+  public void setActiveFragment(Fragment fragment);
+  public void reloadActivity();
+  public ArrayList<SettingsListItem> getInstalledSettingsApps();
+  public void setCurrentUser(Profile profile);
+}
+\end{lstlisting}
+
+
+\subsection{SettingsListFragment}\label{sec:settingslistfragment}
+This is the static fragment defined in the \lstinline|SettingsActivity| layout (\cref{lst:settingsactivity:layout}).
+
+
+
+\subsubsection{SettingsListItem}
+\lstinline|SettingsListItem| is a simple class, which members are used to render the information shown in the \lstinline|ListView|.
+It is thus used as a placeholder for the fragments and intents that should be opened by clicking an list item.
+The members of this class are seen in \cref{lst:settingslistitem}.
+
+\begin{lstlisting}[caption={Members of the \lstinline|SettingsListItem| class.}, label={lst:settingslistitem}]
+String mPackageName;
+String mAppName;
+String mSummary;
+Drawable mAppIcon;
+Fragment mAppFragment;
+Intent mIntent;
+\end{lstlisting}
+
+By using constructor chaining, the class provides various public constructors that use one private constructor to set the values of its members.
+This is decided since the \lstinline|ListView| in \lstinline|SettingsListFragment| have to be able open both fragments and intents.
+Otherwise it will not be possible to open settings for other \giraf applications.
+Logic used in \lstinline|SettingsActivity| checks if either the fragment or intent member is \lstinline|null|, and starts a new activity accordingly, when an item is clicked.
+
+\subsubsection{Adding non-launcher Applications to Settings}
+
 
 \subsection{SettingsListAdapter}
+
+\subsection{Saving Settings}
 
 \subsection{Settings Specific to \launcher}
 
