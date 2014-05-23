@@ -5,3 +5,19 @@ The activation of the remote database synchronisation introduces a sequence of i
 Furthermore the group developing the web administration tool did tests on the data in the remote database, which also was the data every group was using for tests.
 The web administration tool group did test their QR code generator, this they did on the test user all groups were using.
 Since the remote database synchronisation had been activated the devices loaded data in which the QR code they had did not match the one in the database, and no one could log in to the system.
+
+
+
+
+Late in the fourth sprint, after the formal deadlines described in \cref{collab:sprintend:planning}, the group implementing the remote database declared that it was ready, and that we should attempt to set up synchronisation between the remote database and the local database on the devices. 
+While this undoubtedly would present new technical problems throughout the system, we chose to move forward for two reasons. First, it would allow us to distribute a huge number of pictograms in the remote database to the clients, making \giraf significantly more useful to them. Previously they had create all the needed pictograms locally in Pictotegner, the included graphics application. And second, the remote database group had put significant effort into making the database ready before the end of the semester, and we found it unfair to deny them the last step. 
+
+As described in \Cref{sec:developments:remotedb}, this concerned the \launcher group, as the local database service had been merged into \launcher, to ease distribution of the system.
+
+The expected problems did arise, the most major ones including:
+\begin{itemize}
+	\item The remote and local database schemas did not fully match. The main issue was that the remote database was implemented with MySQL, while the local database was implemented using SQLite, an Android standard. Differences in the two SQL implementations, gave rise to some problems. Other problems were related to the two schemas being developed by two different groups. While the groups communicated about changes continually through the project period, some last minute redesigns of the remote database schema, had not been added to the local database schema. identifying and fixing these problems were a collaborative effort between the \launcher group, the remote database group, and a few other developers present at the time. 
+	\item After making necessary changes in the local database to resolve the above-mentioned issues, a series of new problems arose in applications that saved information in the local database, as these save operations no longer conformed with the schema. Identifying and fixing these problems was mainly the responsibility of the affected groups, but members of the \launcher group moved around and helped, as \launcher did not require any significant effort at this point, and the final presentation to the costumers was scheduled for later that day. Furthermore, the \launcher group had some insight into the root problems, from working with the database issues the previous day.
+	\item \textit{Pictosearch} is an application meant to provide an interface for searching through the pictograms in the database. As it provides this central functionality, a number of other applications uses \textit{Pictosearch}, rather than providing their own search interface.
+\end{itemize}
+
