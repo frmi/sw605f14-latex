@@ -51,6 +51,7 @@ While Android provides facilities for inter-application communication through it
 This is not an acceptable condition in this situation. 
 \end{itemize}
  
+\subsubsection{A title saying that this is our decision}\thilemann{Fix title!}
 Instead of the to presented options above, another design is chosen.
 An Android feature called Intent Filters allows applications to request an action from another \textit{app component}; an activity, a broadcast receiver, a content provider or a service.
 It is implemented by adding \lstinline|<intent-filter>...</intent-filter>| to the Android Manifest with its actions (or intentions) defied within.\cite{intentFilter}
@@ -71,33 +72,20 @@ Analogous to opening a new window on a desktop computer, a ``screen'' on an Andr
 
 \thilemann{Write about this design us typically used in applications running on tablet devices, and find out a way to say why this is a smart way to do it :)}
 
-\paragraph{Settings List Fragment}
-
+\paragraph{Settings List Fragment} is handling selections of either a profile or which settings to show.
+\thilemann{Frederik: måske skriv lidt generelt her (ligesom ovenover) at det er smart mht. mindre enheder...}
 
 \begin{itemize}
-\item \textbf{Profile Selector} 
-\item \textbf{ListView}
+\item \textbf{Profile Selector} is what makes it possible to edit settings for multiple users.
+The prototype previously mentioned shows a profile selector resembling a drop-down menu.
+To follow the multi-project guidelines, a component developed by the group responsible for the GUI library will be implemented instead.
+When the selected profile changes, settings activity should be reloaded to reflect the newly selected user's settings.
+\item \textbf{ListView} is where the user clicks to be taken to the settings of the selected list item.
+This component is available in Android.
 \end{itemize}
 
-\paragraph{Settings Container Fragment}
-
-
-%\begin{itemize}
-%\item \textbf{Settings Activity} is the logical container for the layout of settings.
-%
-%
-%It is therefore also the entity used to communicate between the fragments.
-%
-%\item \textbf{Settings List Fragment} is responsible for selection, namely profiles and what settings to display for the selected user.
-%It will further contain the following components:
-%\begin{itemize}
-%\item \textbf{Profile Selector}
-%\item \textbf{ListView}
-%\end{itemize}
-%\item \textbf{Settings Container Fragment}\\
-%text
-%\end{itemize}
-
+\paragraph{Settings Container Fragment} is a placeholder for the settings to be displayed inside the activity.
+It will thus only contain settings pertaining to \launcher or other that are general for the multi-project.
 
 \begin{figure}[h]
 \centering
