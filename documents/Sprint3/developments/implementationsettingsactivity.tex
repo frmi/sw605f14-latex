@@ -1,11 +1,33 @@
-\subsection{Implementing Settings}
-\thilemann{Write clever introduction, present the purpose of settings}
+\subsection{Settings Architecture}
+In the sections that follow, the architecture for settings illustrated in \cref{fig:settingsarchitecture} is further elaborated regarding its actual implementation.
+The ``containers'' presented with dashed lines in the figure are explained together with the components they contain.
 
-\subsubsection{Structure}
-\thilemann{How the class is structured, both in xml, i views and in adapters}
+\subsection{SettingsActivity}
 
-\subsubsection{The ``GIRAF'' Pane}
+\begin{lstlisting}[caption={Excerpt of the layout defined for \lstinline|SettingsActivity|.}, label={lst:settingsactivity:layout}]
+<fragment
+  android:id="@+id/settingsListFragment"
+  android:layout_weight="2"
+  class="dk.aau.cs.giraf.launcher.settings.SettingsListFragment"
+</fragment>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:id="@+id/settingsContainer"
+  android:layout_weight="6">
+</FrameLayout>
+\end{lstlisting}
+
+
+\subsection{SettingsListFragment}
+
+\subsection{SettingsListItem}
+
+\subsection{SettingsListAdapter}
+
+\subsection{Settings Specific to \launcher}
+
+\subsubsection{Launcher Settings}
 \input{documents/Sprint3/developments/girafpane}
 
-\subsubsection{The ``Apps'' Pane}
+\subsubsection{Application Settings}
 \input{documents/Sprint3/developments/appsfragment}
