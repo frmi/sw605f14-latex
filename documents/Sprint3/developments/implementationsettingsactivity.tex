@@ -38,7 +38,7 @@ This is the static fragment defined in the \lstinline|SettingsActivity| layout (
 \thilemann[inline]{Frederik, can we add something according to what you wrote back in design about fragments and lists?}
 The main tasks of \lstinline|SettingsListFragment| is to update \lstinline|SettingsActivity| using the interface callback member \lstinline|private SettingsListFragmentListener mCallback|.
 This is done in the appropriate listeners for the \textit{Profile Selector} and \textit{ListView} as illustrated in \cref{lst:settingsactivity:layout}.
-In the implementation these components corresponds to a \lstinline|GProfileSelector| and a standard Android \lstinline|ListView| respectively.
+In the implementation, these components corresponds to a \lstinline|GProfileSelector| and a standard Android \lstinline|ListView| respectively.
 
 To ensure that the context of the underlying activity implements the interface just described, the code in \cref{lst:settingslistfragment:onattach} is utilized in \lstinline|SettingsListFragment|.
 
@@ -74,17 +74,17 @@ Intent mIntent;
 \end{lstlisting}
 
 By using constructor chaining, the class provides various public constructors that use one private constructor to set the values of its members.
-This is decided since the \lstinline|ListView| in \lstinline|SettingsListFragment| have to be able open both fragments and intents.
+This is decided since the \lstinline|ListView| in \lstinline|SettingsListFragment| have to be able to open both fragments and intents.
 Otherwise it will not be possible to open settings for other \giraf applications.
 Logic used in \lstinline|SettingsActivity| checks if either the fragment or intent member is \lstinline|null|, and starts a new activity accordingly, when an item is clicked.
 
 \subsection{SettingsListAdapter}\label{sec:settingslistadapter}
 Considering the prototypes seen in \cref{fig:settingsprototype,fig:appsmanagement} it is apparent that a specially designed view (also referred to as an \lstinline|AdapterView|) for each list item is required.
 In Android, the easiest way of doing so, is by implementing an \lstinline|Adapter| for the \lstinline|ListView|.
-An adapter serves the objective of bridging the underlying data for a view and to render it appropriately.
+An adapter serves the objective of bridging the underlying data for a view, and to render it appropriately.
 Various adapters exist for different purposes; it is fx possible to implement an extension of \lstinline|Adapter| called \lstinline|ListAdapter|, which serves the purpose of easily adding items to a \lstinline|ListView|.
 Implementing an adapter also has performance related benefits.
-Most importantly being the concept of \textit{recycling} a view, which makes it possible to handle large lists efficiently.
+Most importantly being the concept of \textit{recycling} a view, which makes it possible to handle large lists efficiently.\thilemann{Maybe add ref?}
 
 In the case of yielding a visual result as close as possible to the prototypes, our implementation requires a custom class extending the \lstinline|BaseAdapter| class.
 The specific reason being the list requiring both a title and an icon, but also specifically because of the shadows rendered around a selected item in the list.
@@ -136,7 +136,7 @@ public View getView(int position, View convertView, ViewGroup parent) {
 In the \lstinline|getView()| method the most important parameters are \lstinline|position| and \lstinline|convertView|.
 \lstinline|position| being the index of the item in the \lstinline|ListView| that is currently being inflated.
 \lstinline|convertView| is the view obtained from the \lstinline|ListView|.
-As seen in the example this view is only inflated if it is not \lstinline|null|, which is one of the optimizations of using an adapter.
+As seen in the example, this view is only inflated if it is not \lstinline|null|, which is one of the optimizations of using an adapter.
 \thilemann[inline]{Check what this has to do with recycling}
 
 To be able to add data to each \lstinline|View| contained in a \lstinline|convertView|, the item related to the position is obtained, where a \lstinline|View| fx is the \lstinline|ImageView| showing the application icon.
@@ -159,15 +159,15 @@ This implementation is not considered the ``most optimal'', since it brings some
 The naming is also not considered optimal, since it can be confusing which shadow is currently being set as visible.
 The reason for doing this is that we need a reference for a specific view depending on the shadow needed to show.
 
-\lstinline|mLastSelectedItem| is a global member in \lstinline|SettingsListAdapter| made available through a public method called \lstinline|setSelected(int position)|.
-This is called from an item click listener implemented by the underlying \lstinline|ListView|.
+\lstinline|mLastSelectedItem| is a global member in \lstinline|SettingsListAdapter|, made available through a public method called \lstinline|setSelected(int position)|.
+This is called from an item click listener, implemented by the underlying \lstinline|ListView|.
 
 \thilemann[inline]{Should we say comments are omitted in all code examples, or that this was done late during spring 4 to support the next group?}
 
 \subsection{Adding Applications or Intents to Settings}
 The interface implemented by \lstinline|SettingsActivity| forces it to implement a method called \lstinline|getInstalledSettingsApps()| that has to return a list of either \launcher settings, intents available from other \giraf applications or other intents related to Android applications.
 \lstinline|getInstalledSettingsApps()| in \lstinline|SettingsActivity| returns an \lstinline|ArrayList<SettingsListItem>| by utilizing a range of methods that all adds an item to the list, whether it be a fragment or intent.
-This means that each \giraf application that wants to be available through the settings activity in \launcher has to be added from the implementation of \lstinline|getInstalledSettingsApps()|.
+This means that each \giraf application that wants to be available through the settings activity in \launcher, has to be added from the implementation of \lstinline|getInstalledSettingsApps()|.
 
 To enable another \giraf application to be shown in settings, it \textit{has} to provide the following intent filter declared for the activity containing its settings, as illustrated in \cref{lst:intentfilterxml}.
 
@@ -178,7 +178,7 @@ To enable another \giraf application to be shown in settings, it \textit{has} to
 </intent-filter>
 \end{lstlisting}
 
-Important to notice is that the name of the provided action within the intent filter is that the \lstinline|SETTINGSACTIVITY| key is appended to the \textit{complete} package name of the application.
+Important to notice is that the name of the provided action within the intent filter, is a key having the value \lstinline|SETTINGSACTIVITY|, which is appended to the \textit{complete} package name of the application to show settings for.
 
 \subsection{Saving Settings}
 \thilemann{Extract the appropriate parts from the contents below and put it here.}
