@@ -67,9 +67,9 @@ This was solved by initializing the shared variable \lstinline!apps! differently
 Since the automatic load methods mentioned above work on the \lstinline!apps! variable, this solution solved the problem. \\
 
 However, one problem has to be directly inside the two derived classes, namely marking the applications as selected and adding them to the users list of selected applications.
-This is due to the fact that \giraf applications are saved as the \textbf{OasisLib}\vagner{bold eller lstinline her?} type \lstinline!Application!, while Android applications are saved as the type \lstinline!ResolveInfo!.
+This is due to the fact that \giraf applications are saved as the \textit{OasisLib} type \lstinline!Application!, while Android applications are saved as the type \lstinline!ResolveInfo!.
 
-The \giraf applications connected to a user are saved or removed through a call to an \textbf{OasisLib} method, as can be seen in \cref{lst:addinggirafapplications}.
+The \giraf applications connected to a user are saved or removed through a call to an \textit{OasisLib} method, as can be seen in \cref{lst:addinggirafapplications}.
 
 \begin{lstlisting}[caption={The methods used for adding or removing a Giraf application to a user}, label={lst:addinggirafapplications}]
 ProfileApplicationController pac = new ProfileApplicationController(context);
@@ -85,7 +85,7 @@ Each file name is made, unique to each user, by incorporating the users ID as pa
 More about saving settings in Android can be found in \cref{para:sprint4:managingsettingsandroid}.
 The code can be seen in \cref{lst:addingandroidapplications}\\
 
-\begin{lstlisting}[caption={The methods used for adding or removing a Giraf application to a user. Please note that the documentation has been removed.}, label={lst:addingandroidapplications}]
+\begin{lstlisting}[caption={The methods used for adding or removing a GIRAF application to a user. Please note that the documentation has been removed.}, label={lst:addingandroidapplications}]
 String activityName = app.getActivity();
 
 if (selectedApps.contains(activityName))
