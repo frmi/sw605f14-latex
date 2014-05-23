@@ -10,8 +10,8 @@ However, \lstinline|loadApplications()| needed to be changed further, to accommo
 Furthermore, the code was in several case supplemented with additional functionality.
 
 \subsubsection{Observing New Applications}\label{sec:sprint3:observing}
-To increase usability when installing or removing applications on the device, we created an observer which has the responsible to keep an eye on current installed applications and compare these with those which are shown at that moment. If there for example are new applications on the device, which are not on the list of currently loaded applications they are reloaded.
+To increase usability when installing or removing applications on the device, we create an observer which has the responsible to keep an eye on currently installed applications and compare these with those which are shown at that moment. If there for example are new applications on the device, which are not on the list of currently loaded applications they are reloaded, by calling the \lstinline|loadApplications()| method described above.
 
-This functionality is implemented creating a custom timer task by extending the Java class \lstinline!TimerTask! and then scheduling this custom task to run at a fixed rate. The rate at which we check for new applications is every fifth second, this was the amount of time we found acceptable.
+This functionality is implemented creating a custom timer task by extending the Java class \lstinline!TimerTask! and scheduling this custom task to run at a fixed rate. The rate at which we check for new applications is every fifth second, this was the amount of time we found acceptable.
 
-Every fifth second our custom task is retrieving a list of installed applications on the device and is comparing this list with the current loaded applications. If the two lists differ the applications are reloaded.
+For every execution of the custom task a list of installed applications is retried and and compared with a list of currently loaded applications. If the two lists differ the applications are reloaded and the list of currently loaded applications is updated.
