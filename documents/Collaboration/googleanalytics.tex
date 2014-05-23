@@ -10,25 +10,9 @@ Google Analytics is relatively easy to set up, having the following requirements
 \item The device must be connected to the Internet.
 \item The Google Analytics SDK must be included in compilation of the application.
 \item An XML file with Google Analytics settings for the specific application must be created and included with the application.
-\item Each activity must have methods for starting and stopping recording of usage statistics. These two methods are implemented in the \lstinline{onCreate()} and \lstinline{onStop()} methods of each activity. An example is shown in \Cref{lst:googleanalystics}.
+\item Each activity must have methods for starting and stopping recording of usage statistics. These two methods are implemented in the \lstinline{onCreate()} and \lstinline{onStop()} methods of each activity.
 \end{itemize}
 The XML file should include information such as the \textit{tracking ID}, which allows Google's servers to identify which project the information is related to.
-
-\begin{lstlisting}[caption={The code that needs to be added to \lstinline{OnCreate()} and \lstinline{OnStop()} methods.}, label={lst:googleanalystics}]
-  @Override
-  public void onStart() {
-    super.onStart();
-    ... // The rest of the onStart() code.
-    EasyTracker.getInstance(this).activityStart(this);  // Add this method.
-  }
-
-  @Override
-  public void onStop() {
-    super.onStop();
-    ... // The rest of the onStop() code.
-    EasyTracker.getInstance(this).activityStop(this);  // Add this method.
-  }
-\end{lstlisting}
 
 \subsection{Settings for Data Sharing}
 When setting up the account at Google Analytics, one is asked to decide whether or not to share the collected analysis data from your applications with other applications.
