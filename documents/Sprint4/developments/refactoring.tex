@@ -9,7 +9,7 @@ Furthermore, many of the existing functions are either simplified or removed due
 \begin{itemize}
 \item \lstinline|LauncherUtility| remains as a class.
 It now hosts many of the minor functions, that do not warrant their own class, but is used in a variety of classes.
-Examples are methods getting helper functions from \textit{OasisLib} and  information about the current user and handling debug mode and session expiration methods.
+Examples are methods getting helper functions from \textit{OasisLib} and  information about the current user and handling debug mode (described in \cref{appendix:debugmode}) and session expiration methods.
 \item \lstinline|ApplicationControlUtility| is created.
 This class contains methods that are used to either return different lists of applications or check if a certain list live up to a given criteria.
 These methods are used when sorting which applications should be shown or marked in \lstinline|SettingsActivity| or \lstinline|HomeActivity|.
