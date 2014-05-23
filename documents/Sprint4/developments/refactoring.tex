@@ -15,8 +15,7 @@ This class contains methods that are used to either return different lists of ap
 These methods are used when sorting which applications should be shown or marked in \lstinline|SettingsActivity| or \lstinline|HomeActivity|.
 \item \lstinline|AppViewCreationUtility| is created as well.
 This class is used for creation of views that contain an application.
-The views are of the class \lstinline|AppImageView| - a custom class which extends the \lstinline|ImageView| class.
-More informations can be read in \cref{}\vagner{I believe we describe the AppImageViews somewhere else in the report?}
+The views are of the class \lstinline|AppImageView| - a custom class which extends the \lstinline|ImageView| class. This custom class has the functionality which is used in the settings activity when selection applications. This class has state field, which describes if the application is selected or not. It also implements functionality to toggle this state, between selected or not selected, changing the background of the view to indicate that it has been marked.
 \end{itemize}
 
-The two new classes have their own specific purposes, while \lstinline|LauncherUtility| handles a collection of smaller purposes.\vagner{Skulle vi skrive noget om at dette kunne være en ide at refactorere koden til at være mere objektorienteret og således undgå de to nye klasser?}
+The two new classes have their own specific purposes, while \lstinline|LauncherUtility| handles a collection of smaller purposes.\frederik{Skriv i diskussionen hvordan disse utility klasser kan formindskes, vha. f.eks. ved brug af et app layout.}
