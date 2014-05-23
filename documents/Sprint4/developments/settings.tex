@@ -1,10 +1,13 @@
-\subsection{Finishing up the ''Apps'' Pane}
+\subsection{Finishing up the ``Apps'' Pane}
 
 The \textbf{Apps} pane is improved in a number of ways:
 \begin{itemize}
 \item Choosing a new profile loads the settings of the chosen user.
-This was done by finishing this instances \lstinline|'SettingsActivity| and then starting up a new instance of it with the new user as \lstinline|currentUser|.
-\item When having loaded applications in \lstinline|GirafFragment| and \lstinline|AndroidFragment| once, selecting the panes subsequently does not cause the fragment to reload applications. This is a hugh optimization.\frederik{Vagner siger at dette er Frederiks afsnit, da han har lavet koden og ved hvad den gør}
+This was done by finishing this instances \lstinline|SettingsActivity| and then starting up a new instance of it with the new user as \lstinline|currentUser|.
+\item When having loaded applications in \lstinline|GirafFragment| and \lstinline|AndroidFragment| once, selecting the panes subsequently does not cause the fragment to reload applications. This is a huge optimization.
+
+In order to achieve this behaviour of the fragments we take advantage of the fragment life cycle in Android. This means that when a fragment is left Android marks the fragment as paused, and if it has not been used for some time Android will run its garbage collector and destroy the fragment. But if you return to the fragment before it is destroyed the views are still visible. Therefore we simply check if the layout in which the applications are contained is already instantiated, if this is the case we use the existing else we instantiate it over again.
+
 \end{itemize}
 
 \subsubsection{ViewHolder Design Pattern}
