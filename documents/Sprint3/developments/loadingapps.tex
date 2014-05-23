@@ -4,7 +4,7 @@ Furthermore, the code was in several case supplemented with additional functiona
 
 \subsubsection{Refactoring of HomeActivity}
 The methods that load applications into a given view are in \lstinline!HomeActivity!.
-In \lstinline!SettingsActivity!, the ''Apps'' pane also needs to load applications into a given view.
+In \lstinline!SettingsActivity!, the ``Apps'' pane also needs to load applications into a given view.
 Therefore, we refactor \lstinline!HomeActivity! and move the relevant methods, most prominently the \lstinline|loadApplications()| method, into \lstinline!LauncherUtility!.
 Then both activities can call the same method and code redundancy is reduced. 
 However, \lstinline|loadApplications()| needed to be changed further, to accommodate loading Android applications that are not part of the GIRAF framework \vagner{framework? Project?} into \launcher. 
