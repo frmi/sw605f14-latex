@@ -31,12 +31,11 @@ It is decided that the settings system should consist of four components, to be 
 
 \thilemann{Last item regarding remotedb - add somewhere that this is currently only done locally per device.}
 
-\paragraph{Methods for Implementing Settings}
-The big challenge of implementing the above concept is how to allow applications other than \launcher to access the settings User Interface running in the context of \launcher as an activity.
+\paragraph{The challenge with Implementing Settings} using the above concepts is how to allow applications other than \launcher to access the settings User Interface running in the context of \launcher as an activity.
 
 \begin{itemize}
 \item 
-The first option is to ask each multi-project group to create a \lstinline|Fragment|, which the settings activity in \launcher should be able to open.
+The first option is to ask each project group to create a \lstinline|Fragment|, which the settings activity in \launcher should be able to open.
 This approach will isolate the responsibilities of each group and keep the overall complexity to a minimum.\thilemann{Why? Where to put the files and what about git? Project dependencies?}
 Although there is an official way for loading a custom class\cite{customClassLoading}, it is complex and it will make the coupling of \launcher and other applications very tight.\thilemann{Does class loading even solve this???}
 Additionally it is difficult to make the loading of custom classes dynamic, since the name of the class to be loaded has to be known.
@@ -62,6 +61,37 @@ With this design it is not possible to load settings from other applications as 
 However, this simplifies the complexity about saving the settings.
 If we were to load their settings as a fragment we were loading the settings in context of our application. 
 Meaning that we save the settings again in our context and we have to figure out a solution for them to load the settings from our context.
+
+\subsubsection{Designing from Prototypes}
+Having investigated how to handle settings from other \giraf applications in \cref{sec:sprint3:designsettings}, this sections elaborates on how this is designed following Android terminology.
+
+
+
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth, keepaspectratio=true] {SettingsActivity.pdf}
+\caption{The architecture showing how the prototype (\cref{fig:settingsprototype}) will be implemented.}
+\label{fig:settingsarchitecture}
+\end{figure}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
