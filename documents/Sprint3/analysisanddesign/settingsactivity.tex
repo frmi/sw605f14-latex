@@ -58,9 +58,10 @@ It is implemented by adding \lstinline|<intent-filter>...</intent-filter>| to th
 With this method it is possible to check each installed application to see if it implements a certain action (which will be the same for each \giraf application implementing the Intent Filter).
 If an application implements this filter, it can be assumed that it provides an activity for showing settings, which in turn can be added safely to the list in the settings activity of \launcher.
 
-\thilemann[inline]{Below is NOT true!}
-\textbf{With this design it is possible to load settings from other applications as fragments in our application, we will have to start the application and their settings activity. However, this only simplifies the complexity about saving the settings, since if we load their settings as a fragment we load it in context of our application. 
-We would then have to save it again in their context or we would have to figure out a solution for them to load the settings from our context.}
+With this design it is not possible to load settings from other applications as fragments in our application. Instead we start thier application and their settings.
+However, this simplifies the complexity about saving the settings.
+If we were to load their settings as a fragment we were loading the settings in context of our application. 
+Meaning that we save the settings again in our context and we have to figure out a solution for them to load the settings from our context.
 
 
 
