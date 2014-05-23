@@ -34,7 +34,7 @@ The custom view is further described in \cref{sec:siebarlayout:java}.
 Notice the \lstinline|ScrollView| on the last line in \Cref{lst:sidebarlayout}.
 The before mentioned \lstinline{android:layout_toRightOf} attribute have been removed, to keep it from being pushed out of the screen.
 The negative margin of 400dp defined on line 1 effectively hides the \lstinline|SideBarLayout| when the home activity is just started, revealing only the \lstinline|HomeBar|.
-Since the \lstinline|HomeBar| is placed next to the \lstinline|GridView| (in the layout file) with the id of \textit{appcolors} and this view has the same width as the negative margin defined on \lstinline|SideBarLayout|, it is the only visible element; giving the impression of a closed drawer.
+Since the \lstinline|HomeBar| is placed next to the \lstinline|GridView| (in the layout file) with the id of \lstinline!appcolors! and this view has the same width as the negative margin defined on \lstinline|SideBarLayout|, it is the only visible element; giving the impression of a closed drawer.
 
 \subsubsection{Extending an Android View Class}\label{sec:siebarlayout:java}
 In \cref{lst:sidebarlayout}, the \lstinline|dk.aau.cs.giraf.launcher.layoutcontroller.SideBarLayout| is a reference to the implementation of this class as seen in \cref{lst:sidebarlayout:java}.
