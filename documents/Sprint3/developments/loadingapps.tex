@@ -1,14 +1,14 @@
-\subsection{LauncherUtility and Loading Apps}\label{sect:sprint3:refactoring}
+\subsection{Loading Apps}\label{sect:sprint3:refactoring}
 In order to implement the \lstinline!SettingsActivity! much of the existing code needed to be refactored.
-Furthermore, the code was in several case supplemented with additional functionality.
 
-\subsubsection{Refactoring of HomeActivity}
 The methods that load applications into a given view are in \lstinline!HomeActivity!.
-In \lstinline!SettingsActivity!, the ''Apps'' pane also needs to load applications into a given view.
+In \lstinline!SettingsActivity!, the ``Apps'' pane also needs to load applications into a given view.
 Therefore, we refactor \lstinline!HomeActivity! and move the relevant methods, most prominently the \lstinline|loadApplications()| method, into \lstinline!LauncherUtility!.
 Then both activities can call the same method and code redundancy is reduced. 
 However, \lstinline|loadApplications()| needed to be changed further, to accommodate loading Android applications that are not part of the GIRAF framework \vagner{framework? Project?} into \launcher. 
-More specifically, the method was overloaded and then converted different type of lists of applications into the \giraf type \lstinline|List<AppInfo>|.
+More specifically, the method was overloaded and then converted different type of lists of applications into the \giraf type \lstinline|List<AppInfo>|.\\
+
+Furthermore, the code was in several case supplemented with additional functionality.
 
 \subsubsection{Observing New Applications}\label{sec:sprint3:observing}
 To increase usability when installing or removing applications on the device, we created an observer which has the responsible to keep an eye on current installed apps and compare these with those which are shown at that moment. If there for example are new applications on the device, which are not on the list of currently loaded apps they are reloaded.
