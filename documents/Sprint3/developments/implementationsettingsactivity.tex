@@ -1,7 +1,7 @@
 \subsection{SettingsActivity}
-The class \lstinline|SettingsActivity| is responsible for \textit{inflating} the settings layout.
-The layout inflated is seen in \cref{lst:settingsactivity:layout}.
-Its layout is fairly simple, since it is not responsible for rendering any contents.
+The overall purpose of \lstinline|SettingsActivity| is illustrated in \cref{fig:settingsarchitecture}.
+As seen in the figure it contains various components.
+This makes its main responsibility responding to updates in these components, and inflating their layouts, as seen in \cref{lst:settingsactivity:layout}.
 
 \begin{lstlisting}[caption={Excerpt of the layout defined for \lstinline|SettingsActivity|.}, label={lst:settingsactivity:layout}]
 <fragment
@@ -16,6 +16,7 @@ Its layout is fairly simple, since it is not responsible for rendering any conte
 </FrameLayout>
 \end{lstlisting}
 
+The layout is fairly simple, since it is not responsible for rendering any dynamic contents other than displaying what to be contained within the \lstinline|FrameLayout|.
 Instead it defines two containers.
 The first being the \lstinline|<fragment>| element, which is the Android way of defining a \textit{static} fragment that can not be changed after instantiation.
 As indicated by the \lstinline|class| attribute, it is inflating the \lstinline|SettingsListFragment|, which purpose is explained in \cref{sec:settingslistfragment}.
