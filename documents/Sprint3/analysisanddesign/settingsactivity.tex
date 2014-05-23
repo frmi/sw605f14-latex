@@ -63,16 +63,40 @@ If we were to load their settings as a fragment we were loading the settings in 
 Meaning that we save the settings again in our context and we have to figure out a solution for them to load the settings from our context.
 
 \subsubsection{Designing from Prototypes}
-Having investigated how to handle settings from other \giraf applications in \cref{sec:sprint3:designsettings}, this sections elaborates on how this is designed following Android terminology.
+Having investigated how to handle settings from other \giraf applications in \cref{sec:sprint3:designsettings}, this sections elaborates on how this is designed following Android terminology taking \cref{fig:settingsprototype} as the underlying basis of the design decisions.
 
-\Cref{fig:settingsarchitecture} presents the visual design and the components it will consist of, which is further explained in the list below:
+\paragraph{Settings Activity}
+Analogous to opening a new window on a desktop computer, a ``screen'' on an Android device consists of an activity.
+\Cref{fig:settingsprototype} can be compared directly to \cref{fig:settingsarchitecture}, to expand on the User Interface components that need be included.
+
+\thilemann{Write about this design us typically used in applications running on tablet devices, and find out a way to say why this is a smart way to do it :)}
+
+\paragraph{Settings List Fragment}
+
 
 \begin{itemize}
-\item \textbf{Settings Activity} is the logical container for the layout of settings.
-\item \textbf{Settings List Fragment} is responsible for selection, namely profiles and what settings to display for the 
-\item \textbf{Settings Container Fragment}\\
-text
+\item \textbf{Profile Selector} 
+\item \textbf{ListView}
 \end{itemize}
+
+\paragraph{Settings Container Fragment}
+
+
+%\begin{itemize}
+%\item \textbf{Settings Activity} is the logical container for the layout of settings.
+%
+%
+%It is therefore also the entity used to communicate between the fragments.
+%
+%\item \textbf{Settings List Fragment} is responsible for selection, namely profiles and what settings to display for the selected user.
+%It will further contain the following components:
+%\begin{itemize}
+%\item \textbf{Profile Selector}
+%\item \textbf{ListView}
+%\end{itemize}
+%\item \textbf{Settings Container Fragment}\\
+%text
+%\end{itemize}
 
 
 \begin{figure}[h]
