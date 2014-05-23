@@ -72,13 +72,13 @@ Central to most of the Android applications is \textit{OasisLib}, which provides
 \section{GIRAF Architecture}
 \label{sec:giraf:architecture}
 % Sådan er multiprojektet bygget op.
-The \giraf system is illustrated in \Cref{fig:girafLayers} and as illustrated in consists of several layers. From the top we have applications such as those described in \Cref{sec:giraf:applications:frontend} which communicate with a local database on the device through the library OasisLib which is a part of the \giraf backend.
+The \giraf system is illustrated in \Cref{fig:girafLayers} and as illustrated in consists of several layers. From the top we have applications such as those described in \Cref{sec:giraf:applications:frontend} which communicate with a local database on the device through the library \textit{OasisLib} which is a part of the \giraf backend.
 
 The local database is responsible for communicating with the remote database to synchronize local or remote changes in the system.
 
-To ensure that the layout in all applications has the same look and feel the library GIRAF Components has been introduced.
+To ensure that the layout in all applications has the same look and feel the library \textit{GIRAF Components} has been introduced.
 This library consists of multiple graphical components and provide common services to applications.
-A common service which applications needs is when a guardian has to choose which citizen settings or an application should be loaded for. Then GIRAF Components provides a component to show a list of citizens which the guardian can choose from. By providing this component, the process of choosing a citizen will be the same in all applications in the \giraf system.
+A common service which applications needs is when a guardian has to choose which citizen settings or an application should be loaded for. Then \textit{GIRAF Components} provides a component to show a list of citizens which the guardian can choose from. By providing this component, the process of choosing a citizen will be the same in all applications in the \giraf system.
 
 \insertfigure{width=0.8\textwidth}{girafLayers}{Illustration of the layers and dependencies in the \giraf application suite.}{fig:girafLayers}
 
