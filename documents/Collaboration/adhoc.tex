@@ -1,3 +1,23 @@
-* f62e0fe (4 weeks ago) jesper.b.kjaer@gmail.com Fixed problem, where camera preview did not work on tablets with only front camera.\\
-* 787279c (4 weeks ago) fmikke11@student.aau.dk Change type long to type int for appId. (This is OasisLib having made a change in their API again)\\
-| * f1e271e (3 weeks ago) fmikke11@student.aau.dk changed childID from long to int\\
+In this project a lot ad hoc collaboration was established.
+This form of collaboration refers to the \Cref{}. % Section i multiproject afsnit om gruppe til gruppe og sådan noget.
+
+The ad hoc collaboration was established since \launcher depends on libraries from other groups and other groups depend on \launcher, this obviously caused a lot of unfortunate errors in both launcher and other applications.
+In this section the most interesting ad hoc hot fixes are described.
+
+One of the most interesting and reoccurring causes of errors which cascaded through the \giraf project was corrections or additions to the OasisLib project.
+This caused cascading errors through the project, either if the changes we valid or invalid.
+The reasons for this is that all applications uses this library and the groups had no plan of when to update their version of OasisLib.
+This meant that the groups updated these dependencies independently of each other causing errors since either the other groups still had not updated their dependencies or we had not updated ours.
+
+An example of a change cascading through the project caused by OasisLib is a change where the type of an application id was changed from a long to an integer.
+When we updated our OasisLib we did not notice this change as we read the integer value into a variable of type long.
+But it created errors in the other applications since we were passing this value through to the other applications, who had noticed the change and then got a \lstinline!ClassCastException! since they could not cast a long to an integer without loosing precision.
+We were notified when multiple groups suddenly was knocking our door.
+
+
+
+
+
+% * f62e0fe (4 weeks ago) jesper.b.kjaer@gmail.com Fixed problem, where camera preview did not work on tablets with only front camera.\\
+% * 787279c (4 weeks ago) fmikke11@student.aau.dk Change type long to type int for appId. (This is OasisLib having made a change in their API again)\\
+%| * f1e271e (3 weeks ago) fmikke11@student.aau.dk changed childID from long to int\\
