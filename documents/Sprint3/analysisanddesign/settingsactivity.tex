@@ -58,41 +58,41 @@ It is implemented by adding \lstinline|<intent-filter>...</intent-filter>| to th
 With this method it is possible to check each installed application to see if it implements a certain action (which will be the same for each \giraf application implementing the Intent Filter).
 If an application implements this filter, it can be assumed that it provides an activity for showing settings, which in turn can be added safely to the list in the settings activity of \launcher.
 
-With this design it is not possible to load settings from other applications as fragments in our application. Instead we start thier application and their settings.
+With this design it is not possible to load settings from other applications as fragments in our application. Instead we start their application and their settings.
 However, this simplifies the complexity about saving the settings.
 If we were to load their settings as a fragment we were loading the settings in context of our application. 
 Meaning that we save the settings again in our context and we have to figure out a solution for them to load the settings from our context.
 
 \subsubsection{Designing from Prototypes}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth, keepaspectratio=true] {SettingsActivity.pdf}
+\caption{The architecture showing how the prototype, \cref{fig:settingsprototype}, will be implemented.}
+\label{fig:settingsarchitecture}
+\end{figure}
+
 Having investigated how to handle settings from other \giraf applications in \cref{sec:sprint3:designsettings}, this sections elaborates on how this is designed following Android terminology taking \cref{fig:settingsprototype} as the underlying basis of the design decisions.
 
 \paragraph{Settings Activity}
 Analogous to opening a new window on a desktop computer, a ``screen'' on an Android device consists of an activity.
 \Cref{fig:settingsprototype} can be compared directly to \cref{fig:settingsarchitecture}, to expand on the User Interface components that need be included.
 
-\thilemann{Write about this design us typically used in applications running on tablet devices, and find out a way to say why this is a smart way to do it :)}
+To follow Android guidelines we are using fragments\cite{fragments} to implement the functionality this activity requires. Fragments reusable modules which gives decomposition of the application functionality and UI. By using fragments it is also possible to add multiple fragments to a screen without switching activity.
 
-\paragraph{Settings List Fragment} is handling selections of either a profile or which settings to show.
-\thilemann{Frederik: måske skriv lidt generelt her (ligesom ovenover) at det er smart mht. mindre enheder...}
+By following these guidelines for developing an activity it is possible to use the same implementation to show the settings on a smaller screen, this is not a requirement at the moment and therefore this has not been taking into account.\\
 
+As illustrated in \cref{fig:settingsarchitecture} it consists of one fragment, \textbf{Settings List Fragment}, and one container, \textbf{Settings Container Fragment}.
+The settings list fragment contains the profile selector and a list view, these are described below
 \begin{itemize}
 \item \textbf{Profile Selector} is what makes it possible to edit settings for multiple users.
 The prototype previously mentioned shows a profile selector resembling a drop-down menu.
 To follow the multi-project guidelines, a component developed by the group responsible for the GUI library will be implemented instead.
 When the selected profile changes, settings activity should be reloaded to reflect the newly selected user's settings.
-\item \textbf{ListView} is where the user clicks to be taken to the settings of the selected list item.
-This component is available in Android.
+\item \textbf{ListView} shown the categories of settings which are available for the user.
 \end{itemize}
 
-\paragraph{Settings Container Fragment} is a placeholder for the settings to be displayed inside the activity.
-It will thus only contain settings pertaining to \launcher or other that are general for the multi-project.
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=\textwidth, keepaspectratio=true] {SettingsActivity.pdf}
-\caption{The architecture showing how the prototype (\cref{fig:settingsprototype}) will be implemented.}
-\label{fig:settingsarchitecture}
-\end{figure}
+The settings container fragment is the container in which the fragment for the chosen setting will be shown.
 
 
 
