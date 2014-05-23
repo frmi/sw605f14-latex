@@ -36,26 +36,7 @@ Firstly, we researched how to use the inbuilt API for Google Services  to open t
 However, there were some problems with the API when attempting to implement.
 Furthermore, it was discovered that the API is intended to be used for syncronization with Google+, Google Drive and Google Games.
 Therefore, we ultimately chose to open the Play Store as a separate activity with the \lstinline!Intent.FLAG_ACTIVITY_NEW_TASK! and the \lstinline!Intent.FLAG_ACTIVITY_CLEAR_TOP! flags.
-The code can be seen in \cref{lst:launchergoogleplay}.\vagner{Please read this and refactor it.}
-
-\begin{lstlisting}[caption={The OnClickListener for the googlePlayButton, launching the Play Store correctly}, label={lst:launchergoogleplay}]
-/** Attempt to open the Play Store. If it is not installed on the device, open Play Store in the browser instead.*/
-googlePlayButton.setOnClickListener(new View.OnClickListener() {
-	public void onClick(View v) {
-		// Try to start the Google Play app
-		try {
-			Intent intent = new Intent();
-			intent.setData(Uri.parse(MARKET_SEARCH_APP_URI + PUBLISHER_NAME));
-			intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-			startActivity(intent);
-			// If Google Play is not found, parse the url for Google Play website
-		} 
-		catch (android.content.ActivityNotFoundException e) {
-			startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(MARKET_SEARCH_WEB_URI + PUBLISHER_NAME)));
-		}
-	}
-}
-\end{lstlisting}
+The exact code can be seen in \cref{lst:launchergoogleplay}.\vagner{Please read this and refactor it.}
 
 The full design can be seen visualized in \cref{fig:settingsappfragments}.
  
