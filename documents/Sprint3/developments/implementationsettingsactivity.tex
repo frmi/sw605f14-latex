@@ -37,10 +37,29 @@ public interface SettingsListFragmentListener {
 
 \subsection{SettingsListFragment}\label{sec:settingslistfragment}
 This is the static fragment defined in the \lstinline|SettingsActivity| layout (\cref{lst:settingsactivity:layout}).
+\thilemann[inline]{Frederik, can we add something according to what you wrote back in design about fragments and lists?}
+The main tasks of \lstinline|SettingsListFragment| is to update \lstinline|SettingsActivity| using the interface callback member \lstinline|private SettingsListFragmentListener mCallback|.
+This is done in the appropriate listeners for the \textit{Profile Selector} and \textit{ListView} as illustrated in \cref{lst:settingsactivity:layout}.
+In the implementation these components corresponds to a \lstinline|GProfileSelector| and a standard Android \lstinline|ListView| respectively.
 
+To ensure that the context of the underlying activity implements the interface just described, the code in \cref{lst:settingslistfragment:onattach} is utilized in \lstinline|SettingsListFragment|.
 
+\begin{lstlisting}[caption={Implementation to make sure the underlying activity implements the \lstinline|SettingsListFragmentListener| interface.}, label={lst:settingslistfragment:onattach}]
+@Override
+public void onAttach(Activity activity) {
+  super.onAttach(activity);
+  try {
+    mCallback = (SettingsListFragmentListener) activity;
+  } catch (ClassCastException e) {
+    throw new ClassCastException(activity.toString()
+            + " must implement SettingsListFragmentListener");
+  }
+}
+\end{lstlisting}
 
-Before describing \lstinline|SettingsListAdapter| in \cref{sec:settingslistadapter}, the meaning of \lstinline|SettingsListItem| is explained.
+To enable its global member \lstinline|mSettingsListView| to render its items, an adapter (\lstinline|mAdapter|) is instantiated with a list of installed applications, before being activated for the \lstinline|ListView| by calling \lstinline|mSettingsListView.setAdapter(mAdapter)|.
+
+Before describing this adapter in \cref{sec:settingslistadapter}, the meaning of \lstinline|SettingsListItem| is explained.
 
 \subsubsection{SettingsListItem}
 \lstinline|SettingsListItem| is a simple class, which members are used to render the information shown in the \lstinline|ListView|.
@@ -164,8 +183,11 @@ To enable another \giraf application to be shown in settings, it \textit{has} to
 Important to notice is that the name of the provided action within the intent filter is that the \lstinline|SETTINGSACTIVITY| key is appended to the \textit{complete} package name of the application.
 
 \subsection{Saving Settings}
+\thilemann{Extract the appropriate parts from the contents below and put it here.}
 
 \subsection{Settings Specific to \launcher}
+\thilemann{Reorganize Vagners work and put it here in a more logical order.}
+\thilemann{Maybe we should consider eliminating these sections, considering the amount of text we already have?}
 
 \subsubsection{Launcher Settings}
 \input{documents/Sprint3/developments/girafpane}
