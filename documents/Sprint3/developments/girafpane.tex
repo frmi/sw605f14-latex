@@ -13,7 +13,7 @@ This means that a \textit{citizen} profile with the \textit{id 1}, would get the
 Preferences identified by a key, and they are edited through the Editor class and with a proper method matching the type of the variable which needs to saved, e.g. \lstinline!putBoolean()!.
 If the preference exists it is updated if not it is created.
 
-When a preference is to be read it is retrieved by a get method, e.g. \lstinline!putBoolean()!, this method is provided the key for the preference and a default value in case the preference has not yet been set.
+When a preference is to be read it is retrieved by a get method, e.g. \lstinline!getBoolean()!, this method is provided the key for the preference and a default value in case the preference has not yet been set.
 
 \paragraph{The settings} implemented in the GIRAF pane are
 \begin{itemize}
@@ -24,6 +24,6 @@ It should be noted that these settings are added as suggestions to which setting
 
 The most interesting of the two preferences is the icon scaling preference, since the ``Show start up animation" preference is created with a standard Android preference component which provides the UI with a two-state switch.
 
-The icon scaling preference is created by extending the standard preference class in Android there by inheriting the native setup, e.g. title and summery fields, and constructors for such a component. We have then supplied it with a custom UI containing a slider and an application icon as those used in the home activity.
+The icon scaling preference is created by extending the standard preference class in Android there by inheriting the native setup, e.g. title and summery fields, and constructors for such a component. We have then supplied it with a custom layout containing a slider and an application icon as those used in the home activity.
 
 Settings in this pane are automatically saved when the user either changes pane or exits the activity.
