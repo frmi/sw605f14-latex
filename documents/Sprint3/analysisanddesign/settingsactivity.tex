@@ -31,24 +31,70 @@ It is decided that the settings system should consist of four components, to be 
 
 \thilemann{Last item regarding remotedb - add somewhere that this is currently only done locally per device.}
 
-\paragraph{Technical Analysis} \thilemann[inline]{Note-to-self: remember to look at this...}
-The big challenge of implementing the above concept, is how to allow applications other than \launcher to access the settings interface running in the context of \launcher.
+\paragraph{The challenge with Implementing Settings} using the above concepts is how to allow applications other than \launcher to access the settings User Interface running in the context of \launcher as an activity.
 
-Our initial idea was to ask each group to create a fragment with their settings layout within their own activity, which our settings activity would then be able to load into the unified settings activity.
-This would isolate the responsibilities of each group, and keep overall complexity to a minimum.
-Although there is a official way for custom class loading\cite{customClassLoading}, it is complex and it will make the coupling of the launcher and the other android applications very tight.
-Additionally it is difficult to make the loading of custom classes dynamic the name of the class to be loaded has to be known.
-The method of custom class loading is intendet to be used when a project exeeds 64.000 method references which is the limit of the Dalvik executable which is the executable of a compiled android application.
+\begin{itemize}
+\item 
+The first option is to ask each project group to create a \lstinline|Fragment|, which the settings activity in \launcher should be able to open.
+This approach will isolate the responsibilities of each group and keep the overall complexity to a minimum.\thilemann{Why? Where to put the files and what about git? Project dependencies?}
+Although there is an official way for loading a custom class\cite{customClassLoading}, it is complex and it will make the coupling of \launcher and other applications very tight.\thilemann{Does class loading even solve this???}
+Additionally it is difficult to make the loading of custom classes dynamic, since the name of the class to be loaded has to be known.
+The method of custom class loading is intended to be used when a project exceeds 64.000 method references, which is the limit of the Dalvik Virtual Machine.
+Each Android application is running as an instance of Dalvik that sandboxes the data of the application, making it impossible for other to access it.
 
-To simplify this, \launcher could include all other projects as dependencies when compiling, but this would have made the \launcher project unnecessary bloated and difficult to work with.
+\thilemann{To simplify this - meaning what?}
+To simplify this, \launcher has to include all other projects as dependencies when compiling, which will make the \launcher project unnecessary bloated and difficult to work with.
 
-Another possibility was make the individual applications implement an interface, where a function would add the application's setting-widgets to a given view.
+\item
+Another possibility is to make the individual applications implement an interface, where a function would add the application's setting-widgets to a given view.
 While Android provides facilities for inter-application communication through its \textit{Broadcast} mechanism\cite{broadcastReceiver}, this requires all the involved applications to be running.
 This is not an acceptable condition in this situation. 
+\end{itemize}
+ 
+Instead of the to presented options above, another design is chosen.
+An Android feature called Intent Filters allows applications to request an action from another \textit{app component}; an activity, a broadcast receiver, a content provider or a service.
+It is implemented by adding \lstinline|<intent-filter>...</intent-filter>| to the Android Manifest with its actions (or intentions) defied within.\cite{intentFilter}
+With this method it is possible to check each installed application to see if it implements a certain action (which will be the same for each \giraf application implementing the Intent Filter).
+If an application implements this filter, it can be assumed that it provides an activity for showing settings, which in turn can be added safely to the list in the settings activity of \launcher.
 
-The design which has been chosen is using Intent Filters, which is an Android feature that allows applications to communicate activity to activity, by add an action element with a certain action string\cite{intentFilter}.
-With this method we will examine all applications on the device, looking for an intent filter with a certain action string.
-If an application implements this intent filter, we know that the application has a settings activity which can be added to the list of settings.
+With this design it is not possible to load settings from other applications as fragments in our application. Instead we start thier application and their settings.
+However, this simplifies the complexity about saving the settings.
+If we were to load their settings as a fragment we were loading the settings in context of our application. 
+Meaning that we save the settings again in our context and we have to figure out a solution for them to load the settings from our context.
 
-With this design it is possible to load settings from other applications as fragments in our application, we will have to start the application and their settings activity. However, this only simplifies the complexity about saving the settings, since if we load their settings as a fragment we load it in context of our application. 
-We would then have to save it again in their context or we would have to figure out a solution for them to load the settings from our context.
+\subsubsection{Designing from Prototypes}
+Having investigated how to handle settings from other \giraf applications in \cref{sec:sprint3:designsettings}, this sections elaborates on how this is designed following Android terminology.
+
+
+
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth, keepaspectratio=true] {SettingsActivity.pdf}
+\caption{The architecture showing how the prototype (\cref{fig:settingsprototype}) will be implemented.}
+\label{fig:settingsarchitecture}
+\end{figure}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

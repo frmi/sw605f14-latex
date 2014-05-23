@@ -1,8 +1,21 @@
 \subsection{Refactoring LauncherUtility}\label{sect:sprint4:refactoring}
 
-* | 3f60829 (8 days ago) tonaplo@msn.com Refactored the last part of LauncherUtility and commented some of the remaining functions.
-* | 971f45f (8 days ago) tonaplo@msn.com Refactored GirafFragment to work like Android Fragment and removed some redundant calls to udateAppInfoHashMap
-* | ae5936e (8 days ago) tonaplo@msn.com Removed all functions related to getting or checking applications to a new class called ApplicationControlUtility. Also removed two redundant functions.
-Before refactoring, \lstinline!LauncherUtility! was  a 1200 lines long class with static methods for many different purposes.
-By dividing the class into smaller classes, each with a certain purpose, the maintainability of the program will hopefully be increased and future developers will have an easier time understanding the code.
-Furthermore, many of the existing functions were either simplified or removed due to lack of use or redundancy
+A quick analysis of the code reveal that \lstinline|LauncherUtility| is now too big, spanning over 1200 lines with static methods for many different purposes.
+By dividing the class into smaller classes, each with a certain purpose, the maintainability of the program and the readability and understandability of the code is increased.
+Furthermore, many of the existing functions are either simplified or removed due to lack of use or redundancy.
+
+\lstinline|LauncherUtility| is split into three different classes:
+
+\begin{itemize}
+\item \lstinline|LauncherUtility| remains as a class.
+It now hosts many of the minor functions, that do not warrant their own class, but is used in a variety of classes.
+Examples are methods getting helper functions from \textit{OasisLib} and  information about the current user and handling debug mode (described in \cref{appendix:debugmode}) and session expiration methods.
+\item \lstinline|ApplicationControlUtility| is created.
+This class contains methods that are used to either return different lists of applications or check if a certain list live up to a given criteria.
+These methods are used when sorting which applications should be shown or marked in \lstinline|SettingsActivity| or \lstinline|HomeActivity|.
+\item \lstinline|AppViewCreationUtility| is created as well.
+This class is used for creation of views that contain an application.
+The views are of the class \lstinline|AppImageView| - a custom class which extends the \lstinline|ImageView| class. This custom class has the functionality which is used in the settings activity when selection applications. This class has state field, which describes if the application is selected or not. It also implements functionality to toggle this state, between selected or not selected, changing the background of the view to indicate that it has been marked.
+\end{itemize}
+
+The two new classes have their own specific purposes, while \lstinline|LauncherUtility| handles a collection of smaller purposes.\frederik{Skriv i diskussionen hvordan disse utility klasser kan formindskes, vha. f.eks. ved brug af et app layout.}
