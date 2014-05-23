@@ -82,13 +82,12 @@ else
 
 Android applications are saved as a file containing \lstinline!Set<String>!, stored in the native \lstinline!SharedPreferences! of Android.
 Each file name is made, unique to each user, by incorporating the users ID as part of the file name.
-the code can be seen in \cref{lst:addingandroidapplications}\\
+More about saving settings in Android can be found in \cref{para:sprint4:managingsettingsandroid}.
+The code can be seen in \cref{lst:addingandroidapplications}\\
 
 \begin{lstlisting}[caption={The methods used for adding or removing a Giraf application to a user}, label={lst:addingandroidapplications}]
 String activityName = app.getActivity();
 
-/** If the user had previously selected the app, removed it from the list of selected apps
- * otherwise add it to the list of selected apps.*/
 if (selectedApps.contains(activityName)){
     selectedApps.remove(activityName);
     Log.d(Constants.ERROR_TAG, "Removed '" + activityName + "' to list: " + selectedApps.size());
