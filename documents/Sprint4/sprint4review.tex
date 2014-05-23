@@ -1,41 +1,22 @@
 \subsection{Evaluation}
 
-\subsection{Backlog}
+As this is the last sprint of the project, \launcher should be completely done and all functionalities should either have been thoroughly tested or disabled.
+There is a large emphasis from the customers on receiving  fully working applications that do not crash.
+We fulfil this requirement by the time the deadline for \launcher is reached.
 
+However, one day before the official Sprint End, the \textit{RemoteDatabase} and \textit{OasisLib} groups declared that synchronization between the two was ready to be implemented.
+The details are explained in \cref{collab:sprintend:four}.\\
 
+This is an example of where \launcher is ready and our responsibility towards \launcher is fulfilled.
+However, \launcher is dependant on the two database groups and as such, on the multi project level, our responsibility towards having all components of \launcher working is not fulfilled, since synchronizing with the remote database was not implemented when we reached our deadline.
 
-
-\subsection{Evaluation}
-Implementing the settings was the primary task for the third sprint.
-The task consisted of several subtask, which have been completed:
-
-\begin{itemize}
-\item It is possible to scale applications up and down and disable the start up animation.
-\item It is possible to add and remove both \giraf and Android applications on a 'per user' basis.
-\item It is possible to access the Play Store and the native Android settings from settings.
-\item It is possible to access the settings of other \giraf applications through \launcher 's settings.
-\end{itemize}
-
-This means the task has been solved and the sprint has been a success. 
-
-However, the settings are not as polished as we want them to be.
-Therefore, we opted to not present them to the customers at the sprint end, waiting until \launcher is completely done to show our work.\vagner{It could be argued that this is a REALLY bad idea, in terms on official SCRUM practice.}
-Sprint end is once again conducted by a member from this group - the details can be found in \cref{collab:sprintend:three}
+This is an important element of the multi project and is further addressed in \cref{}\jesper{Fra vagner: Jesper please read this and please add a reference to the multiproject secion you are writting.}
 
 \subsection{Backlog}
 
-There are some general tasks to be done:
+The criteria for a successful sprint end was to have fully working applications, that do not crash.
+This meant that some functionality is not added in this sprint, as it has not been tested and debugged and we can therefore not be certain that the application will not crash.
 
-\begin{itemize}
-\item The new Profile Selector from \textit{GUI} needs to be implemented.
-\item The \lstinline!LauncherUtility! class has become too big and should be divided into several classes 
-\item The loading animation in \lstinline!MainActivity! statically shows the logo for two seconds and should only be shown for the amount of time it takes to load the needed data.
-\end{itemize}
-
-The main task, however, is to refactored and improved the settings:
-
-\begin{itemize}
-\item The ListFragment on the left needs to display the chosen pane correctly and proper shadowing should be shown.
-\item Loading applications in both \lstinline!GirafFragment! and \lstinline!AndroidFragment! should display a loading animation to the user and load them in a background thread.
-\item Installing a new application should update the available ones in \lstinline!GirafFragment! and \lstinline!AndroidFragment!.
-\end{itemize}
+As a result, there are some remaining features to be implemented.
+Furthermore, there are several ways the existing code can be improved as well.
+A through description of what can be done by the next group working with \launcher can be found in \cref{sec:eval:futureworks}.
