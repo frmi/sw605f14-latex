@@ -3,6 +3,28 @@ This appendix contains code fragments, that are too big to be included as part o
 \section {Debug mode for development}\label{appendix:debugmode}
 \input{documents/Appendix/debugmode}
 
+
+\section{Launching Google Play}
+
+\begin{lstlisting}[caption={The OnClickListener for the googlePlayButton, launching the Play Store correctly}, label={lst:launchergoogleplay}]
+/** Attempt to open the Play Store. If it is not installed on the device, open Play Store in the browser instead.*/
+googlePlayButton.setOnClickListener(new View.OnClickListener() {
+	public void onClick(View v) {
+		// Try to start the Google Play app
+		try {
+			Intent intent = new Intent();
+			intent.setData(Uri.parse(MARKET_SEARCH_APP_URI + PUBLISHER_NAME));
+			intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			startActivity(intent);
+			// If Google Play is not found, parse the url for Google Play website
+		} 
+		catch (android.content.ActivityNotFoundException e) {
+			startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(MARKET_SEARCH_WEB_URI + PUBLISHER_NAME)));
+		}
+	}
+}
+\end{lstlisting}
+
 \section{The New Profile Selector}
 
 \begin{lstlisting}[caption={The method instantiating the Profile Selector with the correct arguments each time a new user is selected, inside the OnListItemClick listener.}, label={lst:newprofileselectoronitemclick}]

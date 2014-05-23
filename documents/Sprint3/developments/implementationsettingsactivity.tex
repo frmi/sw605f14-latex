@@ -9,13 +9,3 @@
 
 \subsubsection{The ``Apps'' Pane}
 \input{documents/Sprint3/developments/appsfragment}
-
- \subsubsection{The ``Android Settings'' Pane}
- * | f4346e2 (2 weeks ago) thilemann@gmail.com Added button to access Android Settings from giraf settings app and cleaned up the onclicklistener for google play button and removed bold fontface from tab buttons when active\\
- 
- \subsubsection{Starting settings of other apps from Settings}
- * | | c51e137 (7 days ago) thilemann@gmail.com Cleaned file and removed unnecessary intent-filter from SettingsActivity. This activity should not be available through an intent.
- * | bd0c2c7 (7 days ago) thilemann@gmail.com When adding an intent by packagename there were no checks that the intent indeed contains the action needed to start the settings of the application. This is now
- handled so it is not added to the list if it does not exist.
- * | | | 6f19b2e (7 days ago) thilemann@gmail.com Added Sequence (Zebra) to settings
- | * | | 0bb96b3 (7 days ago) jesper.b.kjaer@gmail.com Added handling of ActivityNotFound exception in settings.

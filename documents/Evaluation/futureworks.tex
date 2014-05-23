@@ -1,9 +1,6 @@
 This section contains information about the things still remaining to be done in the \launcher project.
 As such, it acts as a backlog for the next group working on the project.
 
-\subsection{Database Syncronization}
-The data still needs to syncronized if the database
-
 \subsection{Proper iconsize}
 When scaling icons, it might be desirable to use different icons, depending on how large or small the icon should be.
 
@@ -24,11 +21,6 @@ On the contrary, the admin profiles would need additional access to applications
 It could be nice to have the \launcher start downloading all \giraf applications as soon as it is run.
 This has not been implemented this year.
 
-\subsection{Change the Authentication animation}
-The application is currently locked to landscape mode.
-However, the animation in \lstinline!AuthenticationActivity!, displaying how a user should log in, display the tablet held in portrait mode.
-It is desirable to change the animation, so it displays the tablet held correctly.
-
 \subsection{Add sound to Launcher}
 Currently, none of the actions a user carries out when using \launcher provides audio feedback.
 uld be a nice touch to add to \launcher. 
@@ -40,10 +32,7 @@ l alle andre giraf projekter)
 søgt
 
 \subsection{Change QR admin}
-
-\subsection{App loading}
-
-Aner ikk hvad dette indebærer
+\vagner{Erm... what is this?}
 
 \subsection{Profile Selection dialog}
 Childs and guardians in their own view to make it easier to distinct guardians from childs - should be implemented together with g components.
@@ -60,13 +49,23 @@ For this reason, it would be preferable to be able to copy settings from one use
 As mentioned in \vagner{insert reference} users had problems with trying to press ``Log In" while simulataneously trying to scan the QR code, AFTER the code had been scanned.
 It could be an idea to make \lstinline!AuthenticationActivity! reflect more strongly that no further scanning is needed.
 
+\subsubsection{Change the Authentication animation}
+The application is currently locked to landscape mode.
+However, the animation in \lstinline!AuthenticationActivity!, displaying how a user should log in, display the tablet held in portrait mode.
+It is desirable to change the animation, so it displays the tablet held correctly.
+
 \subsection{Remove access to Settings when logging in as a child}
 
 If a child logs in with his QR code, it should not be able to access or edit the settings.
 
 \subsection{Filtering Launcher from package names}
-text
+text\vagner{And what is this?}
 
 \subsection{Download pictograms while tablet is being used}
 Currently, it takes roughly 30 minutes to download all information from the database.
 It could be great to have \launcher download profiles and the like first and then download pictograms while the application is running.
+
+\subsection{GridView used for loading applications}
+
+Currently, applications are loaded as views into linear layouts and the linear layout are then added to a scroll view.
+This could be done better by adding the application views to a GridView instead.
