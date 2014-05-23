@@ -52,42 +52,8 @@ Once \lstinline!doinBackground()! finishes, \lstinline!onPostExecute()! then add
  
  Instead, we must implement a derived class of \lstinline|LoadApplicationTask| in each of the classes it is used.
  The derived class is called the same way as in \cref{lst:simplelat} and the class is quite simple.
- All of the three methods are overridden and call \lstinline!super.FooBar()!, thus executing all the work done by the superclass.\vagner{Det her lugter så åndssvagt meget af at man godt ville kunne merge dem. Jeg kan ikke helt huske den præcise tekniske grund for at vi ikke kunne, så dette skal måske rettes i.}
+ All of the three methods are overridden and call \lstinline!super.FooBar()!, thus executing all the work done by the superclass.\frederik{Det her lugter så åndssvagt meget af at man godt ville kunne merge dem. Jeg kan ikke helt huske den præcise tekniske grund for at vi ikke kunne, så dette skal måske rettes i.}
  Then the observer is enabled and disabled in  \lstinline!onPostExecute()! and \lstinline!onPreExecute()!, respectively.\\
  
  The three derived classes are very similar, therefore code is only given for one of them.
  The code can be seen in \cref{lst:derivedlat} for \lstinline!GirafFragment! 
- 
-  \begin{lstlisting}[caption={The loadGirafApplicationTask, derived from LoadApplicationTask. This is the derived class used by GirafFragment to load applications into view. Please note that all comments have been removed to make the listing smaller}, label={lst:derivedlat}]
-class loadGirafApplicationTask extends LoadApplicationTask {
-
-	public loadGirafApplicationTask(Context context, Profile currentUser, Profile guardian, LinearLayout targetLayout, int iconSize, View.OnClickListener onClickListener) {
-		super(context, currentUser, guardian, targetLayout, iconSize, onClickListener);
-	}
-	
-	@Override
-	protected void onPreExecute() {
-		if(appsUpdater != null)
-		appsUpdater.cancel();
-		
-		super.onPreExecute();
-	}
-	
-	@Override
-	protected HashMap<String, AppInfo> doInBackground(Application... applications) {
-		apps = ApplicationControlUtility.getGirafAppsOnDeviceButLauncherAsApplicationList(context);
-		applications = apps.toArray(applications);
-		appInfos = super.doInBackground(applications);
-		
-		return appInfos;
-	}
-	
-	@Override
-	protected void onPostExecute(HashMap<String, AppInfo> appInfos) {
-		super.onPostExecute(appInfos);
-		loadedApps = appInfos;
-		startObservingApps();
-		haveAppsBeenAdded = true;
-	}
-}
-\end{lstlisting}

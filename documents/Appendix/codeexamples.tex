@@ -1,4 +1,9 @@
-This appendix contains code fragment, that are too big to be included as part of the report, but that do not warrant their own appendix section.
+This appendix contains code fragments, that are too big to be included as part of the report and that can be omitted..
+
+\section {Debug mode for development}\label{appendix:debugmode}
+\input{documents/Appendix/debugmode}
+
+\section{The New Profile Selector}
 
 \begin{lstlisting}[caption={The method instantiating the Profile Selector with the correct arguments each time a new user is selected, inside the OnListItemClick listener.}, label={lst:newprofileselectoronitemclick}]
 /**
@@ -27,4 +32,36 @@ private void updatesProfileSelector(){
   }
  });
 } 
+\end{lstlisting}
+
+\section{Derived class of LoadApplicationTask}
+
+  \begin{lstlisting}[caption={The LoadGirafApplicationTask, derived from LoadApplicationTask. This is the derived class used by GirafFragment to load applications into view. Please note that all comments and the constructor have been removed to make the listing smaller}, label={lst:derivedlat}]
+class LoadGirafApplicationTask extends LoadApplicationTask {
+	
+	@Override
+	protected void onPreExecute() {
+		if(appsUpdater != null)
+		appsUpdater.cancel();
+		
+		super.onPreExecute();
+	}
+	
+	@Override
+	protected HashMap<String, AppInfo> doInBackground(Application... applications) {
+		apps = ApplicationControlUtility.getGirafAppsOnDeviceButLauncherAsApplicationList(context);
+		applications = apps.toArray(applications);
+		appInfos = super.doInBackground(applications);
+		
+		return appInfos;
+	}
+	
+	@Override
+	protected void onPostExecute(HashMap<String, AppInfo> appInfos) {
+		super.onPostExecute(appInfos);
+		loadedApps = appInfos;
+		startObservingApps();
+		haveAppsBeenAdded = true;
+	}
+}
 \end{lstlisting}
