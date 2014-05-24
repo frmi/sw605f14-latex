@@ -11,7 +11,57 @@ In order to achieve this behaviour of the fragments we take advantage of the fra
 \end{itemize}
 
 \subsection{ViewHolder Design Pattern}
-5c590d8 (9 days ago) sthile11@student.aau.dk Completely refactored SettingsListAdapter by implementing the ViewHolder design pattern to minimize calls to findViewById. This also made it possible to replace the methods responsible for setting visibility for each shadow view by a single method just setting the visibility.
+As mentioned in the third sprint in \cref{sec:settingslistadapter}, the \lstinline|getView()| implemented in the \lstinline|SettingsListAdapter| class is not considered to be optimal.
+In this sprint, it is chosen to refactor this method to overcome the defiances found, by implementing the \textit{ViewHolder} design pattern, which is an Android best practice of handling multiple views in an \lstinline|AdapterView|.
+It is thus a way of improving the efficiency of the code, but it also enhances the readability for handling shadows for each list item (\lstinline|AdapterView|).
+
+The ViewHolder pattern is at its name suggest, a class that holds a reference to a \lstinline|View|.
+The \lstinline|ViewHolder| for \lstinline|getView()| is shown in \cref{lst:viewholder}.
+
+\begin{lstlisting}[caption={The intent filter and action a \giraf application has to provide to be shown in settings.}, label={lst:viewholder}]
+private static class ViewHolder {
+  public ImageView appIcon;
+  public TextView appName;
+  public View shadowTop;
+  public View shadowBottom;
+  public View shadowRight;
+}
+\end{lstlisting}
+
+The essence of the pattern is to use it when a \lstinline|convertView| is being inflated; 
+if the \lstinline|convertView| is \lstinline|null|, we inflate the view and instantiates a \lstinline|holder = new ViewHolder()| and obtains a reference to each of the views it contain.
+This is exemplified in \lstinline|lst:viewholder:getview|.
+Then, to be able to get the \lstinline|holder| back when \lstinline|getView()| is called again for the same \lstinline|convertView|, the view is tagged with the \lstinline|holder| object to save a reference to the ViewHolder.
+Restoring the \lstinline|holder| object is simply done if \lstinline|convertView| is not \lstinline|null|, meaning that it has already been inflated but recycled for performance reasons.
+
+\begin{lstlisting}[caption={Excerpt of the refactored \lstinline|getView()| method in \lstinline|SettingsListAdapter|.}, label={lst:viewholder:getview}]
+ViewHolder holder;
+
+if(convertView == null) {
+  convertView = mInflater.inflate(R.layout.settings_fragment_list_row, null);
+
+  holder = new ViewHolder();
+  holder.appIcon = (ImageView)convertView.findViewById(R.id.settingsListAppLogo);
+  holder.appName = (TextView)convertView.findViewById(R.id.settingsListAppName);
+  holder.summary = (TextView)convertView.findViewById(R.id.settingsListSummary);
+  holder.shadowTop = convertView.findViewById(R.id.settingsListRowShadowBelow);
+  holder.shadowBottom = convertView.findViewById(R.id.settingsListRowShadowAbove);
+  holder.shadowRight = convertView.findViewById(R.id.settingsListRowShadowRight);
+  convertView.setTag(holder);
+}
+else
+  holder = (ViewHolder)convertView.getTag();
+\end{lstlisting}
+
+Of course the use of the ViewHolder pattern is most noticeable in situations where many list items are handled.
+None the less, it reduces the amount of calls made to \lstinline|findViewById()|, which iteratively searches the view hierarchy for the specified id.
+Since creation of views is expensive in Android, and considering the many views contained within each \lstinline|convertView| and the amount of times \lstinline|getView()| is called, the calls made to  \lstinline|findViewById()| is dramatically reduced.\cite{understandingAdapters}
+
+As also mentioned in \cref{sec:settingslistadapter}, the initial implementation had problems with duplicate code for setting the visibility of the shadows.
+This is also by using the ViewHolder pattern, since it makes it possible to always hold a reference to the views. 
+Therefore, the three methods is merged into one just taking a view and whether to show or hide it as input.
+
+\thilemann[inline]{Conclude on this in Sprint End!}
 
 \subsection{Background Loading of Applications}\label{sec:sprint4:dev:loadapplicationtask}
 There are three \lstinline!View!s that get populated by applications in the \launcher project:
