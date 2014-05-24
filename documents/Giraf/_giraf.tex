@@ -11,59 +11,13 @@ Each citizen is supervised by another adult, referred to as being a ``guardian".
 This person is typically employed in one of the institutions affiliated with the \giraf project.
 Thus, when referring to both, the term ``user" is used.
 
-This chapter gives a short introduction to the \giraf multi-project and the software engineering concepts used during its development.
+This chapter gives a short introduction to the \giraf multi-project.
+For a description of the development methodology employed, see \cref{sec:collab:multiproject}.
 
 \section{\giraf Applications}\label{sec:giraf:applications}
-The \giraf suite consists of several components, not the least a multitude of front end applications, providing various features to the users. 
+The \giraf suite consists of several components, not the least a multitude of front end applications, providing various features to the users. All front end applications are described in \Cref{sec:giraf:applications:frontend}. 
 The suite however, also includes a number of back end components, allowing sharing and controlling data across the range of applications. 
-These parts of the system will be described in the following.
-
-\subsection{Front End Applications}
-\label{sec:giraf:applications:frontend}
-Below is a list of the applications included in the \giraf suite.
-
-\paragraph{\launcher}
-provides an interface for accessing the other tablet applications in a controlled environment, that is easy to use for both guardians and citizens. 
-Through \launcher, the guardians should be able to control what applications the citizens should be allowed to use. In the application interface, \launcher is referred to as \giraf.
-
-\paragraph{Sekvens}
-allows users to build sentences from pictograms, a central activity in the lives of the citizens \giraf is made to service. Many citizens with autism, especially young children, have difficulty formulating sentences in speech. A central feature of \textit{Sekvens} is also the possibility to save often used sequences of pictograms.
-
-\paragraph{Pictooplæser}
-is similar to \textit{Sekvens}, but is focused on building more ad hoc sentences, which the application is then able to read aloud using either an existing recording, or an online text-to-speech tool. 
-
-\paragraph{Kategoriværktøjet}
-allows guardians to manage the categories into which the pictograms are organised, including adding and deleting categories and subcategories.
-
-\paragraph{Oasis App}
-is an administration tool for manipulating the user information in the database. 
-
-\paragraph{Pictosearch}
-is not used as a standalone application, but provides other applications with a common interface for searching through the device's collection of pictograms.
-
-\paragraph{Pictotegner}
-allows the user to create their own pictograms with basic graphics tools, such as a free-hand pen tool, a rectangle tool, a circle tool etc. 
-
-\paragraph{Livshistorier}
-is also similar to \textit{Sekvens}, but is created specifically for saving pictogram sequences that contain instructions for the citizen's everyday life, e.g. instructions on how to use the bathroom.
-
-\paragraph{Ugeplan}
-allows the users to build weekly activity schedules using pictograms. Autistic citizens thrive best in highly strutured environments with regularly scheduled days.
-
-\paragraph{Tidstager}
-provides the ability to time an activity, allowing a guardian to let a citizen use an application, e.g. a game, for a set amount of time. When the time runs out, the device locks, forcing the citizen to move on to the next scheduled activity.
-
-\paragraph{Stemmespillet}
-is a game, where the citizen controls a car by varying the volume of his or her voice. 
-
-\paragraph{Kategorispillet}
-is a game, where the citizen unloads pictograms from a train. The pictograms must be unloaded at different stations, where each station accepts a certain category of pictograms.
-
-\paragraph{Web Ugeplan}
-is a web-version of \textit{Ugeplan}, specifically design for large touchscreens. A few costumers had access to TV-size touchscreen, which they specifically wished to use for their week schedules.
-
-\paragraph{Webadmin}
-is a web-based administration tool for manipulating the user information in the database.
+The back end components are described below.
 
 \subsection{Back End Components}
 \label{sec:giraf:applications:backend}
@@ -82,32 +36,3 @@ A common service which applications needs is when a guardian has to choose which
 
 \insertfigure{width=0.8\textwidth}{girafLayers}{Illustration of the layers and dependencies in the \giraf application suite.}{fig:girafLayers}
 
-\section{Multi-Project Development Method}\label{sec:giraf:development}
-The \giraf development team of 2014 consists of about 60 students, organised into 16 project groups. 
-As previously described, some of the \giraf components are heavily dependent on others. 
-Allowing the groups develop their individual components, with no communication between them, will obviously result in an incoherent and chaotic system, that probably will not run at all. 
-It is therefore necessary to set up a framework for the cooperation between the groups, and for ensuring that the multi-project as a whole will move towards fulfilling the needs of the clients.
-
-\subsection{Scrum}
-By vote, the multi-project development team decided to use Scrum at the overall method of project management. 
-We also decided to encourage the use of Scrum in the project groups, but to leave the final decision to the individual groups. 
-
-Larman \cite{larmanAgile} explains that a central part of Scrum is the Scrum Master, who facilitates development by solving problems and enforcing Scrum. We decided on a single Scrum master for the entire project period, to avoid losing gained experience with each changing Scrum master.
-
-While the Scrum method recommends daily Scrum meetings, we decided to settle with a weekly meeting for the multi-project Scrum. The development tempo is relatively low as we also have to follow courses. Some of these courses are electives, so it will also be difficult to gather every group at the same time every day.\jesper{Remember to add reference to multi project section}
-
-\subsection{Sprints}
-We decided to work in sprints. Changing requirements is the main argument against the traditional ``single-sprint'' model. The resulting system may not live up to the client's expectations, so it is important regularly align the visions of the clients and the developers. This concept is systematised with multiple sprints. The individual components may also experience changes in what they require of each other.
-
-As a unit for measuring time in the sprints, we chose ``half days'', which last 3-4 hours. This unit fits well into our schedule, with relation to course modules.
-
-The available half days were divided into four sprints:
-
-\begin{enumerate}
-\item First sprint starts 24-02-2014 and ends 19-03-2014.
-\item Second sprint starts 20-03-2014 and ends 14-04-2014.
-\item Third sprint starts 15-04-2014 and ends 07-05-2014.
-\item Fourth sprint starts 08-05-2014 and ends 27-05-2014.
-\end{enumerate}
-
-At the end of each sprint all groups should present and demonstrate their topic at a sprint end meeting with the clients.
