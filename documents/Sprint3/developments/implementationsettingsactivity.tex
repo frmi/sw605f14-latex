@@ -164,7 +164,7 @@ This is called from an item click listener, implemented by the underlying \lstin
 
 \thilemann[inline]{Should we say comments are omitted in all code examples, or that this was done late during spring 4 to support the next group?}
 
-\subsection{Adding Applications or Intents to Settings}
+\subsection{Adding to Settings}
 The interface implemented by \lstinline|SettingsActivity| forces it to implement a method called \lstinline|getInstalledSettingsApps()| that has to return a list of either \launcher settings, intents available from other \giraf applications or other intents related to Android applications.
 \lstinline|getInstalledSettingsApps()| in \lstinline|SettingsActivity| returns an \lstinline|ArrayList<SettingsListItem>| by utilizing a range of methods that all adds an item to the list, whether it be a fragment or intent.
 This means that each \giraf application that wants to be available through the settings activity in \launcher, has to be added from the implementation of \lstinline|getInstalledSettingsApps()|.
@@ -180,12 +180,28 @@ To enable another \giraf application to be shown in settings, it \textit{has} to
 
 Important to notice is that the name of the provided action within the intent filter, is a key having the value \lstinline|SETTINGSACTIVITY|, which is appended to the \textit{complete} package name of the application to show settings for.
 
-\subsection{Saving Settings}
-\thilemann{Extract the appropriate parts from the contents below and put it here.}
-
 \subsection{Settings Specific to \launcher}
+This section describes 
 \thilemann{Reorganize Vagners work and put it here in a more logical order.}
 \thilemann{Maybe we should consider eliminating these sections, considering the amount of text we already have?}
+
+
+\subsection{Saving Settings}\label{para:sprint4:managingsettingsandroid}
+To explain the functionality we use to save preferences in our application this section describes the excellent features which Android provides for managing preferences on a per application basis. This feature is provided through the SharedPreference class.
+
+With this class you can either save the preferences in the context of the application, if they are application specific. It is also possible to define the name of the file in which the preferences are saved or read from. If the preference file does not exist when requested it is created.
+
+We use these features to save preferences for each user. We create a unique file by the user role and id.
+This means that a \textit{citizen} profile with the \textit{id 1}, would get the file name \textit{c1}, with the package name of our application as a prefix.
+
+Preferences identified by a key, and they are edited through the Editor class and with a proper method matching the type of the variable which needs to saved, e.g. \lstinline!putBoolean()!.
+If the preference exists it is updated if not it is created.
+
+When a preference is to be read it is retrieved by a get method, e.g. \lstinline!getBoolean()!, this method is provided the key for the preference and a default value in case the preference has not yet been set.
+
+\thilemann{Add that settings are automatically saved according to this method - and check if sharedpreferences not are described in another section.}
+
+
 
 \subsubsection{Launcher Settings}
 \input{documents/Sprint3/developments/girafpane}
