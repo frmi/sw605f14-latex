@@ -6,7 +6,7 @@ The improved implementation includes restructuring all parts of the XML file def
 Despite of the layout elements not being used correctly and thus not following Android design guidelines, the main issue lies in the fact that many parameters such as heights and widths are set at compile-time through a class containing mostly static fields.
 The result is that the layout does not adapt to more than device it has been designed for, which is not viable if the customers, as an example, choose to replace their current devices.
 
-\subsubsection{Restructuring Layout of the Drawer}\label{sec:sidebarlayout:xml}
+\subsubsection{Implementation}\label{sec:sidebarlayout:xml}
 \jesper{Find a better title. It should not sound exactly like the subsection title.}
 To avoid the icons being pushed outside the screen, the layout for the drawer is restructured so its elements are contained within a custom view called \lstinline|DrawerLayout|.
 This ensures that the animation and layout hierarchy can be controlled more effectively, making the drawer being drawn on top of other layout elements.
