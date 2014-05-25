@@ -1,0 +1,84 @@
+Considering the prototypes seen in \cref{fig:settingsprototype,fig:appsmanagement} it is apparent that a specially designed view (also referred to as an \lstinline|AdapterView|) for each list item is required.
+In Android, the easiest way of doing so, is by implementing an \lstinline|Adapter| for the \lstinline|ListView|.
+An adapter serves the objective of bridging the underlying data for a view, and to render it appropriately.
+Various adapters exist for different purposes; it is e.g. possible to implement an extension of \lstinline|Adapter| called \lstinline|ListAdapter|, which serves the purpose of easily adding items to a \lstinline|ListView|.
+Implementing an adapter also has performance related benefits.
+Most importantly being the concept of \textit{recycling} a view, which makes it possible to handle large lists efficiently.\thilemann{Maybe add ref?}
+
+In the case of yielding a visual result as close as possible to the prototypes, our implementation requires a custom class extending the \lstinline|BaseAdapter| class.
+The specific reason being the list requiring both a title and an icon, but also specifically because of the shadows rendered around a selected item in the list.
+This would not be possible to handle with a standard adapter.
+
+The most important method of an adapter is its \lstinline|getView()| method, since it is solely responsible for returning a new \lstinline|AdapterView| to the underlying \lstinline|ListView|.
+This method is seen in \cref{lst:settingslistadapter:getview}.
+
+\begin{lstlisting}[caption={\lstinline|getView()| method in \lstinline|SettingsListAdapter| class.}, label={lst:settingslistadapter:getview}]
+public View getView(int position, View convertView, ViewGroup parent) {
+  View vi = convertView;
+  
+  if(convertView == null)
+    vi = mInflater.inflate(R.layout.settings_fragment_list_row, null);
+  
+  // Get current item in the list
+  SettingsListItem item = mApplicationList.get(position);
+  
+  if (position == mLastSelectedItem) {
+    setShadowRightCurrent(vi, false);
+    ListView listView = (ListView)parent.findViewById(R.id.settingsListView);
+    listView.setItemChecked(position, true);
+  }
+  else {
+    setShadowRightCurrent(vi, true);
+  }
+  
+  if (position == mLastSelectedItem - 1)
+    setShadowAboveCurrent(vi, true);
+  else
+    setShadowAboveCurrent(vi, false);
+  
+  if (position == mLastSelectedItem + 1)
+    setShadowBelowCurrent(vi, true);
+  else
+    setShadowBelowCurrent(vi, false);
+  
+  ImageView appIcon = (ImageView)vi.findViewById(R.id.settingsListAppLogo);
+  TextView appNameText = (TextView)vi.findViewById(R.id.settingsListAppName);
+  
+  // Setting all values in ListView
+  appIcon.setBackgroundDrawable(item.mAppIcon);
+  appNameText.setText(item.mAppName);
+  
+  return vi;
+}
+\end{lstlisting}
+
+In the \lstinline|getView()| method the most important parameters are \lstinline|position| and \lstinline|convertView|.
+\lstinline|position| being the index of the item in the \lstinline|ListView| that is currently being inflated.
+\lstinline|convertView| is the view obtained from the \lstinline|ListView|.
+As seen in the example, this view is only inflated if it is not \lstinline|null|, which is one of the optimizations of using an adapter.
+\thilemann[inline]{Check what this has to do with recycling}
+
+To be able to add data to each \lstinline|View| contained in a \lstinline|convertView|, the item related to the position is obtained, where a \lstinline|View| fx is the \lstinline|ImageView| showing the application icon.
+
+The rest of the \lstinline|getView()| method is spend on checking logic for which shadows to show, based on the last selected item.
+This logic utilizes three different methods looking much alike.
+One of these are found in \cref{lst:settingslistadapter:shadow}
+
+\begin{lstlisting}[caption={One of three methods setting the visibility of shadows related to the selected list item.}, label={lst:settingslistadapter:shadow}]
+private void setShadowRightCurrent(View currentView, boolean visible) {
+  View rightShadow = currentView.findViewById(R.id.settingsListRowShadowRight);
+  if (visible)
+    rightShadow.setVisibility(View.VISIBLE);
+  else
+    rightShadow.setVisibility(View.GONE);
+}
+\end{lstlisting}
+
+This implementation is not considered the ``most optimal'', since it brings some code duplication for methods doing the same kind of task.
+The naming is also not considered optimal, since it can be confusing which shadow is currently being set as visible.
+The reason for doing this is that we need a reference for a specific view depending on the shadow needed to show.
+
+\lstinline|mLastSelectedItem| is a global member in \lstinline|SettingsListAdapter|, made available through a public method called \lstinline|setSelected(int position)|.
+This is called from an item click listener, implemented by the underlying \lstinline|ListView|.
+
+\thilemann[inline]{Should we say comments are omitted in all code examples, or that this was done late during spring 4 to support the next group? Vagner: Jeg har nævnt at kommentarer er exkluderet alle steder hvor jeg har exkluderet dem.}
