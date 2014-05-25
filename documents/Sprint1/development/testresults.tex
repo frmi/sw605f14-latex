@@ -1,26 +1,32 @@
 \subsection{Test Results}\label{sec:sprint1:testing_results}
 Below is shown a selection of our test cases and their results.
-As mentioned in the introduction of this section, we will only discuss the most interesting results, i.e. tests that led to discovery of significant issues.
+As mentioned in the introduction of this section, we will only discuss the most interesting results, i.e. tests that led to the discovery of significant issues.
 
 
 \subsubsection{Changing the Colour of an Application Icon}
 
 \paragraph{Specification:} Configuring an application for a child.
-\paragraph{Test case:} Use the colour drawer to change the colour of an application, and check if the change is applied to both the applications' icon, and its own user interface.
-\paragraph{Result:} The colour of the icon changed immediately, but when starting the application, it still used the pre-change colour. A little experimenting showed that the change is not applied to the application until the user logs into \launcher again.
+\paragraph{Test case:} Use the drawer to change the colour of an application, and check if the change is applied to both the applications' icon, and its own user interface.
+\paragraph{Result:} The colour of the icon changed immediately, but when starting the application, it still used the pre-change colour. 
+A little experimenting showed that the change is not applied to the application until the user logs into \launcher again.
 \paragraph{Resolution:} The issue was resolved, and the change in colour is now reflected in the application immediately.
 
 \subsubsection{Applications that Crash \launcher}
 
-\paragraph{Specification:} Launching an application for a child in guardian mode.
-\paragraph{Test case:} Open an application with a random child profile selected in the profile selector.
-\paragraph{Result:} While not directly related to the intent of the use case, while running the test, we attempted to open what turned out to be a non-working version of a \giraf application. The application suffered an unhandled exception, causing both it and \launcher to crash. This is not satisfactory, as \launcher should always work on top of the device operating system, denying the children access to device settings when using the device without supervision.
-\paragraph{Resolution:} The issue was resolved, by making \launcher catch all exceptions thrown by the \giraf applications it hosts.
+\paragraph{Specification:} Starting an application for a child in guardian mode.
+\paragraph{Test case:} Open an application with a randomly selected child profile by using the profile selector.
+\paragraph{Result:} While not directly related to the intent of the use case, during the test, we attempted to open what turned out to be a non-working version of a \giraf application. 
+The application suffered from an unhandled exception, causing both it and \launcher to crash. 
+This is not satisfactory, as \launcher should always work on top of the device operating system, denying the children access to device settings when using the device without supervision.
+\paragraph{Resolution:} The issue was resolved by making \launcher catch all exceptions thrown by the \giraf applications it hosts.
 
 
 \subsubsection{Use of Device Buttons}
 
-\paragraph{Specification:} The device buttons (\textit{Back}, \textit{Home}, and \textit{Multitasking}) should have no effect in the \textit{Main} and \textit{Authentication} activities, as the user should not be able to ``back out'' of \launcher to the device OS.
+\paragraph{Specification:} The device buttons (\textit{Back}, \textit{Home}, and \textit{Multitasking}) should have no effect in the \mainactivity and \authenticationactivity, as the user should not be able to ``back out'' of \launcher to the device OS.\thilemann{Only relevant when not set as default launcher?}
 \paragraph{Test case:} Use the device buttons in different activities and situations.
-\paragraph{Result:} In both the \textit{Main} and \textit{Authentication} activities, applying the \textit{Home} and \textit{Back} buttons made \launcher restart. The \textit{Multitasking} button always activates the multitasking screen of the device OS.
-\paragraph{Resolution:} The \textit{Back} button was suppressed by overriding a listener method. We were unable to find similar means for suppressing the other two buttons. We unsuccessfully returned to this issue in the second sprint, as described in \cref{sec:sprint2:conclusionmeetings}.
+\paragraph{Result:} In both the \mainactivity and \authenticationactivity, applying the \textit{Home} and \textit{Back} buttons made \launcher restart. 
+The \textit{Multitasking} button always activates the multitasking screen of the device OS.
+\paragraph{Resolution:} The \textit{Back} button are suppressed by overriding a listener method.
+\thilemann[inline]{Check present tense throughout functional test} 
+We were unable to find similar means for suppressing the other two buttons, as we unsuccessfully returned to this issue in the second sprint, as described in \cref{sec:sprint2:conclusionmeetings}.
