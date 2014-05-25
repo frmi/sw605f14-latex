@@ -32,15 +32,15 @@ It is decided that the settings system should consist of four components, to be 
 
 \begin{itemize}
 \item 
-The first option is to ask each project group to create a \lstinline|Fragment|, which the settings activity in \launcher should be able to open.
-This approach will isolate the responsibilities of each group and keep the overall complexity to a minimum.\thilemann{Why? Where to put the files and what about git? Project dependencies?}
-Although there is an official way for loading a custom class\cite{customClassLoading}, it is complex and it will make the coupling of \launcher and other applications very tight.\thilemann{Does class loading even solve this???}
+The first option is to ask each project group to create a fragment within their own project. 
+The settings activity in \launcher should be able to open this fragment.
+This approach will isolate the responsibilities of each group and keep the overall complexity to a minimum.
+Although there is an official way for loading a custom class\cite{customClassLoading}, it is complex and it will make the coupling of \launcher and other applications very tight.
 Additionally it is difficult to make the loading of custom classes dynamic, since the name of the class to be loaded has to be known.
-The method of custom class loading is intended to be used when a project exceeds 64.000 method references, which is the limit of the Dalvik Virtual Machine.
-Each Android application is running as an instance of Dalvik that sandboxes the data of the application, making it impossible for other to access it.
+Each Android application is running as an instance of the Dalvik Virtual Machine that sandboxes the data of the application, making it impossible for other to access it.
+This method of custom class loading is intended to be used when a project exceeds 64.000 method references, which is the limit of the Dalvik VM.
 
-\thilemann{To simplify this - meaning what?}
-To simplify this, \launcher has to include all other projects as dependencies when compiling, which will make the \launcher project unnecessary bloated and difficult to work with.
+In summary, using this method, \launcher has to include all other projects as dependencies when compiling, which will make the \launcher project unnecessary bloated and difficult to work with.
 
 \item
 Another possibility is to make the individual applications implement an interface, where a function would add the application's setting-widgets to a given view.
