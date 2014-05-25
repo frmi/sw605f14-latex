@@ -2,11 +2,11 @@
 \giraf  stands for \textit{Graphical Interface Resources for Autistic Folk} and is used to describe the entire multi-project as an entity.
 The suite of \giraf applications are developed iteratively at Aalborg University's Department of Computer Science, by software engineering students on the final semester of their bachelor.
 The project was initiated in 2011 by Ulrik Nyman, Associate Professor at Aalborg University.
-The project has subsequently evolved with each class of students bringing new ideas to the project, and improving on the existing ones.
-Furthermore, the requirements from the customers has changed over time.
+The project has subsequently evolved with each class of students, bringing new ideas to the project and improving on the existing ones.
+Furthermore, the requirements from the clients has changed over time.
 
 Overall, the multi-project is designed for various kinds of persons.
-Most importantly being the ``citizens" utilizing the capabilities of each application, where citizen refers to either a child or an adult person diagnosed with ASD.
+Most importantly being the ``citizens", which are the ones utilizing the capabilities of each application, where citizen refers to either a child or an adult person diagnosed with ASD.\thilemann{Repetition of something said earlier. Should it only be mentioned one place? Think it flows well here and fits whats comming next.}
 Each citizen is supervised by another adult, referred to as being a ``guardian".
 This person is typically employed in one of the institutions affiliated with the \giraf project.
 Thus, when referring to both, the term ``user" is used.
@@ -15,26 +15,32 @@ This chapter gives a short introduction to the \giraf multi-project.
 For a description of the development methodology employed, see \cref{sec:collab:multiproject}.
 
 \section{\giraf Applications}\label{sec:giraf:applications}
-The \giraf suite consists of several components, not the least a multitude of front end applications, providing various features to the users. All front end applications are described in \Cref{sec:giraf:applications:frontend}. 
-However, the suite also includes a number of back end components, allowing sharing and controlling data across the range of applications. 
+The \giraf suite consists of several components, not the least a multitude of front end applications, providing various features to the users. 
+All front end applications are described in \Cref{sec:giraf:applications:frontend}. 
+However, the suite also includes a number of back end components, allowing sharing and controlling data across every application. 
 The back end components are described below.
 
 \thilemann[inline]{Somehow refer forward to install parties in collab:sprintend:planning}
 
 \subsection{Back End Components}
 \label{sec:giraf:applications:backend}
-Central to most of the Android applications is \textit{OasisLib}, which provides both models for the entire problem domain, and interfaces for retrieving data from the local database. Every device has its own local database, with the goal of regularly synchronises with a single remote database. Finally, \textit{\giraf Components} contains common user interface components with a uniform look-and-feel. 
+Central to most of the Android applications is \textit{OasisLib}, which provides both models for the entire problem domain, and interfaces for retrieving data from the local database.
+Every device has its own local database, with the goal of regular synchronization with a single remote database. 
+Finally, \textit{\giraf Components} contains common user interface components with a uniform look-and-feel. 
 
 \section{GIRAF Architecture}
 \label{sec:giraf:architecture}
 % Sådan er multiprojektet bygget op.
-The \giraf system is illustrated in \Cref{fig:girafLayers} and as illustrated in consists of several layers. From the top we have applications such as those described in \Cref{sec:giraf:applications:frontend} which communicate with a local database on the device through the library \textit{OasisLib} which is a part of the \giraf backend.
+The \giraf system is illustrated in \Cref{fig:girafLayers}, and as illustrated, it consists of several layers. 
+From the top we have applications such as those described in \Cref{sec:giraf:applications:frontend}, which communicate with a local database on the device through the library \textit{OasisLib}that is part of the \giraf back end.
 
-The local database is responsible for communicating with the remote database to synchronize local or remote changes in the system.
+The local database is responsible for communication between the remote database to synchronize local or remote changes in the system.
 
-To ensure that the layout in all applications has the same look and feel the library \textit{GIRAF Components} has been introduced.
-This library consists of multiple graphical components and provide common services to applications.
-A common service which applications needs is when a guardian has to choose which citizen settings or an application should be loaded for. Then \textit{GIRAF Components} provides a component to show a list of citizens which the guardian can choose from. By providing this component, the process of choosing a citizen will be the same in all applications in the \giraf system.
+To ensure that the layout in all applications has the same look and feel, the library \textit{GIRAF Components} has been introduced.\thilemann{Already mentioned last in back end description.}
+This library consists of multiple graphical components and provide common services to other \giraf applications.
+A common service that applications need is when a guardian has to choose which citizen or what application settings should be loaded for.
+Then \textit{GIRAF Components} provides a component to show a list of citizens which the guardian can choose from.\thilemann{Should it always be in italics?}
+By providing this component, the process of choosing a citizen will be the same throughout \giraf.\thilemann{Choosing a profile instead of citizen here? Even though profiles are not yet introdiced.}
 
 \insertfigure{width=0.8\textwidth}{girafLayers}{Illustration of the layers and dependencies in the \giraf application suite.}{fig:girafLayers}
 
