@@ -5,9 +5,9 @@ The settings are further outlined below,
  	\item disabling of the start animation, when starting \launcher the first time after a system restart,
  	\item and changing the size of application icons on the home activity.
 \end{itemize} 
-It should be noted that these settings are added as suggestions to which settings could be relevant and they made it to the final release.
+These were added as suggestions of relevant \launcher settings in \cref{sec:sprint2:prototypes:settings} and they made it to the final release.
 
-The most interesting of the two preferences is the icon scaling preference, since the ``Show start up animation" preference is created with a standard Android preference component which provides the layout with a two-state switch.
+The most interesting of the two preferences is the icon scaling, since ``Show start up animation" is created with a standard Android preference component, providing the layout with a two-state switch.
 
-The icon scaling preference is created by extending the standard preference class in Android thereby inheriting the native setup, e.g. title and summery fields, and constructors for such a component.
-We have then supplied it with a custom layout containing a slider and an application icon as those used in the home activity. As well as providing functionality to react when the slider changed it position.
+The icon scaling is created by extending the standard preference class in Android, thereby inheriting the native setup, i.e. title and summery fields, and constructors for such a component.
+We supplement it with a custom layout containing a slider and an application icon, as well as providing functionality to react when the slider changed it position.
