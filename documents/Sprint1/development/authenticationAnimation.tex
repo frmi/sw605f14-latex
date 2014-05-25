@@ -1,5 +1,5 @@
 \subsection{Authentication Activity Error}
-When starting \launcher for the first time, the application crashed and logged an \lstinline{OutOfMemoryError} when reaching the authentication activity.
+When starting \launcher for the first time, the application crashed and logged an \lstinline{OutOfMemoryError} when reaching the \authenticationactivity.
 The core of this problem is caused by an animation in the activity, implemented as an instance of the Android class \lstinline{AnimationDrawable} -- a class designed to create animations from a sequence of images.
 According to the Android Documentation \citet{androidreference}, the implementation is technically correct, but it is found that when an instance of \lstinline{AnimationDrawable} is created, it loads the entire sequence of images into main memory of the device at once.
 The images are compiled with the application in the compressed Portable Network Graphics (PNG) format.
@@ -13,36 +13,37 @@ The initial implementation of the \lstinline{AnimationDrawable} is set up as sho
 
 \thilemann{We need to do something here... Better explanation of code examples, explaining the context of the code and the use of a new runnable. The explanation of the solution mentioning 'our class' does also not make sense. The text does also not give the impression that animationdrawable is not used in the improvement. Sorry for this todo...}
 
+\thilemann[inline]{Please do something - I dont think we need the code examples, since the text seems to explain it very well.}
+
 \begin{lstlisting}[caption={The initial implementation, using \lstinline{AnimationDrawable}.},label={lst:animationDrawable}]
 final ImageView instructImageView = (ImageView) findViewById(R.id.animation);
 instructImageView.setBackgroundResource(R.animator.instruct_ani);
 
 instructImageView.post(new Runnable(){
-    @Override
-    public void run(){
-        AnimationDrawable anim = (AnimationDrawable) instructImageView.getBackground();
-        anim.start();
-    }
+  @Override
+  public void run(){
+    AnimationDrawable anim = (AnimationDrawable) instructImageView.getBackground();
+    anim.start();
+  }
 });
 \end{lstlisting}
 
 Our class, simulating \lstinline{AnimationDrawable}, has the method \lstinline{play()}, shown in \cref{lst:methodPlay}, where the input parameter \lstinline{pFrameNo} is the initial image in a static array which contains all the images used in the animation. 
-With this method we only keep one image in memory at all times, since we are changing the image for each run of the \lstinline{play} method and there by avoid an out of memory error.
+With this method obly one image is kept in memory at all times, since it is replaced for each run of the \lstinline{play} method.
+In effect, this shows to remove the out of memory error.
 
 \begin{lstlisting}[caption={Improved implementation of handling the animation.},label={lst:methodPlay}]
 private void play(final int pFrameNo){
-    mImageView.postDelayed(new Runnable(){
-        @Override
-        public void run() {                    
-            mImageView.setImageResource(mFrames[pFrameNo]);
-
-            if(pFrameNo == mLastFrameNo)
-                play(0);
-            else
-                play(pFrameNo + 1);
-        }
-    }, mDuration);
+mImageView.postDelayed(new Runnable(){
+ @Override
+ public void run() {                    
+	 mImageView.setImageResource(mFrames[pFrameNo]);
+	
+	 if(pFrameNo == mLastFrameNo)
+    play(0);
+	 else
+    play(pFrameNo + 1);
+ }
+}, mDuration);
 }        
 \end{lstlisting}
-
-This solution effectively eliminates the \lstinline|OutOfMemoryError|.

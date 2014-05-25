@@ -1,10 +1,11 @@
 \subsection{Refactoring the Drawer Layout}
-The behaviour of the drawer (as described in \cref{sec:drawer:behaviour}) has the unfortunate effect on the list of applications that it pushes their containing view to the right as the drawer is dragged open.
+The behaviour of the drawer (as described in \cref{sec:drawer:behaviour}) has the unfortunate effect on the list of applications that it pushes their containing view to the right, as the drawer is dragged open.
+\thilemann[inline]{Jesper: Naming :)}
 This is caused by the view (\lstinline|ScrollView|) having the  \lstinline{android:layout_toRightOf} attribute set to be placed to the right of the vertical bar in the layout XML files, which makes its position adjust automatically to the newest rightmost position of the vertical bar each time the bar is moved, effectively pushing the icons of the screen.
 
-The improved implementation includes restructuring all parts of the XML file defining the layout of the home activity, making it adapt to devices with various screen sizes (and pixel density).
-Despite of the layout elements not being used correctly and thus not following Android design guidelines, the main issue lies in the fact that many parameters such as heights and widths are set at compile-time through a class containing mostly static fields.
-The result is that the layout does not adapt to more than device it has been designed for, which is not viable if the customers, as an example, choose to replace their current devices.
+The improved implementation includes restructuring all parts of the XML file defining the layout of the \homeactivity, making it adapt to devices with various screen sizes (and pixel density).
+Despite of the layout elements not being used correctly and thus not following Android design guidelines, the main issue lies in the fact that many parameters such as heights and widths are set at compile-time through a class containing mostly static fields.\thilemann{Do we need to refer to this from our discussion?}
+The result is that the layout does not adapt to other devices than the one it has been designed for, which is not viable if the customers, as an example, choose to replace their current ones.
 
 \subsubsection{Implementation}\label{sec:sidebarlayout:xml}
 To avoid the icons being pushed outside the screen, the layout for the drawer is restructured so its elements are contained within a custom view called \lstinline|DrawerLayout|.
@@ -31,9 +32,9 @@ This ensures that the animation and layout hierarchy can be controlled more effe
 \end{lstlisting}
 
 Notice the \lstinline|ScrollView| on the last line in \Cref{lst:sidebarlayout}.
-The before mentioned \lstinline{android:layout_toRightOf} attribute have been removed, to keep it from being pushed out of the screen.
-The negative margin of 400dp defined on line 1 effectively hides the \lstinline|SideBarLayout| when the home activity is just started, revealing only the \lstinline|HomeBar|.
-Since the \lstinline|HomeBar| is placed next to the \lstinline|GridView| (in the layout file) with the id of \lstinline!appcolors! and this view has the same width as the negative margin defined on \lstinline|SideBarLayout|, it is the only visible element; giving the impression of a closed drawer.
+The before mentioned \lstinline{android:layout_toRightOf} attribute on this \lstinline|ScrollView| have been removed, to keep it from being pushed out of the screen.
+The negative margin of 400dp defined on line 1 effectively hides the \lstinline|SideBarLayout| when the \homeactivity is just started, revealing only the \lstinline|HomeBar|.
+Since the \lstinline|HomeBar| is placed next to the \lstinline|GridView| (in the layout file) with the id of \lstinline!appcolors!, and this view has the same width as the negative margin defined on \lstinline|SideBarLayout|, it is the only visible element; giving the impression of a closed drawer.
 
 % \subsubsection{Extending an Android View Class}\label{sec:siebarlayout:java}
 % In \cref{lst:sidebarlayout}, the \lstinline|dk.aau.cs.giraf.launcher.layoutcontroller.SideBarLayout| is a reference to the implementation of this class as seen in \cref{lst:sidebarlayout:java}.

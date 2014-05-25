@@ -1,27 +1,22 @@
 The first sprint focussed on getting to know the \giraf code base, which we inherited from the students working on the project the previous year. 
-This sprint also involved some work establishing work flows for the multi-project. 
-In this chapter we describe what tasks we concerned ourselves with during this sprint. 
-We also give a detailed description of \launcher, the component we are responsible for during this and the following sprints.
 
-This section covers the layout of the first sprint of the project.
-This sets apart from the following sprints, since it focuses on getting to know \giraf in details, setup of the development environment and getting the system up-and-running.
+This section covers the layout of the first sprint of the project, which sets itself apart from the following sprints, since it focuses on getting to know \giraf in details, setup of the development environment and getting the system up-and-running.
 
 \subsection{Planning}\label{sec:sprint1:planning}
-The agenda for the first sprint meeting is to get an overview of the development taken place during the preceding semesters and to get development started.
+The agenda for the first sprint meeting is to get an overview of the development taken place during the preceding semesters, and to get development started.
 To begin with, each multi-group have chosen a \giraf application to work on, even though this selection is subject to change during the following sprints.
-We have selected the \launcher project, which is further described in \cref{sec:launcher}.
+We have selected the to work with the \launcher application, which is further described in \cref{sec:launcher}.\thilemann{Where to say that we only are working on launcher. Removed it from this section, since it was not consistent with other text.}
 
-Some activities are also planned to get to know Android development and the \giraf applications:
+Other activities are also planned to get to know Android development and the \giraf applications:
 
 \begin{itemize}
 \item \textbf{Android Workshop}
-Introductory workshop about Android development that can be attended if one does not have any prior experience with Android.
-\item \textbf{Developers Install Party}
-Intended to get the \giraf development environment up-and-running as last years students worked on. 
-This event failed due to the unstructured nature of the setup of the environment (Eclipse IDE and ANT build system) and thus not every student was able to get \giraf to work.
+is an introductory workshop about Android development that can be attended if one does not have any prior experience developing for Android.
+\item \textbf{Developers Install Party} is intended to get the \giraf development environment up-and-running.
+This event failed due to the unstructured nature of the setup of the environment (Eclipse IDE and ANT build system), and thus not every student was able to get \giraf to work.\thilemann{This sentence much - what is unstructured nature of the setup?}
 \end{itemize}
 
-It is also decided that the following tools are used:
+It is also decided that the following tools are used to strengthen cooperation between all project-groups:
 
 \begin{itemize}
 \item \textbf{Redmine} (project management web application)
@@ -31,15 +26,16 @@ It is also decided that the following tools are used:
 \item \textbf{Gradle} (build automation control)
 \end{itemize}
 
-This selection differs from that of last year, since Git has replaced SubVersion (SVN), Android Studio has replaced Eclipse IDE and Gradle as replaced ANT.
+This selection differs from that of last year, since Git has replaced SubVersion (SVN), Android Studio has replaced Eclipse IDE and the Gradle buildsystem has replaced ANT.
 
 \subsection{Objectives}\label{sec:sprint1:objectives}
 Since this is the first sprint and we thus have no prior knowledge of \giraf, this sprint can not focus on any new developments.
-Therefore, attention is given to the work done by last years students working on the project, and thus looking for improvements and fixing bugs.
-During the first sprint meeting, it was clear based, on semester coordinator Ulrik Nyman, that we should strive to deliver a functioning suite of applications after the first sprint.
-It should not be understood as a version to be delivered to the customers, but merely an installable version that can run without any crashes. 
+Therefore, attention is given to the work done by last years students working on the project and looking for improvements and fixing bugs.
+During the first sprint meeting, it was clear based on semester coordinator Ulrik Nyman that we should strive to deliver a functioning suite of applications after the first sprint.
+It should not be understood as a version to be delivered to the clients, but merely an installable version that can run without any crashes. 
 
-A separate project group was tasked with handling all negotiations with the customers during this first sprint, in order to compile a backlog for the second sprint.
-They are also undertaking the act of specifying a requirements specification for the entire project together with user stories explaining how common tasks are executed, as seen in its entirety in \cref{appendix:requirements}.
+A separate project group was tasked with handling all negotiations with the clients during this first sprint in order to compile a backlog for the second sprint.
+They are also undertaking the act of specifying a requirements specification for the entire project together with user stories explaining how common tasks are executed.
+It can be seen in its entirety in \cref{appendix:requirements}.
 
-The rest of this chapter focuses on the \launcher.
+The rest of this chapter focuses on the \launcher application.
