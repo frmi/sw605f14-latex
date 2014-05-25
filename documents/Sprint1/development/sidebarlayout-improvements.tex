@@ -9,7 +9,7 @@ The result is that the layout does not adapt to more than device it has been des
 \subsubsection{Implementation}\label{sec:sidebarlayout:xml}
 To avoid the icons being pushed outside the screen, the layout for the drawer is restructured so its elements are contained within a custom view called \lstinline|DrawerLayout|.
 This ensures that the animation and layout hierarchy can be controlled more effectively, making the drawer being drawn on top of other layout elements.
-%The custom view is further described in \cref{sec:siebarlayout:java}. % udkommenteret da det refere til en anden udkommenteret section
+
 \Cref{lst:sidebarlayout} shows the elements of the XML layout with most attributes omitted.
 
 \begin{lstlisting}[caption={Structure of the XML layout of the drawer.},label={lst:sidebarlayout}, language=XML]
