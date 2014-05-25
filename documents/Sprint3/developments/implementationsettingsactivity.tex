@@ -185,13 +185,10 @@ The Implementation of the settings for \launcher, as described in \cref{sec:laun
 Since these settings are exclusive to \launcher and thus possible to open within \settingsactivity by implementing them as a \lstinline|Fragment|, they will be available in the \textit{Settings Container Fragment} as shown in \cref{fig:settingsarchitecture}.
 This is in fact equivalent to the \lstinline|FrameLayout| called \textit{settingsContainer} as illustrated in \cref{lst:settingsactivity:layout}.
 
-\subsubsection{Launcher Settings}
-\input{documents/Sprint3/developments/girafpane}
+Before describing the settings specific to \launcher, the description of how saving settings are handled in Android is presented.
 
-\subsubsection{Application Settings}
-\input{documents/Sprint3/developments/appsfragment}
-
-\subsection{Saving Settings}\label{para:sprint4:managingsettingsandroid}
+\thilemann{Frederik: Want to make illustration of both giraf and application settings?}
+\subsubsection{Saving Settings}\label{para:sprint4:managingsettingsandroid}
 To explain the functionality that saves preferences when a changes has been made, this section describes the features which Android provides for managing preferences on a per application basis. This feature is provided through the \lstinline|SharedPreference| interface.
 
 With this class you can either save the preferences in the context of the application, if they are application specific. It is also possible to define the name of the file in which the preferences are saved or read from. If the preference file does not exist when requested it is created.
@@ -203,3 +200,9 @@ Preferences identified by a key, and they are edited through the Editor class an
 If the preference exists it is updated if not it is created.
 
 When a preference is to be read it is retrieved by a get method, e.g. \lstinline!getBoolean()!, this method is provided the key for the preference and a default value in case the preference has not yet been set.
+
+\subsubsection{Launcher Settings}
+\input{documents/Sprint3/developments/girafpane}
+
+\subsubsection{Application Settings}
+\input{documents/Sprint3/developments/appsfragment}
