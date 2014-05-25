@@ -3,7 +3,7 @@ This section discusses the development of \launcher, focusing upon elements that
 First of all, while a class called \lstinline|Constants| does exist, there are still many places in the code where ''magic numbers'' are used.
 This especially goes for padding the \lstinline|AppImageView|s when populating a layout with applications.\\
 
-Currently, there are three utility classes with approximately 900 lines of methods.
+Currently, there are three utility classes with approximately 900 lines of methods. \vagner{Be sure this is accurate}
 The common practice when programming in OO-languages is to contain methods within classes that use them and generally not create utility classes.
 An example of how this could have been done is to have an \lstinline|AppLayout| class, containing all methods related to populating the layout with applications, which should then be used in \lstinline|Home|- and \lstinline|SettingsActivity|.\\
 
