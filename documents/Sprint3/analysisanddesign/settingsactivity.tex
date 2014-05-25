@@ -25,11 +25,8 @@ It is decided that the settings system should consist of four components, to be 
 	As this User Interface component is useful to all applications, it should be implemented by the group responsible for the \giraf GUI library.
 	\item A set of settings for each \giraf application.
 	As these sets may vary widely in content and complexity from application to application, and furthermore may change along with their associated applications over time, these should be defined and implemented by the individual project groups. 
-	\item A method for storing the settings in the database, allowing the users to easily use the same settings across several devices. 
-	This should be implemented by the database group. 
+	\item A method for storing the settings in the database, allowing the users to easily use the same settings across several devices. This should be implemented by the group responsible for the remote database (As this group has other priorities, the settings will initially be saved locally on each device).
 \end{itemize}
-
-\thilemann{Last item regarding remotedb - add somewhere that this is currently only done locally per device.}
 
 \paragraph{The challenge with Implementing Settings} using the above concepts is how to allow applications other than \launcher to access the settings User Interface running in the context of \launcher as an activity.
 
@@ -53,7 +50,7 @@ This is not an acceptable condition in this situation.
  
 \subsubsection{The Final Design}
 Instead of the to presented options above, another design is chosen.
-An Android feature called Intent Filters allows applications to request an action from another \textit{app component}; an activity, a broadcast receiver, a content provider or a service.
+An Android feature called Intent Filters allows applications to request an action from another Android component; an activity, a broadcast receiver, a content provider or a service.
 It is implemented by adding \lstinline|<intent-filter>...</intent-filter>| to the Android Manifest with its actions (or intentions) defied within.\cite{intentFilter}
 With this method it is possible to check each installed application to see if it implements a certain action (which will be the same for each \giraf application implementing the Intent Filter).
 If an application implements this filter, it can be assumed that it provides an activity for showing settings, which in turn can be added safely to the list in the settings activity of \launcher.
