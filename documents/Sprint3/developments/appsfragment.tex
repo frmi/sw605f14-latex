@@ -3,49 +3,49 @@ When clicking the ''Apps'' pane, the fragment filled into the fragment container
 \lstinline!AppManagementFragment! in turn contains another fragment container, \lstinline!AppsContainer!, where the two fragments derived from \lstinline!AppContainerFragment! will be loaded in - the fragments showing the applications.
 Furthermore, \lstinline!AppContainerFragment! implements three buttons in the top of the layout:
 
-\begin{itemize}
-\item The \textbf{Giraf} button loads the \lstinline!GirafFragment! into the fragment container
-\item The \textbf{Android} button loads the \lstinline!AndroidFragment! into the fragment container
-\item The \textbf{Google Play} button opens the Play Store App. If the apps is not installed on the device, it opens the Play Store in the default browser.
-\end{itemize}
+%\begin{itemize}
+%\item The \textbf{Giraf} button loads the \lstinline!GirafFragment! into the fragment container
+%\item The \textbf{Android} button loads the \lstinline!AndroidFragment! into the fragment container
+%\item The \textbf{Google Play} button opens the Play Store App. If the apps is not installed on the device, it opens the Play Store in the default browser.
+%\end{itemize}
 
-The \textbf{Giraf} button and the \textbf{Android} button loads a new fragment into \lstinline!AppsContainer!, by using a \lstinline!FragmentManager!
-An  \lstinline!OnClickListener! is attached to the \textbf{Giraf} and \textbf{Android} buttons, which call the method \lstinline!replaceFragment()!, sending the appropriate fragment as argument to \lstinline!replaceFragment()!.
-The method \lstinline!replaceFragment()! can be seen in \cref{lst:replaceFragment}.
+%The \textbf{Giraf} button and the \textbf{Android} button loads a new fragment into \lstinline!AppsContainer!, by using a \lstinline!FragmentManager!
+%An  \lstinline!OnClickListener! is attached to the \textbf{Giraf} and \textbf{Android} buttons, which call the method \lstinline!replaceFragment()!, sending the appropriate fragment as argument to \lstinline!replaceFragment()!.
+%The method \lstinline!replaceFragment()! can be seen in \cref{lst:replaceFragment}.
+%
+%\begin{lstlisting}[caption={Method used to replace the fragment currently loaded into the fragment container in AppManagementFragment}, label={lst:replaceFragment}]
+%/**
+% * Replace active fragment by running the transaction in a new thread.
+% * Adds responsiveness when loading list of installed apps_container.
+% * @param fragment
+% */
+%private void replaceFragment(final Fragment fragment){
+%    new Runnable() {
+%        @Override
+%        public void run() {
+%            FragmentTransaction ft = fragmentManager.beginTransaction();
+%            ft.replace(R.id.app_settings_fragmentlayout, fragment);
+%            ft.commit();
+%        }
+%    }.run();
+%}
+%\end{lstlisting}
 
-\begin{lstlisting}[caption={Method used to replace the fragment currently loaded into the fragment container in AppManagementFragment}, label={lst:replaceFragment}]
-/**
- * Replace active fragment by running the transaction in a new thread.
- * Adds responsiveness when loading list of installed apps_container.
- * @param fragment
- */
-private void replaceFragment(final Fragment fragment){
-    new Runnable() {
-        @Override
-        public void run() {
-            FragmentTransaction ft = fragmentManager.beginTransaction();
-            ft.replace(R.id.app_settings_fragmentlayout, fragment);
-            ft.commit();
-        }
-    }.run();
-}
-\end{lstlisting}
-
-The \textbf{Google Play} button opens the Google Play Store, so the user can download additional Android applications, if desired. 
-Firstly, we researched how to use the inbuilt API for Google Services  to open the Play Store in this way.
-However, there were some problems with the API when attempting to implement.
-Furthermore, it was discovered that the API is intended to be used for syncronization with Google+, Google Drive and Google Games.
-Therefore, we ultimately chose to open the Play Store as a separate activity with the \lstinline!Intent.FLAG_ACTIVITY_NEW_TASK! and the \lstinline!Intent.FLAG_ACTIVITY_CLEAR_TOP! flags.
-The exact code can be seen in \cref{lst:launchergoogleplay}.\vagner{Please read this and refactor it.}
-
-The full design can be seen visualized in \cref{fig:settingsappfragments}.
- 
-\begin{figure}[h]
-\centering
-\includegraphics[width=\textwidth, height=3in, keepaspectratio=true] {SettingsActivity.png}
-\caption{The organization of \lstinline!SettingsActivity! when inside the "Apps" pane. Since we need to distinguish between \giraf and Android applications, nested fragment containers are used.}
-\label{fig:settingsappfragments}
-\end{figure}
+%The \textbf{Google Play} button opens the Google Play Store, so the user can download additional Android applications, if desired. 
+%Firstly, we researched how to use the inbuilt API for Google Services  to open the Play Store in this way.
+%However, there were some problems with the API when attempting to implement.
+%Furthermore, it was discovered that the API is intended to be used for syncronization with Google+, Google Drive and Google Games.
+%Therefore, we ultimately chose to open the Play Store as a separate activity with the \lstinline!Intent.FLAG_ACTIVITY_NEW_TASK! and the \lstinline!Intent.FLAG_ACTIVITY_CLEAR_TOP! flags.
+%The exact code can be seen in \cref{lst:launchergoogleplay}.\vagner{Please read this and refactor it.}
+%
+%The full design can be seen visualized in \cref{fig:settingsappfragments}.
+% 
+%\begin{figure}[h]
+%\centering
+%\includegraphics[width=\textwidth, height=3in, keepaspectratio=true] {SettingsActivity.png}
+%\caption{The organization of \lstinline!SettingsActivity! when inside the "Apps" pane. Since we need to distinguish between \giraf and Android applications, nested fragment containers are used.}
+%\label{fig:settingsappfragments}
+%\end{figure}
 
 \paragraph{AppContainerFragment and the derived classes}
 
