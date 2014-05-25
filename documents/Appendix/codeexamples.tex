@@ -25,37 +25,6 @@ googlePlayButton.setOnClickListener(new View.OnClickListener() {
 }
 \end{lstlisting}
 
-\section{The New Profile Selector}
-
-\begin{lstlisting}[caption={The method instantiating the Profile Selector with the correct arguments each time a new user is selected, inside the OnListItemClick listener.}, label={lst:newprofileselectoronitemclick}]
-/**
-* Updates the ProfileSelector. It is needed when a new user has been selected, as a different
-* listener is needed, and the app container has to be reloaded.
-* */
-private void updatesProfileSelector(){
- mProfileSelectorDialog.setOnListItemClick(new AdapterView.OnItemClickListener() {
-  @Override
-  public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-   ProfileController pc = new ProfileController(mContext);
-   mCurrentUser = pc.getProfileById((int) l);
-   mProfileSelectorDialog.dismiss();
-  
-   if (mCurrentUser.getRole() != Profile.Roles.GUARDIAN)
-    mProfileSelectorDialog = new GProfileSelector(mContext, mLoggedInGuardian, mCurrentUser);
-   else
-    mProfileSelectorDialog = new GProfileSelector(mContext, mLoggedInGuardian, null);
-  
-   mWidgetProfileSelection.setImageBitmap(mCurrentUser.getImage());
-  
-   updatesProfileSelector();
-  
-   //Reload the application container, as a new user has been selected.
-   reloadApplications();
-  }
- });
-} 
-\end{lstlisting}
-
 \section{Derived class of LoadApplicationTask}
 
   \begin{lstlisting}[caption={The LoadGirafApplicationTask, derived from LoadApplicationTask. This is the derived class used by GirafFragment to load applications into view. Please note that all comments and the constructor have been removed to make the listing smaller}, label={lst:derivedlat}]
@@ -86,4 +55,24 @@ class LoadGirafApplicationTask extends LoadApplicationTask {
 		haveAppsBeenAdded = true;
 	}
 }
+\end{lstlisting}
+
+\section{Marking GIRAF and Android applications}\label{appendix:markingapps}
+
+\begin{lstlisting}[caption={The methods used for adding or removing a Giraf application to a user}, label={lst:addinggirafapplications}]
+ProfileApplicationController pac = new ProfileApplicationController(context);
+ProfileApplication pa = new ProfileApplication(currentUser.getId(), app.getApp().getId());
+if(pa == null)
+	pac.insertProfileApplication(pa);
+else
+	pac.removeProfileApplicationByProfileAndApplication(app.getApp(), currentUser);
+\end{lstlisting}
+
+\begin{lstlisting}[caption={The methods used for adding or removing an Android application to a user. Please note that the documentation has been removed.}, label={lst:addingandroidapplications}]
+String activityName = app.getActivity();
+
+if (selectedApps.contains(activityName))
+    selectedApps.remove(activityName);
+else
+    selectedApps.add(activityName);
 \end{lstlisting}

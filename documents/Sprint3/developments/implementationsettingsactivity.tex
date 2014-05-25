@@ -1,4 +1,4 @@
-\subsection{SettingsActivity}
+\subsection{SettingsActivity}\label{sec:sprint3:settings}
 The main responsibility of this class is responding to updates in the components it contain and also inflating the layout seen in \cref{lst:settingsactivity:layout}.
 
 \begin{lstlisting}[caption={Excerpt of the layout defined for \lstinline|SettingsActivity|.}, label={lst:settingsactivity:layout}]
@@ -60,8 +60,8 @@ To enable its global member \lstinline|mSettingsListView| to render its items, a
 Before describing this adapter in \cref{sec:settingslistadapter}, the meaning of \lstinline|SettingsListItem| is explained.
 
 \subsubsection{SettingsListItem}
-\lstinline|SettingsListItem| is a simple class, which members are used to render the information shown in the \lstinline|ListView|.
-It is thus used as a placeholder for the fragments and intents that should be opened by clicking an list item.
+\lstinline|SettingsListItem| is a simple class, whose members are used to render the information shown in the \lstinline|ListView|.
+It is thus used as a place holder for the fragments and intents that should be opened by clicking an list item.
 The members of this class are seen in \cref{lst:settingslistitem}.
 
 \begin{lstlisting}[caption={Members of the \lstinline|SettingsListItem| class.}, label={lst:settingslistitem}]
@@ -162,7 +162,7 @@ The reason for doing this is that we need a reference for a specific view depend
 \lstinline|mLastSelectedItem| is a global member in \lstinline|SettingsListAdapter|, made available through a public method called \lstinline|setSelected(int position)|.
 This is called from an item click listener, implemented by the underlying \lstinline|ListView|.
 
-\thilemann[inline]{Should we say comments are omitted in all code examples, or that this was done late during spring 4 to support the next group?}
+\thilemann[inline]{Should we say comments are omitted in all code examples, or that this was done late during spring 4 to support the next group? Vagner: Jeg har nævnt at kommentarer er exkluderet alle steder hvor jeg har exkluderet dem.}
 
 \subsection{Adding to Settings}
 The interface implemented by \lstinline|SettingsActivity| forces it to implement a method called \lstinline|getInstalledSettingsApps()| that has to return a list of either \launcher settings, intents available from other \giraf applications or other intents related to Android applications.
