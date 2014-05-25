@@ -3,7 +3,7 @@ In Android, the easiest way of doing so, is by implementing an \lstinline|Adapte
 An adapter serves the objective of bridging the underlying data for a view, and to render it appropriately.
 Various adapters exist for different purposes; it is e.g. possible to implement an extension of \lstinline|Adapter| called \lstinline|ListAdapter|, which serves the purpose of easily adding items to a \lstinline|ListView|.
 Implementing an adapter also has performance related benefits.
-Most importantly being the concept of \textit{recycling} a view, which makes it possible to handle large lists efficiently.\thilemann{Maybe add ref?}
+Most importantly being the concept of \textit{recycling} a view, which makes it possible to handle large lists efficiently\cite{listViewsPerformance}. The performance is achieved in the \lstinline|getView()| method, \cref{lst:settingslistadapter:getview}.
 
 In the case of yielding a visual result as close as possible to the prototypes, our implementation requires a custom class extending the \lstinline|BaseAdapter| class.
 The specific reason being the list requiring both a title and an icon, but also specifically because of the shadows rendered around a selected item in the list.
