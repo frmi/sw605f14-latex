@@ -1,3 +1,17 @@
-Write here our discussion
+This section discusses the development of \launcher, focusing upon elements that could have been done better.
 
-\input{documents/Evaluation/removingwidgets}
+First of all, while a class called \lstinline|Constants| does exist, there are still many places in the code where ''magic numbers'' are used.
+This especially goes for padding the \lstinline|AppImageView|s when populating a layout with applications.\\
+
+Currently, there are three utility classes with approximately 900 lines of methods.
+The common practice when programming in OO-languages is to contain methods within classes that use them and generally not create utility classes.
+An example of how this could have been done is to have an \lstinline|AppLayout| class, containing all methods related to populating the layout with applications, which should then be used in \lstinline|Home|- and \lstinline|SettingsActivity|.\\
+
+A weakness of the group was furthermore to attempt to solve problems without investigating the general best practices for Android applications.
+This was done correctly in the case of the \lstinline|SettingsAdapter|.
+However, the layout populated by applications should be a \lstinline|GridView| instead of the currently solution.\\
+
+Furthermore, testing should be done more thoroughly.
+While there were use case testing, as described in \vagner{insert reference til use case tests}, and informal integration testing before each sprint end, as described in \vagner{insert reference til informatil integration testing.}, neither system tests nor unit tests were carried out.
+As described in \vagner{add reference to remotedb and the panic thing.}, there were some problems with integrating communication with the Remote Database, which indicates that the informal integration testing should have been more thorough and formal.
+Lastly, a code review session with another group could have a positive effect on the code.
