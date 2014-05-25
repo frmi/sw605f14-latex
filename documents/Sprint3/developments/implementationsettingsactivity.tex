@@ -33,9 +33,9 @@ public interface SettingsListFragmentListener {
 }
 \end{lstlisting}
 
-\subsection{SettingsListFragment}\label{sec:settingslistfragment}
+\subsection{Settings List Fragment}\label{sec:settingslistfragment}
 This is the static fragment defined in the \lstinline|SettingsActivity| layout (\cref{lst:settingsactivity:layout}).
-\thilemann[inline]{Frederik, can we add something according to what you wrote back in design about fragments and lists?}
+
 The main tasks of \lstinline|SettingsListFragment| is to update \lstinline|SettingsActivity| using the interface callback member \lstinline|private SettingsListFragmentListener mCallback|.
 This is done in the appropriate listeners for the \textit{Profile Selector} and \textit{ListView} as illustrated in \cref{lst:settingsactivity:layout}.
 In the implementation, these components corresponds to a \lstinline|GProfileSelector| and a standard Android \lstinline|ListView| respectively.
@@ -74,15 +74,16 @@ Intent mIntent;
 \end{lstlisting}
 
 By using constructor chaining, the class provides various public constructors that use one private constructor to set the values of its members.
-This is decided since the \lstinline|ListView| in \lstinline|SettingsListFragment| have to be able to open both fragments and intents.
-Otherwise it will not be possible to open settings for other \giraf applications.
+Depending on the constructor used, for each item of the list view in \lstinline|SettingsListFragment|, the item is able to either change the fragment in the settings container fragment or start an activity through an intent.
+The fragment is changed using the \lstinline|FragmentManager| which is used to manage fragment transactions.
+The list view should also be able to contain an item for settings in other \giraf applications, therefore the necessity for launching activities through intents.
 Logic used in \lstinline|SettingsActivity| checks if either the fragment or intent member is \lstinline|null|, and starts a new activity accordingly, when an item is clicked.
 
 \subsection{SettingsListAdapter}\label{sec:settingslistadapter}
 Considering the prototypes seen in \cref{fig:settingsprototype,fig:appsmanagement} it is apparent that a specially designed view (also referred to as an \lstinline|AdapterView|) for each list item is required.
 In Android, the easiest way of doing so, is by implementing an \lstinline|Adapter| for the \lstinline|ListView|.
 An adapter serves the objective of bridging the underlying data for a view, and to render it appropriately.
-Various adapters exist for different purposes; it is fx possible to implement an extension of \lstinline|Adapter| called \lstinline|ListAdapter|, which serves the purpose of easily adding items to a \lstinline|ListView|.
+Various adapters exist for different purposes; it is e.g. possible to implement an extension of \lstinline|Adapter| called \lstinline|ListAdapter|, which serves the purpose of easily adding items to a \lstinline|ListView|.
 Implementing an adapter also has performance related benefits.
 Most importantly being the concept of \textit{recycling} a view, which makes it possible to handle large lists efficiently.\thilemann{Maybe add ref?}
 
