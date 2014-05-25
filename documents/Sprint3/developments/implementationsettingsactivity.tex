@@ -1,4 +1,4 @@
-\subsection{SettingsActivity}\label{sec:sprint3:settings}
+\subsection{The Settings Activity}\label{sec:sprint3:settings}
 The main responsibility of this class is responding to updates in the components it contain and also inflating the layout seen in \cref{lst:settingsactivity:layout}.
 
 \begin{lstlisting}[caption={Excerpt of the layout defined for \lstinline|SettingsActivity|.}, label={lst:settingsactivity:layout}]
@@ -33,7 +33,7 @@ public interface SettingsListFragmentListener {
 }
 \end{lstlisting}
 
-\subsection{Settings List Fragment}\label{sec:settingslistfragment}
+\subsection{The Settings Menu}\label{sec:settingslistfragment}
 This is the static fragment defined in the \lstinline|SettingsActivity| layout (\cref{lst:settingsactivity:layout}).
 
 The main tasks of \lstinline|SettingsListFragment| is to update \lstinline|SettingsActivity| using the interface callback member \lstinline|private SettingsListFragmentListener mCallback|.
@@ -59,7 +59,7 @@ To enable its global member \lstinline|mSettingsListView| to render its items, a
 
 Before describing this adapter in \cref{sec:settingslistadapter}, the meaning of \lstinline|SettingsListItem| is explained.
 
-\subsubsection{SettingsListItem}
+\subsubsection{Content of the Settings Menu}
 \lstinline|SettingsListItem| is a simple class, whose members are used to render the information shown in the \lstinline|ListView|.
 It is thus used as a place holder for the fragments and intents that should be opened by clicking an list item.
 The members of this class are seen in \cref{lst:settingslistitem}.
@@ -79,7 +79,7 @@ The fragment is changed using the \lstinline|FragmentManager| which is used to m
 The list view should also be able to contain an item for settings in other \giraf applications, therefore the necessity for launching activities through intents.
 Logic used in \lstinline|SettingsActivity| checks if either the fragment or intent member is \lstinline|null|, and starts a new activity accordingly, when an item is clicked.
 
-\subsection{SettingsListAdapter}\label{sec:settingslistadapter}
+\subsection{Adapter for the Settings Menu}\label{sec:settingslistadapter}
 Considering the prototypes seen in \cref{fig:settingsprototype,fig:appsmanagement} it is apparent that a specially designed view (also referred to as an \lstinline|AdapterView|) for each list item is required.
 In Android, the easiest way of doing so, is by implementing an \lstinline|Adapter| for the \lstinline|ListView|.
 An adapter serves the objective of bridging the underlying data for a view, and to render it appropriately.
@@ -181,7 +181,7 @@ To enable another \giraf application to be shown in settings, it \textit{has} to
 
 Important to notice is that the name of the provided action within the intent filter, is a key having the value \lstinline|SETTINGSACTIVITY|, which is appended to the \textit{complete} package name of the application to show settings for.
 
-\subsection{Settings Specific to \launcher}
+\subsection{Settings specific to \launcher}
 The Implementation of the settings for \launcher, as described in \cref{sec:launchersettings}, is elaborated in this section.
 Since these settings are exclusive to \launcher and thus possible to open within \settingsactivity by implementing them as a fragment, they will be available in the \textit{Settings Container} as shown in \cref{fig:settingsarchitecture}.
 This is in fact equivalent to the \lstinline|FrameLayout| called \textit{settingsContainer} as illustrated in \cref{lst:settingsactivity:layout}.
