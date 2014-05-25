@@ -1,0 +1,17 @@
+This section explain the functionality that saves preferences when a change have been made. This is achieved by describing the features which Android provides for managing preferences on a per application basis as well as how we use it.
+
+Android provides the class \lstinline|SharedPreference| which is used to handle such settings as ours.
+This class provides functionality to save preferences in the context of an application.
+The settings are written to a file on the device.
+
+We use \lstinline|SharedPreference| to save preferences for each user. We create a unique file by combining the role and id of the current user.
+This means that a \textit{citizen} profile with the id \textit{1}, would get the file name \textit{c1}, prepended with the package name of our application.
+
+Preferences are identified by a key, and edited through the \lstinline|Editor| class, which provide methods to edit preferences.
+An example of one of the messages is the \lstinline!putBoolean()! which stores boolean field in a preference, identified with a provided key.
+If the preference exists it is updated if not it is created.
+
+When a preference is to be read it is retrieved by a get method, e.g. \lstinline!getBoolean()!, this method is provided the key for the preference and a default value in case the preference has not yet been set.\\
+
+In our application we are managing settings using the Android activity and fragment life cycles.
+In the \settingsactivity we are reading and storing settings when each fragment is shown and closed respectively. By doing this the user will not have to do anything to load the preferences or store changes.
