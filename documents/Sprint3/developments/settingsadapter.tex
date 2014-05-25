@@ -56,7 +56,6 @@ In the \lstinline|getView()| method the most important parameters are \lstinline
 \lstinline|position| being the index of the item in the \lstinline|ListView| that is currently being inflated.
 \lstinline|convertView| is the view obtained from the \lstinline|ListView|.
 As seen in the example, this view is only inflated if it is not \lstinline|null|, which is one of the optimizations of using an adapter.
-\thilemann[inline]{Check what this has to do with recycling}
 
 To be able to add data to each \lstinline|View| contained in a \lstinline|convertView|, the item related to the position is obtained, where a \lstinline|View| fx is the \lstinline|ImageView| showing the application icon.
 
@@ -80,5 +79,3 @@ The reason for doing this is that we need a reference for a specific view depend
 
 \lstinline|mLastSelectedItem| is a global member in \lstinline|SettingsListAdapter|, made available through a public method called \lstinline|setSelected(int position)|.
 This is called from an item click listener, implemented by the underlying \lstinline|ListView|.
-
-\thilemann[inline]{Should we say comments are omitted in all code examples, or that this was done late during spring 4 to support the next group? Vagner: Jeg har nævnt at kommentarer er exkluderet alle steder hvor jeg har exkluderet dem.}
