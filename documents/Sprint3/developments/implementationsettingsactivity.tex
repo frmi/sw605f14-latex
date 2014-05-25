@@ -74,7 +74,7 @@ Intent mIntent;
 \end{lstlisting}
 
 By using constructor chaining, the class provides various public constructors that use one private constructor to set the values of its members.
-Depending on the constructor used, for each item of the list view in \lstinline|SettingsListFragment|, the item is able to either change the fragment in the settings container fragment or start an activity through an intent.
+Depending on the constructor used, for each item of the list view in \lstinline|SettingsListFragment|, the item is able to either change the fragment in the \textit{Settings Container} or start an activity through an intent.
 The fragment is changed using the \lstinline|FragmentManager| which is used to manage fragment transactions.
 The list view should also be able to contain an item for settings in other \giraf applications, therefore the necessity for launching activities through intents.
 Logic used in \lstinline|SettingsActivity| checks if either the fragment or intent member is \lstinline|null|, and starts a new activity accordingly, when an item is clicked.
@@ -183,7 +183,7 @@ Important to notice is that the name of the provided action within the intent fi
 
 \subsection{Settings Specific to \launcher}
 The Implementation of the settings for \launcher, as described in \cref{sec:launchersettings}, is elaborated in this section.
-Since these settings are exclusive to \launcher and thus possible to open within \settingsactivity by implementing them as a \lstinline|Fragment|, they will be available in the \textit{Settings Container Fragment} as shown in \cref{fig:settingsarchitecture}.
+Since these settings are exclusive to \launcher and thus possible to open within \settingsactivity by implementing them as a fragment, they will be available in the \textit{Settings Container} as shown in \cref{fig:settingsarchitecture}.
 This is in fact equivalent to the \lstinline|FrameLayout| called \textit{settingsContainer} as illustrated in \cref{lst:settingsactivity:layout}.
 
 \thilemann{Frederik: Want to make illustration of both giraf and application settings? Vagner: YES WE DO!}
