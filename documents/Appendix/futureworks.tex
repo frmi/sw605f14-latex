@@ -33,12 +33,14 @@ For this reason, it would be preferable to be able to copy settings from one use
 There are still work to do in the authentication activity.
 
 \begin{itemize}
-	\item Make it clear that the QR code was successfully scanned.
+	\item \textbf{Make it clear that the QR code was successfully scanned.}
 
 	An idea is that the camera feed is hidden when the QR code is accepted and who buttons are show, one to scan again and one to login.
-	\item Rotation of the instruction animation.
+	\item \textbf{Rotation of the instruction animation.}
 
-	Currently it is shown as the tablet should be held in portrait mode. For usability matters this should be rotated. %Good luck and have fun with this...!
+	Currently it is shown as the tablet should be held in portrait mode. 
+	For usability matters this should be rotated. 
+	%Good luck and have fun with this...!
 \end{itemize}
 
 \section{Download pictograms while tablet is being used}
@@ -46,5 +48,7 @@ When \launcher is started after a reboot of the device the synchronisation i of 
 If \launcher has never been installed on the device before, this means that it can take up to 30 minutes, before it is ready to login.
 It would be an idea to only load the necessary information such as profiles, and then continue downloading the pictograms in the background while the tablet is being used.
 
-\section{GridView used for loading applications}
-The container in which applications are being loaded is implemented inconveniently. It should be implemented with a grid view, using a custom adapter. This is better for memory management, and would simplify the algorithm used for showing applications. \frederik{ref til stefans afsnit om adapter i settings}
+\section{Use GridView for loading applications}
+The layout in which applications are being loaded is of an inconvenient type. 
+They should instead be loaded into a \lstinline|GridView|, using a custom adapter similar to the one mentioned in \cref{sec:settingslistadapter}. 
+This is better for memory management, follows Android Best Practices and would simplify the algorithm used for showing applications. \vagner{Kilde for at det ville følge Android Best Practices?}
