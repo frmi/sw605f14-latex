@@ -1,4 +1,4 @@
-This appendix describes the implementation of a debug mode, making developers able to skip certain steps in the launcher, such as the animation screen and the authentication screen.\\
+This appendix section describes the implementation of a debug mode, making developers able to skip certain steps in the launcher, such as the animation screen and the authentication screen.\\
 
 When opening \launcher one is presented the \lstinline{MainActivity} activity, which shows a loading animation for a constant amount of time.
 \launcher also requires the users to authenticate themselves, before being given access to the \lstinline{HomeActivity}.
@@ -37,8 +37,7 @@ public static void enableDebugging(boolean debugging, boolean loginAsChild, Acti
 }
 \end{lstlisting}
 
-The code in \cref{lst:debugmode:show}\thilemann{Finish this pararaph.}
-
+The code in \cref{lst:debugmode:show} is used to set the necessary views, as to inform the developer that debug mode is enabled.
 
 \begin{lstlisting}[caption={Show a debug information on activity if debug is enabled.},label={lst:debugmode:show}]  
 public static void ShowDebugInformation(Activity a) {
@@ -55,4 +54,3 @@ public static void ShowDebugInformation(Activity a) {
   }
 }
 \end{lstlisting}
-So...\thilemann{finish this subsection!}
