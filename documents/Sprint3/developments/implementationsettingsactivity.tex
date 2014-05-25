@@ -187,7 +187,7 @@ This section describes
 
 
 \subsection{Saving Settings}\label{para:sprint4:managingsettingsandroid}
-To explain the functionality we use to save preferences in our application this section describes the excellent features which Android provides for managing preferences on a per application basis. This feature is provided through the SharedPreference class.
+To explain the functionality we use to save preferences in our application this section describes the excellent features which Android provides for managing preferences on a per application basis. This feature is provided through the \lstinline|SharedPreference| class.
 
 With this class you can either save the preferences in the context of the application, if they are application specific. It is also possible to define the name of the file in which the preferences are saved or read from. If the preference file does not exist when requested it is created.
 
@@ -200,8 +200,6 @@ If the preference exists it is updated if not it is created.
 When a preference is to be read it is retrieved by a get method, e.g. \lstinline!getBoolean()!, this method is provided the key for the preference and a default value in case the preference has not yet been set.
 
 \thilemann{Add that settings are automatically saved according to this method - and check if sharedpreferences not are described in another section.}
-
-
 
 \subsubsection{Launcher Settings}
 \input{documents/Sprint3/developments/girafpane}
