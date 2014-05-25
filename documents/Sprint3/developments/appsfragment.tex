@@ -38,6 +38,15 @@ Furthermore, it was discovered that the API is intended to be used for syncroniz
 Therefore, we ultimately chose to open the Play Store as a separate activity with the \lstinline!Intent.FLAG_ACTIVITY_NEW_TASK! and the \lstinline!Intent.FLAG_ACTIVITY_CLEAR_TOP! flags.
 The exact code can be seen in \cref{lst:launchergoogleplay}.\vagner{Please read this and refactor it.}
 
+The full design can be seen visualized in \cref{fig:settingsappfragments}.
+ 
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth, height=3in, keepaspectratio=true] {SettingsActivity.png}
+\caption{The organization of \lstinline!SettingsActivity! when inside the "Apps" pane. Since we need to distinguish between \giraf and Android applications, nested fragment containers are used.}
+\label{fig:settingsappfragments}
+\end{figure}
+
 \paragraph{AppContainerFragment and the derived classes}
 
 Because the \giraf and Android fragments contain many of the same variables, these inherit all shared information from a superclass, consequently reducing redundancy and clarifying how the two fragments are different.
