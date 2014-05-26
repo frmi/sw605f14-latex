@@ -1,8 +1,7 @@
-This is the static fragment defined in the \lstinline|SettingsActivity| layout (\cref{lst:settingsactivity:layout}).
-
-The main tasks of \lstinline|SettingsListFragment| is to update \lstinline|SettingsActivity| using the interface callback member \lstinline|private SettingsListFragmentListener mCallback|.
-This is done in the appropriate listeners for the \textit{Profile Selector} and \textit{ListView} as illustrated in \cref{lst:settingsactivity:layout}.
-In the implementation, these components corresponds to a \lstinline|GProfileSelector| and a standard Android \lstinline|ListView| respectively.
+This is the static fragment as defined in the \lstinline|SettingsActivity| layout (\cref{lst:settingsactivity:layout}).
+The main tasks this (\lstinline|SettingsListFragment|), is to update \lstinline|SettingsActivity| using the interface callback member \lstinline|private SettingsListFragmentListener mCallback|.
+This is done in the appropriate listeners for the \textit{Profile Selector} and \textit{ListView}, as illustrated in \cref{lst:settingsactivity:layout}.
+In the implementation these components corresponds to a \lstinline|GProfileSelector| and a standard Android \lstinline|ListView| respectively.
 
 To ensure that the context of the underlying activity implements the interface just described, the code in \cref{lst:settingslistfragment:onattach} is utilized in \lstinline|SettingsListFragment|.
 
@@ -25,8 +24,8 @@ Before describing this adapter in \cref{sec:settingslistadapter}, the meaning of
 
 
 \subsubsection{Content of the Settings Menu}
-\lstinline|SettingsListItem| is a simple class, whose members are used to render the information shown in the \lstinline|ListView|.
-It is thus used as a place holder for the fragments and intents that should be opened by clicking an list item.
+Each item in the Settings Menu contains an instance of \lstinline|SettingsListItem|, which is a simple class whose members are used to render the information shown in the \lstinline|ListView|.
+It is thus used as a placeholder for the fragments and intents that should be opened by clicking an list item.
 The members of this class are seen in \cref{lst:settingslistitem}.
 
 \begin{lstlisting}[caption={Members of the \lstinline|SettingsListItem| class.}, label={lst:settingslistitem}]
