@@ -6,8 +6,7 @@ The concept of the drawer is a component that can be shown and hidden at will.
 This means that only part of the drawer is visible at all time; it can be dragged towards the centre of the screen to reveal its contents.
 Apart from enabling the users to switch colours of their installed \giraf applications, it also contains various informative widgets.
 These widgets includes a calendar for showing current day and date, a server connection indicator updating the synchronization status of the remote database\footnote{This connection indicator widget has no effect, since database synchronization is not yet implemented.}, and a logout button.
-The implementations of these widgets are a part of \textit{Giraf Components}, a separate project in the \giraf system that handles customized Graphical User Interface components.\thilemann{We have already said this?}
-It should be utilized throughout all \giraf applications to make them look and feel the same.\thilemann{Same here.}
+These widgets are a part of \textit{Giraf Components}, as described in \cref{sec:giraf:applications}.
 
 Illustrations of the drawer in closed and opened positions can be seen in \cref{fig:drawerclosed,fig:draweropened} respectively.
 
@@ -34,8 +33,7 @@ As indicated by \cref{fig:drawerstates}, the drawer already meet the requirement
 In spite of this, many deficiencies have been located, which are further enlightened by the following sections.
 
 \subsubsection{Behaviour of the Drawer}\label{sec:drawer:behaviour}
-\thilemann[inline]{Jesper: Introduce new namings :)}
-The drawer opens by pressing and holding the handle (indentation) of the vertical bar (see \cref{fig:drawerclosed}) while sliding it to the right.
+The drawer opens by pressing and holding the handle (indentation) of the sidebar (see \cref{fig:drawerclosed}) while sliding it to the right.
 While being opened, the drawer pushes the application icons along with it to the right, resulting in some icons disappearing out of view.
 Furthermore, the drawer stops sliding when pressure is released from the touch-screen, meaning it can be left in a half-open, half-closed state.
 To change the colour of an application, a colour can be drag-and-dropped onto an application icon. 

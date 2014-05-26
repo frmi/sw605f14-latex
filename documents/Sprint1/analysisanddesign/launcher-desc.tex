@@ -15,7 +15,6 @@ As mentioned in \cref{sec:sprint1:objectives}, the focus in this sprint is on cr
 \subsubsection{Launcher Functionality}
 As the \launcher covers multiple tasks in the \giraf project, this section gives a detailed description of its most important activities (screens in the application).
 Screenshots of each activity is found in \cref{fig:launcheractivities}.
-\thilemann[inline]{Short note on what an activity is.}
 
 \begin{figure}[h] % Billeder af draweren i åben og lukket tilstand
 \centering
@@ -50,11 +49,11 @@ Screenshots of each activity is found in \cref{fig:launcheractivities}.
 \caption{Activities of the \giraf application.}
 \label{fig:launcheractivities}
 \end{figure}
-\paragraph{\mainactivity} is only responsible for showing the \giraf logo for a specified amount of time (as seen in \cref{fig:launcheractivity:logo}), and then redirecting the users to the proper activity.\footnote{Please note that MainActivity was previously named LogoActivity. It was renamed to MainActivity to follow Android best practice.}\thilemann{Shoud we say whats in footnote?}
+\paragraph{\mainactivity} is only responsible for showing the \giraf logo for a specified amount of time (as seen in \cref{fig:launcheractivity:logo}), and then redirecting the users to the proper activity.
 It redirects to \authenticationactivity if the user is not logged in, or to the \homeactivity if the user is already logged in.
 
 \paragraph{\authenticationactivity} requires the user to authenticate him- or herself before proceeding. 
-\citet{launcher2012} describes how user identification is necessary, as the \giraf settings must be able to vary from user to user.\thilemann{Is it really because of settings we are using stupid authentication?} 
+\citet{launcher2012} describes why user identification is necessary, as access rights to the different \giraf applications must be able to vary between users.
 The report furthermore describes how autistic citizens might have problems using a traditional user-name and password system. 
 Therefore, the \authenticationactivity is based on a QR-scanner, as seen in \cref{fig:launcheractivity:auth}.
 Each citizen and guardian then uses a small brick printed with their personal QR-code they scan to identify themselves. 
@@ -65,7 +64,7 @@ The availability of applications depends on whether the application exists local
 The \homeactivity for a test guardian user is seen in \cref{fig:launcheractivity:home} with the user's installed \giraf applicatons.
 Furthermore, a number of widgets allows the user to see the synchronization status of the local database in relation to the remote database, and a widget showing current date. 
 There is also a button that allows the user to log out, and return to the \authenticationactivity.
-Finally, there is a colour palette hidden in a drawer component, where the user can change the base colour of each installed application.\thilemann{But not all?} 
+Finally, there is a colour palette hidden in a drawer component, where the user can change the base colour of each installed application.
 The idea is to make it easier for the citizens to differentiate between the various applications by being able to choose their own colour scheme. 
 Ideally, the choice of colour should also reflect in the application started from \launcher, giving the citizen consistent visual associations throughout \giraf.
 The latter is for example implemented in the \textit{Timer} application.

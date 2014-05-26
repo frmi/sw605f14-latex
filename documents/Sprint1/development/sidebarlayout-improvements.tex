@@ -1,9 +1,9 @@
 \subsection{Refactoring the Drawer Layout}
-The behaviour of the drawer (as described in \cref{sec:drawer:behaviour}) has the unfortunate effect on the list of applications that it pushes their containing view to the right, as the drawer is dragged open.
-\thilemann[inline]{Jesper: Naming :)}
-This is caused by the view (\lstinline|ScrollView|) having the  \lstinline{android:layout_toRightOf} attribute set to be placed to the right of the vertical bar in the layout XML files, which makes its position adjust automatically to the newest rightmost position of the vertical bar each time the bar is moved, effectively pushing the icons of the screen.
+The behaviour of the drawer (as described in \cref{sec:drawer:behaviour}) has the unfortunate effect on the list of applications that it pushes their containing views to the right, as the drawer is dragged open.
+This is caused by the view containing the application icons having the  \lstinline{android:layout_toRightOf} attribute set to be placed to the right of the sidebar in the layout XML files.
+This makes its position adjust automatically to the newest rightmost position of the sidebar each time the bar is moved, effectively pushing the icons off the screen.
 
-The improved implementation includes restructuring all parts of the XML file defining the layout of the \homeactivity, making it adapt to devices with various screen sizes (and pixel density).
+The improved implementation includes restructuring all parts of the XML file defining the layout of the \homeactivity, making it adapt to devices with various screen sizes \textsl{}and pixel density.
 Despite of the layout elements not being used correctly and thus not following Android design guidelines, the main issue lies in the fact that many parameters such as heights and widths are set at compile-time through a class containing mostly static fields.\thilemann{Do we need to refer to this from our discussion?}
 The result is that the layout does not adapt to other devices than the one it has been designed for, which is not viable if the customers, as an example, choose to replace their current ones.
 

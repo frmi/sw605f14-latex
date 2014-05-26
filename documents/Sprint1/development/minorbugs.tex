@@ -3,8 +3,7 @@
 Several minor bugs, anomalies and things that did not work as expected were found in the beginning of the sprint.
 Considering their negligible significance, we will not discuss them in depth, but rather describe each briefly.
 
-\subsubsection{Child Mode}
-\thilemann[inline]{Wat? Child Mode? WAT?}
+\subsubsection{Citizen Mode}
 Regardless of whether the currently logged in profile is a citizen or a guardian, \launcher opens the \profileselectionactivity before opening an application.
 It should only open that activity while using a logged in guardian profile.
 The issue is solved by checking on the \lstinline{getRole()} parameter of a profile, and then appropriately override the \lstinline{OnClickListener} of the \profileselectionactivity, depending on the role. 
