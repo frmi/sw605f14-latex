@@ -79,24 +79,26 @@ Having investigated how to handle settings from other \giraf applications in \cr
 Analogous to opening a new window on a desktop computer, a ``screen'' on an Android device consists of an activity.
 \Cref{fig:settingsprototype} can be compared directly to \cref{fig:settingsarchitecture}, to expand on the User Interface components that need be included.
 
-To follow Android guidelines we are using fragments\cite{fragments} to implement the functionality this activity requires. They are reusable modules which gives decomposition of the application functionality and UI. By using fragments it is also possible to add multiple fragments to a screen without switching activity.
+To follow Android guidelines we are using fragments\cite{fragments} to implement the functionality this activity requires. They are reusable modules which gives decomposition of the application functionality and UI.
+By using fragments, it is also possible to add multiple fragments to a screen without switching activity.\thilemann{Hm, not by using fragments, but by using fragmentmanager? Or just rephrase.}
 
-By following these guidelines for developing an activity it is possible to use the same implementation to show the settings on a smaller screen, this is not a requirement at the moment and therefore this has not been taking into account.\\
+By following these guidelines for developing an activity it is possible to use the same implementation to show the settings on a smaller screen.
+This is not a requirement at the moment, and therefore this has not been taking into account.\\
 
-As illustrated in \cref{fig:settingsarchitecture} it consists of one fragment, \textit{Settings List Fragment}, and one container, \textit{Settings Container}.
-The settings list fragment contains the profile selector and a list view, these are described below
+As illustrated in \cref{fig:settingsarchitecture}, the design consists of one fragment, \textit{Settings List Fragment}, and one container, \textit{Settings Container}.
+The settings list fragment contains the profile selector and a list view as described below:
 \begin{itemize}
 \item \textbf{Profile Selector} is what makes it possible to edit settings for multiple users.
 The prototype previously mentioned shows a profile selector resembling a drop-down menu.
 To follow the multi-project guidelines, a component developed by the group responsible for the GUI library will be implemented instead.
-When the selected profile changes, settings activity should be reloaded to reflect the newly selected user's settings.
-\item \textbf{ListView} shown the categories of settings which are available for the user.
+When the selected profile changes, settings activity should be reloaded to reflect the newly selected users settings.\thilemann{Hvem er det som ikke bruger ' korrekt. F.eks. user's settings = user has/is settings :/}
+\item \textbf{ListView} shows the categories of settings which are available to the user.
 The fragment attached to each category is presented in the \textit{Settings Container} when the category is chosen.
 \end{itemize}
 
 \subsection{\launcher Settings}\label{sec:launchersettings}
 Following the prototypes (\cref{fig:prototypes}), it is clear that a decision has to be taken for which settings to include for \launcher.
-According to the customer meetings (\cref{sec:sprint2:firstmeeting,sec:sprint2:secondmeeting}), the presented design and its functionality received positive feedback.
+According to the client meetings (\cref{sec:sprint2:firstmeeting,sec:sprint2:secondmeeting}), the presented design and its functionality received positive feedback.
 To build on this idea, the following settings should be included:
 
 \begin{itemize}
@@ -104,7 +106,7 @@ To build on this idea, the following settings should be included:
 Since no critical settings are needed for \launcher, it will contain the settings presented in the prototypes, apart from the ability of changing colours for an application (see \cref{sec:sprint2:secondmeeting}).
 \item \textbf{Application management}\\
 This part of \launcher is more critical as it will be the only way of adding certain applications to \launcher, whether they be an Android or \giraf application.
-Thus, this part have the responsible of handling all tasks related to application management.
+Thus, this part have the responsibility of handling all tasks related to application management.
 \end{itemize}
 
 
