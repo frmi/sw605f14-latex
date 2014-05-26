@@ -1,26 +1,27 @@
-As apparent from \cref{sec:sprint2:firstmeeting,sec:sprint2:secondmeeting}, the clients were in general enthusiastic about the presented prototypes.
-While smaller adjustments are needed to fit their requirements, much of the work done is ready to be implemented.
+As apparent from \cref{sec:sprint2:firstmeeting,sec:sprint2:secondmeeting}, the clients are in general enthusiastic about the presented prototypes.
+While smaller adjustments are needed to fit their requirements, many of the suggested features are ready to be designed and implemented.
 
 The requirements specified by the clients can be outlined as follows:
 
 \begin{itemize}
 \item A profile selection feature available both from \launcher and from within each individual application.
-\item A settings feature for all enabled applications accessible from \launcher and one for each individual application.
-\item Ability to add external (Android) applications to \launcher.
-\item Ability to copy settings from one user profile to another within both versions of the settings feature.
-\item Ability to enable and disable applications on a per-user basis within the \launcher settings tool.
-\item Ability to add applications to \launcher from the Google Play store from the \launcher settings tool.
-\item When attempting to exit an application while \textit{Timer} runs as an overlay, only that application should be accessible until time runs out.
-\item The profile information that could be displayed in the open drawer is irrelevant, as the drawer should be disabled.
-%\item Since it is not possible to take ownership of the standard Android `Home', `Back' and `Multitasking' buttons unless the ActionBar is implemented (\citet{onOverridingHomeButtons}), an exhaustive search have to be made to ensure the requirement can not be fulfilled.
+\item A settings activity for all enabled applications accessible from \launcher and inside each individual application.
+\item Ability to access Google Play from the \launcher settings activity.
+\item Ability to add applications from outside the \giraf suite to \launcher.
+\item Ability to copy settings from one user profile to another within both versions of the settings activity.
+\item Ability to enable and disable applications on a `per user'-basis within the \launcher settings activity.
+\item When attempting to exit an application while \textit{Tidstager} runs as an overlay, only that application should be accessible until time runs out.
 \end{itemize}
 
-Note that requirements outside the scope of \launcher have been discovered as well.\footnote{As an example can be mentioned the requirement of \textit{Timer} as an overlay for each open application.}
+Note that requirements outside the scope of \launcher have been discovered as well.
+As an example can be mentioned the requirement of \textit{Tidstager} as an overlay for each open application.
 Therefore these are not considered any further.
 
-The meetings also uncovered unnecessary functionality in form of the drawer component no longer being a requirement along with the ability to change colours of an specific application on a per-user basis.
+The meetings also uncover unnecessary functionality in form of the drawer component no longer being a requirement, along with the ability to change colours of an specific application on a `per user'-basis.
 This discovery also renders our prototype (\cref{fig:profileinfo}), showing profile information in the drawer, impossible to implement and will thus not be considered any further.
 
-The issue of suppressing the Android buttons seems to be essentially unsolvable. In spite of several hours of research, we were unable to find a means for suppressing the Home button. This intuitively makes sense from a security standpoint, since suppressing the Home button would allow malicious applications to ``hijack'' the device.
+The issue of suppressing the Android buttons seems to be essentially unsolvable. 
+In spite of several hours of research, we have been unable to find a means for suppressing the \textit{Home} and \textit{Multitask} buttons. 
+This intuitively makes sense from a security standpoint, since suppressing these buttons would allow malicious applications to essentially ``hijack'' the device.
 
-These requirements provide the group with a solid backlog for the next sprint (\cref{chap:sprint3}).
+These requirements provide the group with a solid backlog for the next sprint.

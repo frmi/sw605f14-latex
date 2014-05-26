@@ -1,54 +1,13 @@
-\vagner[inline]{Again, confusion about what tense to use.}
-At the very end of sprint one, the group responsible for \textit{OasisLib} published a complete rewrite of their API, upon which many groups (including us) are dependent on.
-They did this because the local database layout was updated to match that of the remote database.
-What made the migration difficult is that the old API had been removed completely and that no documentation exist on how to migrate to the new version.
-Because emphasis is given to creating the prototypes and holding the client meetings, added with the fact that the new API comes without documentation, migration was postponed to later in the sprint.
-
-\subsection{Migrating OasisLib}\label{sec:oasismigration}
-
-Since other applications in the \giraf project are relying on \launcher passing on information about the currently logged in user, their development effectively came to a standstill until our implementation was fixed.
-Because of this, we soon started to get requests from the other groups on a new version of \launcher, as they had already migrated to the new \textit{OasisLib} and local database (see \cref{fig:dependendOasislib}).
-This meant that the old \launcher did not support the new local database, which now would be installed on the devices resulting in \launcher crashing.
-
-\inserttexfigure{oasislibdependency}{Illustrates the role of OasisLib in the \giraf project.}{fig:dependendOasislib}
-
-This added pressure on us to get the process of migrating to the new version started.
-Many of the methods in the API had been given new names and were thus not consistent with the existing API.
-Also, their naming scheme are using both full names and abbreviations, which made it extra difficult to distinguish their behaviours.
-For example, a method to get the package name for an android application is named \lstinline{getPack()}, where another is named \lstinline{getProfile()}.
-The latter being far more descriptive and easier to deduce its functionality from.
-
-\subsubsection{How to update an API}
-Since this project is developed in Java, one has the possibility to use the Java annotation \lstinline{@deprecated}.
-This annotation is used in Java when you are updating an API and you want the developers who are using the API to migrate to the new.
-By using this annotation the compiler or developing environment warns the developer that a deprecated class, method or field is being used.
-
-According to \citet{deprecatedreference}, a valid reason to deprecate the old API includes ``it is going away in a future release". The deprecation comments helps the developers to chose when to use the new API and could tell which method should be used instead, see \cref{lst:deprecated}.
-
-\begin{lstlisting}[caption={Example of a deprecated method could look like this.}, label={lst:deprecated}]
-/**
-* Get the ID of the currently logged in guardian.
-* @return The guardian ID.
-* 
-* @deprecated Should no longer be used.
-* 	This method has been renamed to create consistence in method naming.
-*	One should use getGuardianID instead.
-*/
-@Deprecated public int getGuardID() {
-return mGuardian.getId();
-}
-\end{lstlisting}
-
 \subsection{Evaluation}
-The main task of this sprint was to develop a prototype design of the Settings part of \launcher.
-Multiple versions of the prototypes were presented to the clients present at each meeting.
-They responded positively on the prototypes presented, even though problems were found in communicating our intentions with the designs.
+The main task of this sprint has been to develop a prototype design of the settings activity in \launcher.
+Multiple versions of the prototypes are presented to the clients present at each meeting.
+They respond positively to the prototypes presented, even though problems are found in communicating our intentions with the designs.
 
-As described in \cref{sec:oasismigration} problems arised when \textit{OasisLib} was updated.
-The group is aware that the migration could have been handled with more grace, because of other groups being dependant on \launcher.
-Despite of this fact, the group agree that the group in charge of \textit{OasisLib} should have been more careful and use better software development practices when updating their API.
+As described in \cref{sec:oasismigration} problems arise when \textit{OasisLib} is updated.
+The group is aware that the migration could have been handled with more grace, because other groups are dependant on \launcher.
+Despite of this fact, the we agree that the group in charge of \textit{OasisLib} should have been more careful and use better software development practices when updating their API.
 
-As the tasks of creating prototypes and holding meetings with the clients have been successfully completed, and the problems found with \textit{OasisLib}, the sprint is considered to be a success.
+As the tasks of creating prototypes and holding meetings with the clients have been successfully completed, and the problems solved with new \textit{OasisLib} API, the sprint is considered to be a success.
 
 \subsection{Backlog}\label{sec:sprint2:backlog}
 \input{documents/Sprint2/customermeetingconclusion}
