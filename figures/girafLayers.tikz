@@ -27,7 +27,7 @@ xshift=-2.5cm,
 left of=CARS,
 text width=3cm] (GIRAF)
 {
-	\small\textbf{Giraf}
+	\small\textbf{Launcher}
 };
 
 \node[dummy,
