@@ -25,8 +25,8 @@ This will work by pressing the profile picture, giving a list of profiles to cho
 Being relevant only for a guardian, the profiles selectable should only be the guardian itself and a related citizen.
 
 \item Selection of another active profile from within each individual application.
-While this solution does not require any modification of \launcher, it is the most favourable option.\thilemann{Why?}
-Each application would then have its own profile selection button to initiate the activities
+While this solution does not require any modification of \launcher, it would mean that each application has its own profile selection button.
+As a result, a user does not have to exit an application simply to change profile.
 \end{itemize}
 
 Common for both alternatives is to display the currently selected profile at the top of the sidebar.
@@ -72,34 +72,33 @@ This also includes the native Android settings.
 \item Letting each application have a settings button, where settings native to each application can be set.
 \end{itemize}
 
-The first option is the most encompassing one, containing functionality for both manipulating settings for other applications and to decide which applications can be used with different users.
+The first option is the most encompassing one, containing functionality for both manipulating settings for other applications and to decide which applications can be used by different users.
 It is furthermore discussed to add functionality allowing a user to add applications from Google Play to \launcher.
-The settings part of the settings activity can be seen in \Cref{fig:settingsprototype}, while the application management part can be seen in \Cref{fig:appsmanagement}.\thilemann{Settings part/application part - maybe activity instead?}
+The settings part of the activity can be seen in \Cref{fig:settingsprototype}, while the application management part can be seen in \Cref{fig:appsmanagement}.
 
 The second option is more centred on making the settings activity streamlined across applications and will thus be a operative project with the \textit{GIRAF Components} group.
 An example of settings for \launcher can be seen in \Cref{fig:appsettingsprototype}.
 
-\thilemann[inline]{Rework the captions - especially (a)}
 \begin{figure}[h] % Billeder af draweren i åben og lukket tilstand
 \centering
     \begin{subfigure}[t]{.48\textwidth}
     \centering
     \includegraphics[width=\textwidth]{sprint2/settings}
-    \caption{The settings manipulation part of the settings application. in this example, settings for \launcher can be seen. The current profile being edited can be seen in the top left corner.}
+    \caption{The settings activity with the \launcher part open. The current profile being edited can be seen in the top left corner.}
     \label{fig:settingsprototype}
     \end{subfigure}
     \hfill
     \begin{subfigure}[t]{.48\textwidth}
     \centering
     \includegraphics[width=\textwidth]{sprint2/settings-dialog}
-    \caption{The settings for a single application. In this example, the settings for the home screen of  \launcher is seen.}
+    \caption{The settings for a single application as a dialogue. In this example, the settings for the home screen of  \launcher is seen.}
     \label{fig:appsettingsprototype}
     \end{subfigure}\\
     \vspace{1em}
     \begin{subfigure}[t]{.48\textwidth}
     \centering
     \includegraphics[width=\textwidth]{sprint2/apps-colorexperiment}
-    \caption{The application management part of the settings application. \giraf or Android applications can be chosen in the pane in the top. The current profile being edited can be seen in the top left corner.}
+    \caption{The application management part of settings. \giraf or Android applications can be chosen in the pane in the top.}
     \label{fig:appsmanagement}
     \end{subfigure}
     \hfill
