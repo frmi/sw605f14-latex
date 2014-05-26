@@ -1,29 +1,27 @@
 \subsection{Authentication Activity Error}
-When starting \launcher for the first time, the application crashed and threw an \lstinline{OutOfMemoryError} when reaching the \authenticationactivity.
-The core of this problem is caused by an animation in the activity, implemented as an instance of the Android class \lstinline{AnimationDrawable} -- a class designed to create animations from a sequence of images.
+When starting \launcher for the first time, the application crashed with an \lstinline{OutOfMemoryError} when reaching the \authenticationactivity.
+The problem is caused by an animation in the activity, implemented as an instance of the Android class \lstinline{AnimationDrawable}, a class designed to create animations from a sequence of images.
 According to the Android documentation \citet{androidreference}, the implementation is technically correct, but it is found that when an instance of \lstinline{AnimationDrawable} is created, it loads the entire sequence of images into main memory of the device at once.
 The images are contained within the application in the compressed Portable Network Graphics (PNG) format.
 However, as they are loaded, Android converts each image to a 32-bit bitmap, which is 4 bytes per pixel, making the images take up about 20 times the space, thus resulting in the animation using about 40 MB of memory. 
 We hypothesized that this was the source of the \lstinline{OutOfMemoryError}.
 
-One solution to this problem is to create a new class which simulates the behaviour of \lstinline{AnimationDrawable}.
+Our solution is to create a new class which simulates the behaviour of \lstinline{AnimationDrawable}, but only loads one frame at a time.
+This is achieved by a recursive method, which changes the shown image automatically.
+The images are stored in a static array, which is iterated repeatedly using the method \lstinline|postDelayed()|, that runs a given method after a set delay.
 
-By simulating \lstinline{AnimationDrawable}, we only keep one image in memory at all times and avoid the error.
-This is achieved by a recursive method, which is changing the shown image automatically.
-The images are stored in a static array which is iterated repeatedly using the method \lstinline|postDelayed()| which is possible to run code after a set amount of time.
+% \begin{lstlisting}[caption={Improved implementation of handling the animation.},label={lst:methodPlay}]
+% private void play(final int pFrameNo){
+%   mImageView.postDelayed(new Runnable(){
+%     @Override
+%     public void run() {                    
+%       mImageView.setImageResource(mFrames[pFrameNo]);
 
-\begin{lstlisting}[caption={Improved implementation of handling the animation.},label={lst:methodPlay}]
-private void play(final int pFrameNo){
-  mImageView.postDelayed(new Runnable(){
-    @Override
-    public void run() {                    
-      mImageView.setImageResource(mFrames[pFrameNo]);
-
-      if(pFrameNo == mLastFrameNo)
-        play(0);
-      else
-        play(pFrameNo + 1);
-    }
-  }, mDuration);
-}        
-\end{lstlisting}
+%       if(pFrameNo == mLastFrameNo)
+%         play(0);
+%       else
+%         play(pFrameNo + 1);
+%     }
+%   }, mDuration);
+% }        
+% \end{lstlisting}
