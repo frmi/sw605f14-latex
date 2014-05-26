@@ -1,3 +1,4 @@
+\subsection{Adding to Settings}
 The interface implemented by \lstinline|SettingsActivity| forces it to implement a method called \lstinline|getInstalledSettingsApps()| that has to return a list of either \launcher settings, intents available from other \giraf applications or other intents related to Android applications.
 \lstinline|getInstalledSettingsApps()| in \lstinline|SettingsActivity| returns an \lstinline|ArrayList<SettingsListItem>| by utilizing a range of methods that all adds an item to the list, whether it be a fragment or intent.
 This means that each \giraf application that wants to be available through the settings activity in \launcher, has to be added from the implementation of \lstinline|getInstalledSettingsApps()|.

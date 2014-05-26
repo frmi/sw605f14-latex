@@ -22,7 +22,7 @@ It is decided that the settings system should consist of four components, to be 
 	\item The unified settings activity should be implemented as a part of \launcher, and therefore the implementation of this component naturally falls to ourselves. 
 	Excluded from this task is the settings of the individual applications.
 	\item A dialogue box able to contain the settings for an arbitrary \giraf application. Included in this is a standard button for launching the dialogue box. 
-	As this User Interface component is useful to all applications, it should be implemented by the group responsible for the \giraf GUI library.\thilemann{Giraf components or is this fine?}
+	As this User Interface component is useful to all applications, it should be implemented by the group responsible for the \textit{\giraf Components} library.
 	
 	\item A set of settings for each \giraf application.
 	As these sets may vary widely in content and complexity from application to application, and furthermore may change along with their associated applications over time, these should be defined and implemented by the individual project groups. 
@@ -30,7 +30,7 @@ It is decided that the settings system should consist of four components, to be 
 	This should be implemented by the group responsible for the remote database (as this group has other priorities, the settings will initially be saved locally on each device).
 \end{itemize}
 
-\paragraph{The challenge with Implementing Settings} using the above concepts is how to allow applications other than \launcher to access the settings User Interface, running in the context of \launcher as an activity.\thilemann{Maybe add that it is difficult to share between applications? dont think it is well introduced.}
+\paragraph{The challenge of implementing settings,} using the above concepts, is how to allow applications other than \launcher to access the settings activity, running in the context of \launcher.
 
 \begin{itemize}
 \item 
@@ -45,14 +45,13 @@ This method of custom class loading is intended to be used when a project exceed
 In summary, using this method, \launcher has to include all other projects as dependencies when compiling, which will make the \launcher project unnecessary bloated and difficult to work with.
 
 \item
-Another possibility is to make the individual applications implement an interface, where a function would add the applications setting-widgets to a given view.
-While Android provides facilities for inter-application communication through its \textit{Broadcast} mechanism\cite{broadcastReceiver}, this requires all the involved applications to be running.\thilemann{Are we sure that the applications needs to be running??}
+Another possibility is to make the individual applications implement an interface, where a function would add the settings widgets of an application, to a given view.
+While Android provides facilities for inter-application communication through its \textit{Broadcast} mechanism\cite{broadcastReceiver}, this requires all the involved applications to be running.
 This is not an acceptable condition in this situation. 
 \end{itemize}
  
 \subsubsection{The Final Design}
-\thilemann{Do we have to use \settingsactivity here already?}
-Instead of the to presented options above, another design is chosen.
+Instead of the two presented options above, another design is chosen.
 An Android feature called Intent Filters allows applications to request an action from another Android component; an activity, a broadcast receiver, a content provider or a service.
 It is implemented by adding an \lstinline|<intent-filter>| XML element to the Android Manifest with its actions (or intentions) defined within.\cite{intentFilter}
 With this method it is possible to check each installed application to see if it implements a certain action (which will be the same for each \giraf application implementing the Intent Filter).
@@ -60,9 +59,9 @@ If an application implements this filter, it can be assumed that it provides an 
 
 With this design it is not possible to load settings from other applications as fragments from \launcher. Instead we start their application to access their settings.
 However, this simplifies the complexity about saving the settings.
-\thilemann[inline]{Rephrase below, badly formulated, too much use of we...}
-If we were to load their settings as a fragment we were loading the settings in context of our application. 
-Meaning that we save the settings again in our context and we have to figure out a solution for them to load the settings from our context.
+If \launcher was to load their settings as a fragment, it would load the settings in its own context. 
+This means \launcher saves the settings again in its context.
+As a result, we would have to find a solution for other applications to load the settings from the context of \launcher.
 
 \subsubsection{Designing from Prototypes}
 
@@ -79,8 +78,9 @@ Having investigated how to handle settings from other \giraf applications in \cr
 Analogous to opening a new window on a desktop computer, a ``screen'' on an Android device consists of an activity.
 \Cref{fig:settingsprototype} can be compared directly to \cref{fig:settingsarchitecture}, to expand on the User Interface components that need be included.
 
-To follow Android guidelines we are using fragments\cite{fragments} to implement the functionality this activity requires. They are reusable modules which gives decomposition of the application functionality and UI.
-By using fragments, it is also possible to add multiple fragments to a screen without switching activity.\thilemann{Hm, not by using fragments, but by using fragmentmanager? Or just rephrase.}
+To follow Android guidelines we are using fragments\cite{fragments} to implement the functionality this activity requires. 
+They are reusable modules which gives decomposition of the application functionality and UI.
+Managing these with a \lstinline|FragmentManager|, it is also possible to add multiple fragments to a screen without switching activity.
 
 By following these guidelines for developing an activity it is possible to use the same implementation to show the settings on a smaller screen.
 This is not a requirement at the moment, and therefore this has not been taking into account.\\
@@ -91,7 +91,7 @@ The settings list fragment contains the profile selector and a list view as desc
 \item \textbf{Profile Selector} is what makes it possible to edit settings for multiple users.
 The prototype previously mentioned shows a profile selector resembling a drop-down menu.
 To follow the multi-project guidelines, a component developed by the group responsible for the GUI library will be implemented instead.
-When the selected profile changes, settings activity should be reloaded to reflect the newly selected users settings.\thilemann{Hvem er det som ikke bruger ' korrekt. F.eks. user's settings = user has/is settings :/}
+When the selected profile changes, settings activity should be reloaded to reflect the newly selected users settings.
 \item \textbf{ListView} shows the categories of settings which are available to the user.
 The fragment attached to each category is presented in the \textit{Settings Container} when the category is chosen.
 \end{itemize}
