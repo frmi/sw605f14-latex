@@ -63,7 +63,7 @@ The activity loads the user information from the database, and proceeds to \home
 \paragraph{\homeactivity} allows the user to launch \giraf applications available to his or her user profile. 
 The availability of applications depends on whether the application exists locally on that device, and on whether the user is marked in the database as having proper access rights to that application.
 The \homeactivity for a guardian user is seen in \cref{fig:launcheractivity:home} with the users installed \giraf applications.
-Furthermore, a widget allows the user to see the synchronization status of the local database in relation to the remote database, and another widget shows the current date. 
+Furthermore, a widget allows the user to see the synchronization status of the local database in relation to the remote database\footnote{The connection indicator widget currently has no effect, since database synchronization is not yet implemented.}, and another widget shows the current date.
 There is also a widget that allows the user to log out, and return to the \authenticationactivity.
 These widgets are supplied by \textit{\giraf Components}.
 Finally, there is a colour palette hidden in a drawer component, where the user can change the base colour of each installed application.
