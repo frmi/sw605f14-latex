@@ -1,49 +1,29 @@
 \subsection{Authentication Activity Error}
-When starting \launcher for the first time, the application crashed and logged an \lstinline{OutOfMemoryError} when reaching the \authenticationactivity.
+When starting \launcher for the first time, the application crashed and threw an \lstinline{OutOfMemoryError} when reaching the \authenticationactivity.
 The core of this problem is caused by an animation in the activity, implemented as an instance of the Android class \lstinline{AnimationDrawable} -- a class designed to create animations from a sequence of images.
-According to the Android Documentation \citet{androidreference}, the implementation is technically correct, but it is found that when an instance of \lstinline{AnimationDrawable} is created, it loads the entire sequence of images into main memory of the device at once.
-The images are compiled with the application in the compressed Portable Network Graphics (PNG) format.
+According to the Android documentation \citet{androidreference}, the implementation is technically correct, but it is found that when an instance of \lstinline{AnimationDrawable} is created, it loads the entire sequence of images into main memory of the device at once.
+The images are contained within the application in the compressed Portable Network Graphics (PNG) format.
 However, as they are loaded, Android converts each image to a 32-bit bitmap, which is 4 bytes per pixel, making the images take up about 20 times the space, thus resulting in the animation using about 40 MB of memory. 
 We hypothesized that this was the source of the \lstinline{OutOfMemoryError}.
 
-The solution to this problem is to create a new class which simulates the behaviour of \lstinline{AnimationDrawable}, but uses the original PNG images.
+One solution to this problem is to create a new class which simulates the behaviour of \lstinline{AnimationDrawable}.
 
-The initial implementation of the \lstinline{AnimationDrawable} is set up as shown in \Cref{lst:animationDrawable}. 
-\lstinline{R.animator.instruct_ani} contains a list of images combined with a constant for each image to set the duration for which each image should be shown.
-
-\thilemann{We need to do something here... Better explanation of code examples, explaining the context of the code and the use of a new runnable. The explanation of the solution mentioning 'our class' does also not make sense. The text does also not give the impression that animationdrawable is not used in the improvement. Sorry for this todo...}
-
-\thilemann[inline]{Please do something - I dont think we need the code examples, since the text seems to explain it very well.}
-
-\begin{lstlisting}[caption={The initial implementation, using \lstinline{AnimationDrawable}.},label={lst:animationDrawable}]
-final ImageView instructImageView = (ImageView) findViewById(R.id.animation);
-instructImageView.setBackgroundResource(R.animator.instruct_ani);
-
-instructImageView.post(new Runnable(){
-  @Override
-  public void run(){
-    AnimationDrawable anim = (AnimationDrawable) instructImageView.getBackground();
-    anim.start();
-  }
-});
-\end{lstlisting}
-
-Our class, simulating \lstinline{AnimationDrawable}, has the method \lstinline{play()}, shown in \cref{lst:methodPlay}, where the input parameter \lstinline{pFrameNo} is the initial image in a static array which contains all the images used in the animation. 
-With this method obly one image is kept in memory at all times, since it is replaced for each run of the \lstinline{play} method.
-In effect, this shows to remove the out of memory error.
+By simulating \lstinline{AnimationDrawable}, we only keep one image in memory at all times and avoid the error.
+This is achieved by a recursive method, which is changing the shown image automatically.
+The images are stored in a static array which is iterated repeatedly using the method \lstinline|postDelayed()| which is possible to run code after a set amount of time.
 
 \begin{lstlisting}[caption={Improved implementation of handling the animation.},label={lst:methodPlay}]
 private void play(final int pFrameNo){
-mImageView.postDelayed(new Runnable(){
- @Override
- public void run() {                    
-	 mImageView.setImageResource(mFrames[pFrameNo]);
-	
-	 if(pFrameNo == mLastFrameNo)
-    play(0);
-	 else
-    play(pFrameNo + 1);
- }
-}, mDuration);
+  mImageView.postDelayed(new Runnable(){
+    @Override
+    public void run() {                    
+      mImageView.setImageResource(mFrames[pFrameNo]);
+
+      if(pFrameNo == mLastFrameNo)
+        play(0);
+      else
+        play(pFrameNo + 1);
+    }
+  }, mDuration);
 }        
 \end{lstlisting}
