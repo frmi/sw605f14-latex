@@ -1,6 +1,6 @@
 \subsection{Prototypes}\label{sec:sprint2:prototypes}
 
-At the end of first sprint, the existing features of \launcher were polished, and the project would only need to be kept updated with the implementation of the new database.\thilemann{New oasislib?}
+At the end of first sprint, the existing features of \launcher were polished, and the project would only need to be kept updated with the implementation of the new \textit{OasisLib} database
 However, the review meeting of the first sprint determined that it was desired for \launcher to possibly have additional features:
 
 \begin{itemize}
@@ -29,7 +29,7 @@ While this solution does not require any modification of \launcher, it is the mo
 Each application would then have its own profile selection button to initiate the activities
 \end{itemize}
 
-Common for both alternatives is to display the currently selected profile at the top of the pane.\thilemann{Another word for pane? Dont know what it means here...}
+Common for both alternatives is to display the currently selected profile at the top of the sidebar.
 Illustrations can be seen in \Cref{fig:profileselectionlauncherdropdown,fig:profileselectionapppopup} respectively. For an explanation of the suggested process of choosing a profile, see the state chart diagram in \Cref{fig:statechartProfileSelectorBubble}.
 
 \begin{figure}[h] % Billeder af profile selector
@@ -69,7 +69,7 @@ Again, two alternatives are presented:
 \item A settings activity, accessible from \launcher only.
 This activity will contain settings for all applications enabled for the selected user, as well as selecting which applications should be enabled for that user.
 This also includes the native Android settings.
-\item Letting each application have a settings button, which will preserve the current setup.\thilemann{What setup?}
+\item Letting each application have a settings button, where settings native to each application can be set.
 \end{itemize}
 
 The first option is the most encompassing one, containing functionality for both manipulating settings for other applications and to decide which applications can be used with different users.
@@ -92,14 +92,14 @@ An example of settings for \launcher can be seen in \Cref{fig:appsettingsprototy
     \begin{subfigure}[t]{.48\textwidth}
     \centering
     \includegraphics[width=\textwidth]{sprint2/settings-dialog}
-    \caption{The settings for a single application. In this example, the settings for \launcher is seen. Why all the pain (pane)?}
+    \caption{The settings for a single application. In this example, the settings for the home screen of  \launcher is seen.}
     \label{fig:appsettingsprototype}
     \end{subfigure}\\
     \vspace{1em}
     \begin{subfigure}[t]{.48\textwidth}
     \centering
     \includegraphics[width=\textwidth]{sprint2/apps-colorexperiment}
-    \caption{The application management part of the settings application. \giraf or Android (Google Play) applications can be chosen in the pane in the top. The current profile being edited can be seen in the top left corner.}
+    \caption{The application management part of the settings application. \giraf or Android applications can be chosen in the pane in the top. The current profile being edited can be seen in the top left corner.}
     \label{fig:appsmanagement}
     \end{subfigure}
     \hfill
@@ -117,4 +117,4 @@ An example of settings for \launcher can be seen in \Cref{fig:appsettingsprototy
 
 The group had an idea of displaying information about the active user in the drawer section of \launcher.
 This is a relatively small feature that would be trivial to implement.
-An example can be seen in \Cref{fig:profileinfo}.\thilemann{Where do argue that this is not relevant?}
+An example can be seen in \Cref{fig:profileinfo}.
