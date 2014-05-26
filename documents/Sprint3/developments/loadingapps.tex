@@ -1,15 +1,13 @@
 \subsection{Loading Applications}\label{sect:sprint3:refactoring}
-\thilemann[inline]{I'm quite unsure if I like the placement of this subsection. Somehow it seems to flow alright, but as concepts such as \lstinline|SettingsActivity| has not yet been introduced, I dont think it's the right place!}
 In the new \lstinline!SettingsActivity!, described in \cref{sec:sprint3:settings}, \launcher will load applications similar to the way done in \lstinline|HomeActivity|.
 However, the methods that load applications into a given view are placed in \lstinline!HomeActivity!.
 Therefore, it is needed to refactor much of the existing code, so \launcher can load applications from any given activity.\\
 
 \lstinline!HomeActivity! is refactored by moving the relevant methods, most prominently the \lstinline|loadApplications()| method, into \lstinline!LauncherUtility!.
 Then both activities can call the same methods, and code redundancy is reduced. 
-However, \lstinline|loadApplications()| needs to be changed further to accommodate the different usages in the home activity and the settings activity. 
-It is required to pass different callback methods, since the behaviour is not the same.\thilemann{Dont like the mentioning of callback methods, since it is not explained what it does. And what does ``required to pass different callback methods'' even mean?}
-\thilemann[inline]{PLEASE drop the word pane as it does not say anything. I think we should instead use the activity name, such as fx \settingsactivity!}
-The ``Apps" pane requires the applications to be marked when pressed, while the home activity requires the applications to start.
+However, \lstinline|loadApplications()| needs to be changed further to accommodate the different usages in the \homeactivity and the \settingsactivity. 
+It is required to pass different \lstinline|OnClickListner|s, since the behaviour is not the same.
+The application management fragment requires the applications to be marked when pressed, while the home activity requires the applications to start.
 
 \subsubsection{Observing New Applications}\label{sec:sprint3:observing}
 To increase usability when installing or removing applications on the device, an observer which is responsible for keeping an eye on currently installed applications and compare these with those which are shown at that moment. 
@@ -19,5 +17,5 @@ This functionality is implemented creating a custom timer task by extending the 
 Thus, a check is made every fifth second to see if any new applications have been installed.
 The interval is decided after what we found acceptable by trial and error.
 
-For every execution of the custom task, a list of installed applications is retried and compared with a list of currently loaded applications.\thilemann{what is a ``loaded application''?}
-If the two lists differ, the applications are reloaded and the list of currently loaded applications is updated.
+For every execution of the custom task, a list of installed applications is retrieved and compared with a list of all currently shown applications.
+If the two lists differ, the layout is refilled and the list of currently shown applications is updated.
