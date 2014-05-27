@@ -19,7 +19,8 @@ The layout is fairly simple, since it is not responsible for rendering any dynam
 Instead it defines two containers.
 The first is the \lstinline|<fragment>| element, which is the Android way of defining a static fragment that can not be changed after instantiation.
 As indicated by the \lstinline|class| attribute, it is inflating the \lstinline|SettingsListFragment|, which purpose is explained in \cref{sec:settingslistfragment}.
-The second container is a \lstinline|FrameLayout|, that will contain the settings selected from \lstinline|SettingsListFragment|.
+The second container is a \lstinline|FrameLayout|, which contains the settings selected from \lstinline|SettingsListFragment|.
+This layout is equivalent to the \textit{Settings Container} illustrated in \cref{fig:settingsprototype}.
 
 Since Android disapproves of inter-fragment communication, \lstinline|SettingsActivity| will have to stand between and respond to requests send from its active fragments.
 This is done by implementing the \lstinline|SettingsListFragmentListener| interface to define methods for what the \lstinline|SettingsListFragment| wants to communicate, as seen in \cref{lst:settingslistfragment:interface}.
