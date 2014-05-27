@@ -1,0 +1,18 @@
+We found several candidates for improvements of \launcher.
+In this section, we only describe the three we deem have the highest priority.
+An exhaustive list of improvements can be found in \cref{appendix:futureworks}.
+
+\section{Copying settings from one user to another}
+For many citizens, the settings may be quite similar.
+For this reason, it would be preferable to be able to copy settings from one user to another.
+
+\section{Download pictograms while tablet is being used}
+When \launcher is started after a reboot of the device the synchronisation i of data with the remote database is done before being able to login.
+If \launcher has never been installed on the device before, this means that it can take up to 30 minutes, before it is ready to login.
+It would be an idea to only load the necessary information such as profiles, and then continue downloading the pictograms in the background while the tablet is being used.
+
+
+\section{Use GridView for loading applications}
+The layout in which applications are being loaded is of an inconvenient type. 
+They should instead be loaded into a \lstinline|GridView|, using a custom adapter similar to the one mentioned in \cref{sec:settingslistadapter}. 
+This is better for memory management, follows Android Best Practices and would simplify the algorithm used for showing applications. \vagner{Kilde for at det ville følge Android Best Practices?}
