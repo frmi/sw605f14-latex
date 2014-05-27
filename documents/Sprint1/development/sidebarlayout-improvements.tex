@@ -4,7 +4,7 @@ This is caused by the view containing the application icons having the  \lstinli
 This makes its position adjust automatically to the newest rightmost position of the sidebar each time the bar is moved, effectively pushing the icons off the screen.
 
 The main issue with the current implementation of \homeactivity layout lies in the fact that many parameters such as heights and widths are set at compile-time through constants.
-The result is that the layout does not adapt to other devices than the one it has been designed for, which is not viable if the customers choose to replace their current ones.
+The result is that the layout does not adapt to other devices than the one it has been designed for, which is not viable if the clients choose to replace their current ones.
 The improved implementation includes restructuring all parts of the XML file defining the layout of  \homeactivity, making it adapt to devices with various screen sizes and pixel density.
 
 \subsubsection{Implementation}\label{sec:sidebarlayout:xml}
