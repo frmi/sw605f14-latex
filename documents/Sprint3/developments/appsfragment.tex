@@ -2,13 +2,13 @@
 This section follows up from the design described in \cref{sec:sprint3:designsettings}.
 When entering the application management fragment, the \lstinline!AppManagementFragment! is loaded into the settings container, seen in \cref{fig:settingsarchitecture}.
 The application management fragment in turn contains another container, where the fragments showing the applications are loaded into.
-Furthermore, \lstinline!AppManagementFragment! implements three buttons in the top of the layout: the ``Giraf", the ``Android", and the ``Butik" button.\footnote{``Butik'' is Danish for a ``store''.}\\
+Furthermore, \lstinline!AppManagementFragment! implements three buttons in the top of the layout: the \textit{Giraf}, the \textit{Android}, and the \textit{Butik} buttons.\footnote{``Butik'' is Danish for a ``store''.}\\
 
-The ``Butik" button opens Google Play, so the user can download additional Android applications, if desired. 
+The \textit{Butik} button opens Google Play, so the user can download additional Android applications, if desired. 
 We open the Play Store as a separate activity with certain flags, ensuring that the user returns to \launcher when exiting the Google Play.
 The exact code can be seen in \cref{lst:launchergoogleplay}.\\
 
-The ``Giraf" and the ``Android" buttons load a new fragment into  \lstinline!AppsContainer!, by using a \lstinline!FragmentManager! - the same way it is described in \cref{sec:settingslistfragment}.
+The \textit{Giraf} and the \textit{Android} buttons load a new fragment into  \lstinline!AppsContainer!, by using a \lstinline!FragmentManager! - the same way it is described in \cref{sec:settingslistfragment}.
 The fragments loaded are derived from the same superclass, called \lstinline|AppContainerFragment| and is described subsequently.
 
 \subsubsection{AppContainerFragment and its Derived Classes}
