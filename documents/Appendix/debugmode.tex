@@ -1,9 +1,7 @@
-This appendix section describes the implementation of a debug mode, making developers able to skip certain steps in the launcher, such as the animation screen and the authentication screen.\\
+This section describes the implementation of a debug mode, making developers able to skip certain steps in the launcher, such as the animation screen and the authentication screen.\\
 
-\thilemann[inline]{Please check that the implementation shown in listings are still in sync with the actual one!}
-
-When opening \launcher one is presented the \lstinline{MainActivity} activity, which shows a loading animation for a constant amount of time.
-\launcher also requires the users to authenticate themselves, before being given access to the \lstinline{HomeActivity}.
+When opening \launcher one is presented \mainactivity, which shows a loading animation, while loading data from the remote database\footnote{Please note, that because the remote database synchronisation was enabled so late in the fourth sprint, debug mode has not been tested.}.
+\launcher also requires the users to authenticate themselves, before being given access to the \homeactivity.
 While these activities hold meaning in the context of the intended users, a significant amount of debugging time is wasted, as the application is often reinstalled and restarted during development. 
 
 To overcome this problem, we decided to implement a debug mode to simplify and quicken the process of working with \launcher.
