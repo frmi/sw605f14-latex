@@ -33,6 +33,13 @@ This ensures that the animation and layout hierarchy can be controlled more effe
 
 Notice the \lstinline|ScrollView| on the last line in \Cref{lst:sidebarlayout}.
 The before mentioned \lstinline{android:layout_toRightOf} attribute on this \lstinline|ScrollView| has been removed, to keep it from being pushed out of the screen.
-The margin of $-400dp$ defined on Line 1 effectively hides the \lstinline|SideBarLayout| when the \homeactivity has just started, revealing only the \lstinline|HomeBar|.
-Since the \lstinline|HomeBar| is placed next to the \lstinline|GridView| and this view has the width of the margin defined on \lstinline|SideBarLayout|, it is the only visible element.
-This gives the impression of a closed drawer.\frederik{Du tegner et flot billede af dette :)}
+The margin of $-400dp$ defined on Line 1 effectively hides the \lstinline|SideBarLayout| when the \homeactivity has just started, revealing only the \lstinline|SideBar|.
+Since the \lstinline|SideBar| is placed next to the \lstinline|GridView| and this view has the width of the margin defined on \lstinline|SideBarLayout|, it is the only visible element.
+This gives the impression of a closed drawer, and is illustrated in \cref{fig:drawerhidden}.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{drawer.pdf}
+\caption{The layout of the drawer when it is closed. This dashed lines represent parts of the drawer that is not visible to the used.}
+\label{fig:drawerhidden}
+\end{figure}
