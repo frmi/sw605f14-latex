@@ -16,7 +16,7 @@ The fragments loaded are derived from the same superclass, called \lstinline|App
 Because the \giraf and Android fragments contain many of the same variables, these inherit all shared information from a superclass, \lstinline!AppContainerFragment!, consequently reducing redundancy and clarifying how the two fragments are different.
 The main responsibilities of the superclass are to initialize shared variables and implement shared methods that handle loading applications.
 
-As a result, the two derived classes get their shared variables initialized by a call to \lstinline!super.onCreate()! and reloading of applications is handled by calls to \lstinline!AppContainerFragment!. \\
+As a result, the two derived classes get their shared variables initialized by a call to \lstinline!super.onCreate()! and reloading of applications is handled by calls to \lstinline!AppContain!-\lstinline!erFragment!. \\
 
 However, which types of applications are loaded are different for \lstinline!AndroidFragment! and \lstinline!GirafFragment!.
 This is solved by initializing the shared variable \lstinline!apps! differently in the two derived classes -

@@ -91,7 +91,7 @@ It inherits from \lstinline!ASyncTask! and must therefore implement three method
 
 We override \lstinline!onPreExecute()! and \lstinline!onPostExecute()! to start and stop showing a loading animation, respectively.
 
-The method in \lstinline!LauncherUtility! used to populate a view with applications, \lstinline!loadApplications()! is deleted, and the contents are moved into \lstinline!doinBackground()!.
+The method in \lstinline!LauncherUtility! used to populate a view with applications, \lstinline!load!-\lstinline!Applications()! is deleted, and the contents are moved into \lstinline!doinBackground()!.
 Since the views can only be manipulated in the UI thread, we add the applications as views to a list of views, which \lstinline!onPostExecute()! iterates over and adds to the target layout. 
 The constructor of \lstinline!LoadApplicationTask! is also adjusted to take as parameter all the information needed to populate a given view.
 
