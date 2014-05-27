@@ -6,10 +6,10 @@ This section discusses how to design the architecture of what will be an activit
 As discussed in \cref{sec:sprint2:secondmeeting}, the clients agreed that settings should be accessible through two methods:
 
 \begin{itemize}
-	\item A dialogue box in each individual application, containing only settings relevant to that specific application (as seen in \cref{fig:appsettingsprototype}). 
+	\item A dialogue box in each individual application, containing only settings relevant to that specific application, as seen in \cref{fig:appsettingsprototype}.
 	The dialogue box should be displayed when the user presses a ``settings button'' identical throughout all \giraf applications, making it easier for users to find.
-	\item A unified settings activity, where the user has immediate access to settings for all \giraf applications, which should be a part of the \launcher. 
-	Besides settings of individual applications, it should also contain settings available to a per-user basis, e.g. which applications the user should be allowed access to.
+	\item A unified settings activity, where the user has immediate access to settings for all \giraf applications, which should be a part of \launcher. 
+	Besides settings of individual applications, it should also contain settings for \launcher itself, and the ability to indicate which applications a user should be allowed access to.
 \end{itemize}
 
 It is immediately apparent that for making both these approaches work in parallel, a single plan for how user settings are handled throughout the \giraf project is needed. 
@@ -21,13 +21,16 @@ It is decided that the settings system should consist of four components, to be 
 \begin{itemize}
 	\item The unified settings activity should be implemented as a part of \launcher, and therefore the implementation of this component naturally falls to ourselves. 
 	Excluded from this task is the settings of the individual applications.
-	\item A dialogue box able to contain the settings for an arbitrary \giraf application. Included in this is a standard button for launching the dialogue box. 
-	As this User Interface component is useful to all applications, it should be implemented by the group responsible for the \textit{\giraf Components} library.
+	
+	\item A dialogue box able to contain the settings for an arbitrary \giraf application. 
+	Included in this is a standard button for launching the dialogue box. 
+	As this user interface component is useful to all applications, it should be implemented by the group responsible for the \textit{\giraf Components} library.
 	
 	\item A set of settings for each \giraf application.
 	As these sets may vary widely in content and complexity from application to application, and furthermore may change along with their associated applications over time, these should be defined and implemented by the individual project groups. 
+	
 	\item A method for storing the settings in the database, allowing the users to easily use the same settings across several devices. 
-	This should be implemented by the group responsible for the remote database (as this group has other priorities, the settings will initially be saved locally on each device).
+	This should be implemented by the group responsible for the remote database, however, as this group has other priorities, the settings will initially be saved locally on each device.
 \end{itemize}
 
 \paragraph{The challenge of implementing settings,} using the above concepts, is how to allow applications other than \launcher to access the settings activity, running in the context of \launcher.
@@ -39,9 +42,10 @@ The settings activity in \launcher should be able to open this fragment.
 This approach will isolate the responsibilities of each group and keep the overall complexity to a minimum.
 Although there is an official way for loading a custom class\cite{customClassLoading}, it is complex and it will make the coupling of \launcher and other applications very tight.
 Additionally it is difficult to make the loading of custom classes dynamic, since the name of the class to be loaded has to be known.
-Each Android application is running as an instance of the Dalvik Virtual Machine that sandboxes the data of the application, making it impossible for other to access it.
+Each Android application is running as an instance of the Dalvik Virtual Machine that sandboxes the data of the application, making it impossible for others to access it.
 This method of custom class loading is intended to be used when a project exceeds 64.000 method references, which is the limit of the Dalvik VM.
 
+\item
 In summary, using this method, \launcher has to include all other projects as dependencies when compiling, which will make the \launcher project unnecessary bloated and difficult to work with.
 
 \item
