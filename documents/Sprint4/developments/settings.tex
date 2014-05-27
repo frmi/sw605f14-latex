@@ -63,7 +63,7 @@ else
 
 The use of the View Holder pattern is most noticeable in situations where many list items are handled.
 Nonetheless, it reduces the amount of calls made to \lstinline|findViewById()|, which iteratively searches the view hierarchy for the specified ID.
-Since creation of views is expensive in Android, and considering the many views contained within each \lstinline|convertView| and the amount of times \lstinline|getView()| is called, the calls made to  \lstinline|findViewById()| is dramatically reduced.\cite{understandingAdapters}
+Since creation of views is expensive in Android, and considering the many views contained within each \lstinline|convertView| and the amount of times \lstinline|getView()| is called, the calls made to  \lstinline|findViewById()| is dramatically reduced\cite{understandingAdapters}.
 
 As also mentioned in \cref{sec:settingslistadapter}, the initial implementation had problems with duplicate code for setting the visibility of the shadows.
 This is resolved by using the View Holder pattern, since it makes it possible to always hold a reference to the views. 
