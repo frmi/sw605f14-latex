@@ -4,6 +4,6 @@ The code working the animation of the drawer is based on an \lstinline|OnTouchLi
 The event sets the position of the entire drawer, panel and sidebar to the exact point it has just been moved to, before redrawing the elements.
 Since the position is not limited, the user can leave it in any position between fully extended and closed state, as explained in \cref{sec:drawer:behaviour}.
 
-To change this behaviour, an Android \lstinline{TranslateAnimation} is implemented to start as soon as the user touches the sidebar of the drawer.
+To change this behaviour, an Android \lstinline{TranslateAnimation} class is implemented to start as soon as the user touches the sidebar of the drawer.
 A \lstinline{boolean} variable determines whether the drawer is open or closed to force the animation to either translate left or right, depending on its current state.
 By also adding an \lstinline{OnDragListener} to the drawer, the animation will also play when dragging and dropping colours from the panel; closing the drawer when a drag is initiated and opening it again when the drag has ended.

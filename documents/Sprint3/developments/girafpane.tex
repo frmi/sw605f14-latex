@@ -11,5 +11,5 @@ These are added as suggestions of relevant \launcher settings as outlined in \cr
 
 The most interesting of the two settings is the icon scaling, since ``Show start up animation" is created with a standard Android preference component\footnote{``Preferences'' in Android terminology is what we refer to as ``settings''.}, providing the layout with a two-state switch.
 
-The icon scaling is created by extending the standard \lstinline|preference| class in Android, thereby inheriting the native setup, i.e. title and summery fields, and constructors for such a component.
+The icon scaling is created by extending the standard \lstinline|Preference| class in Android, thereby inheriting the native setup, i.e. title and summery fields, and constructors for such a component.
 We supplement it with a custom layout containing a slider and an application icon, as well as providing functionality to react when the slider changes its position.
