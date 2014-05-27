@@ -14,7 +14,7 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.48.4 r9939"
-   sodipodi:docname="settingsActivity.svg">
+   sodipodi:docname="drawer.svg">
   <defs
      id="defs4" />
   <sodipodi:namedview
@@ -24,9 +24,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.92199839"
-     inkscape:cx="196.03717"
-     inkscape:cy="-23.539398"
+     inkscape:zoom="1.4964466"
+     inkscape:cx="185.43811"
+     inkscape:cy="110.67145"
      inkscape:document-units="pt"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -58,7 +58,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -112,14 +112,14 @@
     <text
        xml:space="preserve"
        style="font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:cmb10;-inkscape-font-specification:cmb10"
-       x="163.62677"
-       y="332.18283"
+       x="142.26324"
+       y="332.21237"
        id="text3822"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan3824"
-         x="163.62677"
-         y="332.18283">Drawer</tspan></text>
+         x="142.26324"
+         y="332.21237">Drawer Content</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:cmb10;-inkscape-font-specification:cmb10"
@@ -134,13 +134,41 @@
     <text
        xml:space="preserve"
        style="font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:cmb10;-inkscape-font-specification:cmb10"
-       x="432.48508"
+       x="424.33041"
        y="332.76224"
        id="text3830"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
-         x="432.48508"
+         x="424.33041"
          y="332.76224"
-         id="tspan3834">Scroll View</tspan></text>
+         id="tspan3942">App Container</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.1424005px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 125.25892,173.5527 c 0,-8.64077 25.15531,-4.70226 37.2072,-4.70226 12.05188,0 24.10377,0 36.15566,0 3.36464,-0.17716 5.56166,-2.0805 7.12338,-3.85142 1.66444,-1.8874 2.74251,-4.83915 4.46554,-4.60859"
+       id="path3862"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccsc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.20451508px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 210.21735,160.96428 c 0.002,-0.82678 0.002,-0.82678 0.002,-0.82678"
+       id="path3902"
+       inkscape:connector-curvature="0" />
+    <text
+       xml:space="preserve"
+       style="font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:cmb10;-inkscape-font-specification:cmb10"
+       x="192.0425"
+       y="156.18767"
+       id="text3904"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3906"
+         x="192.0425"
+         y="156.18767">Drawer</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.1424005px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 295.17937,173.5527 c 0,-8.64077 -25.15531,-4.70226 -37.2072,-4.70226 -12.05188,0 -24.10377,0 -36.15566,0 -3.36464,-0.17716 -5.56166,-2.0805 -7.12338,-3.85142 -1.66444,-1.8874 -2.74251,-4.83915 -4.46554,-4.60859"
+       id="path3862-0"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccsc" />
   </g>
 </svg>
