@@ -4,7 +4,7 @@ Implementing the background loader for \lstinline|MainActivity| is done the same
 The same choice of deriving from \lstinline!ASyncTask! is made and the derived class is called \lstinline!LoadDataTask!.
 
 Upon starting \launcher, a one-second animation is shown, bringing the logo into view, before the activity starts loading data.
-As a result, in case there is no new data, \mainactivty is shown for at least one second before launching the next activity.\\
+As a result, in case there is no new data, \mainactivity is shown for at least one second before launching the next activity.\\
 
 An \lstinline!AnimationListener! is attached to the starting animation, which implements \lstinline|onAnimationEnd()|.
 Once the animation ends, this function initiates the \lstinline!LoadDataTask! and calls \lstinline!loadDataTask.execute()! to make it run.
