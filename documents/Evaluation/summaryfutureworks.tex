@@ -2,17 +2,21 @@ We found several candidates for improvements of \launcher.
 In this section, we only describe the three we deem have the highest priority.
 An exhaustive list of improvements can be found in \cref{appendix:futureworks}.
 
-\section{Copying settings from one user to another}
-For many citizens, the settings may be quite similar.
-For this reason, it would be preferable to be able to copy settings from one user to another.
+\paragraph{Copying settings from one user to another} is a requirement which was forgotten.
+The clients requested the possibility to copy settings from one user to another, this is described in \cref{sec:sprint2:secondmeeting}.
+This this was an actual requirement, we strongly recommend this to be implemented as soon as possible.
 
-\section{Download pictograms while tablet is being used}
-When \launcher is started after a reboot of the device the synchronisation i of data with the remote database is done before being able to login.
-If \launcher has never been installed on the device before, this means that it can take up to 30 minutes, before it is ready to login.
-It would be an idea to only load the necessary information such as profiles, and then continue downloading the pictograms in the background while the tablet is being used.
+\paragraph{Downloading pictograms} while the tablet is being used is a feature which we find very important.
+As for now when \launcher is started after a system restart, the synchronisation of data with the remote database is executed.
+This synchronisation can last about 30 minutes in which the user has to wait.
+It would be ideal to only load the most essential information such as profiles and their relations, thereafter give the user the possibility to login.
+The \launcher could then continue downloading e.g. the pictograms in the background while the tablet is being used.
 
+\paragraph{The loading of applications} into views is suggested to be reimplemented. 
+The layout in which applications are being loaded is currently a linear layout where another linear layout is added acting as a row.
+This results in multiple calculations of the padding around each application depending on the chosen icon size.
 
-\section{Use GridView for loading applications}
-The layout in which applications are being loaded is of an inconvenient type. 
-They should instead be loaded into a \lstinline|GridView|, using a custom adapter similar to the one mentioned in \cref{sec:settingslistadapter}. 
-This is better for memory management, follows Android Best Practices and would simplify the algorithm used for showing applications. \vagner{Kilde for at det ville følge Android Best Practices?}
+Instead the mechanism should be implemented using a grid view.
+This makes it possible to add the applications using an adapter and the spacing around the applications would be set automatically.
+
+This is increases performance as described in \cref{sec:settingslistadapter} and would simplify the algorithm used to add the applications to a view significantly.
