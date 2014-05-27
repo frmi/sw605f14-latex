@@ -13,11 +13,11 @@ This ensures that the animation and layout hierarchy can be controlled more effe
 
 \Cref{lst:sidebarlayout} shows the elements of the XML layout.
 
-\begin{lstlisting}[caption={Structure of the XML layout of the drawer. Note that some attributes are omitted.},label={lst:sidebarlayout}, language=XML]
-<dk.aau.cs.giraf.launcher.layoutcontroller.DrawerLayout android:id="@+id/DrawerView" android:layout_marginLeft="-400dp">
+\begin{lstlisting}[caption={Structure of the XML layout of the drawer. Note that some attributes are omitted and others are renamed to improve understanding.},label={lst:sidebarlayout}, language=XML]
+<dk.aau.cs.giraf.launcher.layoutcontroller.DrawerLayout android:id="@+id/Drawer" android:layout_marginLeft="-400dp">
 
 <RelativeLayout android:id="@+id/DrawerContentView" android:layout_width="400dp">
-<GridView android:id="@+id/appcolors" />
+<GridView android:id="@+id/AppColoursView" />
 </RelativeLayout>
 
 <RelativeLayout android:id="@+id/SidebarView">
@@ -28,7 +28,7 @@ This ensures that the animation and layout hierarchy can be controlled more effe
 
 </dk.aau.cs.giraf.launcher.layoutcontroller.DrawerLayout>
 
-<ScrollView android:id="@+id/appScrollView"/>
+<ScrollView android:id="@+id/AppContainerView"/>
 \end{lstlisting}
 
 Notice the \lstinline|ScrollView| on the last line in \Cref{lst:sidebarlayout}.
