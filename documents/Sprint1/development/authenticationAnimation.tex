@@ -1,5 +1,5 @@
 \subsection{The Error in Authentication Activity}
-When starting \launcher for the first time, the application crashed with an \lstinline{OutOfMemoryError} upon reaching the \authenticationactivity.
+When starting \launcher for the first time, the application crashed with an \lstinline{OutOfMemoryError} upon reaching \authenticationactivity.
 The problem is caused by an animation in the activity, implemented as an instance of the Android class \lstinline{AnimationDrawable}, a class designed to create animations from a sequence of images.
 According to the Android documentation \citet{androidreference}, the implementation is technically correct, but it is found that when an instance of \lstinline{AnimationDrawable} is created, it loads the entire sequence of images into main memory of the device at once.
 The images are contained within the application in the compressed Portable Network Graphics (PNG) format.
