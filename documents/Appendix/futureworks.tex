@@ -2,10 +2,13 @@ This appendix contains information about the things still remaining to be done i
 As such, it acts as a backlog for the next year bachelor students working on the project.
 
 \section{Proper iconsize}
-When scaling the application icons some of them gets pixellated, this indicates that there is still work to be done, when choosing the icons to show. This might be caused by low resolution icons supplied by the developers of the other applications.
+When scaling the application icons some of them gets pixellated.
+This indicates that there is still work to be done, when choosing the icons to show.
+This might be caused by low resolution icons supplied by the developers of the other applications.
 
 \section{Ugeskema Calendarwidget}
-The group working on the \textit{GIRAF components} has a widget, showing the current date, in their backlog and it would be an idea to use this widget to open the application \textit{Ugeplan} through this widget. The application should then show the schema for the citizen chosen from the profile selector.
+The group working on the \textit{\giraf components} has a widget, showing the current date, in their backlog.
+It could be an idea to use to open the application \textit{Ugeplan} through this widget. The application should then show the schema for the citizen chosen from the profile selector.
 
 \section{Logging in with citizen and administrator profiles}
 Currently, it is possible to login with all types of profiles, but there is no handling of types other than guardian profiles in most of the application.
@@ -53,5 +56,7 @@ The layout in which applications are being loaded is of an inconvenient type.
 They should instead be loaded into a \lstinline|GridView|, using a custom adapter similar to the one mentioned in \cref{sec:settingslistadapter}. 
 This is better for memory management, follows Android Best Practices and would simplify the algorithm used for showing applications. \vagner{Kilde for at det ville følge Android Best Practices?}
 
-\section{Do functional tests}
-\vagner{write more here.}
+\section{Conduct Functional Tests}
+\cref{sec:sprint1:testing} describes function tests carried out by this group, on the version of \launcher we initially took over.
+These tests provided valuable information and revealed several unhandled bugs.
+As the final version of \launcher was rushed to implement the remote database, it is highly recommended, that the group taking over the development of \launcher, carry out functional tests as well.
