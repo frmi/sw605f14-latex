@@ -4,7 +4,7 @@ First, it would allow us to distribute a huge number of pictograms in the remote
 Previously they had to create all the needed pictograms locally in \textit{Pictotegner}, the included graphics application. 
 Second, the remote database group had put significant effort into making the database ready before the end of the semester, and we found it unfair to deny them the last step. 
 
-As described in \Cref{sec:developments:remotedb}, this concerned the \launcher group, as the local database service had been merged into \launcher, to ease distribution of the system.
+As described in \Cref{sec:developments:remotedb}, this concerned us, as the local database service had been merged into \launcher, to ease distribution of the system.
 
 The expected problems did arise, the most major ones including:
 \begin{itemize}
@@ -13,10 +13,10 @@ The expected problems did arise, the most major ones including:
 	Differences in the two SQL implementations, gave rise to some problems. 
 	Other problems were related to the two schemas being developed by two different groups.
 	While the groups communicated about changes continually through the project period, some last minute redesigns of the remote database schema, had not been added to the local database schema.
-	Identifying and fixing these problems were a collaborative effort between the \launcher group, the remote database group, and a few other developers present at the time. 
+	Identifying and fixing these problems were a collaborative effort between us, the remote database group, and a few other developers present at the time. 
 	\item After making necessary changes in the local database to resolve the above-mentioned issues, a series of new problems arose in the applications that saved information in the local database, as these save operations no longer conformed with the schema. 
-	Identifying and fixing these problems was mainly the responsibility of the affected groups, but members of the \launcher group moved around and helped, as \launcher did not require any significant effort at this point, and the final presentation to the costumers was scheduled for later that day. 
-	Furthermore, the \launcher group had some insight into the root problems, from working with the database issues the previous day.
+	Identifying and fixing these problems was mainly the responsibility of the affected groups, but members of our group moved around and helped, as \launcher did not require any significant effort at this point, and the final presentation to the costumers was scheduled for later that day. 
+	Furthermore, we had some insight into the root problems, from working with the database issues the previous day.
 	\item \textit{Pictosearch} is an application meant to provide an interface for searching through the pictograms in the database.
 	As it provides this central functionality, a number of other applications use \textit{Pictosearch}, rather than providing their own search interface.
 	When we started testing the database synchronisation, we tried to transfer only 100 pictograms to the device, and then view them in \textit{Pictosearch}.
