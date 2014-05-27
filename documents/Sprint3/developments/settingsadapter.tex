@@ -1,13 +1,16 @@
 \subsection{Adapter for the Settings Menu}\label{sec:settingslistadapter}
-Considering the prototypes seen in \cref{fig:settingsprototype,fig:appsmanagement} it is apparent that a specially designed view (also referred to as an \lstinline|AdapterView|) for each list item is required.
-In Android, the easiest way of doing so, is by implementing an \lstinline|Adapter| for the \lstinline|ListView|.
+Considering the prototypes seen in \cref{fig:settingsprototype,fig:appsmanagement}, it is apparent that an adapter view for each list item is required.
+In Android, the easiest way of doing so, is by implementing an \lstinline|Adapter| for the list view.
 An adapter serves the objective of bridging the underlying data for a view, and to render it appropriately.
-Various adapters exist for different purposes; it is e.g. possible to implement an extension of \lstinline|Adapter| called \lstinline|ListAdapter|, which serves the purpose of easily adding items to a \lstinline|ListView|.
+Various adapters exist for different purposes.
+It is e.g. possible to implement an extension of \lstinline|Adapter|, called \lstinline|ListAdapter|, which serves the purpose of easily adding items to a list view.
 Implementing an adapter also has performance related benefits.
-Most importantly being the concept of \textit{recycling} a view, which makes it possible to handle large lists efficiently\cite{listViewsPerformance}. The performance is achieved in the \lstinline|getView()| method, \cref{lst:settingslistadapter:getview}.
+Most importantly being the concept of \textit{recycling} a view, which makes it possible to handle large lists efficiently\cite{listViewsPerformance}. 
+The performance is achieved in the \lstinline|getView()| method, seen in \cref{lst:settingslistadapter:getview}.
+In case of an already instantiated view given as parameter, we can skip its instantiation, thus saving both time and memory.
 
 In the case of yielding a visual result as close as possible to the prototypes, our implementation requires a custom class extending the \lstinline|BaseAdapter| class.
-The specific reason being the list requiring both a title and an icon, but also specifically because of the shadows rendered around a selected item in the list.
+The reason is that the list requires both a title and an icon, but also because of the shadows rendered around a selected item in the list.
 This would not be possible to handle with a standard adapter.
 
 The most important method of an adapter is its \lstinline|getView()| method, since it is solely responsible for returning a new \lstinline|AdapterView| to the underlying \lstinline|ListView|.
@@ -54,13 +57,13 @@ public View getView(int position, View convertView, ViewGroup parent) {
 \end{lstlisting}
 
 In the \lstinline|getView()| method the most important parameters are \lstinline|position| and \lstinline|convertView|.
-\lstinline|position| being the index of the item in the \lstinline|ListView| that is currently being inflated.
-\lstinline|convertView| is the view obtained from the \lstinline|ListView|.
-As seen in the example, this view is only inflated if it is not \lstinline|null|, which is one of the optimizations of using an adapter.
+\lstinline|position| is the index of the item in the list view that is currently being inflated.
+\lstinline|convertView| is the view obtained from the list view.
+As seen in the example, this view is only inflated if it is not \lstinline|null|, which is one of the advantages of using an adapter.
 
-To be able to add data to each \lstinline|View| contained in a \lstinline|convertView|, the item related to the position is obtained, where a \lstinline|View| fx is the \lstinline|ImageView| showing the application icon.
+To be able to add data to each view contained in \lstinline|convertView|, the item related to the position is obtained, where a view can e.g. be an image showing an application icon.
 
-The rest of the \lstinline|getView()| method is spend on checking logic for which shadows to show, based on the last selected item.
+The rest of the \lstinline|getView()| method is spent on checking logic for which shadows to show, based on the last selected item.
 This logic utilizes three different methods looking much alike.
 One of these are found in \cref{lst:settingslistadapter:shadow}
 
@@ -75,8 +78,7 @@ private void setShadowRightCurrent(View currentView, boolean visible) {
 \end{lstlisting}
 
 This implementation is not considered the ``most optimal'', since it brings some code duplication for methods doing the same kind of task.
-The naming is also not considered optimal, since it can be confusing which shadow is currently being set as visible.
-The reason for doing this is that we need a reference for a specific view depending on the shadow needed to show.
+The reason for doing this is that we need a reference to a specific view, depending on the shadow needed to be shown.
 
-\lstinline|mLastSelectedItem| is a global member in \lstinline|SettingsListAdapter|, made available through a public method called \lstinline|setSelected(int position)|.
-This is called from an item click listener, implemented by the underlying \lstinline|ListView|.
+The most recently selected item is a global member in \lstinline|SettingsListAdapter|, made available through a public method called \lstinline|setSelected()|.
+The method is called from an \lstinline|OnItemClickListener|, implemented by the underlying list view.

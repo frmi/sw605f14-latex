@@ -1,32 +1,18 @@
 \subsection{The Settings Menu}\label{sec:settingslistfragment}
-This is the static fragment as defined in the \lstinline|SettingsActivity| layout (\cref{lst:settingsactivity:layout}).
-The main tasks this (\lstinline|SettingsListFragment|), is to update \lstinline|SettingsActivity| using the interface callback member \lstinline|private SettingsListFragmentListener mCallback|.
+This is the static fragment as defined in the \lstinline|SettingsActivity| layout from \cref{lst:settingsactivity:layout}.
+The main task of \lstinline|SettingsListFragment| is to update \lstinline|SettingsActivity|, using the interface callback member \lstinline|mCallback|.
 This is done in the appropriate listeners for the \textit{Profile Selector} and \textit{ListView}, as illustrated in \cref{lst:settingsactivity:layout}.
-In the implementation these components corresponds to a \lstinline|GProfileSelector| and a standard Android \lstinline|ListView| respectively.
+In the implementation, these components corresponds to a \lstinline|GProfileSelector| and a standard Android \lstinline|ListView| respectively.
 
-To ensure that the context of the underlying activity implements the interface just described, the code in \cref{lst:settingslistfragment:onattach} is utilized in \lstinline|SettingsListFragment|.
+To ensure that the context of the underlying activity implements the interface just described, the an exception is thrown if the interface is not implemented.\\
 
-\begin{lstlisting}[caption={Implementation to make sure the underlying activity implements the \lstinline|SettingsListFragmentListener| interface.}, label={lst:settingslistfragment:onattach}]
-@Override
-public void onAttach(Activity activity) {
-  super.onAttach(activity);
-  try {
-    mCallback = (SettingsListFragmentListener) activity;
-  } catch (ClassCastException e) {
-    throw new ClassCastException(activity.toString()
-            + " must implement SettingsListFragmentListener");
-  }
-}
-\end{lstlisting}
-
-To enable its global member \lstinline|mSettingsListView| to render its items, an adapter (\lstinline|mAdapter|) is instantiated with a list of installed applications, before being activated for the \lstinline|ListView| by calling \lstinline|mSettingsListView.setAdapter(mAdapter)|.
+To enable the list view to render its items, an adapter is instantiated with a list of installed applications and attached to the list view.
 
 Before describing this adapter in \cref{sec:settingslistadapter}, the meaning of \lstinline|SettingsListItem| is explained.
 
-
-\subsubsection{Content of the Settings Menu}
-Each item in the Settings Menu contains an instance of \lstinline|SettingsListItem|, which is a simple class whose members are used to render the information shown in the \lstinline|ListView|.
-It is thus used as a placeholder for the fragments and intents that should be opened by clicking an list item.
+\subsubsection{Contents of the Settings Menu}
+Each item in the settings menu contains an instance of \lstinline|SettingsListItem|, which is a simple class whose members are used to render the information shown in the list view.
+Thus, it is used as a placeholder for the fragments and intents that should be opened by clicking a list item.
 The members of this class are seen in \cref{lst:settingslistitem}.
 
 \begin{lstlisting}[caption={Members of the \lstinline|SettingsListItem| class.}, label={lst:settingslistitem}]
@@ -39,7 +25,7 @@ Intent mIntent;
 \end{lstlisting}
 
 By using constructor chaining, the class provides various public constructors that use one private constructor to set the values of its members.
-Depending on the constructor used, for each item of the list view in \lstinline|SettingsListFragment|, the item is able to either change the fragment in the \textit{Settings Container} or start an activity through an intent.
-The fragment is changed using the \lstinline|FragmentManager| which is used to manage fragment transactions.
+Depending on the constructor used, for each item in the list view in \lstinline|SettingsListFragment|, the item is able to either change the fragment in \textit{Settings Container} from \cref{fig:settingsarchitecture}, or start an activity through an intent.
+The fragment is changed using the \lstinline|FragmentManager|, which is used to manage fragment transactions.
 The list view should also be able to contain an item for settings in other \giraf applications, therefore the necessity for launching activities through intents.
-Logic used in \lstinline|SettingsActivity| checks if either the fragment or intent member is \lstinline|null|, and starts a new activity accordingly, when an item is clicked.
+Logic used in \lstinline|SettingsActivity| checks if either the fragment or intent member is \lstinline|null|, and carries out the according action, when an item is clicked.
