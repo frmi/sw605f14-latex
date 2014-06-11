@@ -56,7 +56,7 @@ public View getView(int position, View convertView, ViewGroup parent) {
 }
 \end{lstlisting}
 
-In the \lstinline|getView()| method the most important parameters are \lstinline|position| and \lstinline|convertView|.
+In the \lstinline|getView()| method the most important parameters are \lstinline|position| and \lstinline|con|-\lstinline|vertView|.
 \lstinline|position| is the index of the item in the list view that is currently being inflated.
 \lstinline|convertView| is the view obtained from the list view.
 As seen in the example, this view is only inflated if it is not \lstinline|null|, which is one of the advantages of using an adapter.
@@ -80,5 +80,5 @@ private void setShadowRightCurrent(View currentView, boolean visible) {
 This implementation is not considered the ``most optimal'', since it brings some code duplication for methods doing the same kind of task.
 The reason for doing this is that we need a reference to a specific view, depending on the shadow needed to be shown.
 
-The most recently selected item is a global member in \lstinline|SettingsListAdapter|, made available through a public method called \lstinline|setSelected()|.
+The most recently selected item is a global member in \lstinline|SettingsListAdapter|, made available through the public method \lstinline|setSelected()|.
 The method is called from an \lstinline|OnItemClickListener|, implemented by the underlying list view.

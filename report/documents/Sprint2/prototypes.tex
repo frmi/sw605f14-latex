@@ -1,7 +1,7 @@
 \subsection{Prototypes}\label{sec:sprint2:prototypes}
 
 At the end of first sprint, the existing features of \launcher were polished, and the project would only need to be kept updated with the implementation of the new \textit{OasisLib} database.
-The group thought it could be desirable for \launcher to have additional features:
+We thought it could be desirable for \launcher to have additional features:
 
 \begin{itemize}
 \item It might be useful to be able to change profiles at other occasions than when starting an application, possibly in \launcher or in the started application.
@@ -17,7 +17,7 @@ The purpose was to convey several different ways of including the above features
 \subsubsection{Profile Selection}
 
 At the end of sprint one, the profile selection would only appear when launching an application, as illustrated by the state chart diagram in \Cref{fig:statechartProfileSelectorInitial}.
-\insertfigure{width=\textwidth}{statechartProfileSelectorInitial}{State chart diagram for the original process of choosing a profile.}{fig:statechartProfileSelectorInitial}
+\insertfigure{width=0.8\textwidth}{statechartProfileSelectorInitial}{State chart diagram for the original process of choosing a profile.}{fig:statechartProfileSelectorInitial}
 Two alternatives are suggested:
 \begin{itemize}
 \item Selection of a different profile from within \launcher.
@@ -36,20 +36,21 @@ Illustrations can be seen in \Cref{fig:profileselectionlauncherdropdown,fig:prof
 \centering
     \begin{subfigure}[t]{.48\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{sprint2/profileselectionhomescreen-dropdown}
+    \includegraphics[width=0.8\textwidth]{sprint2/profileselectionhomescreen-dropdown}
     \caption{The dropdown profile selection option. This appears when tapping a profile picture as a guardian.}
     \label{fig:profileselectionlauncherdropdown}
     \end{subfigure}
     \hfill
     \begin{subfigure}[t]{.48\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{sprint2/profileselection-dialog-finish}
+    \includegraphics[width=0.8\textwidth]{sprint2/profileselection-dialog-finish}
     \caption{The profile selection pop up. This only appears while pressing the appropriate button inside an application.}
     \label{fig:profileselectionapppopup}
     \end{subfigure}\\
     \begin{center}
     \begin{subfigure}[t]{1\textwidth}
-    \includegraphics[width=\textwidth]{figures/statechartProfileSelectorBubble.tikz}
+    \centering
+    \includegraphics[width=0.8\textwidth]{figures/statechartProfileSelectorBubble.tikz}
     \caption{State chart diagram for the suggested alternative process of choosing a profile.}
     \label{fig:statechartProfileSelectorBubble}
     \end{subfigure}
@@ -83,28 +84,28 @@ An example of settings for \launcher can be seen in \Cref{fig:appsettingsprototy
 \centering
     \begin{subfigure}[t]{.48\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{sprint2/settings}
-    \caption{The settings activity with the \launcher part open. The current profile being edited can be seen in the top left corner.}
+    \includegraphics[width=0.8\textwidth]{sprint2/settings}
+    \caption{The settings activity with the \launcher settings open. The current profile being edited can be seen in the top left corner.}
     \label{fig:settingsprototype}
     \end{subfigure}
     \hfill
     \begin{subfigure}[t]{.48\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{sprint2/settings-dialog}
-    \caption{The settings for a single application as a dialogue. In this example, the settings for the home screen of  \launcher is seen.}
+    \includegraphics[width=0.8\textwidth]{sprint2/settings-dialog}
+    \caption{The settings for a single application as a dialogue. In this example, the settings for the home screen of \launcher is seen.}
     \label{fig:appsettingsprototype}
     \end{subfigure}\\
     \vspace{1em}
     \begin{subfigure}[t]{.48\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{sprint2/apps-colorexperiment}
+    \includegraphics[width=0.8\textwidth]{sprint2/apps-colorexperiment}
     \caption{The application management part of settings. \giraf or Android applications can be chosen in the pane in the top.}
     \label{fig:appsmanagement}
     \end{subfigure}
     \hfill
     \begin{subfigure}[t]{.48\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{sprint2/profil-info}
+    \includegraphics[width=0.8\textwidth]{sprint2/profil-info}
     \caption{An example of information about a user displayed in the drawer component.}
     \label{fig:profileinfo}
     \end{subfigure}
@@ -114,6 +115,6 @@ An example of settings for \launcher can be seen in \Cref{fig:appsettingsprototy
 
 \subsubsection{Profile Info}
 
-The group had an idea of displaying information about the active user in the drawer section of \launcher.
+We have an idea of displaying information about the active user in the drawer section of \launcher.
 This is a relatively small feature that would be trivial to implement.
 An example can be seen in \Cref{fig:profileinfo}.

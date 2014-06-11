@@ -1,5 +1,5 @@
 \subsection{Drawer}\label{sec:launcher:drawer}
-The drawer is a separate view that is situated on the left-hand side of the \homeactivity.
+The drawer is a separate view that is situated on the left-hand side of \homeactivity.
 Its main purpose is to allow \launcher users to apply a new colour scheme to the installed \giraf applications.
 
 To avoid cluttering the screen, the drawer can be shown and hidden at will.
@@ -12,14 +12,14 @@ Illustrations of the drawer in closed and opened state can be seen in \cref{fig:
 \centering
 	\begin{subfigure}[b]{.48\textwidth}
 	\centering
-	\includegraphics[width=\textwidth]{screenshots-old-giraf/giraf-homeactivity.png}
+	\includegraphics[width=0.8\textwidth]{screenshots-old-giraf/giraf-homeactivity.png}
 	\caption{Drawer closed.}
 	\label{fig:drawerclosed}
 	\end{subfigure}
 	\hfill
 	\begin{subfigure}[b]{.48\textwidth}
 	\centering
-	\includegraphics[width=\textwidth]{screenshots-old-giraf/giraf-drawer-fullyextended.png}
+	\includegraphics[width=0.8\textwidth]{screenshots-old-giraf/giraf-drawer-fullyextended.png}
 	\caption{Drawer fully opened.}
 	\label{fig:draweropened}
 	\end{subfigure}
@@ -45,7 +45,7 @@ Since no formal requirements are available and we have not yet held a meeting wi
 A half-open or half-closed state should result in the drawer popping into the state closest to its current position.
 \item The drawer should close while a colour is being dragged, and open again when the colour is dropped.
 \item The drawer should not push the application icons out of the screen.
-\item The source code responsible for the animation of the drawer and the layout of the \homeactivity should be refactored in order to
+\item The source code responsible for the animation of the drawer and the layout of \homeactivity should be refactored in order to
 	\begin{itemize}
 	\item take advantage of standard Android animations and layout features,
 	\item allow the activity to dynamically adjust according to display-size and

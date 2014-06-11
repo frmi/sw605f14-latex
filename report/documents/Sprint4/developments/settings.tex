@@ -63,7 +63,7 @@ else
 
 The use of the View Holder pattern is most noticeable in situations where many list items are handled.
 Nonetheless, it reduces the amount of calls made to \lstinline|findViewById()|, which iteratively searches the view hierarchy for the specified ID.
-Since creation of views is expensive in Android, and considering the many views contained within each \lstinline|convertView| and the amount of times \lstinline|getView()| is called, the calls made to  \lstinline|findViewById()| is dramatically reduced.\cite{understandingAdapters}
+Since creation of views is expensive in Android, and considering the many views contained within each \lstinline|convertView| and the amount of times \lstinline|getView()| is called, the calls made to  \lstinline|findViewById()| is dramatically reduced\cite{understandingAdapters}.
 
 As also mentioned in \cref{sec:settingslistadapter}, the initial implementation had problems with duplicate code for setting the visibility of the shadows.
 This is resolved by using the View Holder pattern, since it makes it possible to always hold a reference to the views. 
@@ -91,7 +91,7 @@ It inherits from \lstinline!ASyncTask! and must therefore implement three method
 
 We override \lstinline!onPreExecute()! and \lstinline!onPostExecute()! to start and stop showing a loading animation, respectively.
 
-The method in \lstinline!LauncherUtility! used to populate a view with applications, \lstinline!loadApplications()! is deleted, and the contents are moved into \lstinline!doinBackground()!.
+The method in \lstinline!LauncherUtility! used to populate a view with applications, \lstinline!load!-\lstinline!Applications()! is deleted, and the contents are moved into \lstinline!doinBackground()!.
 Since the views can only be manipulated in the UI thread, we add the applications as views to a list of views, which \lstinline!onPostExecute()! iterates over and adds to the target layout. 
 The constructor of \lstinline!LoadApplicationTask! is also adjusted to take as parameter all the information needed to populate a given view.
 

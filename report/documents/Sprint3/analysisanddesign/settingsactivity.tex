@@ -47,7 +47,7 @@ This method of custom class loading is intended to be used when a project exceed
 
 \item
 To simply the above idea, \launcher could instead include all other projects as dependencies when compiling. 
-However, this solution will make the \launcher project unnecessary bloated and difficult to work with.
+However, this solution will make \launcher project unnecessary bloated and difficult to work with.
 
 \item
 Another possibility is to make the individual applications implement an interface, where a function would add the settings widgets of an application, to a given view.
@@ -73,7 +73,7 @@ This problem is avoided by this solution.
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=\textwidth, keepaspectratio=true]{SettingsActivity.pdf}
+\includegraphics[width=0.8\textwidth, keepaspectratio=true]{SettingsActivity.pdf}
 \caption{The architecture showing how the prototype, \cref{fig:settingsprototype}, will be implemented.}
 \label{fig:settingsarchitecture}
 \end{figure}
@@ -98,7 +98,7 @@ The settings list fragment contains the profile selector and a list view as desc
 \item \textbf{Profile Selector} is what makes it possible to edit settings for multiple users.
 The prototype previously mentioned shows a profile selector resembling a drop-down menu.
 To follow the multi-project guidelines, a component developed by the group responsible for \textit{\giraf Components} will be implemented instead.
-When the selected profile changes, settings activity should be reloaded to reflect the settings of the newly selected user.
+When the selected profile changes, the settings activity should be reloaded to reflect the settings of the newly selected user.
 \item \textbf{ListView} shows the categories of settings which are available to the user.
 The fragment attached to each category is presented in the settings container when the category is chosen.
 \end{itemize}

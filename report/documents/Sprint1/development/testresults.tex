@@ -21,9 +21,9 @@ This is not satisfactory, as \launcher should always work on top of the device o
 
 \subsubsection{Use of Device Buttons}
 
-\paragraph{Specification:} The device buttons (\textit{Back}, \textit{Home}, and \textit{Multitasking}) should have no effect in the \mainactivity and \authenticationactivity, as the user should not be able to ``back out'' of \launcher to the device OS.
+\paragraph{Specification:} The device buttons (\textit{Back}, \textit{Home}, and \textit{Multitasking}) should have no effect in \mainactivity and \authenticationactivity, as the user should not be able to ``back out'' of \launcher to the device OS.
 \paragraph{Test case:} Use the device buttons in different activities and situations.
-\paragraph{Result:} In both the \mainactivity and \authenticationactivity, applying the \textit{Home} and \textit{Back} buttons made \launcher restart. 
+\paragraph{Result:} In both \mainactivity and \authenticationactivity, applying the \textit{Home} and \textit{Back} buttons made \launcher restart. 
 The \textit{Multitasking} button always activates the multitasking screen of the device OS.
 \paragraph{Resolution:} The \textit{Back} button are suppressed by overriding a listener method.
 We were unable to find similar means for suppressing the other two buttons, as we unsuccessfully returned to this issue in the second sprint, as described in \cref{sec:sprint2:backlog}.
