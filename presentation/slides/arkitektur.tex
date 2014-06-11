@@ -1,0 +1,68 @@
+\subsection{Systemets Opbygning}
+
+\begin{frame}{Hardware Komponenter}
+\begin{columns}
+\begin{column}{.48\textwidth}
+\begin{description}
+\item[Kinect]{Billed-feed til lokalisering}
+\item[Robot]{Navigation i og observation af verden}
+\item[PC]{Beregning af:}
+\begin{itemize}
+\item{kort}
+\item{robot lokation}
+\item{rute}
+\end{itemize}
+\end{description}
+\end{column}
+\begin{column}{.48\textwidth}
+\includegraphics[width=\textwidth]{enheder}
+\end{column}
+\end{columns}
+\end{frame}
+
+\subsection{NXT (Robot)}
+
+\begin{frame}{NXT Software}
+Vigtigste filer og deres funktionalitet:
+\begin{description}
+\item[MainTask.nxc]{Main task/loop og kommunikation fra PC}
+\item[Communication.nxc]{Kommunikation til PC}
+\item[Navigation.nxc]{Navigation i verden}
+\item[Sensor.nxc]{Observation af verden}
+\item[MCTasks.nxc]{Motor Control; til bedre styring af motorer}
+\end{description}
+\end{frame}
+
+\subsection{PC}
+
+\begin{frame}{PC Software}
+\begin{center}
+\includegraphics[height=.9\textheight]{arkitektur/namespaces}
+\end{center}
+\end{frame}
+
+\subsection{Kommunikation}
+
+\begin{frame}{Protokol}
+\begin{description}
+\item[Generelt]{$< BeskedType >< Indhold >$}
+\item[Eksempel]{Robot anmoder om lokation\\
+\texttt{0}\\
+PC sender lokation\\
+\texttt{\textcolor{red}{52}-0213.5\textcolor{red}{00126.9}00187.4}}
+\end{description}
+\end{frame}
+
+\begin{frame}{Flow}
+\includegraphics<1>[height=.9\textheight]{presentation/flow_1}
+\includegraphics<2>[height=.9\textheight]{presentation/flow_2}
+\includegraphics<3>[height=.9\textheight]{presentation/flow_3}
+\includegraphics<4>[height=.9\textheight]{presentation/flow_4}
+\includegraphics<5>[height=.9\textheight]{presentation/flow_5}
+\includegraphics<6>[height=.9\textheight]{presentation/flow_6}
+\includegraphics<7>[height=.9\textheight]{presentation/flow_7}
+\includegraphics<8>[height=.9\textheight]{presentation/flow_8}
+\includegraphics<9>[height=.9\textheight]{presentation/flow_9}
+\includegraphics<10>[height=.9\textheight]{presentation/flow_10}
+\includegraphics<11>[height=.9\textheight]{presentation/flow_11}
+\end{frame}

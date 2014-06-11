@@ -1,0 +1,36 @@
+\tdplotsetmaincoords{60}{110}
+\begin{tikzpicture}[scale=4,tdplot_main_coords]
+
+%set up some coordinates 
+%-----------------------
+\coordinate (O) at (0,0,0);
+\tdplotsetcoord{P1}{1.1}{60}{30}
+\tdplotsetcoord{P2}{1.5}{40}{60}
+
+%draw figure contents
+%--------------------
+
+%draw the main coordinate system axes
+\draw[ultra thick,red,->] (0,0,0) -- (1,0,0) node[anchor=north east]{$r$};
+\draw[ultra thick,green,->] (0,0,0) -- (0,1,0) node[anchor=north west]{$g$};
+\draw[ultra thick,blue,->] (0,0,0) -- (0,0,1) node[anchor=south]{$b$};
+
+\draw[-stealth,color=gray] (O) -- (P1);
+\draw[-stealth,color=gray] (O) -- (P2);
+\draw[-stealth,thick] (P1) -- (P2);
+
+\draw (P1) node[anchor=west]{$C_1$};
+\draw (P2) node[anchor=west]{$C_2$};
+
+%draw projection on xy plane, and a connecting line
+\draw[dashed, color=gray] (O) -- (P1xy);
+\draw[dashed, color=gray] (P1) -- (P1xy);
+
+\draw[dashed, color=gray] (O) -- (P2xy);
+\draw[dashed, color=gray] (P2) -- (P2xy);
+
+%\draw[dashed] (P1xy) -- (P2xy);
+%\draw[dashed] (P2) -- (P2xy);
+
+
+\end{tikzpicture}

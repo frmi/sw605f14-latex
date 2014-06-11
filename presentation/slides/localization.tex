@@ -1,0 +1,126 @@
+\subsection{Lokalisering}
+
+\begin{frame}{Afstande mellem farver}
+
+\centering
+\include{slides/fig_3dcolor}
+
+\end{frame}
+
+\begin{frame}{Maksimal afstand}
+
+$$dist_{C_aC_b} = \vert C_a - C_b \vert$$
+
+$$w_{C_aC_b} = \begin{cases}
+	0 &\text{hvis } dist_{C_aC_b} > \rho \\
+	1 - \frac{dist_{C_aC_b}}{\rho} &\text{hvis } dist_{C_aC_b} \leq \rho
+\end{cases}$$
+
+\end{frame}
+
+\begin{frame}
+
+\begin{figure}
+\centering
+\includegraphics[scale=.6]{tracking/emptyGrid}
+\includegraphics[scale=.6]{tracking/emptyGrid_TRACK2} \\
+\includegraphics[scale=.6]{tracking/emptyGrid_TRACK}
+
+\end{figure}
+\end{frame}
+
+\begin{frame}{Problemer med metoden}
+\begin{itemize}
+\item Støj
+\item Farveændring (lys/skygge)
+\item Opdateringshastighed
+\end{itemize}
+
+\end{frame}
+
+
+
+\begin{frame}{Filtrering af støj}
+3x3 støj filter \\
+
+
+$$w'_{x,y} = \begin{cases}
+	0 &\text{hvis } \vert V_{x,y} \vert < \sigma \\
+	w_{x,y} &\text{hvis } \vert V_{x,y} \vert \geq \sigma
+\end{cases}$$ \\
+hvor $$V_{x,y} = \{w \in N_{x,y} \vert w > 0 \}$$
+\end{frame}
+
+\begin{frame}{Farveændring (lys/skygge)}
+Løbende opdatering af sporingsfarve.
+\begin{figure}
+\centering
+\includegraphics[scale=.7]{tracking/emptyGrid_FILTER}
+\end{figure}
+
+\end{frame}
+
+\begin{frame}{Opdateringshastighed}
+
+\begin{itemize}
+\item Reducere problemets størrelse
+\item Robotten bevæger sig kun korte afstande mellem opdateringer
+\end{itemize}
+
+\begin{figure}
+\centering
+
+\begin{tikzpicture}[scale=.5]
+
+%set up some coordinates 
+%-----------------------
+\coordinate (C1) at (0,0); % Outer top left
+\coordinate (C2) at (10,10); % Outer bottom right
+\coordinate (C3) at (2,2); % Inner top left
+\coordinate (C4) at (8,8); % Inner bottom right
+
+%draw figure contents
+%--------------------
+
+\draw [fill=lightgray] (C3) rectangle (C4); % Inner rectangle
+\draw[dashed, color=gray] (C1) rectangle (C2); % Outer rectangle
+
+\draw [fill] (C1) circle [radius=0.2]; % Outer top right
+\draw [fill] (C2) circle [radius=0.2]; % Outer bottom left
+\draw [fill] (C3) circle [radius=0.2]; % Inner top right
+\draw [fill] (C4) circle [radius=0.2]; % Inner bottom left
+
+\draw[thick,dashed] (C3) -- (C1); % Inner top right to outer top right
+\draw[thick,dashed] (C4) -- (C2); % Inner bottom left to outer bottom left
+
+\draw[dashed] (C3) -- (0,2);
+\draw[dashed] (C3) -- (2,0);
+
+\draw (5,5) node {\large $R^n$};
+\draw (5,9) node {\large $R^{n'}$};
+
+\draw (1,2.5) node {\small $\omega$}; % x1-w
+\draw (2.5,1.1) node {\small $\omega$}; % y1-w
+
+\end{tikzpicture}
+\end{figure}
+
+\end{frame}
+
+
+
+
+\begin{frame}{Omregning fra punkt i billede til reelt punkt}
+
+\centering
+\includegraphics[scale=1]{conversion_figure}
+
+\end{frame}
+
+
+
+
+
+
+
+
