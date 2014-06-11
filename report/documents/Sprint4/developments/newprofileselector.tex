@@ -1,0 +1,21 @@
+\subsection{Implement new Profile Selector}\label{sec:sprint3:devprofileselector}
+As described in \cref{sec:sprint3:designprofileselector}, the new Profile Selector is ready to be implemented.
+
+It was implemented by adding the \lstinline!GWidgetProfileSelection! as a view in the \lstinline|home.xml| and \lstinline|settings.xml| files.
+This is the button showing the profile picture of the current user.
+This component is attached an \lstinline!OnClickListener!, which shows the profile selector dialog box, \lstinline!GProfileSelector!, with a call to \lstinline!GWidgetProfileSelection.show()!.
+
+The \lstinline!GProfileSelector! object is instantiated as such:
+
+\begin{center}
+\lstinline!mProfileSelectorDialog = new GProfileSelector(mContext, mLoggedInGuardian, mCurrentUser);!
+\end{center}
+
+However, this way of instantiating the object means that every time a new user is chosen on the list, the selector must be instantiated again with a new current user.
+
+The solution was to create a function called \lstinline|updatesProfileSelector()|, which attaches an \lstinline!OnListItemClickListener! to the \lstinline!GWidgetProfileSelection!.
+Firing the click event, the selector instantiates itself again and runs \lstinline|updatesProfileSelector()| to attach the listener to the new instance.
+This ensures that the selector is always correctly updates with the current user.
+\lstinline|updatesProfileSelector()| can be seen in \cref{appendix:codeexamples}.
+
+Adding this new profile selector, allowed us to remove the \launcher classes filling this role, \lstinline!ProfileLauncher! and \lstinline!ProfileSelectActivity!, since the new selector should never be called when starting an application.

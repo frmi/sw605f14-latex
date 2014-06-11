@@ -1,0 +1,111 @@
+As the settings component starts coming together, we decided it is time to evaluate the user interface design, we originally presented to the clients in the second sprint, described in \cref{sec:sprint2:firstmeeting,sec:sprint2:secondmeeting,sec:sprint2:backlog}.
+
+We abstained from testing usability of the original \launcher design earlier, as this had already been done by \citet{launcher2012} in 2012.
+
+At this point, \launcher is still a relatively simple application, and since time is always an issue, we decided on an informal test and evaluation, along the lines of the \textit{Instant Data Analysis} (IDA) method. 
+
+\subsection{The IDA Method}
+IDA emphasizes one-day usability test and evaluation sessions, that are meant to be more cost-efficient than the traditional \textit{Video Data Analysis} (VDA) method. 
+In its defining article, \citet{idaArticle} describe how the method should reveal most of the problems also revealed through VDA, but in much less time. 
+
+IDA prescribes three players: 
+\begin{itemize}
+	\item The \textit{test monitor} instructs and observes the test subject during the usability test.
+	\item The \textit{data logger} observes the tests, and records events of interest.
+	\item Following the actual test session, the \textit{facilitator} runs a brainstorming session with the test monitor and the data logger, where the observed problems are discussed, listed, and rated. 
+\end{itemize}
+
+IDA test sessions are based on the think-aloud technique, where the test monitor gives the test subject a number tasks to be carried out with the system. 
+The test subject then tries to solve the tasks, while explaining his or her thoughts along the way. 
+This makes it easier for the players to identify problematic areas. 
+The data logger observes the session, and takes notes based on his observations. 
+The facilitator may or may not be present during the test session.
+
+After the test session, the test monitor and the data logger meet with the facilitator for a brainstorming session. 
+The observations are presented to the facilitator, who starts compiling a list of usability problems on a white-board. 
+Aside from controlling the discussion, it is the job of the facilitator to create an organised list of distinct usability problems, by categorising related observations, and eliminating redundancy. \citet{idaArticle} sets the length of this session to one hour. 
+
+Finally the facilitator compiles a systematic list of problems, with a short description of each.
+
+\subsection{Test Sessions}
+We conducted test sessions with four different test subjects:
+\begin{itemize}
+	\item The first subject has been a client to the \giraf project since it was initiated in 2011, and has tried the various programs several times. 
+	She describes herself as ``an okay computer user'', with some experience from the iOS environment, but comparatively little experience with the Android environment. 
+	\item The second subject is also a client to the \giraf project, but has little experience in using it, as she feels it has not yet been ready for use. 
+	She also describes herself as ``an okay computer user'', with a lot of experience using iOS devices, but little experience with Android. 
+	\item The third subject is a school teacher not associated with the \giraf project, but related to one of the developers. 
+	She only has superficial knowledge of \giraf, but is very used to Android.
+	\item The fourth subject, an optician, is also a relation of one of the developers. 
+	As with the third subject, she only knows the \giraf project superficially, but uses Android devices daily.
+\end{itemize}
+
+\subsection{Results}
+The observations from the four tests were compiled into a list of concrete usability problems. 
+We assigned each problem a seriousness rating on the following scale:
+\begin{itemize}
+	\item A problem is \textit{critical} if the user is unable to finish their task as a result of it.
+	\item A problem is \textit{serious} if the user is delayed a significant amount of time, before figuring out how to solve the task.
+	\item A problem is \textit{cosmetic} if the user is only delayed for a short amount of time, before figuring out how to solve the task. 
+	Cosmetic problems also include issues that did not give the user any problems, but were nonetheless identified as an area of possible improvement.
+\end{itemize}
+
+For most problems, we also present a suggested solution, which may be implemented by any future development team.
+
+\subsubsection{Doubt about how the application selection screen works}
+\begin{description}
+\item{\textbf{Problem}:} Some test subjects had difficulty figuring out how to add applications to a profile's home screen. 
+Some tried dragging the icon. 
+Some figured out how to mark the application as added, by clicking the icon, but were unsure of whether this solved the task.
+\item{\textbf{Rating}:} Critical.
+\item{\textbf{Suggested solution}:} It might be more intuitive to have two containers: one with applications not added to the profile, and one with applications added to the profile. 
+Applications are then dragged between the two. 
+This allows the user to go with their initial impulse to drag the icons instead of clicking them. 
+If the containers are named with labels, it should also be easy to figure out the state of an application.
+\end{description}
+
+
+\subsubsection{Difficulty finding Google Play}
+\begin{description}
+\item{\textbf{Problem}:} Some test subjects had difficulty finding the shortcut to Google Play, when asked to install a certain application. 
+They often started with pressing the ``Android Settings'' tab.
+Some also correctly chose the ``Apps'' tab, but then went to the section labelled ``Android''. 
+\item{\textbf{Rating}:} Serious.
+\item{\textbf{Suggested solution}:} We propose a renaming of various tabs. 
+The ``Android Settings'' tab should be named ``Device Settings'', to lessen association with Android as a software platform.
+The ``GIRAF'' and ``Android'' tabs in the ``Apps'' screen, should be renamed ``GIRAF Apps'' and ``Android Apps'', to make it clearer that these tabs contain application lists, and no settings as such. 
+Furthermore, the ``Butik'' tab should be resized to match the other two, to make it more visible.
+\end{description}
+
+\subsubsection{Locating the Back button}
+
+\begin{description}
+\item{\textbf{Problem}:} The test subjects with little Android experience, initially had difficulty figuring out how to return to a previous screen.
+They had to be pointed to the hardware \textit{Back} button.
+After this initial confusion, the clients had no problem finding the button again.
+\item{\textbf{Rating}:} Serious.
+\item{\textbf{Suggested solution}:} Throughout the project period, is has been discussed a number of times to add a software \textit{Back} button to all \giraf applications.
+This should completely eliminate any confusion.
+Based on our observations, however, we believe that it is only a question of getting used to the existence of a hardware button.
+When users have learned to use the hardware button, a software button will only clutter up the user interfaces.
+Furthermore, most other Android applications use the hardware button.
+\end{description}
+
+\subsubsection{Unsure whether changes are saved}
+
+\begin{description}
+\item{\textbf{Problem}:} The first times a test subject changed a setting, they were unsure how to continue, because they could not figure out whether the change had been saved, or if they had to do so themselves.
+\item{\textbf{Rating}:} Serious.
+\item{\textbf{Suggested solutions}:} We discussed various possibilities for indicating that the changes had been saved, including an on-screen message, a check mark next to the setting, and even a dummy save button.
+However, it is an Android, and iOS, norm to save changes as they are made.
+We therefore decided that, as with the \textit{Back} button issue, it is a question of the users getting used to the current system.
+\end{description}
+
+\subsubsection{Misunderstanding the authentication screen}
+
+\begin{description}
+\item{\textbf{Problem}:} Some test subjects did not fully understand how the \authenticationactivity worked, as they tried to keep the camera focused on the QR code, after it had verified the code. 
+This made it difficult for them to press the \textit{Login} button, as they awkwardly tried to keep the tablet in position while doing so. 
+\item{\textbf{Rating}:} Cosmetic.
+\item{\textbf{Suggested solution}:} The camera feed could be turned off as soon as a valid code has been scanned, maybe even turning into the \textit{Login} button, instead of the button appearing under the feed. 
+\end{description}

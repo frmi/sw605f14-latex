@@ -1,0 +1,15 @@
+\subsection{Disabling the Drawer}
+As described in \cref{sec:sprint2:firstmeeting,sec:sprint2:secondmeeting}, the purpose of the drawer is founded in a misinterpretation.
+It was thought by the previous groups working with \launcher as being a requirement to be able to colour each of the \giraf applications.
+However, at the client meetings, it was clarified that no such requirements for the applications exist.
+What the clients want is to be able to switch the colours of \textit{pictograms}, being able to also show them in black and white.
+This is due to some citizens handling colours better than black and white and vice versa, as referred to in \cref{sec:sprint2:clarification}.\\
+
+Some additional problems are found with the drawer.
+These are mostly centred upon other applications absorbing the colour given to them by \launcher, and using that as their main theme.
+However, this means that for each possible colour the \launcher can give an application, it needs to implement a colour scheme that fits with the given colour.
+This is especially a problem for applications using a wide variety of colours.\\
+
+Since the colouring functionality of the drawer is not a requirement per se and caused problems in other applications, it is decided to disable the drawer, as it now serves no particular purpose.
+However, the code for animating the drawer is preserved, in case the functionality at a later time will prove useful.
+This way, should a future group need to implement the drawer, they merely have to uncomment parts of the code.

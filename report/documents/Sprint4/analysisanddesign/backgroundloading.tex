@@ -1,0 +1,14 @@
+\subsection{Background Loading}
+
+\launcher often needs to carry out time consuming application processes:
+
+\begin{itemize}
+\item When starting up, all data must be loaded.
+\item In \homeactivity and \settingsactivity, all applications a user has access to need to be displayed as click able views.
+\end{itemize}
+
+While the first case only happens when starting the application, the second case occurs several times while it is running, especially if the user is adjusting settings for many other users.
+
+Because of this frequency, it is favourable to load data in a background task and give the user visual feedback that the device is,  in fact, working on getting this data.
+
+Implementation of the first case is described in \cref{sec:sprint4:dev:remotedbandbgloading} and the second case in \cref{sec:sprint4:dev:loadapplicationtask}.

@@ -1,0 +1,21 @@
+\subsection{Loading Applications}\label{sect:sprint3:refactoring}
+In the application management part of the new \lstinline!SettingsActivity!, \launcher will load applications similar to the way it is done in \lstinline|HomeActivity|.
+However, the methods that load applications into a given view are placed in \lstinline!HomeActivity!.
+Therefore, it is needed to refactor much of the existing code, so \launcher can load applications from any given activity and code redundancy is reduced. .\\
+
+\lstinline!HomeActivity! is refactored by moving the relevant methods, most prominently the \lstinline|loadApplications()| method, into \lstinline!LauncherUtility!.
+However, \lstinline|loadApplications()| needs to be changed further to accommodate the different usages in \lstinline!HomeActivity! and \lstinline!SettingsActivity!. 
+It is required to pass different \lstinline|OnClickListner|s, since the behaviour is not the same.
+The application management fragment requires the applications to be marked when pressed, while \homeactivity requires the applications to start.
+
+\subsubsection{Observing New Applications}\label{sec:sprint3:observing}
+To increase usability when installing or removing applications on the device, an observer is implemented.
+It is responsible for keeping an eye on currently installed applications and compare these with those which are shown at that moment. 
+If there e.g. are new applications on the device, which are not in the list of currently shown applications, they are reloaded, by calling the \lstinline|loadApplications()| method described above.
+
+This functionality is implemented creating a custom timer task by extending the Java class \lstinline!TimerTask! and scheduling this custom task to run at a fixed interval. 
+Thus, a check is made every fifth second to see if any new applications have been installed.
+The interval is decided after what we found acceptable by trial and error.
+
+For every execution of the custom task, the list of installed applications is retrieved and compared with the list of all currently shown applications.
+If the two lists differ, the layout is refilled and the list of currently shown applications is updated.

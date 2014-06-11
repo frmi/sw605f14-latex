@@ -1,0 +1,23 @@
+\subsection{Minor Bugs}
+
+Several minor bugs, anomalies and things that did not work as expected were found in the beginning of the sprint.
+Considering their negligible significance, we will not discuss them in depth, but rather describe each briefly.
+
+\subsubsection{Citizen Mode}
+Regardless of whether the currently logged in profile is a citizen or a guardian, \launcher opens the \profileselectionactivity before opening an application.
+It should only open that activity while a guardian profile is logged in.
+The issue is solved by checking on the \lstinline{getRole()} parameter of a profile, and then appropriately override the \lstinline{OnClickListener} of the \profileselectionactivity, depending on the role. 
+
+\subsubsection{Force Landscape Orientation}
+Reports from 2013 developments describes that landscape orientation should be forced in all \giraf applications\cite[p. 33]{2013report}.
+Since \launcher is currently able to enter portrait mode, it is corrected by changing \lstinline{AndroidManifest.xml} to only allow landscape orientation for all activities\cite{appManifest}.
+
+\subsubsection{Issues related to other groups}
+Two issues caused by other projects are also discovered:
+
+\begin{itemize}
+\item The \lstinline{GButton} widget from \textit{GIRAF Components} library crashes any activity that implements it.
+\item Danish characters are not encoded correctly in the database.
+\end{itemize}
+
+The issues are reported to the groups responsible for these components through the issue tracker.

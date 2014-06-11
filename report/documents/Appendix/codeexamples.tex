@@ -1,0 +1,84 @@
+This appendix contains code fragments, that are too big to be included as part of the report and that can be omitted..
+
+\section {Debug mode for development}\label{appendix:debugmode}
+\input{documents/Appendix/debugmode}
+
+
+\section{Launching Google Play}
+
+The code in \cref{lst:launchergoogleplay} describes the \lstinline|OnClickListener| for the \textbf{''Butik''} button in the ''Apps'' pane of settings.
+It attempts to open the Play Store app - If it is not installed on the device, it opens Play Store in the browser instead.
+\begin{lstlisting}[caption={The OnClickListener for the googlePlayButton, launching the Play Store correctly}, label={lst:launchergoogleplay}]
+googlePlayButton.setOnClickListener(new View.OnClickListener() {
+	public void onClick(View v) {
+		// Try to start the Google Play app
+		try {
+			Intent intent = new Intent();
+			intent.setData(Uri.parse(MARKET_SEARCH_APP_URI + PUBLISHER_NAME));
+			intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			startActivity(intent);
+			// If Google Play is not found, parse the url for Google Play website
+		} 
+		catch (android.content.ActivityNotFoundException e) {
+			startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(MARKET_SEARCH_WEB_URI + PUBLISHER_NAME)));
+		}
+	}
+}
+\end{lstlisting}
+
+\section{Derived class of LoadApplicationTask}
+
+\cref{lst:derivedlat} shows the \lstinline|LoadGirafApplicationTask| - a derived class of \lstinline|LoadApplicationTask|.
+The methods of the class calls \lstinline|super.fooBar()| to let the super class carry out most of the work, along with initiating the \lstinline|AppUpdater| in that class and specifying which applications to load.
+
+  \begin{lstlisting}[caption={The LoadGirafApplicationTask, derived from LoadApplicationTask. This is the derived class used by GirafFragment to load applications into view. Please note that all comments and the constructor have been removed to make the listing smaller}, label={lst:derivedlat}]
+class LoadGirafApplicationTask extends LoadApplicationTask {
+	
+	@Override
+	protected void onPreExecute() {
+		if(appsUpdater != null)
+		appsUpdater.cancel();
+		
+		super.onPreExecute();
+	}
+	
+	@Override
+	protected HashMap<String, AppInfo> doInBackground(Application... applications) {
+		apps = ApplicationControlUtility.getGirafAppsOnDeviceButLauncherAsApplicationList(context);
+		applications = apps.toArray(applications);
+		appInfos = super.doInBackground(applications);
+		
+		return appInfos;
+	}
+	
+	@Override
+	protected void onPostExecute(HashMap<String, AppInfo> appInfos) {
+		super.onPostExecute(appInfos);
+		loadedApps = appInfos;
+		startObservingApps();
+		haveAppsBeenAdded = true;
+	}
+}
+\end{lstlisting}
+
+\section{Marking GIRAF and Android applications}\label{appendix:markingapps}
+
+\cref{lst:addinggirafapplications} contains the code for marking \giraf applications in the ''Apps'' pane of settings, while \cref{lst:addingandroidapplications} contains the code for marking Android applications in the same pane.
+
+\begin{lstlisting}[caption={The methods used for adding or removing a Giraf application to a user}, label={lst:addinggirafapplications}]
+ProfileApplicationController pac = new ProfileApplicationController(context);
+ProfileApplication pa = new ProfileApplication(currentUser.getId(), app.getApp().getId());
+if(pa == null)
+	pac.insertProfileApplication(pa);
+else
+	pac.removeProfileApplicationByProfileAndApplication(app.getApp(), currentUser);
+\end{lstlisting}
+
+\begin{lstlisting}[caption={The methods used for adding or removing an Android application to a user. Please note that the documentation has been removed.}, label={lst:addingandroidapplications}]
+String activityName = app.getActivity();
+
+if (selectedApps.contains(activityName))
+    selectedApps.remove(activityName);
+else
+    selectedApps.add(activityName);
+\end{lstlisting}

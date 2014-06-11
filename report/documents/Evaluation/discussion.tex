@@ -1,0 +1,27 @@
+This section discusses the development of \launcher, focusing upon elements that could have been done better.\\
+
+First of all, while a class called \lstinline|Constants| does exist, there are still places in the code where ``magic numbers'' are used.
+A good example is seen in \lstinline|HomeActivity| where instantiating a new \lstinline|TranslateAnimation| to animate a view from on position to another.
+The constructor \lstinline|TranslateAnimation(0, to, 0, 0)| does not give any indication to what the 0 mean for each parameter.
+Instead, constants defined as a members of the class should have been used: \lstinline|new TranslateAnimation(FROM_X, to, FROM_Y, TO_Y)|, to make the code more readable.
+
+Generally, this implies that a good code style should have been established before beginning any developments.
+\\
+
+Currently, three utility classes exist, each containing between 100 and 300 lines of code.
+The common practice when programming in OO-languages, is to contain methods within classes that use them, and generally not create utility classes.
+An example of how this could have been done is to have an \lstinline|AppLayout| class, containing all methods related to populating the layout with applications, which should then be used in \lstinline|HomeActivity| and \lstinline|SettingsActivity| classes.\\
+
+
+Post development, it is concluded that better decisions regarding the general best practices for Android development should have been researched further.
+The reason is that the implementation of \lstinline|AppViewCreationUtility| is considered inefficient in the way views are handled.
+An optimal implementation would extend \lstinline|GridView| instead.
+This would simplify the implementation drastically, since it handles spacing between the views which currently is half of the current implementation.
+
+Reflecting on this, the existing code for handling loading applications into view should have been replaced by another implementation, utilizing an adapter as done with \lstinline|SettingsListAdapter|, \cref{sec:settingslistadapter}.\\
+
+Furthermore, testing should have been done more thoroughly regarding developments from both the last group working with \launcher, but also our new additions.
+While functional testing were done during the first sprint, mentioned in \cref{sec:sprint1:testing}, and informal integration testing before each sprint review, mentioned in \cref{collab:sprintend:three}, neither system- nor unit tests were explored.
+As described in \cref{sec:collab:remotedb}, problems were found regarding to activating the remote database, which indicates that the informal integration testing should have been replaced by a fully formal integration test.
+
+Lastly, a code review session with another group would have a positive effect on the code.

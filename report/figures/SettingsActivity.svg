@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="502.34802"
+   height="303.8754"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="settingsActivity.svg">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.6067344"
+     inkscape:cx="56.485066"
+     inkscape:cy="98.801953"
+     inkscape:document-units="pt"
+     inkscape:current-layer="layer1"
+     showgrid="true"
+     inkscape:window-width="1920"
+     inkscape:window-height="1030"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     showguides="true"
+     inkscape:guide-bbox="true"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0">
+    <sodipodi:guide
+       orientation="1,0"
+       position="1.1612795,459.29714"
+       id="guide4088" />
+    <sodipodi:guide
+       orientation="1,0"
+       position="501.18679,434.04324"
+       id="guide4090" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-124.09764,-176.41812)">
+    <rect
+       style="opacity:0.92000002;fill:none;stroke:#000000;stroke-width:1.82394516;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       id="rect2985"
+       width="500.52408"
+       height="302.05145"
+       x="125.00961"
+       y="177.33009" />
+    <rect
+       style="opacity:0.92000002;fill:none;stroke:#000000;stroke-width:1.82394516;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:5.47183556, 5.47183556;stroke-dashoffset:0"
+       id="rect2987"
+       width="145.53888"
+       height="278.12247"
+       x="130.18011"
+       y="196.1902" />
+    <rect
+       style="opacity:0.92000002;fill:none;stroke:#000000;stroke-width:1.82394516;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:5.47183556, 5.47183556;stroke-dashoffset:0"
+       id="rect2989"
+       width="337.2117"
+       height="278.2341"
+       x="282.71997"
+       y="196.13438" />
+    <rect
+       style="opacity:0.92000002;fill:none;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       id="rect3761"
+       width="134.94926"
+       height="75.815826"
+       x="135.56602"
+       y="221.57516" />
+    <text
+       xml:space="preserve"
+       style="font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:cmb10;-inkscape-font-specification:cmb10"
+       x="165.61218"
+       y="263.2724"
+       id="text2987"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan2989"
+         x="165.61218"
+         y="263.2724">Profile Selector</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:cmb10;-inkscape-font-specification:cmb10"
+       x="405.82727"
+       y="337.97726"
+       id="text2995"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan2997"
+         x="405.82727"
+         y="337.97726">Settings Container</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:cmb10;-inkscape-font-specification:cmb10"
+       x="335.5766"
+       y="190.19229"
+       id="text3979"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3981"
+         x="335.5766"
+         y="190.19229">Settings Activity</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:cmb10;-inkscape-font-specification:cmb10"
+       x="147.24306"
+       y="213.03529"
+       id="text4018"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4020"
+         x="147.24306"
+         y="213.03529">Settings List Fragment</tspan></text>
+    <g
+       id="g4100"
+       transform="translate(0.69235229,0)">
+      <rect
+         y="302.98889"
+         x="135.20724"
+         height="164.77791"
+         width="134.17734"
+         id="rect3761-1"
+         style="opacity:0.92000002;fill:none;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text4040"
+         y="321.10535"
+         x="179.02834"
+         style="font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:cmb10;-inkscape-font-specification:cmb10"
+         xml:space="preserve"><tspan
+           y="321.10535"
+           x="179.02834"
+           id="tspan4042"
+           sodipodi:role="line">List View</tspan></text>
+      <text
+         sodipodi:linespacing="125%"
+         id="text2991"
+         y="414.68881"
+         x="167.53769"
+         style="font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:cmb10;-inkscape-font-specification:cmb10"
+         xml:space="preserve"><tspan
+           y="414.68881"
+           x="167.53769"
+           id="tspan2993"
+           sodipodi:role="line">List view item</tspan></text>
+      <rect
+         y="332.26572"
+         x="149.00529"
+         height="125.77378"
+         width="106.64219"
+         id="rect3759"
+         style="opacity:0.92000002;fill:none;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+      <rect
+         y="426.66653"
+         x="149.08839"
+         height="31.309093"
+         width="106.47576"
+         id="rect3010-1-4-0-4-5"
+         style="opacity:0.92000002;fill:none;stroke:#000000;stroke-width:1.59003186;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+      <rect
+         y="395.24393"
+         x="149.08736"
+         height="31.311159"
+         width="106.47782"
+         id="rect3010-1-4-0-4-1"
+         style="opacity:0.92000002;fill:none;stroke:#000000;stroke-width:1.58796906;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+      <rect
+         y="364.1427"
+         x="149.08737"
+         height="31.311159"
+         width="106.47782"
+         id="rect3010-1-4-0-4-5-7"
+         style="opacity:0.92000002;fill:none;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text2991-1"
+         y="383.58759"
+         x="167.5377"
+         style="font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:cmb10;-inkscape-font-specification:cmb10"
+         xml:space="preserve"><tspan
+           y="383.58759"
+           x="167.5377"
+           id="tspan2993-5"
+           sodipodi:role="line">List view item</tspan></text>
+    </g>
+  </g>
+</svg>

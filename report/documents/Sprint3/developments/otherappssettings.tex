@@ -1,0 +1,15 @@
+\subsection{Adding to Settings}
+The interface implemented by \lstinline|SettingsActivity| forces it to implement a method called \lstinline|getInstalledSettingsApps()| that has to return a list consisting of \launcher settings, intents available from other \giraf applications and intents related to the native Android settings.
+The method returns an \lstinline|ArrayList<SettingsListItem>| by utilizing a range of methods that all adds an item to the list, whether it be a fragment or intent.
+This means that each \giraf application that wants to be available through the settings activity in \launcher, has to be added to \lstinline|getInstalledSettingsApps()|.
+
+To enable another \giraf application to be shown in settings, it must provide the following intent filter declared for the activity containing its settings, as illustrated in \cref{lst:intentfilterxml}.
+
+\begin{lstlisting}[caption={The intent filter and action a \giraf application has to provide to be shown in settings.}, label={lst:intentfilterxml}]
+<intent-filter>
+  <action android:name="dk.aau.cs.giraf.cars.SETTINGSACTIVITY"/>
+  <category android:name="android.intent.category.DEFAULT"/>
+</intent-filter>
+\end{lstlisting}
+
+Important to notice is that the name of the provided action within the intent filter, is a key having the value \lstinline|SETTINGSACTIVITY|, which is appended to the full package name of the application to show settings for.

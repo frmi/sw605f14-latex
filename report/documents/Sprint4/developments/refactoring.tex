@@ -1,0 +1,26 @@
+\subsection{Splitting up LauncherUtility}\label{sect:sprint4:refactoring}
+
+A quick analysis of the code reveals that \lstinline|LauncherUtility| is now too big, spanning over 900 lines with static methods for many different purposes.
+By dividing the class into smaller classes, each with a certain purpose, the maintainability, readability, and understandability of the code is increased.
+Furthermore, many of the existing functions are either simplified or removed due to lack of use or redundancy.
+
+\lstinline|LauncherUtility| is split into three different classes:
+
+\begin{itemize}
+\item \lstinline|LauncherUtility| remains as a class.
+It now hosts many of the minor functions, that do not warrant their own class, but is used in a variety of activities.
+Examples are methods getting helper functions from \textit{OasisLib}, information about the current user, session expiration methods, and handling debug mode.
+The latter is described in \cref{appendix:debugmode}.
+\item \lstinline|ApplicationControlUtility| is created.
+This class contains methods that are used to either return different lists of applications or check if a certain list lives up to a given criteria.
+These methods are used when sorting which applications should be shown or marked in \settingsactivity| or \homeactivity.
+\item \lstinline|AppViewCreationUtility| is created as well.
+This class is used for the creation of views that contain an application.
+The views are of the class \lstinline|AppImageView|, which extends the image view class and has functionality used in the \settingsactivity, when selecting applications. 
+This class has state field, which indicates if the application is selected or not. 
+It also implements functionality to toggle this state, between selected or not selected, changing the background of the view to indicate that it has been selected.
+\end{itemize}
+
+The two new classes have their own specific purposes, while \lstinline|LauncherUtility| handles a collection of smaller purposes.
+
+A discussion on how this could have been improved even further, can be read in \cref{sec:eval:discussion}.

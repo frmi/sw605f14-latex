@@ -1,0 +1,119 @@
+\subsection{Improving the Application Management Fragment}
+
+The application management fragment is improved in two ways:
+
+\begin{itemize}
+\item 
+Choosing a new profile loads the settings of the chosen user.
+This is done by restarting \settingsactivity with the new user.
+\item
+When having loaded applications in \lstinline|GirafFragment| and \lstinline|AndroidFragment| once, selecting the panes subsequently does not cause the fragment to reload applications. 
+This is a huge optimization.
+\end{itemize}
+
+In order to achieve the last improvement of the fragments, we take advantage of the fragment life cycle. 
+This means that when a fragment is left, the operating system marks the fragment as paused, and if it has not been used for some time, the operating system will run its garbage collector and destroy the fragment. 
+However, if you return to the fragment before it is destroyed the views are still visible. 
+Therefore, we simply check if the layout in which the applications are contained, is already instantiated.
+If this is the case, we use the existing layout, otherwise we instantiate it again.
+
+\subsection{View Holder Design Pattern}
+As mentioned in \cref{sec:settingslistadapter}, the \lstinline|getView()| method implemented in \lstinline|SettingsListAdapter| class, is not considered to be optimal.
+In this sprint, it is chosen to refactor this method to overcome the deficiencies found, by implementing the \textit{View Holder} design pattern, which is an Android best practice of handling multiple views in an \lstinline|AdapterView|\cite{listViewsPerformance}.
+It is a way of improving performance and enhance the readability of the code, handling shadows for each list item.
+
+The View Holder design pattern is implemented as a class that holds a reference to a view. 
+The implementation of the class used in \lstinline|getView()| is shown in \cref{lst:viewholder}.
+
+\begin{lstlisting}[caption={The intent filter and action a \giraf application has to provide to be shown in settings.}, label={lst:viewholder}]
+private static class ViewHolder {
+  public ImageView appIcon;
+  public TextView appName;
+  public View shadowTop;
+  public View shadowBottom;
+  public View shadowRight;
+}
+\end{lstlisting}
+
+The essence of the pattern is to use it when a \lstinline|convertView| is being inflated.
+If the \lstinline|convertView| is \lstinline|null|, we inflate the view, instantiate a \lstinline|ViewHolder| and obtain a reference to each of the views it contains.
+This can be seen in \cref{lst:viewholder:getview}.
+To be able to get \lstinline|holder| back when \lstinline|getView()| is called again for the same \lstinline|convertView|, the view is tagged to save a reference to \lstinline|holder|.
+If \lstinline|convertView| is not \lstinline|null|, it means that it has already been inflated, but has been recycled for performance reasons, and \lstinline|holder| should be restored.
+It is restored by retrieving the tag of \lstinline|convertView|.
+
+\begin{lstlisting}[caption={Excerpt of the refactored \lstinline|getView()| method in \lstinline|SettingsListAdapter|.}, label={lst:viewholder:getview}]
+ViewHolder holder;
+
+if(convertView == null) {
+  convertView = mInflater.inflate(R.layout.settings_fragment_list_row, null);
+
+  holder = new ViewHolder();
+  holder.appIcon = (ImageView)convertView.findViewById(R.id.settingsListAppLogo);
+  holder.appName = (TextView)convertView.findViewById(R.id.settingsListAppName);
+  holder.summary = (TextView)convertView.findViewById(R.id.settingsListSummary);
+  holder.shadowTop = convertView.findViewById(R.id.settingsListRowShadowBelow);
+  holder.shadowBottom = convertView.findViewById(R.id.settingsListRowShadowAbove);
+  holder.shadowRight = convertView.findViewById(R.id.settingsListRowShadowRight);
+  convertView.setTag(holder);
+}
+else
+  holder = (ViewHolder)convertView.getTag();
+\end{lstlisting}
+
+The use of the View Holder pattern is most noticeable in situations where many list items are handled.
+Nonetheless, it reduces the amount of calls made to \lstinline|findViewById()|, which iteratively searches the view hierarchy for the specified ID.
+Since creation of views is expensive in Android, and considering the many views contained within each \lstinline|convertView| and the amount of times \lstinline|getView()| is called, the calls made to  \lstinline|findViewById()| is dramatically reduced.\cite{understandingAdapters}
+
+As also mentioned in \cref{sec:settingslistadapter}, the initial implementation had problems with duplicate code for setting the visibility of the shadows.
+This is resolved by using the View Holder pattern, since it makes it possible to always hold a reference to the views. 
+Therefore, the three methods are merged into one, taking a view and whether to show or hide it as input.
+
+\subsection{Background Loading of Applications}\label{sec:sprint4:dev:loadapplicationtask}
+There are three views that get populated by applications in the \launcher project:
+
+\begin{itemize}
+\item The container in \lstinline!GirafFragment!, populated by \giraf applications only.
+\item The container in \lstinline!AndroidFragment!, populated by Android applications only.
+\item The main container in \lstinline!HomeActivity!, populated by both Android and \giraf applications.
+\end{itemize}
+
+Since all three views need some time to load the applications, it is deemed important to populate them off the UI thread.
+Furthermore, populating all three views in the same way would also simplify the code.
+Thus, the class \lstinline!LoadApplicationTask! is created to load applications. 
+It inherits from \lstinline!ASyncTask! and must therefore implement three methods:
+
+\begin{itemize}
+\item \lstinline!onPreExecute()! is called before the task is carried out and runs on the UI thread.
+\item \lstinline!doInBackground()! should contain the task to be carried out and will carry it out in a background thread.
+\item \lstinline!onPostExecute()! is called after the task has been carried out and runs on the UI thread.
+\end{itemize}
+
+We override \lstinline!onPreExecute()! and \lstinline!onPostExecute()! to start and stop showing a loading animation, respectively.
+
+The method in \lstinline!LauncherUtility! used to populate a view with applications, \lstinline!loadApplications()! is deleted, and the contents are moved into \lstinline!doinBackground()!.
+Since the views can only be manipulated in the UI thread, we add the applications as views to a list of views, which \lstinline!onPostExecute()! iterates over and adds to the target layout. 
+The constructor of \lstinline!LoadApplicationTask! is also adjusted to take as parameter all the information needed to populate a given view.
+
+The observer which is responsible for executing the \lstinline|LoadApplicationTask|, and is described in \cref{sec:sprint3:observing}, must be paused while loading applications and restarted afterwards.
+This happens in \lstinline!onPreExecute()! and \lstinline!onPostExecute()! respectively.
+
+Because of the differences in the three classes which are loading applications, namely \lstinline!HomeActivity!, \lstinline!GirafFragment! and \lstinline!AndroidFragment!, we need to derive a specialized class of \lstinline|LoadApplicationTask| inside each class.
+The reasons relate to the responsibility of the three classes:
+\begin{itemize}
+	\item \homeactivity has the responsibility of opening applications when added.
+	\item The two fragments in the application management fragment have the responsibility of marking applications as selected.
+\end{itemize}
+
+Even though the two fragments have the same responsibility, they differ by the fact that the \giraf fragment handles applications from the \giraf suite and thereby does changes in the local database.
+On the other hand, the Android fragment handles selection of other Android applications, and these selections are stored on the device.
+An example of one of these derived classes is shown in \cref{lst:derivedlat}.
+
+To start the task for loading applications, the observer is using a specialised version of the code in \cref{lst:simplelat}.
+
+\begin{lstlisting}[caption={The simplified code for loading applications into a view.}, label={lst:simplelat}]
+LoadApplicationTask lat = new LoadApplicationTask(context, currentUser, guardianUser, targetView, iconsize, onClickListener);
+loadApplicationTask.execute(applicationsToLoad);
+\end{lstlisting}
+
+The next section handles the improved indication of loading data when starting \launcher.

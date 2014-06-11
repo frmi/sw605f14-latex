@@ -1,0 +1,64 @@
+This appendix contains information about the things still remaining to be done in the \launcher project.
+As such, it acts as a backlog for the next year bachelor students working on the project.
+
+\section{Proper iconsize}
+When scaling the application icons some of them gets pixellated.
+This indicates that there is still work to be done, when choosing the icons to show.
+This might be caused by low resolution icons supplied by the developers of the other applications.
+
+\section{Ugeskema Calendarwidget}
+The group working on the \textit{\giraf components} has a widget, showing the current date, in their backlog.
+It could be an idea to use to open the application \textit{Ugeplan} through this widget. The application should then show the schema for the citizen chosen from the profile selector.
+
+\section{Logging in with citizen and administrator profiles}
+Currently, it is possible to login with all types of profiles, but there is no handling of types other than guardian profiles in most of the application.
+It might be needed for citizen and administrator login as well.
+Citizen profiles should not be able to access certain activities, such as settings in \launcher.
+On the contrary, the administrator profiles would need additional access to system administration applications.
+
+\section{Automatically download GIRAF applications}
+It could be preferable to have \launcher start downloading all \giraf applications as soon as it is started.
+This is most likely not possible in Android but it is possible to start Google Play with a search string.
+This way  \launcher could begin with starting Google Play with the common part of the Java package name used for the \giraf applications a search string.
+
+\section{Add sound to Launcher}
+Currently, none of the actions a user carries out when using \launcher provides audio feedback.
+Adding minor sounds for button presses, application launching, setting changes and the like, could be a nice addition to \launcher. 
+
+\section{Profile Selection Dialog}
+It should be clearly indicated what role, the individual user is assigned, in the list when opening the profile selection dialog.
+Currently there are no indication of the role of a user.
+Please note, that the profile selection dialog is supplied by \textit{\giraf Components}, and is therefore not directly the responsibility of \launcher.
+
+\section{Copying settings from one user to another}
+For many citizens, the settings may be quite similar.
+For this reason, it would be preferable to be able to copy settings from one user to another.
+
+\section{Authentication Activity}
+There is still work to do in \authenticationactivity.
+
+\begin{itemize}
+	\item \textbf{Make it clear that the QR code was successfully scanned.}
+
+	An idea is that the camera feed is hidden when the QR code is accepted and who buttons are show, one to scan again and one to login.
+	\item \textbf{Rotation of the instruction animation.}
+
+	Currently it is shown as the tablet should be held in portrait mode. 
+	For usability matters this should be rotated. 
+	%Good luck and have fun with this...!
+\end{itemize}
+
+\section{Download pictograms while tablet is being used}
+When \launcher is started after a reboot of the device the synchronisation i of data with the remote database is done before being able to login.
+If \launcher has never been installed on the device before, this means that it can take up to 30 minutes, before it is ready to login.
+It would be an idea to only load the necessary information such as profiles, and then continue downloading the pictograms in the background while the tablet is being used.
+
+\section{Use GridView for loading applications}
+The layout in which applications are being loaded is of an inconvenient type. 
+They should instead be loaded into a \lstinline|GridView|, using a custom adapter similar to the one mentioned in \cref{sec:settingslistadapter}. 
+This is better for memory management, follows Android Best Practices and would simplify the algorithm used for showing applications. \vagner{Kilde for at det ville følge Android Best Practices?}
+
+\section{Conduct Functional Tests}
+\cref{sec:sprint1:testing} describes function tests carried out by this group, on the version of \launcher we initially took over.
+These tests provided valuable information and revealed several unhandled bugs.
+As the final version of \launcher was rushed to implement the remote database, it is highly recommended, that the group taking over the development of \launcher, carry out functional tests as well.

@@ -1,0 +1,90 @@
+% FIGURES
+\graphicspath{{figures/}{../figures/}}
+
+% Define hyperef style
+\hypersetup %
+{
+	colorlinks=true,
+	linktocpage=true, 
+	pdfstartpage=1,
+	pdfstartview=FitV,
+	hypertexnames=true,
+	pdfhighlight=/O,
+	breaklinks=true,
+	pdfpagemode=UseNone,
+	pageanchor=true,
+	pdfpagemode=UseOutlines,
+	plainpages=false,
+	bookmarksnumbered,
+	bookmarksopen=true,
+	bookmarksopenlevel=1,
+	bookmarksdepth=2,
+	urlcolor=NavyBlue,
+	linkcolor=Red,
+	citecolor=Red,
+	pdfborder={0 0 0},
+}
+
+\lstset %
+{
+	language=Java,
+	keywordstyle=\color{RoyalBlue},
+    commentstyle=\color{Green}\ttfamily,
+    stringstyle=\color{Red}\ttfamily,
+	frame=shadowbox,
+	framesep=5pt,
+	aboveskip=1.5em,
+	belowskip=1em,
+	rulecolor=\color{blue!40!black},
+	rulesepcolor=\color{white!93!black},
+	basicstyle=\ttfamily\small,
+	numbers=left,
+	numberstyle=\tiny,
+	numberfirstline=true,
+	numberblanklines=false,
+%	showstringspaces=false,
+	stepnumber=1,
+	numbersep=9pt,	
+	captionpos=b,
+	escapeinside={(*}{*)},
+	breaklines=true,
+	breakatwhitespace=false,
+	alsoletter={;}
+}
+
+% TIKZ
+\usetikzlibrary{positioning,fit,calc,shapes,arrows,external,petri}
+\tikzset{
+    state/.style={
+		rectangle,
+		rounded corners,
+		draw=black, very thick,
+		minimum height=2em,
+		inner sep=2pt,
+		text centered
+	},
+    layer/.style={
+		rectangle,
+		rounded corners,
+		draw=black, very thick,
+		minimum height=4em,
+    	minimum width=10cm,
+		inner sep=2pt,
+		text centered
+   },
+    dummy/.style={
+		rectangle,
+		rounded corners,
+		minimum height=2em,
+		inner sep=2pt,
+		text centered
+   },
+	lbl/.style={
+		above,
+		sloped % make the text follow the path
+	}
+
+}
+
+% Make quotes italic
+\AtBeginEnvironment{quote}{\itshape}

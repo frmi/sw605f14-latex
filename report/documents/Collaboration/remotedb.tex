@@ -1,0 +1,46 @@
+Late in the fourth sprint, after the formal deadlines described in \cref{collab:sprintend:planning} had passed, the group implementing the remote database declared that it was ready, and that we should attempt to set up synchronisation between the remote and local databases. 
+While this undoubtedly would present new technical problems throughout the system, we chose to move forward for two reasons. 
+First, it would allow us to distribute a huge number of pictograms in the remote database to the clients, making \giraf significantly more useful to them.
+Previously they had to create all the needed pictograms locally in \textit{Pictotegner}, the included graphics application. 
+Second, the remote database group had put significant effort into making the database ready before the end of the semester, and we found it unfair to deny them the last step. 
+
+As described in \Cref{sec:developments:remotedb}, this concerned the \launcher group, as the local database service had been merged into \launcher, to ease distribution of the system.
+
+The expected problems did arise, the most major ones including:
+\begin{itemize}
+	\item The remote and local database schemas did not fully match. 
+	The main issue was that the remote database was implemented with MySQL, while the local database was implemented using SQLite, an Android standard. 
+	Differences in the two SQL implementations, gave rise to some problems. 
+	Other problems were related to the two schemas being developed by two different groups.
+	While the groups communicated about changes continually through the project period, some last minute redesigns of the remote database schema, had not been added to the local database schema.
+	Identifying and fixing these problems were a collaborative effort between the \launcher group, the remote database group, and a few other developers present at the time. 
+	\item After making necessary changes in the local database to resolve the above-mentioned issues, a series of new problems arose in the applications that saved information in the local database, as these save operations no longer conformed with the schema. 
+	Identifying and fixing these problems was mainly the responsibility of the affected groups, but members of the \launcher group moved around and helped, as \launcher did not require any significant effort at this point, and the final presentation to the costumers was scheduled for later that day. 
+	Furthermore, the \launcher group had some insight into the root problems, from working with the database issues the previous day.
+	\item \textit{Pictosearch} is an application meant to provide an interface for searching through the pictograms in the database.
+	As it provides this central functionality, a number of other applications use \textit{Pictosearch}, rather than providing their own search interface.
+	When we started testing the database synchronisation, we tried to transfer only 100 pictograms to the device, and then view them in \textit{Pictosearch}.
+	It turned out that the application had problems, even with this small number of pictograms, and became highly unstable. 
+	The resolution of these issues are described in the next section.
+\end{itemize}
+
+\subsection{Reworking Pictosearch}
+\label{sec:collab:remotedb:pictosearch}
+As the remote database group and we attempted to add small subsets of pictograms, around 100 from a collection of several thousand, we discovered that \textit{Pictosearch}, the main application for accessing pictograms, had serious issues.
+The main problem was that scrolling through the collection of pictograms caused an \lstinline!OutOfMemoryError! and an application crash after a short while.
+Furthermore, the application showed some performance issues, with the scrolling animation lagging annoyingly.
+
+At the point of these discoveries, it was late afternoon the day before the final presentation to the clients.
+We discussed the possibility of giving up database synchronisation, and releasing the project to the clients without this feature.
+But even without the database collection of pictograms, the clients would have the same issues with \textit{Pictosearch} when creating pictogram collections of their own, so the system would be equally unusable.
+We then discussed to possibility of waiting till the following day, and then ask the group responsible for \textit{Pictosearch} to resolve the problem.
+But the necessary changes would more then likely cause problems for the applications depending on \textit{Pictosearch}, and there would be too little time to also resolve these issues.
+Furthermore the group in question had unfortunately earlier proved difficult to contact, and so might not even be present the following day. 
+Therefore the developers present decided to attempt to resolve the issues themselves. 
+
+The memory error turned out to be caused by new views being inflated continually, rather then recycling the already inflated ones.
+The offending method was redesigned, and the error ceased occurring on most of the test devices.
+It persisted on a few low-memory devices, as \textit{Pictosearch} nonetheless loads are large number of bitmaps into memory.
+This final problem was solved by increasing the heap size of \textit{Pictosearch}.
+
+The performance issues were not solved, but deemed not serious enough to warrant the same last-minute effort as the out of memory error.

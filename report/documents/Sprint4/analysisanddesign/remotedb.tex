@@ -1,0 +1,10 @@
+\subsection{Remote Database}\label{sec:developments:remotedb}
+In order to make the \giraf system even more useful for the clients, it is a goal for the semester to implement synchronisation between the local database and the remote database.
+Synchronising with the remote database concerns \launcher, since the local database has been integrated into \launcher during this sprint.
+For clarification on this decision please refer to \Cref{sec:collab:localdbtolauncher} and \Cref{sec:developments:localdbtolauncher} for development details on this matter.
+
+At the moment of writing the synchronisation is only one way. 
+This means that it is only possible for the system to synchronise data from the remote to the local database, not the other way around. 
+This was the priority on a multi-project level, since it meant that the online administration tool could be used to manage the system, and the group responsible the synchronisation did not have time to implement two-way synchronisation.\\
+
+Activating the synchronisation with the remote database introduced some issues which is described in \Cref{sec:collab:remotedb}.
