@@ -1,5 +1,5 @@
 \documentclass{beamer}
-\graphicspath{{../graphics/}}
+\graphicspath{{../report/figures/}}
 \usepackage{listings}
 \usepackage{ulem}
 \usepackage{subcaption}
@@ -20,7 +20,7 @@
 \AtBeginSection[]
 {
    \begin{frame}
-        \frametitle{Indhold}
+        \frametitle{Overview}
         \tableofcontents[sectionstyle=show/hide,subsectionstyle=show/show/hide]
    \end{frame}
 }
@@ -30,24 +30,20 @@
 
 \usepackage[utf8]{inputenc}
 
-\usepackage{times}
-
-\usepackage{tikz}
-\usepackage{3dplot}
 \usepackage{multirow}
 
-\title[Mapping med Lego-robot]{Mapping med Lego-robot}
+\title[The Launcher for the GIRAF Software Suite]{The Launcher for the GIRAF Software Suite}
 
-\subtitle{SW505E13}
+\subtitle{SW605E13}
 
-\author[SW505E13]{Mikkel Sand\o ~Larsen, \and Bruno Thalmann, \and Stefan Marstrand Getreuer Micheelsen, \and Stefan Thilemann, \and Mikael Elki\ae r Christensen, \and Anders R. Nielsen}
+\author[SW605E13]{Jesper Byrdal Kj\ae r, \and Frederik Bruhn Mikkelsen, \and Stefan Mailund Thilemann, \and Anders Vagner}
 
 \institute[Aalborg University]
 {
   Department of Computer Science\\
   Aalborg University}
 
-\date[CFP 2003]{31. Januar 2014}
+\date[CFP 2003]{19. June 2014}
 
 \begin{document}
 
@@ -60,25 +56,11 @@
 \end{frame}
 
 \begin{frame}
-    \frametitle{Indhold}
+    \frametitle{Content}
     \tableofcontents[sectionstyle=show/show,subsectionstyle=hide/hide/hide]
 \end{frame}
 
-\section{Overblik}
+\section{Introduction}
 
 \input{slides/intro}
-
-\section{Løsningsmetoder}
-%Løsningsmetoder
-\input{slides/losningsmetoder}
-%Robottens design
-\section{Robottens design}
-\input{slides/walle}
-\input{slides/teori}
-\input{slides/localization}
-\input{slides/ruteplan}
-
-\section{Design}
-\input{slides/arkitektur}
-\input{slides/evaluering}
 \end{document}
