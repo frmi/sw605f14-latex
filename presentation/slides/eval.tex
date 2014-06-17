@@ -4,8 +4,6 @@
 \subsection{Use of Scrum}
 \begin{frame}{Development Method}
   What is Scrum?
-  \linespace
-
   \begin{itemize}
   \item Framework used to address complex adaptive problems
     \begin{itemize}
@@ -29,7 +27,8 @@
         		\begin{itemize}
         		\item Fits study project well
         		\end{itemize}
-      		\item Supported by tools 
+      		\item Supported by tools
+      		\item Recommended by Semester Coordinator
         \end{itemize}
   		\end{column}
   		
@@ -70,38 +69,46 @@
 \end{frame}
 
 \begin{frame}{Group Scrum usage}
+	Intentions to form a Scrum of Scrums, to:
+	\begin{itemize}
+		\item Synchronize progress with multi-project Scrum
+	\end{itemize}
+	\begin{center}
+	\includegraphics[width=0.6\textwidth]{pres/scrumofscrums}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Group Scrum usage}
   \begin{columns}
-  		\begin{column}{0.5\textwidth}
-  			Intentions to form a Scrum of Scrums, to:
-  			\linespace
-  			\begin{itemize}
-  				\item Syncronize progress with multi-project Scrum
-  			\end{itemize}
-  		\end{column}
-  		\pause
-  		\begin{column}{0.5\textwidth}
-  			Did not work as expected:
-  			\linespace
-  			\begin{itemize}
-  				\item Failed to sustain Scrum Events
-    				\begin{itemize}
-    				\item Sprint Planning
-    				\item Daily Scrum
-      				\begin{itemize}
-        				\item Scrum Board vs. Redmine
-        				\item Shared group room
-      				\end{itemize}
-    				\item Sprint Review
-    				\end{itemize}
-    		  \item Did not utilize Scrum Roles
-      		  \begin{itemize}
-      		  \item Product Owner
-      		  \item Scrum Master
-      		  \end{itemize}
-    		  \pause
-      		\item Scrum Retrospective
-  			\end{itemize}
-  		\end{column}
+    \begin{column}{0.5\textwidth}
+      Did not work as expected:
+      \begin{itemize}
+      	\item Failed to sustain Scrum Events
+      			\begin{itemize}
+      			\item Sprint Planning
+      			\item Daily Scrum
+       				\begin{itemize}
+         				\item Scrum Board vs. Redmine
+         				\item Shared group room
+       				\end{itemize}
+      			\item Sprint Review
+      			\end{itemize}
+        \item Did not utilize Scrum Roles
+          \begin{itemize}
+            \item Product Owner
+            \item Scrum Master
+          \end{itemize}
+        \pause
+        \item Scrum Retrospective
+      \end{itemize}
+    \end{column}
+    
+    \begin{column}{0.5\textwidth}
+		\includegraphics[width=0.6\textheight]{slides/scrumboard}
+		\\
+		\linespace
+		\includegraphics[width=0.6\textheight]{slides/redmine}
+    \end{column}
   \end{columns}
 \end{frame}
 
@@ -109,20 +116,30 @@
 %     OOD
 %--------------------------------------------------
 \subsection{System Design}
-\begin{frame}{Unstructured approach}
+\begin{frame}{Developments}
 	\begin{itemize}
 		\item<1> Taking over an existing project
-		\item<2> Refactoring vs. re-writing
-		\item<3> Ad-hoc design
   		\begin{itemize}
-  		\item Case: View Holder pattern Android best-practice
+    		\item Refactoring vs. Rewriting
+  		\end{itemize}
+		\item<2> Ad-hoc design
+  		\begin{itemize}
+  		\item Case: View Holder pattern, Android best-practice
   		\end{itemize}
 		\begin{center}
-		\includegraphics<2>[width=0.8\textheight]{slides/swengineer}
+		\includegraphics<1>[width=0.8\textheight]{slides/swengineer}
 		\end{center}
 	\end{itemize}
 \end{frame}
 
-\begin{frame}{Design Patterns}
-Start med ``How to improve?''
+\begin{frame}{Introducing Design Patterns}
+  \begin{itemize}
+  \item<1> Identify possible patterns to use
+  \item<2> Suggestion: Observer Pattern
+  \end{itemize}
+  
+  \includegraphics<2>[width=1\textwidth]{slides/observer.png}
 \end{frame}
+
+
+
