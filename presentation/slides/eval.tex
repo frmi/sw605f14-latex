@@ -22,13 +22,15 @@
   		\begin{column}{0.5\textwidth}
   			Decision based on:
   			\begin{itemize}
-      		\item Students familar with method
+      		\item Recommended by Semester Coordinator
+        		\begin{itemize}
+        		\item Familar to all students
+        		\end{itemize}
       		\item Sprint length
         		\begin{itemize}
         		\item Fits study project well
         		\end{itemize}
       		\item Supported by tools
-      		\item Recommended by Semester Coordinator
         \end{itemize}
   		\end{column}
   		
@@ -52,7 +54,8 @@
   			Missing essential parts:
     				\begin{itemize}
     				\item Product Owner
-    				\item Scrum Master vs. Coordinator?
+    				\pause
+    				\item \textit{Scrum Master?}
     				\end{itemize}
   		\end{column}
   \end{columns}
@@ -66,7 +69,7 @@
 \end{frame}
 
 \begin{frame}{Group Scrum usage}
-	Intentions to form a Scrum to:
+	Intentions to use Scrum in group, to:
 	\begin{itemize}
 		\item Synchronize progress with multi-project Scrum
 	\end{itemize}
@@ -76,21 +79,36 @@
 \end{frame}
 
 \begin{frame}{Group Scrum usage}
-      Did not work as expected:
-      \begin{itemize}
-      	\item<1,2,3,4> Failed to sustain Scrum Events
-      			\begin{itemize}
-      			\item<2> Sprint Planning
-      			\item<3> Daily Scrum
-      			\item<4> Sprint Review
-      			\end{itemize}
-        \item<5,6,7> Did not utilize Scrum Roles
-          \begin{itemize}
-            \item<6> Product Owner
-            \item<7> Scrum Master
-          \end{itemize}
-      \end{itemize}
+  Did not work as expected:
+  \pause
+  \begin{itemize}
+    	\item Failed to sustain Scrum Events
+    			\begin{itemize}
+    			\item Sprint Planning
+    			\item Daily Scrum
+    			\item Sprint Review
+    			\end{itemize}
+    			\pause
+    \item Did not utilize Scrum Roles
+  \end{itemize}
+\end{frame}
 
+\begin{frame}{Conclusion on using Scrum}
+  Even though Scrum was not utilized properly, the following was achieved by using Scrum both for the multi-project, but also for the Launcher project:
+  \pause
+  \begin{itemize}
+    \item Providing structure
+    \pause
+    \item Distribution of responsibilities
+    \pause
+    \item Driving development towards common goal and maintaining clients interests
+  \end{itemize}
+  \pause
+  \linespace
+  \begin{block}{Recommandation for next GIRAF developers}
+  Investigate multiple methodologies thoroughly, before starting any developments.
+  Commit to the chosen methodology!
+  \end{block}
 \end{frame}
 
 %--------------------------------------------------
@@ -103,7 +121,7 @@
   		\begin{itemize}
     		\item Refactoring vs. Rewriting
   		\end{itemize}
-		\item<2> Ad-hoc design
+		\item<2> ``Ad-hoc'' design
   		\begin{itemize}
   		\item Case: View Holder pattern, Android best-practice
   		\end{itemize}
@@ -113,10 +131,13 @@
 	\end{itemize}
 \end{frame}
 
-\begin{frame}{Introducing Design Patterns}
+\begin{frame}{Design Patterns}
   \begin{itemize}
   \item<1> Identify possible patterns to use
   \item<2> Suggestion: Observer Pattern
+    \begin{itemize}
+    \item Loading of application into View
+    \end{itemize}
   \end{itemize}
   
   \includegraphics<2>[width=1\textwidth]{slides/observer.png}
