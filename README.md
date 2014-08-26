@@ -25,7 +25,7 @@ latex repository for study project
 
 Furthermore, the following commands are used:
 
-| Command| Use |
+| Command | Use |
 | ------------- | ----------- |
 | \giraf      | Refers to the Giraf project. |
 | \launcher     |  Refers to the Launcher project.  |
